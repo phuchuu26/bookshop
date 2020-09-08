@@ -1,0 +1,1208 @@
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/index.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\index.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/slider/home1-slider1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\slider\home1-slider1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/slider/home1-slider2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\slider\home1-slider2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/favicon.ico
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\favicon.bin
+Content Type: application/octet-stream
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/icon.png
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\icon.png
+Content Type: image/png
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/css/bootstrap.min.css
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\css\bootstrap.min.css
+Content Type: text/css
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/css/font-awesome.min.css
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\css\font-awesome.min.css
+Content Type: text/css
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/css/plugins.css
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\css\plugins.css
+Content Type: text/css
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/css/main.css
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\css\main.css
+Content Type: text/css
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/index-2.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\index-2.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/index-3.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\index-3.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/index-4.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\index-4.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/index-5.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\index-5.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/index-6.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\index-6.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/index-7.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\index-7.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/index-8.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\index-8.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/shop.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\shop.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/shop-right-sidebar.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\shop-right-sidebar.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/shop-fullwidth.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\shop-fullwidth.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/shop-fullwidth-4-column.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\shop-fullwidth-4-column.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/shop-list.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\shop-list.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/shop-list-left-sidebar.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\shop-list-left-sidebar.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/shop-list-right-sidebar.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\shop-list-right-sidebar.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/single-product.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\single-product.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/single-product-tab-style-2.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\single-product-tab-style-2.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/single-product-tab-style-3.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\single-product-tab-style-3.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/single-product-gallery-left.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\single-product-gallery-left.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/single-product-gallery-right.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\single-product-gallery-right.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/single-product-slider-box.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\single-product-slider-box.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/single-product-slider-full-width.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\single-product-slider-full-width.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/single-product-sticky-left.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\single-product-sticky-left.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/single-product-sticky-right.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\single-product-sticky-right.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/single-product-group.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\single-product-group.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/single-product-variable.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\single-product-variable.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/single-product-affiliate.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\single-product-affiliate.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/portfolio.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\portfolio.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/blog.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\blog.html
+Content Type: application/xml
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/about-us.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\about-us.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/about-us-2.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\about-us-2.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/contact.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\contact.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/contact-2.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\contact-2.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/services.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\services.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/services-2.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\services-2.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/faq.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\faq.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/404.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\404.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/login-register.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\login-register.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/blog-right-sidebar.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\blog-right-sidebar.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/blog-3-column.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\blog-3-column.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/blog-4-column.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\blog-4-column.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/single-blog-image.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\single-blog-image.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/single-blog-gallery.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\single-blog-gallery.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/single-blog-audio.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\single-blog-audio.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/single-blog-video.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\single-blog-video.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/single-blog-right-sidebar.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\single-blog-right-sidebar.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/cart.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\cart.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/checkout.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\checkout.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/wishlist.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\wishlist.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/compare.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\compare.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/my-account.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\my-account.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/js/vendor/modernizr-2.8.3.min.js
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\js\vendor\modernizr-2.8.3.min.js
+Content Type: application/javascript
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/header/1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\header\1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/header/2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\header\2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/logo/logo-white.png
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\logo\logo-white.png
+Content Type: image/png
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/electronics-4-150x167.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\electronics-4-150x167.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-6-150x167.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-6-150x167.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home1-banner1-1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home1-banner1-1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home1-banner1-2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home1-banner1-2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/electronics-2-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\electronics-2-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/electronics-3-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\electronics-3-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/electronics-4-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\electronics-4-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/electronics-5-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\electronics-5-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/electronics-6-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\electronics-6-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/electronics-7-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\electronics-7-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/electronics-10-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\electronics-10-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/electronics-11-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\electronics-11-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/electronics-12-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\electronics-12-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/electronics-13-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\electronics-13-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/electronics-15-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\electronics-15-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/electronics-14-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\electronics-14-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/electronics-16-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\electronics-16-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/electronics-17-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\electronics-17-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/electronics-18-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\electronics-18-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-15-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-15-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-16-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-16-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home1-banner2-1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home1-banner2-1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home1-banner2-2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home1-banner2-2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home1-product-banner-1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home1-product-banner-1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/electronics-2-540x600.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\electronics-2-540x600.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/electronics-3-540x600.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\electronics-3-540x600.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/electronics-8-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\electronics-8-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/electronics-1-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\electronics-1-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home1-product-banner-2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home1-product-banner-2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home1-product-banner-3.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home1-product-banner-3.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home1-banner3.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home1-banner3.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/brand/brand1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\brand\brand1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/brand/brand2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\brand\brand2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/brand/brand3.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\brand\brand3.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/brand/brand4.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\brand\brand4.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/brand/brand5.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\brand\brand5.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home1-brandsale.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home1-brandsale.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/logo/logo-blue.png
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\logo\logo-blue.png
+Content Type: image/png
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/icons/payment-icon.png
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\icons\payment-icon.png
+Content Type: image/png
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/electronics-15-540x600.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\electronics-15-540x600.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-14.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-14.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-17.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-17.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-7.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-7.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/electronics-15-150x167.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\electronics-15-150x167.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-14-150x167.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-14-150x167.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-17-150x167.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-17-150x167.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-7-150x167.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-7-150x167.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/js/vendor/jquery.min.js
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\js\vendor\jquery.min.js
+Content Type: application/javascript
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/js/bootstrap.bundle.min.js
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\js\bootstrap.bundle.min.js
+Content Type: application/javascript
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/js/plugins.js
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\js\plugins.js
+Content Type: application/javascript
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/js/ajax-mail.js
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\js\ajax-mail.js
+Content Type: application/javascript
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/js/main.js
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\js\main.js
+Content Type: application/javascript
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/fonts/fontawesome-webfont.eot?v=4.7.0
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\fonts\fontawesome-webfont.bin
+Content Type: application/octet-stream
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/fonts/fontawesome-webfont.eot?
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\fonts\fontawesome-webfont-1.bin
+Content Type: application/octet-stream
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/fonts/fontawesome-webfont.woff2?v=4.7.0
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\fonts\fontawesome-webfont-2.bin
+Content Type: application/octet-stream
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/fonts/fontawesome-webfont.woff?v=4.7.0
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\fonts\fontawesome-webfont-3.bin
+Content Type: application/octet-stream
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/fonts/fontawesome-webfont.ttf?v=4.7.0
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\fonts\fontawesome-webfont.ttf
+Content Type: application/x-font-ttf
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/fonts/fontawesome-webfont.svg?v=4.7.0
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\fonts\fontawesome-webfont.svg
+Content Type: image/svg+xml
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/icons/appstore-icon.png
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\icons\appstore-icon.png
+Content Type: image/png
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/icons/googleplay-icon.png
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\icons\googleplay-icon.png
+Content Type: image/png
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/icons/angle-down.png
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\icons\angle-down.png
+Content Type: image/png
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/others/contact2-social.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\others\contact2-social.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/services/service1-img1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\services\service1-img1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/services/service2-img2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\services\service2-img2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/services/service3-bg.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\services\service3-bg.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/services/service1-img3.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\services\service1-img3.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/slider/home2-slider1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\slider\home2-slider1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/slider/home2-slider2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\slider\home2-slider2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home2-banner1-1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home2-banner1-1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home2-banner1-2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home2-banner1-2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home2-banner2-1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home2-banner2-1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home2-banner2-2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home2-banner2-2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home2-product-banner-1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home2-product-banner-1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home2-product-banner-2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home2-product-banner-2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-7-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-7-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-6-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-6-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-17-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-17-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-16-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-16-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-14-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-14-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-6-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-6-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-19-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-19-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home2-product-banner-3.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home2-product-banner-3.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home2-brandsale-1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home2-brandsale-1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/category/home2-category-1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\category\home2-category-1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/category/home2-category-2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\category\home2-category-2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/category/home2-category-3.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\category\home2-category-3.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/category/home2-category-4.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\category\home2-category-4.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/category/home2-category-5.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\category\home2-category-5.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/category/home2-category-6.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\category\home2-category-6.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/category/home2-category-7.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\category\home2-category-7.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/category/home2-category-8.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\category\home2-category-8.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/slider/home3-slider1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\slider\home3-slider1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-13-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-13-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-5-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-5-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home3-sidebar.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home3-sidebar.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home3-banner2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home3-banner2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home3-banner3.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home3-banner3.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home3-banner4.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home3-banner4.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/slider/home4-slider1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\slider\home4-slider1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-4-150x167.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-4-150x167.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home4-banner1-1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home4-banner1-1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home4-banner1-2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home4-banner1-2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-2-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-2-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-3-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-3-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-4-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-4-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-5-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-5-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-10-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-10-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-11-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-11-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-12-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-12-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-15-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-15-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-18-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-18-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-2-540x600.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-2-540x600.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-3-540x600.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-3-540x600.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-8-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-8-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-1-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-1-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-15-540x600.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-15-540x600.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-15-150x167.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-15-150x167.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/slider/home5-slider1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\slider\home5-slider1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/slider/home5-slider2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\slider\home5-slider2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home5-banner2-1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home5-banner2-1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home5-banner2-2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home5-banner2-2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home5-product-banner-1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home5-product-banner-1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-9-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-9-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-19-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-19-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home5-brandsale.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home5-brandsale.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-20-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-20-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/category/home5-category-1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\category\home5-category-1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/category/home5-category-2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\category\home5-category-2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/category/home5-category-3.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\category\home5-category-3.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/category/home5-category-4.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\category\home5-category-4.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/category/home5-category-5.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\category\home5-category-5.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/category/home5-category-6.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\category\home5-category-6.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/category/home5-category-7.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\category\home5-category-7.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/category/home5-category-8.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\category\home5-category-8.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/slider/home6-slider1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\slider\home6-slider1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/slider/home6-slider2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\slider\home6-slider2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home4-banner2-2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home4-banner2-2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home5-banner3.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home5-banner3.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home6-banner3.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home6-banner3.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/slider/home7-slider1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\slider\home7-slider1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home7-banner1-1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home7-banner1-1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home7-banner1-2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home7-banner1-2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-1-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-1-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-2-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-2-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-3-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-3-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-4-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-4-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-7-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-7-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-9-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-9-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-10-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-10-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-11-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-11-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-12-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-12-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-13-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-13-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-14-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-14-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home7-banner2-1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home7-banner2-1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home7-banner2-2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home7-banner2-2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home7-product-banner-1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home7-product-banner-1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-2-540x600.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-2-540x600.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-3-540x600.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-3-540x600.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home7-product-banner-2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home7-product-banner-2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-20-540x600.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-20-540x600.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-19-540x600.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-19-540x600.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-20-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-20-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home7-product-banner-3.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home7-product-banner-3.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-10-540x600.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-10-540x600.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-7-540x600.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-7-540x600.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-18-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-18-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-17-250x278.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-17-250x278.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home7-banner3.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home7-banner3.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home7-brandsale.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home7-brandsale.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/slider/home8-slider1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\slider\home8-slider1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-4-150x167.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-4-150x167.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home8-banner1-1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home8-banner1-1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home8-banner1-2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home8-banner1-2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home8-banner2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home8-banner2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home8-banner3.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home8-banner3.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/banner/home8-banner4.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\banner\home8-banner4.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/book-15-150x167.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\book-15-150x167.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-13.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-13.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-15.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-15.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-16.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-16.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/others/32kSjTmp_normal.jpeg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\others\32kSjTmp_normal.jpeg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-6.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-6.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-9.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-9.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-10.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-10.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-7-540x600.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-7-540x600.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-6-540x600.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-6-540x600.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-9-540x600.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-9-540x600.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-10-540x600.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-10-540x600.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-11.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-11.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-11-540x600.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-11-540x600.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/single-portfolio.html
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\single-portfolio.html
+Content Type: text/html
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/portfolio/porfolio1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\portfolio\porfolio1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/portfolio/porfolio2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\portfolio\porfolio2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/portfolio/porfolio3.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\portfolio\porfolio3.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/portfolio/porfolio4.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\portfolio\porfolio4.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/portfolio/porfolio5.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\portfolio\porfolio5.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/portfolio/porfolio7.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\portfolio\porfolio7.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/portfolio/porfolio8.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\portfolio\porfolio8.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/portfolio/porfolio9.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\portfolio\porfolio9.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/portfolio/porfolio18.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\portfolio\porfolio18.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/portfolio/porfolio11.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\portfolio\porfolio11.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/portfolio/porfolio12.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\portfolio\porfolio12.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/portfolio/porfolio13.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\portfolio\porfolio13.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/portfolio/porfolio14.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\portfolio\porfolio14.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/portfolio/porfolio15.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\portfolio\porfolio15.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/portfolio/porfolio16.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\portfolio\porfolio16.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/portfolio/porfolio17.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\portfolio\porfolio17.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/portfolio/porfolio19.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\portfolio\porfolio19.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/blog/blog1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\blog\blog1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/blog/blog2-1024x613.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\blog\blog2-1024x613.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/blog/blog3.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\blog\blog3.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/blog/blog5.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\blog\blog5.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/blog/blog7.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\blog\blog7.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/about/about-us-img1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\about\about-us-img1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/icons/about-us-icon1.png
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\icons\about-us-icon1.png
+Content Type: image/png
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/icons/about-us-icon2.png
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\icons\about-us-icon2.png
+Content Type: image/png
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/icons/about-us-icon3.png
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\icons\about-us-icon3.png
+Content Type: image/png
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/icons/about-us-icon4.png
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\icons\about-us-icon4.png
+Content Type: image/png
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/about/about-us-img2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\about\about-us-img2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/about/about-us2-img1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\about\about-us2-img1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/services/service1-banner1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\services\service1-banner1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/services/service1-banner2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\services\service1-banner2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/services/service1-banner3.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\services\service1-banner3.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/services/service1-img2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\services\service1-img2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/services/service2-img1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\services\service2-img1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/services/service3-img1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\services\service3-img1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/services/service3-img2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\services\service3-img2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/services/service3-img3.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\services\service3-img3.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/services/service3-img4.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\services\service3-img4.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/services/service3-img5.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\services\service3-img5.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/services/service3-img6.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\services\service3-img6.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/others/comment-1.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\others\comment-1.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/others/comment-2.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\others\comment-2.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/others/comment-3.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\others\comment-3.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/blog/blog4-1024x613.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\blog\blog4-1024x613.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-10-150x167.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-10-150x167.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-11-150x167.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-11-150x167.jpg
+Content Type: image/jpeg
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/others/AM_mc_vs_ms_ae_UK.png
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\others\AM_mc_vs_ms_ae_UK.png
+Content Type: image/png
+
+Uri: https://demo.hasthemes.com/lazio-preview/lazio/assets/img/products/furniture-12-150x167.jpg
+File Name: E:\test\demo.hasthemes.com\lazio-preview\lazio\assets\img\products\furniture-12-150x167.jpg
+Content Type: image/jpeg
+

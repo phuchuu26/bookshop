@@ -1,0 +1,135 @@
+.thongTinShop {
+    border: 2px solid red;
+    margin: 0px;
+    border-radius: 11px;
+    background-color: #ffeaa7;
+}
+.thongTinShop {
+    width: 100%;
+    display: inline-block;
+    background: #ffeaa7;
+    padding: 10px;
+    border: 1px dashed #f8830c;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.left {
+    display: inline-block;
+    width: 20%;
+    float: left;
+}
+.left img {
+    width: 100%;
+    border-radius: 99%;
+    border: 2px solid white;
+}
+.right {
+    display: inline-block;
+    width: 80%;
+    float: left;
+    padding-left: 10px;
+}
+.moTaShop {
+    margin-bottom: 0;
+    font-size: 12px;
+    color: #464646;
+    margin-bottom: 5px;
+}
+.thongTinShop h3 {
+    margin-bottom: 0;
+}
+.thongTinShop button.so-hotline a {
+    color: #6bb722 !important;
+}
+.thongTinShop button:hover {
+    box-shadow: 2px 2px 3px #00000024;
+}
+.thongTinShop button.so-hotline {
+    background-image: url(/wp-content/uploads/2019/06/phone-icon.png);
+    background-repeat: no-repeat;
+    background-size: 18px;
+    background-position-x: 10px;
+    background-position-y: 3px;
+    padding-left: 15px;
+}
+.thongTinShop button.chat-facebook {
+    background-image: url(/wp-content/uploads/2019/06/chat-icon.png);
+    background-repeat: no-repeat;
+    background-size: 18px;
+    background-position-x: 10px;
+    background-position-y: 3px;
+    padding-left: 15px;
+}
+.thongTinShop button.chat-facebook a {
+    color: #2abf9b;
+}
+.thongTinShop .des {
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+.thongTinShop button {
+    margin: 0;
+    background: white;
+    border: 1px solid #2abf9b;
+    border-radius: 3px;
+    font-size: 14px;
+    text-transform: none;
+    font-weight: 400;
+    letter-spacing: 0;
+    padding: 0 15px;
+    color: #2abf9b;
+    min-height: 27px;
+    line-height: 10px;
+}
+.home{
+    margin: 0;
+    background: white;
+    border: 1px solid #2abf9b;
+    border-radius: 3px;
+    font-size: 14px;
+    text-transform: none;
+    font-weight: 400;
+    letter-spacing: 0;
+    padding: 0 15px;
+    color: #2abf9b;
+    min-height: 27px;
+    line-height: 24px;
+    background-image: url(/wp-content/uploads/2019/06/chat-icon.png);
+    background-repeat: no-repeat;
+    background-size: 18px;
+    background-position-x: 10px;
+    background-position-y: 3px;
+    padding-left: 15px;
+}
+
+
+a.btn.btn-outline-primary.home:hover {
+    color: white;
+}
+i.btn.btn-outline-primary.home:hover {
+    color: white;
+}
+.chitiet{
+    /* float: left; */
+}
+
+h4#li {
+    display: inline-block;
+}
+.rowa {
+    padding-bottom: 13px;
+}
+h4#li {
+    padding-right: 100px;
+}
+
+h4#li {
+    margin-left: 50px;
+}
+i.fa.fa-star.rated {
+    font-size: 22px;
+}
+i.fa.fa-star {
+    font-size: 22px;
+}
