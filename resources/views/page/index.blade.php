@@ -2,9 +2,15 @@
 @section('title','Trang chủ')
 <head>
     <style>
+        .single-slider {
+    /* background-color: rgb(69 68 68 / 70%)!important; */
+}
         i{
             /* font-size:100px; */
         }
+        i {
+    padding-top: 10px;
+}
         img.primary-image {
     max-height: 190px;
 }

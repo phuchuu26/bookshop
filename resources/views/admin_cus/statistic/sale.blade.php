@@ -103,7 +103,7 @@
                                 $("#btnLapBaoCao").click(function(e) {
                                     e.preventDefault();
                                     $.ajax({
-                                        url: '{{ route('statistic_sale_data_cusnhaf') }}',
+                                        url: '{{ route('statistic_sale_data_cus') }}',
                                         type: "GET",
                                         data: {
                                             tuNgay: $('#tuNgay').val(),

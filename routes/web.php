@@ -205,6 +205,26 @@ Route::get('/san-pham/chi-tiet-san-pham-{id}','PageController@book_detail')->nam
                         //     ->name('banner.submit');
                     });
 
+                    // đấu giá
+                    // 'middleware'=>'CheckCustomer'
+                    Route::group(['prefix'=>'auction'],function(){
+                        //don hang
+                        Route::get('/index','AuctionController@index')->name('auction_index');
+                        // Route::get('/bill_cus/data','StatisticController@billdata_cus')->name('statistic_bill_data_cus');
+
+                        // //doanh thu
+                        // Route::get('/sale_cus','StatisticController@salecus')->name('statistic_sale_cus');
+                        // Route::get('/sale_cus/data','StatisticController@saledatacus')->name('statistic_sale_data_cus');
+                        // // so luong san pham
+                        // Route::get('/quantity/cus','StatisticController@quantitycus')->name('quantity_cus');
+                        // Route::get('/quantity/category/cus','StatisticController@quantitycategorycus')->name('quantity_category_cus');
+                        // Route::get('/quantity/company/cus','StatisticController@quantitycompanycus')->name('quantity_company_cus');
+                        // Route::get('/quantity/nxb/cus','StatisticController@quantitynxbcus')->name('quantity_nxb_cus');
+                        // Route::get('/quantity/author/cus','StatisticController@quantityauthorcus')->name('quantity_author_cus');
+                    });
+
+
+
 //////////////////////////////////////////////////// admin
 
 Route::group(['prefix'=>'quan-tri','middleware'=>'Ad_login'],function(){         // ,'middleware'=>'Ad_login'

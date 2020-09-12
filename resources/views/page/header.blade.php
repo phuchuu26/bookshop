@@ -196,6 +196,9 @@
                                 <a href="{{route('trend')}}" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/portfolio.html" class="mainmenu__link">Thịnh hành</a>
                                 </li>
                                 <li class="mainmenu__item">
+                                <a href="{{route('auction_index')}}" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/blog.html" class="mainmenu__link">Đấu giá</a>
+                                </li>
+                                <li class="mainmenu__item">
                                     <a href="blog.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/blog.html" class="mainmenu__link">Bài viết</a>
                                 </li>
                                 <li class="mainmenu__item ">
