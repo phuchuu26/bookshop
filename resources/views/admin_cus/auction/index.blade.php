@@ -2,9 +2,27 @@
 @section('title','Thêm sách')
 <head>
     <style>
-
+        .ck-blurred.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
+    min-height: 120px;
+}
+.body.gui {
+    text-align: center;
+    margin-top: -31px;
+}
+.body.hinh {
+    min-height: 582px;
+}
+.body.hinh {
+    margin-left: -31px;
+}
         select.custom-select {
     color: black;
+}
+span.input-group-text {
+    max-height: 37px;
+}
+.av{
+    display: flex;
 }
     </style>
 </head>
@@ -29,7 +47,7 @@
             </div>
             <div class="row clearfix">
 
-                <div class="col-md-12">
+                <div class="col-md-9">
                     <div class="card">
                         <div class="header">
                             <h2>Thêm sách</h2>
@@ -253,17 +271,94 @@
 
                                 <div class="form-group">
                                     <label>Mô tả</label>
-                                    <textarea name="mota" id="editor"></textarea>
+                                    <textarea style="min-height: 150px;" name="mota" id="editor"></textarea>
 
                                 </div>
+
+
+                                                    {{--  --}}
+
+                                 {{-- @for($i = 1 ; $i <= 3 ; $i++)
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Hình ảnh {!! $i !!}</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input"  name="image2[]">
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        </div>
+                                    </div>
+
+                                @endfor --}}
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Thêm ảnh bìa sách</h2>
+                        </div>
+
+
+
+
+                        @if(session('size'))
+                            <div class="alert alert-danger">  {{session('size')}}</div>
+                        @endif
+
+
+                        @if(session('duoi_file'))
+                            <div class="alert alert-danger">  {{session('duoi_file')}}</div>
+                        @endif
+
+                        <div class="body hinh">
+
+
+                                {{-- Hàng 1  --}}
+                                    {{-- Danh mục --}}
+
+
+
+
+                                {{-- Hàng 2  --}}
+                                    {{-- Nhà xuất bản --}}
+
+
+
+
+
+                                {{-- Hàng 3 --}}
+                                    {{-- Tác giả --}}
+
+
+
+                                {{-- //////////////////////////////////////////////////////////// --}}
+
+
+                                        {{-- Hàng 4 --}}
+
+
+
+                                        {{-- Hàng 5  --}}
+
+
+                                                    {{--  --}}
+
+
+                            <div class="av">
 
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Ảnh bìa</span>
                                     </div>
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" name="book_image">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        {{-- <input type="file" class="custom-file-input" name="book_image">
+                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label> --}}
                                     </div>
                                 </div>
 
@@ -282,25 +377,40 @@
                                     </div>
 
                                 @endfor --}}
-                                <div class="col-sm-10">
-                                    <img id="image" alt="Chọn hình đại diện" width="100" height="100" />
-                                    <input type="file" name="avatar" id="avatar"
+                                <div class="col-sm-8 a">
+                                    <label for="avatar">
+                                    <img  id="image" alt="Chọn hình đại diện" width="145" height="145" />
+                                    </label>
+                                    <input style="display: none;"   type="file" name="avatar" id="avatar" multiple
                                         onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])">
                                     {{-- <div class="img"></div> --}}
-                                    {{-- <img id="hinh" alt="your photo" width="100" height="100" /> --}}
-                                    <input type="file" name="photos[]" id="photos[]" multiple onchange=show()>
-                                    </div>
+                                    {{-- <img id="hinh" alt="your photo" width="100" height="100" />
+                                    <input type="file" name="photos[]" id="photos[]" multiple onchange=show()> --}}
+                                </div>
 
+                            </div>
 
                                 <br>
-                                <button type="submit" class="btn btn-success">Thêm</button>
-                            </form>
+
+
                         </div>
                     </div>
                 </div>
 
-            </div>
 
+
+            </div>
+            <div class="row ">
+
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="body gui">
+                            <button type="submit" class="btn btn-success">Thêm</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 
@@ -309,13 +419,13 @@
 <script src="{{asset('public/admin/toastr/jquery.min.js')}}" ></script>
 <script type="text/javascript">
     function show(){
-            var arrLen=file.length;
-            for (i=0 ; i < arrLen ; i++){
-                // $('.img').append(img);
-                // var img='<img id="photo" alt="your photo" width="100" height="100" />';
-                // <img id="photo" alt="your photo" width="100" height="100" />
-                document.getElementById('hinh').src = window.URL.createObjectURL(this.files[i]);
-            }
+            // var arrLen=file.length;
+            // for (i=0 ; i < arrLen ; i++){
+            //     // $('.img').append(img);
+            //     // var img='<img id="photo" alt="your photo" width="100" height="100" />';
+            //     // <img id="photo" alt="your photo" width="100" height="100" />
+            //     document.getElementById('hinh').src = window.URL.createObjectURL(this.files[i]);
+            // }
 
 
           }
