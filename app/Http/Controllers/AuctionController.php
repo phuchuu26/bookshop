@@ -6,6 +6,13 @@ use App\Models\Endtime_auction;
 use Illuminate\Http\Request;
 use DB;
 use Carbon\Carbon;
+use App\Models\sub_category;
+Use Illuminate\Support\Facades\Auth;
+use App\Models\book;
+use App\Models\author;
+use App\Models\book_company;
+use App\Models\publishing_house;
+use App\User;
 class AuctionController extends Controller
 {
     public function index(){
@@ -28,4 +35,15 @@ class AuctionController extends Controller
         // return view('page.auction.index',['category'=>$category]);
     }
 
+    public function addAuctionBook(){
+        $category = category::all();
+
+    	$author = author::all();
+        $bookcompany = book_company::all();
+        $publishinghouse = publishing_house::all();
+        $account = User::all();
+        $category = category::all();
+        $subcategory = sub_category::all();
+        return view('admin_cus.auction.index',['author'=>$author, 'category'=>$category, 'publishinghouse'=>$publishinghouse, 'account'=>$account, 'subcategory'=>$subcategory, 'bookcompany'=>$bookcompany]);
+    }
 }

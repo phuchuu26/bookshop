@@ -2,6 +2,14 @@
 @section('title','Sản phẩm')
 <head>
     <style>
+        input#myNumber {
+            border: none;
+            margin-right: -7px;
+            /* overflow: hidden; */
+    /* border-inline-end-style: none; */
+    text-align-last: right;
+}
+
         .ratings {
             margin-left: 60px;
         }
@@ -40,6 +48,16 @@ input#amount {
 .bui-review-score__badge {
     margin-right: 34px;
 }
+
+
+input#recipient-name {
+    font-size: 27px;
+    min-height: 47px;
+}
+.modal-content {
+    min-height: 324px;
+    font-size: x-large;
+}
     </style>
 </head>
 @section('page_content')
@@ -52,7 +70,7 @@ input#amount {
                         <li><a href="{{route('p.home')}}">Trang chủ</a></li>
                         <li class="current">
                             {{-- {{dd($book)}} --}}
-                        <a>Thể loại sách</a>
+                        <a>Sàn đấu giá trực tuyến</a>
                         </li>
                     </ul>
                 </div>
@@ -65,12 +83,41 @@ input#amount {
             <div class="container">
                 <div class="row">
                     <div class="col-lg-9 order-lg-2 mb-md--40">
-                        <div style=" font-size: 22px;
+                        <div id="demo1" style=" font-size: 22px;
                         display: flex;  justify-content: center;
                     " class="content">
-                            Đấu giá đang diễn ra
-
                         </div>
+                     @if(Auth::check())
+                          <button type="button" style="background-color:red" class="btn add-to-cart btn-style-2 color-2"
+                         data-toggle="modal" data-target="#exampleModal" >Đấu giá</button>
+                         @else
+
+
+                         <button type="button" style="background-color:red" class="btn add-to-cart btn-style-2 color-2"
+                         data-toggle="modal" data-target="#exampleModal1" >Đấu giá</button>
+
+<!-- Modal -->
+                                <div style="max-height:370px" class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog " style="  font-size:20px;  padding-top: 100px;" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" style="  font-size:30px; "id="exampleModalLabel">Thông báo</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <div  style="max-height:120px" class="modal-body">
+                                        Bạn cần đăng nhập nếu muốn đánh giá
+                                        </div>
+                                        <div  class="modal-footer">
+                                        <button style="  font-size:12px;" type="button" class="btn add-to-cart btn-style-2 color-2" data-dismiss="modal">Đóng</button>
+                                        <button style=" color:white; font-size:12px;" type="button" class="btn add-to-cart btn-style-2 color-2"> <a style=" color:white;" href="{{route('p.login')}}"> Đăng nhập</a></button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                            @endif
                         <!-- Shop Toolbar Start -->
                         <div class="shop-toolbar">
                             <div class="shop-toolbar__grid-list">
@@ -246,6 +293,53 @@ input#amount {
         </div>
     </main>
 
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Thủ tục đấu giá</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            {{-- {{ route('auction.create.submit',$real_estate->real_estate_id) }} --}}
+            <form action="" method="post">
+
+                @csrf
+                <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Tên khách hàng:</label>
+              <input type="text" readonly value="nguyen" class="form-control" id="recipient-name">
+              </div>
+              <br>
+              <div class="form-group">
+
+                <label for="message-text" class="col-form-label">Số tiền đấu giá:</label>
+                <input id="myNumber" type="number" step="1000"  class="currency" min="1000" max="2500000" value="25000" />
+                {{-- <h3 id="dong"> --}}
+
+                    vnđ
+                {{-- </h3> --}}
+
+              </div>
+              {{-- <button  class="btn add-to-cart btn-style-1 color-3"  onclick="myFunction()">Tăng thêm 10K</button> --}}
+
+
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn add-to-cart btn-style-2 color-1" data-dismiss="modal">Close</button>
+            <button type="button" class="btn add-to-cart btn-style-1 color-3">Send message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{-- <script>
+        function myFunction() {
+        //   document.getElementById("myNumber").stepUp(5);
+        }
+        </script> --}}
     <script>
         var d = new Date();
 var n = d.getTime();
@@ -292,12 +386,14 @@ else{
     document.getElementById("demo").innerHTML = days + " Ngày " + hours + " Giờ " +
     minutes + " Phút " + seconds + " Giây ";
 }
+document.getElementById("demo1").innerHTML = " Đấu giá đang diễn ra";
 // If the count down is over, write some text
 if (distance < 0) {
 
 clearInterval(x);
 document.querySelector("#demo").style.color = "red";
 document.getElementById("demo").innerHTML = "Kết thúc thời gian đấu giá";
+document.getElementById("demo1").innerHTML = "";
 }
 
 }, 1000);

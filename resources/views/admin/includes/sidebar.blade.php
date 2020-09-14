@@ -77,6 +77,19 @@
             @endif
             </ul>
         </li>
+{{-- dau gia --}}
+        <li>
+            <a href="#charts" class="has-arrow"><i class="icon-pie-chart"></i><span>Đấu giá</span></a>
+            <ul>
+            @if(Auth::user()->level ==1)
+                <li><a href="{{route('statistic_bill')}}" >Danh sách yêu cầu đấu giá</a></li>
+            @endif
+            @if(Auth::user()->level==2)
+            {{-- <li><a href="{{route('addAuctionBook')}}" >Danh sách sản phẩm đấu giá</a></li> --}}
+            <li><a href="{{route('add_auctionBook')}}" >Yêu cầu đấu giá</a></li>
+            @endif
+            </ul>
+        </li>
 
     </ul>
 </nav>

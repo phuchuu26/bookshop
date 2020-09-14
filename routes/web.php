@@ -205,11 +205,21 @@ Route::get('/san-pham/chi-tiet-san-pham-{id}','PageController@book_detail')->nam
                         //     ->name('banner.submit');
                     });
 
-                    // đấu giá
+                    // quan ly đấu giá khach hang
                     // 'middleware'=>'CheckCustomer'
                     Route::group(['prefix'=>'auction'],function(){
-                        //don hang
+                        //hien thi page client
                         Route::get('/index','AuctionController@index')->name('auction_index');
+                        // dau gia:
+                        Route::post('/create/{id}', 'AuctionController@store')
+                        ->name('auction.create.submit');
+
+
+
+                        //page admin
+
+                        Route::get('/index_cus','AuctionController@addAuctionBook')->name('add_auctionBook');
+
                         // Route::get('/bill_cus/data','StatisticController@billdata_cus')->name('statistic_bill_data_cus');
 
                         // //doanh thu
