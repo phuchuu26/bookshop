@@ -219,6 +219,7 @@ Route::get('/san-pham/chi-tiet-san-pham-{id}','PageController@book_detail')->nam
                         //page admin
 
                         Route::get('/index_cus','AuctionController@addAuctionBook')->name('add_auctionBook');
+                        Route::post('/index_cus/store','AuctionController@store')->name('store_auction_book');
 
                         // Route::get('/bill_cus/data','StatisticController@billdata_cus')->name('statistic_bill_data_cus');
 

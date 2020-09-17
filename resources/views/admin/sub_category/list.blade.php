@@ -45,7 +45,7 @@
                         <br>
                         <div class="body">
                             <div class="table-responsive">
-                                <table class="table table-hover js-basic-example dataTable table-custom spacing5">
+                                <table class="table table-hover  dataTable table-custom spacing5">
                                     <thead>
                                         <tr>
                                             <th>ID</th>

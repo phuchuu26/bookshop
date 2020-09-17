@@ -2,15 +2,36 @@
 @section('title','Thêm sách')
 <head>
     <style>
-        .ck-blurred.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
+        .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
     min-height: 120px;
 }
+/* #anhbia{
+    animate:5s;
+    transition: all 2.5s linear;
+}
+.av1{
+    animate:5s;
+    transition: all 2.5s linear;
+    animation-duration: 4s;
+}
+.av1:hover {
+    transition: all 800ms ease-out;
+}
+.av2{
+    animate:5s;
+    transition: 10s;
+    animation-duration: 4s;
+    transition-delay: 11s;
+}.av3{
+    animate:5s;
+    transition: 10s;
+} */
 .body.gui {
     text-align: center;
     margin-top: -31px;
 }
 .body.hinh {
-    min-height: 582px;
+    min-height: 698px;
 }
 .body.hinh {
     margin-left: -31px;
@@ -23,6 +44,15 @@ span.input-group-text {
 }
 .av{
     display: flex;
+}
+.col-sm-8.col-md-12.a {
+    margin-left: 47px;
+}
+.body.form {
+    min-height: 698px;
+}
+button#anhbia {
+    margin-left: 80px;
 }
     </style>
 </head>
@@ -65,14 +95,17 @@ span.input-group-text {
                         @if(session('size'))
                             <div class="alert alert-danger">  {{session('size')}}</div>
                         @endif
+                        @if(session('nullanhbia'))
+                        <div class="alert alert-danger">  {{session('nullanhbia')}}</div>
+                        @endif
 
 
                         @if(session('duoi_file'))
                             <div class="alert alert-danger">  {{session('duoi_file')}}</div>
                         @endif
 
-                        <div class="body">
-                            <form id="basic-form" novalidate  method="POST"  action="{{Route('b.post.add')}}" enctype="multipart/form-data"> {{ csrf_field() }}
+                        <div class="body form">
+                            <form id="basic-form" novalidate  method="POST"  action="{{Route('store_auction_book')}}" enctype="multipart/form-data"> {{ csrf_field() }}
 
                                 {{-- Hàng 1  --}}
                                     {{-- Danh mục --}}
@@ -85,7 +118,7 @@ span.input-group-text {
                                             <option>------ Chọn danh mục -------</option>
 
                                             @foreach($category as $ctg)
-                                                <option value="{{$ctg->id}}">{{$ctg->category_name}}</option>
+                                                <option {{old('idcategory')==$ctg->id ? 'selected' : ''}}  value="{{$ctg->id}}">{{$ctg->category_name}}</option>
 
                                             @endforeach
                                         </select>
@@ -102,7 +135,7 @@ span.input-group-text {
                                             <option>------ Chọn thể loại -------</option>
 
                                             @foreach($subcategory as $sctg)
-                                                <option value="{{$sctg->id}}">{{$sctg->subcategory_name}}</option>
+                                                <option {{old('idsubcategory')==$sctg->id ? 'selected' : ''}} value="{{$sctg->id}}">{{$sctg->subcategory_name}}</option>
                                             @endforeach
 
                                         </select>
@@ -137,7 +170,7 @@ span.input-group-text {
                                             <option>------ Chọn nhà xuất bản -------</option>
 
                                             @foreach($publishinghouse as $pbh)
-                                                <option value="{{$pbh->id}}">{{$pbh->publishinghouse_name}}</option>
+                                                <option {{old('idpublishinghouse')==$pbh->id ? 'selected' : ''}} value="{{$pbh->id}}">{{$pbh->publishinghouse_name}}</option>
                                             @endforeach
 
                                         </select>
@@ -154,7 +187,7 @@ span.input-group-text {
                                             <option>------ Chọn nhà phân phối -------</option>
 
                                             @foreach($bookcompany as $bc)
-                                                <option value="{{$bc->id}}">{{$bc->bookcompany_name}}</option>
+                                                <option {{old('idbookcompany')==$bc->id ? 'selected' : ''}} value="{{$bc->id}}">{{$bc->bookcompany_name}}</option>
                                             @endforeach
 
                                         </select>
@@ -191,7 +224,7 @@ span.input-group-text {
                                             <option>------ Chọn tác giả -------</option>
 
                                             @foreach($author as $auth)
-                                                <option value="{{$auth->id}}">{{$auth->author_name}}</option>
+                                                <option {{old('idauthor')==$auth->id ? 'selected' : ''}} value="{{$auth->id}}">{{$auth->author_name}}</option>
                                             @endforeach
 
                                         </select>
@@ -216,14 +249,14 @@ span.input-group-text {
                                         <label class="input-group-text" for="inputGroupSelect01">Tên sách</label>
                                     </div>
 
-                                    <input type="text" name="bookname" class="form-control" required>
+                                <input type="text" name="bookname" value="{{old('bookname')}}" class="form-control" required>
                                     </div>
                                     <div class="input-group mb-3 col-md-5">
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" for="inputGroupSelect01">Số lượng sách</label>
                                         </div>
 
-                                        <input type="text" name="amount" class="form-control" required>
+                                        <input type="number" value="{{old('amount')}}" name="amount" class="form-control" required>
                                     </div>
                                 </div>
 
@@ -241,10 +274,9 @@ span.input-group-text {
                                             <label class="input-group-text" for="inputGroupSelect01">Năm phát hành</label>
                                         </div>
 
-                                        <input type="text" name="releasedate" class="form-control" required>
+                                        <input type="number" value="{{old('releasedate')}}" name="releasedate" class="form-control" required>
 
                                     </div>
-                                            {{--  --}}
 
                                      <div class="input-group mb-3 col-md-4">
 
@@ -252,26 +284,54 @@ span.input-group-text {
                                             <label class="input-group-text" for="inputGroupSelect01">Số trang</label>
                                         </div>
 
-                                        <input type="text" name="numberpage" class="form-control" required>
+                                        <input type="number" value="{{old('numberpage')}}" name="numberpage" class="form-control" required>
 
+                                    </div>
+                                    <div class="input-group mb-3 col-md-4">
+
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Giá khởi điểm</label>
+                                        </div>
+
+                                        <input id="input" type="text" value="{{old('reserve_price')}}" name="reserve_price" class="form-control" required>
+
+                                    </div>
+
+
+                                        {{--  --}}
+                                </div>
+
+                                                    {{--  --}}
+                                <div class="row">
+                                    <div class="input-group mb-3 col-md-8">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect01">Thời gian đấu giá mong muốn</label>
+                                            </div>
+                                            <select   name="time" class="custom-select" id="inputGroupSelect03">
+                                                <option   selected>Chọn định dạng thời gian</option>
+                                                <option value="3" {{old('time') == 3 ? 'selected':''}}>Ngày</option>
+                                              <option value="1" {{old('time') == 1? 'selected':''}}>Giờ</option>
+                                              <option value="2" {{old('time') ==2 ? 'selected':''}}>Phút</option>
+                                            </select>
+                                            <input value="{{old('value_time')}}" style="height:38px;" name="value_time" type="number" name="weight" class="form-control a" required>
+                                          </div>
                                     </div>
 
                                     <div class="input-group mb-3 col-md-4">
 
                                         <div class="input-group-prepend">
-                                            <label class="input-group-text" for="inputGroupSelect01">Khối lượng</label>
+                                            <label style="height:38px;" class="input-group-text" for="inputGroupSelect01">Khối lượng</label>
                                         </div>
 
-                                        <input type="text" name="weight" class="form-control" required>
+                                        <input   value="{{old('weight')}}" style="height:38px;" type="text" name="weight" class="form-control" required>
 
                                     </div>
-                                        {{--  --}}
                                 </div>
-                                                    {{--  --}}
 
                                 <div class="form-group">
                                     <label>Mô tả</label>
-                                    <textarea style="min-height: 150px;" name="mota" id="editor"></textarea>
+                                    <textarea value="{{old('mota')}}" style="min-height: 150px;" name="mota" id="editor"></textarea>
 
                                 </div>
 
@@ -304,10 +364,7 @@ span.input-group-text {
                             <h2>Thêm ảnh bìa sách</h2>
                         </div>
 
-
-
-
-                        @if(session('size'))
+                        {{-- @if(session('size'))
                             <div class="alert alert-danger">  {{session('size')}}</div>
                         @endif
 
@@ -315,84 +372,83 @@ span.input-group-text {
                         @if(session('duoi_file'))
                             <div class="alert alert-danger">  {{session('duoi_file')}}</div>
                         @endif
-
+ --}}
                         <div class="body hinh">
 
 
-                                {{-- Hàng 1  --}}
-                                    {{-- Danh mục --}}
 
 
-
-
-                                {{-- Hàng 2  --}}
-                                    {{-- Nhà xuất bản --}}
-
-
-
-
-
-                                {{-- Hàng 3 --}}
-                                    {{-- Tác giả --}}
-
-
-
-                                {{-- //////////////////////////////////////////////////////////// --}}
-
-
-                                        {{-- Hàng 4 --}}
-
-
-
-                                        {{-- Hàng 5  --}}
-
-
-                                                    {{--  --}}
-
-
-                            <div class="av">
-
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Ảnh bìa</span>
-                                    </div>
-                                    <div class="custom-file">
-                                        {{-- <input type="file" class="custom-file-input" name="book_image">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label> --}}
-                                    </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Ảnh bìa</span>
                                 </div>
-
-                                                    {{--  --}}
-
-                                 {{-- @for($i = 1 ; $i <= 3 ; $i++)
-
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Hình ảnh {!! $i !!}</span>
-                                        </div>
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input"  name="image2[]">
-                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                        </div>
-                                    </div>
-
-                                @endfor --}}
-                                <div class="col-sm-8 a">
+                                <div class="custom-file">
+                                    {{-- <input type="file" class="custom-file-input" name="book_image">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label> --}}
+                                </div>
+                            </div>
+                            <div class="av">
+                                <div class="col-sm-8  col-md-12 a">
                                     <label for="avatar">
                                     <img  id="image" alt="Chọn hình đại diện" width="145" height="145" />
                                     </label>
-                                    <input style="display: none;"   type="file" name="avatar" id="avatar" multiple
+                                    <input accept=".png, .jpg, .jpeg" style="display: none;"   type="file" name="book_image" id="avatar" multiple
                                         onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])">
-                                    {{-- <div class="img"></div> --}}
-                                    {{-- <img id="hinh" alt="your photo" width="100" height="100" />
-                                    <input type="file" name="photos[]" id="photos[]" multiple onchange=show()> --}}
                                 </div>
+                                <br>
 
                             </div>
 
+
                                 <br>
+                                {{-- pic 2 --}}
+                                <div class="av1">
+                                    <div class="col-sm-8  col-md-12 a">
+                                        <label for="avatar1">
+                                        <img  id="image1" alt="Chọn hình đại diện" width="145" height="145" />
+                                        </label>
+                                        {{-- accept=".png, .jpg, .jpeg" --}}
+                                        <input  style="display: none;"   type="file" name="book_image1" id="avatar1" multiple
+                                            onchange="document.getElementById('image1').src = window.URL.createObjectURL(this.files[0])">
+                                    </div>
+                                    <br>
+
+                                </div>
+                                <br>
+                                {{-- pic 3 --}}
+                                <div class="av2">
+                                    <div class="col-sm-8  col-md-12 a">
+                                        <label for="avatar2">
+                                        <img  id="image2" alt="Chọn hình đại diện" width="145" height="145" />
+                                        </label>
+                                        <input accept=".png, .jpg, .jpeg" style="display: none;"   type="file" name="book_image2" id="avatar2" multiple
+                                            onchange="document.getElementById('image2').src = window.URL.createObjectURL(this.files[0])">
+                                    </div>
+                                    <br>
+
+                                </div>
+                                <br>
+                                {{-- pic 4--}}
+                                <div class="av3">
+                                    <div class="col-sm-8  col-md-12 a">
+                                        <label for="avatar3">
+                                        <img  id="image3" alt="Chọn hình đại diện" width="145" height="145" />
+                                        </label>
+                                        <input accept=".png, .jpg, .jpeg" style="display: none;"   type="file" name="book_image3" id="avatar3" multiple
+                                            onchange="document.getElementById('image3').src = window.URL.createObjectURL(this.files[0])">
+                                    </div>
+                                    <br>
+
+                                </div>
+
+                        <div id="demo">
+
+                        </div>
 
 
+            {{-- pic 2 --}}
+
+            <button style="margin-bottom: 3px;" type="button" onclick="them()" id="anhbia" class="btn btn-success">Thêm ảnh bìa</button>
                         </div>
                     </div>
                 </div>
@@ -415,21 +471,48 @@ span.input-group-text {
     </div>
 
 
+    <script src="{{asset('public/admin/toastr/jquery.min.js')}}"></script>
 
+    <script src="{{asset('public/admin/toastr/toastr.min.js')}}" ></script>
+
+   {!! Toastr::message() !!}
 <script src="{{asset('public/admin/toastr/jquery.min.js')}}" ></script>
 <script type="text/javascript">
-    function show(){
-            // var arrLen=file.length;
-            // for (i=0 ; i < arrLen ; i++){
-            //     // $('.img').append(img);
-            //     // var img='<img id="photo" alt="your photo" width="100" height="100" />';
-            //     // <img id="photo" alt="your photo" width="100" height="100" />
-            //     document.getElementById('hinh').src = window.URL.createObjectURL(this.files[i]);
-            // }
+        var arr = 0;
+        $(".av1").hide();
+        $(".av2").hide();
+        $(".av3").hide();
+     function them(){
+         arr++;
+         $(".av1").show();
 
+        if(arr >1){
+            $(".av2").show();
+        }
+         if(arr >2){
+            $(".av3").show();
+            $('#anhbia').hide();
+        }
+        console.log(arr);
 
           }
 
+</script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.8.3.js"></script>
+<script>
+    $('#input').on('input', function(e){
+    $(this).val(formatCurrency(this.value.replace(/[, VNĐ]/g,'')));
+}).on('keypress',function(e){
+    if(!$.isNumeric(String.fromCharCode(e.which))) e.preventDefault();
+}).on('paste', function(e){
+    var cb = e.originalEvent.clipboardData || window.clipboardData;
+    if(!$.isNumeric(cb.getData('text'))) e.preventDefault();
+});
+function formatCurrency(number){
+    var n = number.split('').reverse().join("");
+    var n2 = n.replace(/\d\d\d(?!$)/g, "$&,");
+    return  n2.split('').reverse().join('') + ' VNĐ';
+}
 </script>
 <script type="text/javascript">
     $(document).ready(function(){

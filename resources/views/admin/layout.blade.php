@@ -91,7 +91,7 @@
 		<script src="{{asset('public/admin/js/buttons.html5.min.js')}}" ></script>
 		<script src="{{asset('public/admin/js/buttons.print.min.js')}}" ></script>
 		<script src="{{asset('public/admin/js/sweetalert.min.js')}}" ></script><!-- SweetAlert Plugin Js -->
-            <script src="{{asset('public/admin/js/jquery-datatable.js')}}" ></script>
+         <script src="{{asset('public/admin/js/jquery-datatable.js')}}" ></script>
 
             <script src="{{asset('public/admin/js/dropify.js')}}" ></script>
 		<script src="{{asset('public/admin/js/dropify-1.js')}}" ></script>

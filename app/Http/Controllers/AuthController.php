@@ -9,12 +9,12 @@ use Toastr;
 
 class AuthController extends Controller
 {
-    
+
 
     public function author()
 
     {
-        $author = Author::all();
+        $author = Author::paginate(10);
         return view('admin.author.list',['author'=>$author]);
     }
 
@@ -26,21 +26,21 @@ class AuthController extends Controller
     public function post_add(Request $author2){
         $this->validate($author2,[
             'name' => 'required|min:2|max:32|unique:Author,Author_name',
-            
+
         ],[
             'name.required' => 'Bạn chưa nhập tên !',
             'name.unique' => 'Tên đã tồn tại !',
 
         ]);
-        
+
         $author = new Author;
         $author->author_name= $author2->name;
         $author->author_info= $author2->note;
 
 
-       
+
         $author->save();
-        
+
         Toastr::success('Thêm tác giả thành công', 'Thông báo', ["positionClass" => "toast-top-right"]);
 
         return redirect(''.route('auth.list').'');
@@ -54,7 +54,7 @@ class AuthController extends Controller
     public function post_edit(Request $author2,$id){
         $this->validate($author2,[
            'name' => 'required|min:2|max:32|unique:Author,Author_name',
-            
+
         ],[
             'name.required' => 'Bạn chưa nhập tên !',
             'name.unique' => 'Tên đã tồn tại !',
@@ -64,7 +64,7 @@ class AuthController extends Controller
         $author = Author::find($id);
         $author->author_name= $author2->name;
         $author->author_info= $author2->note;
-        
+
 
 
         $author->save();

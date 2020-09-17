@@ -1,7 +1,7 @@
 @extends('admin.layout')
 @section('title','Sách')
 @section('admin_content')
-	
+
 <div id="main-content">
         <div class="container-fluid">
             <div class="block-header">
@@ -15,11 +15,11 @@
                                 <li class="breadcrumb-item active" aria-current="page">Sách</li>
                             </ol>
                         </nav>
-                    </div>            
-                    
+                    </div>
+
                 </div>
             </div>
-            
+
             <div class="row clearfix">
                 <div class="col-lg-12">
                     <div class="card" >
@@ -30,7 +30,7 @@
                             <ul class="header-dropdown dropdown">
 
 
-                                
+
                                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
                                 <li class="dropdown">
                                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
@@ -45,7 +45,7 @@
                         <br>
                         <div class="body">
                             <div class="table-responsive">
-                                <table class="table table-hover js-basic-example dataTable table-custom spacing5">
+                                <table class="table table-hover  dataTable table-custom spacing5">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -92,9 +92,9 @@
                                         </tr>
 
                                         @endforeach
-                                      
-                                       
-                                        
+
+
+
                                     </tbody>
                                 </table>
                             </div>
@@ -111,8 +111,8 @@
     <script src="{{asset('public/admin/toastr/jquery.min.js')}}"></script>
 
     <script src="{{asset('public/admin/toastr/toastr.min.js')}}" ></script>
-        
-           
+
+
    {!! Toastr::message() !!}
 
 
