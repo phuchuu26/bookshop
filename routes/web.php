@@ -213,7 +213,11 @@ Route::get('/san-pham/chi-tiet-san-pham-{id}','PageController@book_detail')->nam
                         // dau gia:
                         Route::post('/create/{id}', 'AuctionController@store')
                         ->name('auction.create.submit');
-
+                        // quan ly  dau gia
+                        Route::get('/management', 'AuctionController@management')
+                        ->name('auction.management');
+                        //xoa
+                        Route::get('/detele_auction/{id}','AuctionController@delete')->name('delete_auction');
 
 
                         //page admin

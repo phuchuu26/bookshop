@@ -87,6 +87,7 @@
             @if(Auth::user()->level==2)
             {{-- <li><a href="{{route('addAuctionBook')}}" >Danh sách sản phẩm đấu giá</a></li> --}}
             <li><a href="{{route('add_auctionBook')}}" >Yêu cầu đấu giá</a></li>
+            <li><a href="{{route('auction.management')}}" >Quản lý đấu giá</a></li>
             @endif
             </ul>
         </li>

@@ -256,5 +256,18 @@ class AuctionController extends Controller
         Toastr::success('Thêm sách đấu giá thành công', 'Thông báo', ["positionClass" => "toast-top-right"]);
 
         return redirect(''.route('add_auctionBook').'');
+
+    }
+    public function management(){
+        $list = Auction_book::paginate(10);
+        return view('admin_cus.auction.management',compact('list'));
+    }
+    public function delete($id){
+        $author = Auction_book::destroy($id);
+        // $deposit =DB::table('auction_book')->where('',$id)->delete();
+
+        Toastr::warning('Đã xóa sách đấu giá', 'Thông báo', ["positionClass" => "toast-top-right"]);
+
+        return redirect()->back();
     }
 }
