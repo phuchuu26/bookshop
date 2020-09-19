@@ -218,7 +218,9 @@ Route::get('/san-pham/chi-tiet-san-pham-{id}','PageController@book_detail')->nam
                         ->name('auction.management');
                         //xoa
                         Route::get('/detele_auction/{id}','AuctionController@delete')->name('delete_auction');
-
+                        // sua
+                        Route::get('/edit_auction/{id}','AuctionController@edit')->name('edit_auction');
+                        Route::post('/update_auction/{id}','AuctionController@update')->name('update_auction');
 
                         //page admin
 

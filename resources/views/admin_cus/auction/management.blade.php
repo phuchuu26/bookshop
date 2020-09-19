@@ -25,7 +25,7 @@
                     <div class="card" >
                         <div class="header" style="padding-bottom: 0px !important">
 
-                            <a  href="{{route('auth.add')}}" class="btn btn-round btn-success">Thêm</a>
+                            <a  href="{{route('add_auctionBook')}}" class="btn btn-round btn-success">Thêm</a>
 
                             <ul class="header-dropdown dropdown">
 
@@ -71,7 +71,7 @@
 
                                         </tr>
                                     </tfoot> --}}
-                                    <tbody>
+                                    <tbody  style="text-align-last: center;">
 
                                         @foreach($list as $li)
 
@@ -83,7 +83,11 @@
 
                                              {{$li->auction_book_title}}</td>
                                             <td>{{$li->auction_book_quantity}}</td>
-                                            <td> {{$li->auction_book_time}}</td>
+                                            <td>
+                                                 {{$li->auction_book_time}}
+                                                 {{$li->auction_book_time_type}}
+
+                                            </td>
                                             <td> {{$li->auction_book_reserve_price}}</td>
                                             <td>
                                                 @if($li->auction_book_status == 'Chưa duyệt')
@@ -98,7 +102,7 @@
                                             </td>
 
                                             <td colspan="2">
-                                                <a href="{{Route('auth.edit',['id' => $li->id])}}" style="padding-right: 30px;"><i class="fa fa-pencil"></i></a>
+                                                <a href="{{Route('edit_auction',['id' => $li->id])}}" style="padding-right: 30px;"><i class="fa fa-pencil"></i></a>
 
                                             <a href="{{route('delete_auction',['id' => $li ->id])}}"><i class="fa fa-trash-o fa-fw"></i></a>
                                             </td>

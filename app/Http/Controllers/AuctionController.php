@@ -99,17 +99,19 @@ class AuctionController extends Controller
 
          $book->id_account = Auth::user()->id;
 
-         if($book2->time == 1){
-            $value = $book2->value_time;
-            $value = $value * 60;
-        }  else if($book2->time == 3){
-            $value = $book2->value_time;
-            $value = $value * 60*24;
-        }
-        else{
-            $value = $book2->value_time;
-        }
-        $book->auction_book_time = $value;
+        //  if($book2->time == 1){
+        //     $value = $book2->value_time;
+        //     $value = $value * 60;
+        // }  else if($book2->time == 3){
+        //     $value = $book2->value_time;
+        //     $value = $value * 60*24;
+        // }
+        // else{
+        //     $value = $book2->value_time;
+        // }
+        // $book->auction_book_time = $value;
+        $book ->auction_book_time = $book2->value_time;
+        $book ->auction_book_time_type = $book2->time;
 
          if($book2->hasFile('book_image'))
         {
@@ -269,5 +271,24 @@ class AuctionController extends Controller
         Toastr::warning('Đã xóa sách đấu giá', 'Thông báo', ["positionClass" => "toast-top-right"]);
 
         return redirect()->back();
+    }
+
+    public function edit($id){
+        $auction_book = Auction_book::find($id);
+        $category = category::all();
+
+    	$author = author::all();
+        $bookcompany = book_company::all();
+        $publishinghouse = publishing_house::all();
+        $account = User::all();
+        $category = category::all();
+        $subcategory = sub_category::all();
+        // dd($auction_book);
+        return view('admin_cus.auction.edit',['auction_book'=>$auction_book , 'author'=>$author, 'category'=>$category,
+        'publishinghouse'=>$publishinghouse, 'account'=>$account, 'subcategory'=>$subcategory, 'bookcompany'=>$bookcompany]);
+    }
+
+    public function update(){
+
     }
 }
