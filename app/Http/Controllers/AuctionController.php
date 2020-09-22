@@ -398,126 +398,242 @@ class AuctionController extends Controller
         $book->save();
 
 
+        // chỉnh sửa các ảnh có liên quan của Image Auction:
+        $image_auction = Image_auction::where('id_auction_book',$id)->get();
+        // dd($image_auction[0]);
+        // die;
+        if($book2->hasFile('book_image1'))
+        {
 
-        // if($book2->hasFile('book_image1'))
-        // {
+            $file1 = $book2->file('book_image1');
 
-        //     $file1 = $book2->file('book_image1');
-        //         $image_sp = new Image_auction;
+            if(isset($file1))
+            {
+                // xoa file rac
+                // $upload_dir1 = asset('public/upload/products/');
+                // $upload_dir = "./../../../public/upload/products/";
+                // $old_file = $upload_dir1.'/'.$book['auction_book_image'];
+                // dd($old_file );
+                // dd($book->auction_book_image);
+                // die;
+                if(count($image_auction)==1){
 
-        //         if(isset($file1))
-        //         {
-        //             $image_sp->id_auction_book  = $book->id;
+                    if(File::exists('public/upload/detail/'.$image_auction[0]->image_auction_name)) {
+                        File::delete('public/upload/detail/'.$image_auction[0]->image_auction_name);
+                        // ko dung dc: Storage::delete('public/upload/products/'.$book->auction_book_image);
+                        //  dung dc :  unlink('public/upload/products/'.$book->auction_book_image);
+                        // else{
+                            // }
+                        }
+                    }
 
-        //             $this->validate($book2,[
-        //                 // 'book_image' => 'required',
-        //                 'book_image1' => 'required|image|mimes:jpg,png,jpeg|max:2048',
-        //              ],[
-        //                  'book_image1.required' => 'Bạn chưa nhập ảnh bìa !',
-        //                  'book_image1.image' => 'File phải là hình ảnh !',
-        //                  'book_image1.max' => 'Dung lượng file phải dưới 2MB !',
-        //                  'book_image1.mimes' => 'Bạn phải nhập đúng định dạng file JPG, JPEG, PNG ở ảnh thứ 2!',
+                $image_sp1 = Image_auction::where('image_auction_id',$image_auction[0]->image_auction_id)->first();
 
+                    // $image_sp1 = $image_auction[0];
+                    // dd($image_sp1);
+                    //   die;
+                    // $image_sp1->id_auction_book  = $id;
+                    // $image_sp1->image_auction_id  = $image_sp1->image_auction_id;
 
-        //              ]);
-
-        //             $name = $file1->getClientOriginalName();
-        //             $hinh_anh = str_random(5)."_".$name;
-
-        //             // echo $hinh_anh;die;
-        //             while(file_exists('public/upload/detail'.$hinh_anh))
-        //             {
-        //                  $hinh_anh = str_random(4)."_".$name;
-        //             }
-        //              // echo $name; die;
-        //             $file1->move('public/upload/detail',$hinh_anh );
-        //             $image_sp->image_auction_name  = $hinh_anh;
-        //             $image_sp->save();
-
-
-        //         }
-
-        // }
-        // if($book2->hasFile('book_image2'))
-        // {
-
-        //     $file2 = $book2->file('book_image2');
-        //         $image_sp = new Image_auction;
-
-        //         if(isset($file2))
-        //         {
-        //             $image_sp->id_auction_book  = $book->id;
-
-        //             $this->validate($book2,[
-        //                 // 'book_image' => 'required',
-        //                 'book_image2' => 'required|image|mimes:jpg,png,jpeg|max:2048',
-        //              ],[
-        //                  'book_image2.required' => 'Bạn chưa nhập ảnh bìa !',
-        //                  'book_image2.image' => 'File phải là hình ảnh !',
-        //                  'book_image2.max' => 'Dung lượng file phải dưới 2MB !',
-        //                  'book_image2.mimes' => 'Bạn phải nhập đúng định dạng file JPG, JPEG, PNG ở ảnh thứ 2!',
+                    $this->validate($book2,[
+                        // 'book_image' => 'required',
+                        'book_image1' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+                     ],[
+                         'book_image1.required' => 'Bạn chưa nhập ảnh bìa !',
+                         'book_image1.image' => 'File phải là hình ảnh !',
+                         'book_image1.max' => 'Dung lượng file phải dưới 2MB !',
+                         'book_image1.mimes' => 'Bạn phải nhập đúng định dạng file JPG, JPEG, PNG ở ảnh thứ 2!',
 
 
-        //              ]);
+                     ]);
 
-        //             $name = $file2->getClientOriginalName();
-        //             $hinh_anh = str_random(5)."_".$name;
+                    $name = $file1->getClientOriginalName();
+                    $hinh_anh = str_random(5)."_".$name;
 
-        //             // echo $hinh_anh;die;
-        //             while(file_exists('public/upload/detail'.$hinh_anh))
-        //             {
-        //                  $hinh_anh = str_random(4)."_".$name;
-        //             }
-        //              // echo $name; die;
-        //             $file2->move('public/upload/detail',$hinh_anh );
-        //             $image_sp->image_auction_name  = $hinh_anh;
-        //             $image_sp->save();
+                    // echo $hinh_anh;die;
+                    while(file_exists('public/upload/detail/'.$hinh_anh))
+                    {
+                         $hinh_anh = str_random(4)."_".$name;
+                    }
+                     // echo $name; die;
+                    $file1->move('public/upload/detail/',$hinh_anh );
+                    // $image_sp1->image_auction_name  = $hinh_anh;
+                    if(count($image_auction)==1){
 
-
-        //         }
-
-        // }
-
-
-        // if($book2->hasFile('book_image3'))
-        // {
-
-        //     $file3 = $book2->file('book_image3');
-        //         $image_sp = new Image_auction;
-
-        //         if(isset($file3))
-        //         {
-        //             $image_sp->id_auction_book  = $book->id;
-
-        //             $this->validate($book2,[
-        //                 // 'book_image' => 'required',
-        //                 'book_image3' => 'required|image|mimes:jpg,png,jpeg|max:2048',
-        //              ],[
-        //                  'book_image3.required' => 'Bạn chưa nhập ảnh bìa !',
-        //                  'book_image3.image' => 'File phải là hình ảnh !',
-        //                  'book_image3.max' => 'Dung lượng file phải dưới 2MB !',
-        //                  'book_image3.mimes' => 'Bạn phải nhập đúng định dạng file JPG, JPEG, PNG ở ảnh thứ 2!',
+                        Image_auction::where('image_auction_id',$image_auction[0]->image_auction_id)
+                        ->update(
+                            ['image_auction_name' => $hinh_anh]
+                        );
+                    }
+                    else{
+                        $anhbia3 = new Image_auction;
+                        $anhbia3->image_auction_name =$hinh_anh;
+                        $anhbia3->id_auction_book  =$id ;
+                        $anhbia3->save();
+                    }
+                    // $image_sp1->save();
 
 
-        //              ]);
+                }
 
-        //             $name = $file3->getClientOriginalName();
-        //             $hinh_anh = str_random(5)."_".$name;
+        }  // chỉnh sửa các ảnh có liên quan của Image Auction:
+        // $image_auction = Image_auction::where('id_auction_book',$id)->get();
+        // dd($image_auction[0]);
+        // die;
+        if($book2->hasFile('book_image2'))
+        {
 
-        //             // echo $hinh_anh;die;
-        //             while(file_exists('public/upload/detail'.$hinh_anh))
-        //             {
-        //                  $hinh_anh = str_random(4)."_".$name;
-        //             }
-        //              // echo $name; die;
-        //             $file3->move('public/upload/detail',$hinh_anh );
-        //             $image_sp->image_auction_name  = $hinh_anh;
-        //             $image_sp->save();
+            $file1 = $book2->file('book_image2');
+
+            if(isset($file1))
+            {
+                // xoa file rac
+                // $upload_dir1 = asset('public/upload/products/');
+                // $upload_dir = "./../../../public/upload/products/";
+                // $old_file = $upload_dir1.'/'.$book['auction_book_image'];
+                // dd($old_file );
+                // dd($book->auction_book_image);
+                // die;
+                if(count($image_auction)==2){
+
+                    if(File::exists('public/upload/detail/'.$image_auction[1]->image_auction_name)) {
+                        File::delete('public/upload/detail/'.$image_auction[1]->image_auction_name);
+                        // ko dung dc: Storage::delete('public/upload/products/'.$book->auction_book_image);
+                        //  dung dc :  unlink('public/upload/products/'.$book->auction_book_image);
+                        // else{
+                            // }
+                        }
+                    }
+
+                // $image_sp1 = Image_auction::where('image_auction_id',$image_auction[1]->image_auction_id)->first();
+
+                    // $image_sp1 = $image_auction[0];
+                    // dd($image_sp1);
+                    //   die;
+                    // $image_sp1->id_auction_book  = $id;
+                    // $image_sp1->image_auction_id  = $image_sp1->image_auction_id;
+
+                    $this->validate($book2,[
+                        // 'book_image' => 'required',
+                        'book_image2' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+                     ],[
+                         'book_image2.required' => 'Bạn chưa nhập ảnh bìa !',
+                         'book_image2.image' => 'File phải là hình ảnh !',
+                         'book_image2.max' => 'Dung lượng file phải dưới 2MB !',
+                         'book_image2.mimes' => 'Bạn phải nhập đúng định dạng file JPG, JPEG, PNG ở ảnh thứ 2!',
 
 
-        //         }
+                     ]);
 
-        // }
+                    $name = $file1->getClientOriginalName();
+                    $hinh_anh = str_random(5)."_".$name;
+
+                    // echo $hinh_anh;die;
+                    while(file_exists('public/upload/detail/'.$hinh_anh))
+                    {
+                         $hinh_anh = str_random(4)."_".$name;
+                    }
+                     // echo $name; die;
+                    $file1->move('public/upload/detail/',$hinh_anh );
+                    // $image_sp1->image_auction_name  = $hinh_anh;
+                    if(count($image_auction)==2){
+
+                        Image_auction::where('image_auction_id',$image_auction[1]->image_auction_id)
+                        ->update(
+                            ['image_auction_name' => $hinh_anh]
+                        );
+                        // $image_sp1->save();
+                    }
+                    else{
+                        $anhbia3 = new Image_auction;
+                        $anhbia3->image_auction_name =$hinh_anh;
+                        $anhbia3->id_auction_book  =$id ;
+                        $anhbia3->save();
+                    }
+
+
+                }
+
+        }
+          // chỉnh sửa các ảnh có liên quan của Image Auction:
+        //   $image_auction = Image_auction::where('id_auction_book',$id)->get();
+          // dd($image_auction[0]);
+          // die;
+          if($book2->hasFile('book_image3'))
+          {
+
+
+              $file1 = $book2->file('book_image3');
+
+              if(isset($file1))
+              {
+                  // xoa file rac
+                  // $upload_dir1 = asset('public/upload/products/');
+                  // $upload_dir = "./../../../public/upload/products/";
+                  // $old_file = $upload_dir1.'/'.$book['auction_book_image'];
+                  // dd($old_file );
+                  // dd($book->auction_book_image);
+                  // die;
+                if(count($image_auction)==3){
+
+                    if(File::exists('public/upload/detail/'.$image_auction[2]->image_auction_name)) {
+                        File::delete('public/upload/detail/'.$image_auction[2]->image_auction_name);
+                        // ko dung dc: Storage::delete('public/upload/products/'.$book->auction_book_image);
+                        //  dung dc :  unlink('public/upload/products/'.$book->auction_book_image);
+                        // else{
+                            // }
+                        }
+                    }
+
+                //   $image_sp1 = Image_auction::where('image_auction_id',$image_auction[2]->image_auction_id)->first();
+
+                      // $image_sp1 = $image_auction[0];
+                      // dd($image_sp1);
+                      //   die;
+                      // $image_sp1->id_auction_book  = $id;
+                      // $image_sp1->image_auction_id  = $image_sp1->image_auction_id;
+
+                      $this->validate($book2,[
+                          // 'book_image' => 'required',
+                          'book_image3' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+                       ],[
+                           'book_image3.required' => 'Bạn chưa nhập ảnh bìa !',
+                           'book_image3.image' => 'File phải là hình ảnh !',
+                           'book_image3.max' => 'Dung lượng file phải dưới 2MB !',
+                           'book_image3.mimes' => 'Bạn phải nhập đúng định dạng file JPG, JPEG, PNG ở ảnh thứ 2!',
+
+
+                       ]);
+
+                      $name = $file1->getClientOriginalName();
+                      $hinh_anh = str_random(5)."_".$name;
+
+                      // echo $hinh_anh;die;
+                      while(file_exists('public/upload/detail/'.$hinh_anh))
+                      {
+                           $hinh_anh = str_random(4)."_".$name;
+                      }
+                       // echo $name; die;
+                      $file1->move('public/upload/detail/',$hinh_anh);
+                      // $image_sp1->image_auction_name  = $hinh_anh;
+
+                    if(count($image_auction)==3){
+
+                        Image_auction::where('image_auction_id',$image_auction[2]->image_auction_id)
+                        ->update(
+                            ['image_auction_name' => $hinh_anh]
+                        );
+                    }
+                    else{
+                        $anhbia3 = new Image_auction;
+                        $anhbia3->image_auction_name =$hinh_anh;
+                        $anhbia3->id_auction_book  =$id ;
+                        $anhbia3->save();
+                    }
+                      // $image_sp1->save();
+                  }
+
+          }
 
         Toastr::success('Cập nhật sách đấu giá thành công', 'Thông báo', ["positionClass" => "toast-top-right"]);
 
