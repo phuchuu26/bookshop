@@ -213,6 +213,9 @@ Route::get('/san-pham/chi-tiet-san-pham-{id}','PageController@book_detail')->nam
                         // dau gia:
                         Route::post('/create/{id}', 'AuctionController@store')
                         ->name('auction.create.submit');
+
+
+                        // page admin
                         // quan ly  dau gia
                         Route::get('/management', 'AuctionController@management')
                         ->name('auction.management');
@@ -222,22 +225,10 @@ Route::get('/san-pham/chi-tiet-san-pham-{id}','PageController@book_detail')->nam
                         Route::get('/edit_auction/{id}','AuctionController@edit')->name('edit_auction');
                         Route::post('/update_auction/{id}','AuctionController@update')->name('update_auction');
 
-                        //page admin
-
+                        //them
                         Route::get('/index_cus','AuctionController@addAuctionBook')->name('add_auctionBook');
                         Route::post('/index_cus/store','AuctionController@store')->name('store_auction_book');
 
-                        // Route::get('/bill_cus/data','StatisticController@billdata_cus')->name('statistic_bill_data_cus');
-
-                        // //doanh thu
-                        // Route::get('/sale_cus','StatisticController@salecus')->name('statistic_sale_cus');
-                        // Route::get('/sale_cus/data','StatisticController@saledatacus')->name('statistic_sale_data_cus');
-                        // // so luong san pham
-                        // Route::get('/quantity/cus','StatisticController@quantitycus')->name('quantity_cus');
-                        // Route::get('/quantity/category/cus','StatisticController@quantitycategorycus')->name('quantity_category_cus');
-                        // Route::get('/quantity/company/cus','StatisticController@quantitycompanycus')->name('quantity_company_cus');
-                        // Route::get('/quantity/nxb/cus','StatisticController@quantitynxbcus')->name('quantity_nxb_cus');
-                        // Route::get('/quantity/author/cus','StatisticController@quantityauthorcus')->name('quantity_author_cus');
                     });
 
 
@@ -263,6 +254,32 @@ Route::group(['prefix'=>'quan-tri','middleware'=>'Ad_login'],function(){        
 
 
 		});
+// dau gia
+        Route::group(['prefix'=>'admin/auction'],function(){
+            // // dau gia:
+            // Route::post('/create/{id}', 'AuctionController@store')
+            // ->name('auction.create.submit');
+
+                //hien thi page client
+            //  Route::get('/index','Admin\AuctionController@index')->name('auction_index_admin');
+            // page admin
+            // quan ly  dau gia\
+            Route::get('/list', 'Admin\AuctionController@list')
+            ->name('auction.admin.list');
+            // thay doi status
+            Route::get('/change_status/{id}', 'Admin\AuctionController@change')
+            ->name('auction.admin.change_status');
+            //xoa
+            Route::get('/detele_auction/{id}','AuctionController@delete')->name('delete_auction');
+            // // sua
+            // Route::get('/edit_auction/{id}','AuctionController@edit')->name('edit_auction');
+            // Route::post('/update_auction/{id}','AuctionController@update')->name('update_auction');
+
+            // //them
+            // Route::get('/index_cus','AuctionController@addAuctionBook')->name('add_auctionBook');
+            // Route::post('/index_cus/store','AuctionController@store')->name('store_auction_book');
+
+        });
 
 
 		Route::group(['prefix'=>'nha-xuat-ban'],function(){

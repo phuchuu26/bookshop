@@ -105,7 +105,7 @@
                                             </td>
 
                                             <td colspan="2">
-                                                <a href="{{Route('edit_auction',['id' => $li->id])}}" style="padding-right: 30px;"><i class="fa fa-pencil"></i></a>
+                                                <a href="{{Route('auction.admin.change_status',['id' => $li->id])}}" style="padding-right: 30px;"><i class="fa fa-pencil"></i></a>
 
                                             <a href="{{route('delete_auction',['id' => $li ->id])}}"><i class="fa fa-trash-o fa-fw"></i></a>
                                             </td>

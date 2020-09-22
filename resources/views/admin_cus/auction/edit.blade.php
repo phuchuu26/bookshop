@@ -105,7 +105,7 @@ button#anhbia {
                         @endif
 
                         <div class="body form">
-                            <form id="basic-form" novalidate  method="POST"  action="{{Route('store_auction_book')}}" enctype="multipart/form-data"> {{ csrf_field() }}
+                            <form id="basic-form" novalidate  method="POST"  action="{{Route('update_auction',['id' => $auction_book->id])}}" enctype="multipart/form-data"> {{ csrf_field() }}
 
                                 {{-- Hàng 1  --}}
                                     {{-- Danh mục --}}
@@ -254,7 +254,7 @@ button#anhbia {
                                         <label class="input-group-text" for="inputGroupSelect01">Tên sách</label>
                                     </div>
 
-                                <input type="text" name="bookname" value="{{$auction_book->auction_book_title}}" class="form-control" required>
+                                <input type="text" name="bookname" value="{{$auction_book->auction_book_title}}" class="form-control" >
                                     </div>
                                     <div class="input-group mb-3 col-md-5">
                                         <div class="input-group-prepend">
@@ -336,8 +336,10 @@ button#anhbia {
 
                                 <div class="form-group">
                                     <label>Mô tả</label>
-                                    <textarea value="{{$auction_book->auction_book_description}}" style="min-height: 150px;" name="mota" id="editor"></textarea>
-
+                                    <?php
+                                    $data = str_replace( '&', '&amp;', $auction_book->auction_book_description );
+                                ?>
+                                    <textarea    style="min-height: 150px;" name="mota" id="editor">{{ $data}}</textarea>
                                 </div>
 
 
@@ -392,25 +394,26 @@ button#anhbia {
                                     <label class="custom-file-label" for="inputGroupFile01">Choose file</label> --}}
                                 </div>
                             </div>
+                            {{-- {{$count}} --}}
                             <div class="av">
                                 <div class="col-sm-8  col-md-12 a">
                                     <label for="avatar">
-                                    <img  id="image" alt="Chọn hình đại diện" width="145" height="145" />
+                                    <img src="{{asset('public/upload/products/')}}/{{$auction_book->auction_book_image}}"  id="image" alt="Chọn hình đại diện" width="145" height="145" />
                                     </label>
-                                    <input accept=".png, .jpg, .jpeg" style="display: none;"   type="file" name="book_image" id="avatar" multiple
+                                <input accept=".png, .jpg, .jpeg" style="display: none;" value="" type="file" name="book_image" id="avatar" multiple
                                         onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])">
                                 </div>
                                 <br>
-
                             </div>
 
 
                                 <br>
                                 {{-- pic 2 --}}
+                                {{-- @foreach($files as $image_sp) --}}
                                 <div class="av1">
                                     <div class="col-sm-8  col-md-12 a">
                                         <label for="avatar1">
-                                        <img  id="image1" alt="Chọn hình đại diện" width="145" height="145" />
+                                        <img src="{{$count == 0 ?asset('public/admin/img/default-image.jpg'): (asset('public/upload/detail').'/'.$image_sp[0]->image_auction_name)}}"  id="image1" alt="Chọn hình đại diện" width="145" height="145" />
                                         </label>
                                         {{-- accept=".png, .jpg, .jpeg" --}}
                                         <input  style="display: none;"   type="file" name="book_image1" id="avatar1" multiple
@@ -424,7 +427,7 @@ button#anhbia {
                                 <div class="av2">
                                     <div class="col-sm-8  col-md-12 a">
                                         <label for="avatar2">
-                                        <img  id="image2" alt="Chọn hình đại diện" width="145" height="145" />
+                                        <img src="{{$count <= 1 ? asset('public/admin/img/default-image.jpg') : asset('public/upload/detail/'.$image_sp[1]->image_auction_name)}}"  id="image2" alt="Chọn hình đại diện" width="145" height="145" />
                                         </label>
                                         <input accept=".png, .jpg, .jpeg" style="display: none;"   type="file" name="book_image2" id="avatar2" multiple
                                             onchange="document.getElementById('image2').src = window.URL.createObjectURL(this.files[0])">
@@ -437,7 +440,7 @@ button#anhbia {
                                 <div class="av3">
                                     <div class="col-sm-8  col-md-12 a">
                                         <label for="avatar3">
-                                        <img  id="image3" alt="Chọn hình đại diện" width="145" height="145" />
+                                        <img  src="{{ $count <= 2 ? asset('public/admin/img/default-image.jpg') : asset('public/upload/detail/'. $image_sp[2]->image_auction_name)}}" id="image3" alt="Chọn hình đại diện" width="145" height="145" />
                                         </label>
                                         <input accept=".png, .jpg, .jpeg" style="display: none;"   type="file" name="book_image3" id="avatar3" multiple
                                             onchange="document.getElementById('image3').src = window.URL.createObjectURL(this.files[0])">
@@ -466,7 +469,7 @@ button#anhbia {
                 <div class="col-md-12">
                     <div class="card">
                         <div class="body gui">
-                            <button type="submit" class="btn btn-success">Thêm</button>
+                            <button type="submit" style="min-width:130px;" class="btn btn-success">Cập nhật</button>
                         </div>
                     </form>
                 </div>
@@ -484,25 +487,51 @@ button#anhbia {
 <script src="{{asset('public/admin/toastr/jquery.min.js')}}" ></script>
 <script type="text/javascript">
         var arr = 0;
+    console.log({{$count}});
+    if({{$count}}>0){
+        if({{$count}}==3){
+        $(".av1").show();
+        $(".av2").show();
+        $(".av3").show();
+        $('#anhbia').hide();
+        }
+        if({{$count}} ==2){
+            arr = 2;
+            $(".av1").show();
+            $(".av2").show();
+            $(".av3").hide();
+        }
+        if({{$count}} ==1){
+            arr = 1;
+            $(".av1").show();
+            $(".av2").hide();
+            $(".av3").hide();
+
+        }
+// console.log({{$count}});
+    }
+    else{
+
         $(".av1").hide();
         $(".av2").hide();
         $(".av3").hide();
-     function them(){
-         arr++;
+        // them();
+    }
+    function them(){
+         this.arr++;
          $(".av1").show();
 
-        if(arr >1){
-            $(".av2").show();
-        }
-         if(arr >2){
-            $(".av3").show();
-            $('#anhbia').hide();
-        }
-        console.log(arr);
+         if(this.arr >1){
+             $(".av2").show();
+            }
+            if(this.arr >2){
+                $(".av3").show();
+                $('#anhbia').hide();
+            }
+            console.log(this.arr);
 
-          }
-
-</script>
+        }
+    </script>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.8.3.js"></script>
 <script>
     // $(document).ready(function(){
@@ -514,9 +543,9 @@ button#anhbia {
 //     if(!$.isNumeric(cb.getData('text'))) e.preventDefault();
 // });;
  var hihi =$('#input').val();
-$('body').on('hover', function(e){
-    $('#input').val(formatCurrency(hihi.replace(/[, VNĐ]/g,'')));
-}
+// $('body').on('mouseout', function(e){
+    $('#input').val(formatCurrency(hihi.replace(/[, VNĐ]/g,''))
+// }
 ).on('keypress',function(e){
     if(!$.isNumeric(String.fromCharCode(e.which))) e.preventDefault();
 }).on('paste', function(e){
@@ -543,6 +572,8 @@ function formatCurrency(number){
 </script>
 <script type="text/javascript">
     $(document).ready(function(){
+
+
         // alert('chạy được');
         //kiểm tra xem coi nó chạy không
         $("#danhmuc").change(function(){
