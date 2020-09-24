@@ -535,14 +535,14 @@ button#anhbia {
                 <br>
                 <div class="form-group">
 
-                  <label for="message-text" class="col-form-label">Thời gian kết thúc:</label>
-                  {{-- <input id="myNumber" type="number" step="1000"  class="currency" min="1000" max="2500000" value="25000" /> --}}
-                  {{-- <h3 id="dong"> --}}
+                    {{-- <input id="myNumber" type="number" step="1000"  class="currency" min="1000" max="2500000" value="25000" /> --}}
+                    {{-- <h3 id="dong"> --}}
 
-                    {{-- value="2018-06-13T19:30" --}}
+                        {{-- value="2018-06-13T19:30" --}}
+                    <label >Thời gian khách hàng mong muốn : {{$auction_book->auction_book_time}} {{$auction_book->auction_book_time_type}} </label>
 
                         <div class="form-group">
-                        <label >Thời gian khách hàng mong muốn</label>
+                            <label for="message-text" class="col-form-label">Thời gian dự kiến kết thúc:</label>
                         <input type="datetime-local"
                         name="date"
                         value="{{$b}}"
