@@ -25,6 +25,27 @@ class AuctionController extends Controller
     }
     public function change($id){
         $auction_book = Auction_book::find($id);
+        $type_time = $auction_book->auction_book_time_type;
+        $time = $auction_book->auction_book_time;
+        $a = Carbon::now();
+        $a = strtotime($a);
+        // xuử lý loại ngày với số time:
+        if($type_time == 'Ngày'){
+            $a += ($time*24*60*60);
+        }
+        else if($type_time == 'Giờ' ){
+            $a +=  ($time * 60 *60);
+        }
+        else{
+            $a +=  ($time * 60);
+        }
+
+        $c = Carbon::createFromTimestamp($a)->toDateTimeString();
+        // dd(date("Y-m-d\TH:i", strtotime($a)));
+        $b =date("Y-m-d\TH:i", strtotime($c));
+        // dd($b);
+
+
         $image_sp =Image_auction::where('id_auction_book',$id)->get();
         $count = count($image_sp);
         $category = category::all();
@@ -35,7 +56,8 @@ class AuctionController extends Controller
         $account = User::all();
         $category = category::all();
         $subcategory = sub_category::all();
-        return view('admin.auction.change',['count' =>$count ,'image_sp'=>$image_sp , 'auction_book'=>$auction_book , 'author'=>$author, 'category'=>$category,
+
+        return view('admin.auction.change',['b' => $b,'count' =>$count ,'image_sp'=>$image_sp , 'auction_book'=>$auction_book , 'author'=>$author, 'category'=>$category,
         'publishinghouse'=>$publishinghouse, 'account'=>$account, 'subcategory'=>$subcategory, 'bookcompany'=>$bookcompany]);
     }
     // public function index(){

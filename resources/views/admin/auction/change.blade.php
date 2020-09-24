@@ -513,11 +513,12 @@ button#anhbia {
         </div>
     </div>
 
+
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Thủ tục đấu giá</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Xét duyệt thời gian đấu giá</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -538,17 +539,17 @@ button#anhbia {
                   {{-- <input id="myNumber" type="number" step="1000"  class="currency" min="1000" max="2500000" value="25000" /> --}}
                   {{-- <h3 id="dong"> --}}
 
-{{--
+                    {{-- value="2018-06-13T19:30" --}}
+
                         <div class="form-group">
-                        <label >Begin voorverkoop periode</label>
-                        <input type="date" name="bday" max="3000-12-31"
-                                min="1000-01-01" class="form-control">
+                        <label >Thời gian khách hàng mong muốn</label>
+                        <input type="datetime-local"
+                        name="date"
+                        value="{{$b}}"
+                        placeholder="DD/MM/YYYY, hh:mm:ss"
+                        required
+                                class="form-control">
                         </div>
-                        <div class="form-group">
-                        <label >Einde voorverkoop periode</label>
-                        <input type="date" name="bday" min="1000-01-01"
-                               value="3000-12-11" max="3000-12-31" class="form-control">
-                        </div> --}}
                   {{-- </h3> --}}
 
                 </div>
@@ -558,10 +559,10 @@ button#anhbia {
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-warning" data-dismiss="modal">Đóng</button>
               <button type="button" class="btn btn-success">
                 {{-- <a href="">Send message</a> --}}
-                Send message
+               Xét duyệt
             </button>
             </div>
           </div>
