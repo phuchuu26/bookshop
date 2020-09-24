@@ -271,6 +271,10 @@ Route::group(['prefix'=>'quan-tri','middleware'=>'Ad_login'],function(){        
             ->name('auction.admin.change_status');
             //xoa
             Route::get('/detele_auction/{id}','AuctionController@delete')->name('delete_auction');
+
+            Route::get('/duyet_thanh_cong/{id}','Admin\AuctionController@duyet')->name('duyetsuscess');
+            Route::get('/duyet_khong_thanh-cong/{id}','Admin\AuctionController@koduyet')->name('duyetfail');
+            // Route::get('/huy-don-{id}','BillController@status8')->name('status8');
             // // sua
             // Route::get('/edit_auction/{id}','AuctionController@edit')->name('edit_auction');
             // Route::post('/update_auction/{id}','AuctionController@update')->name('update_auction');

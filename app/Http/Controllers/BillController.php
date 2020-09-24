@@ -211,7 +211,7 @@ class BillController extends Controller
        $data = detail_bill::where('id',$id)->update(['id_status'=>4]);
         //var_dump($data);die;
         // Session::put('msg','')
-        Toastr::info('Xac nhan don hang', 'Thông báo', ["positionClass" => "toast-top-right"]);
+        Toastr::info('Xác nhận đơn hàng', 'Thông báo', ["positionClass" => "toast-top-right"]);
 
         return redirect()->back();
 

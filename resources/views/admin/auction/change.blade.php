@@ -2,8 +2,23 @@
 @section('title','Thêm sách')
 <head>
     <style>
+       .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
+    background-color: #dfe6e9;
+}
         input.form-control {
-    background-color: #dfe6e9!important;
+    background-color:  #dfe6e9!important;
+}
+select#theloai {
+    background-color: #c7d0d5!important;
+}
+select#inputGroupSelect01 {
+    background-color: #c7d0d5!important;
+}
+select#danhmuc {
+    background-color:  #c7d0d5!important;
+}
+select#inputGroupSelect03 {
+    background-color:  #c7d0d5!important;
 }
 /* input{
 
@@ -112,7 +127,7 @@ button#anhbia {
                         @endif
 
                         <div class="body form">
-                            <form id="basic-form" novalidate  method="POST"  action="{{Route('store_auction_book')}}" enctype="multipart/form-data"> {{ csrf_field() }}
+                            <form id="basic-form"> {{ csrf_field() }}
 
                                 {{-- Hàng 1  --}}
                                     {{-- Danh mục --}}
@@ -122,7 +137,7 @@ button#anhbia {
                                             <label class="input-group-text" for="inputGroupSelect01">Danh mục</label>
                                         </div>
                                         {{-- {{dd($auction_book->theloai->category->id)}} --}}
-                                        <select  class="custom-select a" id="danhmuc" name="idcategory">
+                                        <select disabled class="custom-select a" id="danhmuc" name="idcategory">
                                             <option>------ Chọn danh mục -------</option>
 
                                             @foreach($category as $ctg)
@@ -140,7 +155,7 @@ button#anhbia {
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" for="inputGroupSelect01">Thể loại</label>
                                         </div>
-                                        <select class="custom-select" id="theloai" name="idsubcategory">
+                                        <select disabled class="custom-select" id="theloai" name="idsubcategory">
                                             <option>------ Chọn thể loại -------</option>
 
                                             @foreach($subcategory as $sctg)
@@ -175,7 +190,7 @@ button#anhbia {
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" for="inputGroupSelect01">Nhà xuất bản</label>
                                         </div>
-                                        <select class="custom-select" id="inputGroupSelect01" name="idpublishinghouse">
+                                        <select disabled class="custom-select" id="inputGroupSelect01" name="idpublishinghouse">
                                             <option>------ Chọn nhà xuất bản -------</option>
 
                                             @foreach($publishinghouse as $pbh)
@@ -192,7 +207,7 @@ button#anhbia {
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" for="inputGroupSelect01">Nhà phân phối</label>
                                         </div>
-                                        <select class="custom-select" id="inputGroupSelect01" name="idbookcompany">
+                                        <select disabled class="custom-select" id="inputGroupSelect01" name="idbookcompany">
                                             <option>------ Chọn nhà phân phối -------</option>
 
                                             @foreach($bookcompany as $bc)
@@ -348,7 +363,7 @@ button#anhbia {
                                     <?php
                                     $data = str_replace( '&', '&amp;', $auction_book->auction_book_description );
                                 ?>
-                                    <textarea disabled  style="min-width: 867px;min-height: 126px;" name="mota">{{$data }}</textarea>
+                                    <textarea onkeypress="return false;" disabled="disabled" style=" pointer-events: none;"  style="min-width: 867px;min-height: 126px;"id="editor" name="mota">{{$data }}</textarea>
                                 </div>
 
 
@@ -409,8 +424,8 @@ button#anhbia {
                                     <label for="avatar">
                                     <img src="{{asset('public/upload/products/')}}/{{$auction_book->auction_book_image}}"  id="image" alt="Chọn hình đại diện" width="145" height="145" />
                                     </label>
-                                <input accept=".png, .jpg, .jpeg" style="display: none;"   type="file" name="book_image" id="avatar" multiple
-                                        onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])">
+                                {{-- <input accept=".png, .jpg, .jpeg" style="display: none;"   type="file" name="book_image" id="avatar" multiple
+                                        onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])"> --}}
                                 </div>
                                 <br>
                             </div>
@@ -425,8 +440,8 @@ button#anhbia {
                                         <img src="{{$count == 0 ?asset('public/admin/img/default-image.jpg'): (asset('public/upload/detail').'/'.$image_sp[0]->image_auction_name)}}"  id="image1" alt="Chọn hình đại diện" width="145" height="145" />
                                         </label>
                                         {{-- accept=".png, .jpg, .jpeg" --}}
-                                        <input  style="display: none;"   type="file" name="book_image1" id="avatar1" multiple
-                                            onchange="document.getElementById('image1').src = window.URL.createObjectURL(this.files[0])">
+                                        {{-- <input  style="display: none;"   type="file" name="book_image1" id="avatar1" multiple
+                                            onchange="document.getElementById('image1').src = window.URL.createObjectURL(this.files[0])"> --}}
                                     </div>
                                     <br>
 
@@ -438,8 +453,8 @@ button#anhbia {
                                         <label for="avatar2">
                                         <img src="{{$count <= 1 ? asset('public/admin/img/default-image.jpg') : asset('public/upload/detail/'.$image_sp[1]->image_auction_name)}}"  id="image2" alt="Chọn hình đại diện" width="145" height="145" />
                                         </label>
-                                        <input accept=".png, .jpg, .jpeg" style="display: none;"   type="file" name="book_image2" id="avatar2" multiple
-                                            onchange="document.getElementById('image2').src = window.URL.createObjectURL(this.files[0])">
+                                        {{-- <input accept=".png, .jpg, .jpeg" style="display: none;"   type="file" name="book_image2" id="avatar2" multiple
+                                            onchange="document.getElementById('image2').src = window.URL.createObjectURL(this.files[0])"> --}}
                                     </div>
                                     <br>
 
@@ -451,8 +466,8 @@ button#anhbia {
                                         <label for="avatar3">
                                         <img  src="{{ $count <= 2 ? asset('public/admin/img/default-image.jpg') : asset('public/upload/detail/'. $image_sp[2]->image_auction_name)}}" id="image3" alt="Chọn hình đại diện" width="145" height="145" />
                                         </label>
-                                        <input accept=".png, .jpg, .jpeg" style="display: none;"   type="file" name="book_image3" id="avatar3" multiple
-                                            onchange="document.getElementById('image3').src = window.URL.createObjectURL(this.files[0])">
+                                        {{-- <input accept=".png, .jpg, .jpeg" style="display: none;"   type="file" name="book_image3" id="avatar3" multiple
+                                            onchange="document.getElementById('image3').src = window.URL.createObjectURL(this.files[0])"> --}}
                                     </div>
                                     <br>
 
@@ -465,7 +480,7 @@ button#anhbia {
 
             {{-- pic 2 --}}
 
-            <button style="margin-bottom: 3px;" type="button" onclick="them()" id="anhbia" class="btn btn-success">Thêm ảnh bìa</button>
+            {{-- <button style="margin-bottom: 3px;" type="button" onclick="them()" id="anhbia" class="btn btn-success">Thêm ảnh bìa</button> --}}
                         </div>
                     </div>
                 </div>
@@ -478,7 +493,18 @@ button#anhbia {
                 <div class="col-md-12">
                     <div class="card">
                         <div class="body gui">
-                            <button  type="submit" class="btn btn-success">Thêm</button>
+                        <a  class="btn btn-warning" href="{{route('auction.admin.list')}}">
+                                    Quay lại
+
+                                </a>
+                                <a  class="btn btn-danger" href="{{route('duyetfail',['id' => $auction_book->id])}}">
+                                    Không đồng ý xét duyệt
+                                </a>
+                                {{-- <a   class="" > --}}
+                                    {{-- {{route('duyetsuscess',['id'=> $auction_book->id])}} --}}
+                                    <button type="button"  class="btn btn-success"
+                                    data-toggle="modal" data-target="#exampleModal" >  Đồng ý xét duyệt</button>
+                                {{-- </a> --}}
                         </div>
                     </form>
                 </div>
@@ -487,13 +513,74 @@ button#anhbia {
         </div>
     </div>
 
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Thủ tục đấu giá</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              {{-- {{ route('auction.create.submit',$real_estate->real_estate_id) }} --}}
+              <form action="" method="post">
 
+                  @csrf
+                  <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Tên khách hàng:</label>
+                <input type="text" readonly value="nguyen" class="form-control" id="recipient-name">
+                </div>
+                <br>
+                <div class="form-group">
+
+                  <label for="message-text" class="col-form-label">Thời gian kết thúc:</label>
+                  {{-- <input id="myNumber" type="number" step="1000"  class="currency" min="1000" max="2500000" value="25000" /> --}}
+                  {{-- <h3 id="dong"> --}}
+
+{{--
+                        <div class="form-group">
+                        <label >Begin voorverkoop periode</label>
+                        <input type="date" name="bday" max="3000-12-31"
+                                min="1000-01-01" class="form-control">
+                        </div>
+                        <div class="form-group">
+                        <label >Einde voorverkoop periode</label>
+                        <input type="date" name="bday" min="1000-01-01"
+                               value="3000-12-11" max="3000-12-31" class="form-control">
+                        </div> --}}
+                  {{-- </h3> --}}
+
+                </div>
+                {{-- <button  class="btn add-to-cart btn-style-1 color-3"  onclick="myFunction()">Tăng thêm 10K</button> --}}
+
+
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-success">
+                {{-- <a href="">Send message</a> --}}
+                Send message
+            </button>
+            </div>
+          </div>
+        </div>
+      </div>
     <script src="{{asset('public/admin/toastr/jquery.min.js')}}"></script>
 
     <script src="{{asset('public/admin/toastr/toastr.min.js')}}" ></script>
 
    {!! Toastr::message() !!}
 <script src="{{asset('public/admin/toastr/jquery.min.js')}}" ></script>
+{{-- <script>
+    $('#editor').focus(function(e) {
+    $(this).blur();
+});
+$('#editor').keypress(function(e) {
+  e.preventDefault();
+});
+</script> --}}
 <script type="text/javascript">
         var arr = 0;
     console.log({{$count}});

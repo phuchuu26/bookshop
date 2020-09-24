@@ -339,7 +339,7 @@ button#anhbia {
                                     <?php
                                     $data = str_replace( '&', '&amp;', $auction_book->auction_book_description );
                                 ?>
-                                    <textarea    style="min-height: 150px;" name="mota" id="editor">{{ $data}}</textarea>
+                                    <textarea  style="min-height: 150px;" name="mota" id="editor">{{ $data}}</textarea>
                                 </div>
 
 

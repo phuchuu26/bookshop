@@ -20,17 +20,49 @@ use File;
 use Storage;
 class AuctionController extends Controller
 {
+
     public function index(){
-        $date1 = $user = DB::table('endtime_auction')->first();
-        $date = $date1->Endtime_auction_date;
-        $h = $date1->Endtime_auction_hour;
-        $m = $date1->Endtime_auction_minute;
-        $s = $date1->Endtime_auction_second;
-        $current_date_time = strtotime("$date" ) * 1000;
-        $current_date_time += $h * 60 * 60;
-        $current_date_time += $m * 60;
-        $current_date_time += $m ;
-        $current_date_time = strtotime("$date $h:$m:$s" ) ;
+        // cách để gọi method của controller khác
+        // app(\App\Http\Controllers\Admin\AuctionController::class)->duyet(31);
+
+        // $date1 = Endtime_auction::latest()->first();
+        $a = Carbon::now();
+        // sản phẩm hiện tại đang được đấu giá
+        $sp  = DB::table('endtime_auction')
+        ->where('Endtime_auction_date','>',$a)
+        ->first();
+        // $a =time($a);
+        if($sp){
+
+            $current_date_time = strtotime("$sp->Endtime_auction_date");
+        }else{
+            $current_date_time =strtotime("$a");
+            // $current_date_time += 120;
+        }
+        //sản phẩm vừa đấu giá xong:
+        $sptruoc = DB::table('endtime_auction')
+        ->where('Endtime_auction_date','<',$a)
+        ->get()
+        ->last();
+        // $a = strtotime("$a");
+        // echo Carbon::now('Asia/Ho_Chi_Minh');
+        // dd($timestampAuction);
+        // dd($sptruoc);
+        // die;
+        // $date = $date1->Endtime_auction_date;
+        // $h = $date1->Endtime_auction_hour;
+        // $m = $date1->Endtime_auction_minute;
+        // $s = $date1->Endtime_auction_second;
+        // $current_date_time = strtotime("$date" ) * 1000;
+        // $current_date_time += $h * 60 * 60;
+        // $current_date_time += $m * 60;
+        // $current_date_time += $s ;
+        // $current_date_time = strtotime("$date $h:$m:$s" ) ;
+        // $a =time();
+        // $b = date($a);
+        // $date = Carbon::createFromTimestamp($a)->format('d/m/Y H:m:s');
+        // dd($date);
+        // die;
         // $date = strtotime($date);
         // $h = strtotime($h);
         // $date =

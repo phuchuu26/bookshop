@@ -1,7 +1,13 @@
 @extends('admin.layout')
 @section('title','Tác giả')
 @section('admin_content')
-
+<head>
+    <style>
+        table.table.table-hover.dataTable.table-custom {
+    margin: -16px -15px;
+}
+    </style>
+</head>
 <div id="main-content">
         <div class="container-fluid">
             <div class="block-header">
@@ -46,7 +52,7 @@
                         <div class="body">
                             <div class="table-responsive">
                                 {{-- js-basic-example --}}
-                                <table class="table table-hover dataTable table-custom spacing5">
+                                <table style="padding:0px 0px" class="table table-hover dataTable table-custom">
                                     <thead style="text-align-last: center;">
                                         <tr>
                                             <th>ID</th>
@@ -78,10 +84,14 @@
                                         <tr>
                                             <td>{{$li->id }}</td>
                                             <td><img src=" {{asset('public/upload/products/')}}/{{$li->auction_book_image }}" height="90px" alt="">
-                                            </td>
-                                                <td>
+                                            </td >
+                                                <td id="title"  style="    white-space: unset;  max-width: 200px;padding:0px;">
 
-                                             {{$li->auction_book_title}}</td>
+                                            <p>
+                                                {{$li->auction_book_title}}
+
+                                            </p>
+                                            </td>
                                             <td>{{$li->auction_book_quantity}}</td>
                                             <td>
                                                  {{$li->auction_book_time}}
@@ -97,7 +107,14 @@
                                                 <button type="button" style=" color:white;" class="btn btn-sm btn-warning" >
                                                     {{$li->auction_book_status}}
                                                 </button>
+                                                @elseif($li->auction_book_status == 'Không được duyệt')
+                                                <button type="button" style=" color:white;" class="btn btn-sm btn-danger" >
+                                                    {{$li->auction_book_status}}
+                                                </button>
                                                 @else
+                                                <button type="button" style=" color:white;" class="btn btn-sm btn-success" >
+                                                    {{$li->auction_book_status}}
+                                                </button>
                                                 @endif
                                             {{-- <a class="btn btn-round btn-warning" href="">
                                                 {{$li->auction_book_status}}
@@ -105,7 +122,7 @@
                                             </td>
 
                                             <td colspan="2">
-                                                <a href="{{Route('auction.admin.change_status',['id' => $li->id])}}" style="padding-right: 30px;"><i class="fa fa-pencil"></i></a>
+                                                <a href="{{Route('auction.admin.change_status',['id' => $li->id])}}" style="padding-right: 10px;"><i class="fa fa-pencil"></i></a>
 
                                             <a href="{{route('delete_auction',['id' => $li ->id])}}"><i class="fa fa-trash-o fa-fw"></i></a>
                                             </td>

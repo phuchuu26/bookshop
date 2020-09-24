@@ -181,47 +181,30 @@ input#recipient-name {
                                 </div>
                             </div>
                             <!-- Product Categories Widget End -->
-
                             <!-- Product color Widget Start -->
-                            {{-- <div class="sidebar-widget product-widget product-color-widget">
-                                <h3 class="widget-title">Màu sắc</h3>
+                             <div class="sidebar-widget product-widget product-color-widget">
+                                <h3 style=" line-height: 28px!important;" class="widget-title">Khách hàng vừa đấu giá thành công sách trước</h3>
                                 <div class="widget_conent">
                                     <ul class="product-color">
-                                        <li><a href="shop.html">D</a><span>(2)</span></li>
-                                        <li><a href="shop.html">Blue</a><span>(4)</span></li>
-                                        <li><a href="shop.html">Gold</a><span>(5)</span></li>
+                                        <li><a href="">Tên Khách hàng</a><span style="float: right;" class="badge badge-dark">Nguyễn Văn A</span></li>
+                                        <li><a href="">Số tiền:</a> <span style="float: right;" class="badge badge-dark">240.000đ</span></li>
+                                        <li><a href="">Thời gian</a><span style="float: right;" class="badge badge-dark">15:45 23/9/2020</span></li>
                                     </ul>
                                 </div>
-                            </div> --}}
+                            </div>
                             <!-- Product color Widget End -->
-
                             <!-- Price Filter Widget Start -->
 
-                            {{-- <article class="card-group-item">
-                                <header class="card-header">
-                                    <h6 class="title">Khoảng tiền </h6>
-                                </header>
-                                <div class="filter-content">
-                                    <div class="card-body">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label>Từ</label>
-                                                <input type="range" class="custom-range" min="0" max="50000" step="1000"
-                                                    id="sotientu" name="keyword_sotientu"
-                                                    value="">
-                                                <span><span id="sotientu-text"></span></span>
-                                            </div>
-                                            <div class="form-group col-md-6 text-right">
-                                                <label>Đến</label>
-                                                <input type="range" class="custom-range" min="50000" max="200000" step="1000"
-                                                    id="sotienden" name="keyword_sotienden"
-                                                    value="">
-                                                <span><span id="sotienden-text"></span></span>
-                                            </div>
-                                        </div>
-                                    </div> <!-- card-body.// -->
+                            <div class="sidebar-widget product-widget product-color-widget">
+                                <h3 style=" line-height: 28px!important;" class="widget-title">Lượt đấu giá tiếp theo</h3>
+                                <div class="widget_conent">
+                                    <ul class="product-color">
+                                        <li><a href="">Tên Khách hàng</a><span style="float: right;" class="badge badge-dark">Nguyễn Văn A</span></li>
+                                        <li><a href="">Số tiền:</a> <span style="float: right;" class="badge badge-dark">240.000đ</span></li>
+                                        <li><a href="">Thời gian</a><span style="float: right;" class="badge badge-dark">15:45 23/9/2020</span></li>
+                                    </ul>
                                 </div>
-                            </article> --}}
+                            </div>
                             <!-- Price Filter Widget End -->
 
                             <!-- Price Compare Widget Start -->
@@ -393,7 +376,7 @@ if (distance < 0) {
 clearInterval(x);
 document.querySelector("#demo").style.color = "red";
 document.getElementById("demo").innerHTML = "Kết thúc thời gian đấu giá";
-document.getElementById("demo1").innerHTML = "";
+document.getElementById("demo1").innerHTML = "Vui lòng đợi lượt đấu giá sách tiếp theo";
 }
 
 }, 1000);
