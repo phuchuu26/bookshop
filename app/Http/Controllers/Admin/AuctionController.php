@@ -20,15 +20,31 @@ use Toastr;
 class AuctionController extends Controller
 {
     public function list(){
-        $list = Auction_book::paginate(10);
-        return view('admin.auction.list',compact('list'));
+        $list = Auction_book
+        ::orderBy('updated_at','desc')
+        ->paginate(10);
+        // $a = Endtime_auction::all();
+        // dd($a);
+        return view('admin.auction.list',compact('list','a'));
     }
     public function change($id){
         $auction_book = Auction_book::find($id);
         $type_time = $auction_book->auction_book_time_type;
         $time = $auction_book->auction_book_time;
         $a = Carbon::now();
+         // $a = 2020-09-26 11:12:35.590428 Asia/Ho_Chi_Minh (+07:00)
+        // lấy sản phẩm cuối để get time => set thời gian kết thúc cho sản phẩm tiếp theo không bị trùng với sp cuối.
+        $spcuoi = DB::table('endtime_auction')
+        ->where('Endtime_auction_date','>',$a)
+        ->get()
+        ->last();
+        if($spcuoi){
+            $a = $spcuoi->Endtime_auction_date;
+        }
+        // dd($spcuoi->Endtime_auction_date);
         $a = strtotime($a);
+        // $a1 = strtotime($a);
+        $d = strtotime($a);
         // xuử lý loại ngày với số time:
         if($type_time == 'Ngày'){
             $a += ($time*24*60*60);
@@ -39,12 +55,29 @@ class AuctionController extends Controller
         else{
             $a +=  ($time * 60);
         }
-
-        $c = Carbon::createFromTimestamp($a)->toDateTimeString();
+        // $a =1601611802
+        // convert timestamp to datetime
+        // $c = Carbon::createFromTimestamp($a)->toDateTimeString();
+        // $c = 2020-10-02 11:10:02
+        // dd($a);
+        // format Y-m-d\TH:i
         // dd(date("Y-m-d\TH:i", strtotime($a)));
-        $b =date("Y-m-d\TH:i", strtotime($c));
+        $b =date("Y-m-d\TH:i", $a);
+        // $b =2020-10-02T11:10
+        // "2020-10-02T11:10"
         // dd($b);
 
+        // time bat dau :
+        // dd($spcuoi->Endtime_auction_date);
+        // dd(Carbon::createFromTimestamp($d)->toDateTimeString());
+        if($spcuoi){
+
+            $e =date("Y-m-d\TH:i", strtotime($spcuoi->Endtime_auction_date));
+        }
+        else{
+
+            $e =date("Y-m-d\TH:i", strtotime(Carbon::now()));
+        }
 
         $image_sp =Image_auction::where('id_auction_book',$id)->get();
         $count = count($image_sp);
@@ -57,7 +90,7 @@ class AuctionController extends Controller
         $category = category::all();
         $subcategory = sub_category::all();
 
-        return view('admin.auction.change',['b' => $b,'count' =>$count ,'image_sp'=>$image_sp , 'auction_book'=>$auction_book , 'author'=>$author, 'category'=>$category,
+        return view('admin.auction.change',['e' => $e,'b' => $b,'count' =>$count ,'image_sp'=>$image_sp , 'auction_book'=>$auction_book , 'author'=>$author, 'category'=>$category,
         'publishinghouse'=>$publishinghouse, 'account'=>$account, 'subcategory'=>$subcategory, 'bookcompany'=>$bookcompany]);
     }
     // public function index(){
@@ -79,9 +112,28 @@ class AuctionController extends Controller
     //     return view('page.auction.index',compact('date','h','m','s','current_date_time'));
     //     // return view('page.auction.index',['category'=>$category]);
     // }
+        public function endtimepost(Request $req, $id){
+            // findorFail giúp web quăng lỗi 404| not found nếu không tìm được id có chỉ số giống như url
+            // $auction = Auction_book::findOrFail($id);
+            // $auction->auction_book_status = 'Được xét duyệt';
+            // $auction->save();
+
+            $book = new Endtime_auction;
+
+            // $book->auction_book_title = $req->Endtime_auction_date;
+
+            $book->endtime_auction_date = $req->date;
+            $book->id_auction_book  = $id;
+            $book->save();
+            // Toastr::success('Xét duyệt sách thành công', 'Thông báo', ["positionClass" => "toast-top-right"]);
+
+            $this->duyet($id);
+            return redirect()->route('auction.admin.list');
+
+        }
 
         public function duyet($id){
-            $data = Auction_book::where('id',$id)->update(['auction_book_status'=>'Được xét duyệt']);
+            $data = Auction_book::findOrFail($id)->update(['auction_book_status'=>'Được xét duyệt']);
             //var_dump($data);die;
             // Session::put('msg','')
             Toastr::info('Sách đã được xét duyệt thành công', 'Thông báo', ["positionClass" => "toast-top-right"]);

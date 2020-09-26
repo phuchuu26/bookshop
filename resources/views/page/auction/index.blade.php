@@ -377,6 +377,8 @@ clearInterval(x);
 document.querySelector("#demo").style.color = "red";
 document.getElementById("demo").innerHTML = "Kết thúc thời gian đấu giá";
 document.getElementById("demo1").innerHTML = "Vui lòng đợi lượt đấu giá sách tiếp theo";
+// location.reload();
+setTimeout(function(){  location.reload(); }, 3000);
 }
 
 }, 1000);

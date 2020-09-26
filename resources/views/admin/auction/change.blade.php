@@ -497,14 +497,18 @@ button#anhbia {
                                     Quay lại
 
                                 </a>
-                                <a  class="btn btn-danger" href="{{route('duyetfail',['id' => $auction_book->id])}}">
+                                @if( $auction_book->auction_book_status !='Không được duyệt')
+                                 <a  class="btn btn-danger" href="{{route('duyetfail',['id' => $auction_book->id])}}">
                                     Không đồng ý xét duyệt
                                 </a>
+                                @endif
+                                @if( $auction_book->auction_book_status !='Được xét duyệt')
                                 {{-- <a   class="" > --}}
                                     {{-- {{route('duyetsuscess',['id'=> $auction_book->id])}} --}}
                                     <button type="button"  class="btn btn-success"
                                     data-toggle="modal" data-target="#exampleModal" >  Đồng ý xét duyệt</button>
                                 {{-- </a> --}}
+                                @endif
                         </div>
                     </form>
                 </div>
@@ -525,12 +529,12 @@ button#anhbia {
             </div>
             <div class="modal-body">
               {{-- {{ route('auction.create.submit',$real_estate->real_estate_id) }} --}}
-              <form action="" method="post">
+            <form action="{{route('endtimepost',['id' => $auction_book->id])}}" method="post">
 
                   @csrf
                   <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Tên khách hàng:</label>
-                <input type="text" readonly value="nguyen" class="form-control" id="recipient-name">
+                  <input type="text" readonly value="{{$auction_book->account->info->info_lastname}} {{$auction_book->account->info->info_name}}" class="form-control" id="recipient-name">
                 </div>
                 <br>
                 <div class="form-group">
@@ -541,9 +545,21 @@ button#anhbia {
                         {{-- value="2018-06-13T19:30" --}}
                     <label >Thời gian khách hàng mong muốn : {{$auction_book->auction_book_time}} {{$auction_book->auction_book_time_type}} </label>
 
+                    {{-- time bat dau  --}}
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Thời gian dự kiến bắt đầu:</label>
+                    <input type="datetime-local" disabled
+                    {{-- name="date" --}}
+                    value="{{$e}}"
+                    placeholder="DD/MM/YYYY, hh:mm:ss"
+                    required
+                            class="form-control">
+                    </div>
+                    {{-- time ket thuc --}}
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Thời gian dự kiến kết thúc:</label>
-                        <input type="datetime-local"
+                        <input type="datetime-local" id="a"
+                        style="background-color: #ffffff!important;"
                         name="date"
                         value="{{$b}}"
                         placeholder="DD/MM/YYYY, hh:mm:ss"
@@ -556,15 +572,15 @@ button#anhbia {
                 {{-- <button  class="btn add-to-cart btn-style-1 color-3"  onclick="myFunction()">Tăng thêm 10K</button> --}}
 
 
-              </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-warning" data-dismiss="modal">Đóng</button>
-              <button type="button" class="btn btn-success">
-                {{-- <a href="">Send message</a> --}}
-               Xét duyệt
-            </button>
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Đóng</button>
+                <button type="submit" class="btn btn-success">
+                    {{-- <a href="">Send message</a> --}}
+                    Xét duyệt
+                </button>
             </div>
+            </form>
           </div>
         </div>
       </div>

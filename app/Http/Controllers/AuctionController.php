@@ -27,6 +27,7 @@ class AuctionController extends Controller
 
         // $date1 = Endtime_auction::latest()->first();
         $a = Carbon::now();
+        // $a = 2020-09-26 11:12:35.590428 Asia/Ho_Chi_Minh (+07:00)
         // sản phẩm hiện tại đang được đấu giá
         $sp  = DB::table('endtime_auction')
         ->where('Endtime_auction_date','>',$a)
@@ -291,7 +292,8 @@ class AuctionController extends Controller
 
     }
     public function management(){
-        $list = Auction_book::where('id_account','=',Auth::user()->id)->paginate(10);
+        $list = Auction_book::where('id_account','=',Auth::user()->id)->orderBy('updated_at','desc')->paginate(10);
+
         return view('admin_cus.auction.management',compact('list'));
     }
     public function delete($id){

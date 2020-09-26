@@ -254,13 +254,13 @@ Route::group(['prefix'=>'quan-tri','middleware'=>'Ad_login'],function(){        
 
 
 		});
-// dau gia
+        // dau gia
         Route::group(['prefix'=>'admin/auction'],function(){
             // // dau gia:
             // Route::post('/create/{id}', 'AuctionController@store')
             // ->name('auction.create.submit');
 
-                //hien thi page client
+            //hien thi page client
             //  Route::get('/index','Admin\AuctionController@index')->name('auction_index_admin');
             // page admin
             // quan ly  dau gia\
@@ -274,14 +274,9 @@ Route::group(['prefix'=>'quan-tri','middleware'=>'Ad_login'],function(){        
 
             Route::get('/duyet_thanh_cong/{id}','Admin\AuctionController@duyet')->name('duyetsuscess');
             Route::get('/duyet_khong_thanh-cong/{id}','Admin\AuctionController@koduyet')->name('duyetfail');
-            // Route::get('/huy-don-{id}','BillController@status8')->name('status8');
-            // // sua
-            // Route::get('/edit_auction/{id}','AuctionController@edit')->name('edit_auction');
-            // Route::post('/update_auction/{id}','AuctionController@update')->name('update_auction');
+            // chọn time endtime auction :
+            Route::post('/post_endtime/{id}','Admin\AuctionController@endtimepost')->name('endtimepost');
 
-            // //them
-            // Route::get('/index_cus','AuctionController@addAuctionBook')->name('add_auctionBook');
-            // Route::post('/index_cus/store','AuctionController@store')->name('store_auction_book');
 
         });
 

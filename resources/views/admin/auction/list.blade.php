@@ -80,7 +80,7 @@
                                     <tbody  style="text-align-last: center;">
 
                                         @foreach($list as $li)
-
+                                    {{-- {{dd($li->endtime->Endtime_auction_id)}} --}}
                                         <tr>
                                             <td>{{$li->id }}</td>
                                             <td><img src=" {{asset('public/upload/products/')}}/{{$li->auction_book_image }}" height="90px" alt="">
@@ -89,7 +89,6 @@
 
                                             <p>
                                                 {{$li->auction_book_title}}
-
                                             </p>
                                             </td>
                                             <td>{{$li->auction_book_quantity}}</td>
@@ -120,11 +119,27 @@
                                                 {{$li->auction_book_status}}
                                             </a> --}}
                                             </td>
+                                            {{-- @php
+                                                $baygio = strtotime(Carbon\Carbon::now());
+                                                $abc = strtotime($li->endtime->Endtime_auction_date);
+                                                // echo $abc;die; tutu de tui xem cai
+                                                if($abc>$baygio)
+                                                {
+                                                    echo "banhbao";
+                                                }
+                                            @endphp --}}
 
+
+                                            {{-- {{dd(strtotime($li->endtime->Endtime_auction_date))}} --}}
                                             <td colspan="2">
+                                                @if($li->auction_book_status != 'Được xét duyệt')
+                                                {{-- @if($abc>$baygio)
+                                                    --}}
+
                                                 <a href="{{Route('auction.admin.change_status',['id' => $li->id])}}" style="padding-right: 10px;"><i class="fa fa-pencil"></i></a>
 
-                                            <a href="{{route('delete_auction',['id' => $li ->id])}}"><i class="fa fa-trash-o fa-fw"></i></a>
+                                                @endif
+                                                <a href="{{route('delete_auction',['id' => $li ->id])}}"><i class="fa fa-trash-o fa-fw"></i></a>
                                             </td>
                                         </tr>
 
