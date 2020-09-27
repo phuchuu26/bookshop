@@ -152,4 +152,18 @@ class AuctionController extends Controller
 
             return redirect()->route('auction.admin.list');
         }
+        public function huyxetduyet($id){
+            $data = Auction_book::where('id',$id)->update(['auction_book_status'=>'Không được duyệt']);
+            $a = Auction_book::findOrFail($id);
+            $daxet = $a->endtime;
+            $b = Endtime_auction::where('Endtime_auction_id',$daxet->Endtime_auction_id);
+            $b->delete();
+            // dd($daxet);
+            // die;
+            //var_dump($data);die;
+            // Session::put('msg','')
+            Toastr::info('Sách không được xét duyệt', 'Thông báo', ["positionClass" => "toast-top-right"]);
+
+            return redirect()->route('auction.admin.list');
+        }
 }

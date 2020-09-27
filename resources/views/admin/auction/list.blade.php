@@ -118,26 +118,51 @@
                                             {{-- <a class="btn btn-round btn-warning" href="">
                                                 {{$li->auction_book_status}}
                                             </a> --}}
+                                            {{-- {{dd($li->endtime->Endtime_auction_date)}} --}}
                                             </td>
-                                            {{-- @php
+                                            {{-- {{($li->endtime)?$li->endtime->id_auction_book:''}} --}}
+                                            @php
+                                            if(($li->endtime)){
                                                 $baygio = strtotime(Carbon\Carbon::now());
                                                 $abc = strtotime($li->endtime->Endtime_auction_date);
-                                                // echo $abc;die; tutu de tui xem cai
-                                                if($abc>$baygio)
-                                                {
-                                                    echo "banhbao";
+
+                                                $timemongmuon = $li->auction_book_time;
+                                                $type_time = $li->auction_book_time_type;
+
+                                                if($type_time == 'Ngày'){
+                                                    $baygio += ($timemongmuon*24*60*60);
                                                 }
-                                            @endphp --}}
+                                                else if($type_time == 'Giờ' ){
+                                                    $baygio +=  ($timemongmuon * 60 *60);
+                                                }
+                                                else{
+                                                    $baygio +=  ($timemongmuon * 60);
+                                                }
+                                                // dd($baygio-$abc);
+                                                // die;
+
+                                                // echo $abc;die;
+                                                // if($abc>$baygio)
+                                                // {
+                                                //     echo "banhbao";
+                                                // }
+                                            }
+
+                                                // @endif
+                                             @endphp
 
 
                                             {{-- {{dd(strtotime($li->endtime->Endtime_auction_date))}} --}}
                                             <td colspan="2">
-                                                @if($li->auction_book_status != 'Được xét duyệt')
-                                                {{-- @if($abc>$baygio)
-                                                    --}}
+                                                {{-- @if($li->auction_book_status != 'Được xét duyệt') --}}
+                                                @if(($li->endtime))
+                                                @if($abc>$baygio)
+
 
                                                 <a href="{{Route('auction.admin.change_status',['id' => $li->id])}}" style="padding-right: 10px;"><i class="fa fa-pencil"></i></a>
-
+                                                @endif
+                                                @else
+                                                <a href="{{Route('auction.admin.change_status',['id' => $li->id])}}" style="padding-right: 10px;"><i class="fa fa-pencil"></i></a>
                                                 @endif
                                                 <a href="{{route('delete_auction',['id' => $li ->id])}}"><i class="fa fa-trash-o fa-fw"></i></a>
                                             </td>

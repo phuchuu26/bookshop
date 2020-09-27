@@ -274,6 +274,7 @@ Route::group(['prefix'=>'quan-tri','middleware'=>'Ad_login'],function(){        
 
             Route::get('/duyet_thanh_cong/{id}','Admin\AuctionController@duyet')->name('duyetsuscess');
             Route::get('/duyet_khong_thanh-cong/{id}','Admin\AuctionController@koduyet')->name('duyetfail');
+            Route::get('/huy_xet_duyet/{id}','Admin\AuctionController@huyxetduyet')->name('huyxetduyet');
             // chọn time endtime auction :
             Route::post('/post_endtime/{id}','Admin\AuctionController@endtimepost')->name('endtimepost');
 

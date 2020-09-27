@@ -497,11 +497,19 @@ button#anhbia {
                                     Quay lại
 
                                 </a>
-                                @if( $auction_book->auction_book_status !='Không được duyệt')
+                                @if( $auction_book->auction_book_status =='Chưa duyệt')
+
                                  <a  class="btn btn-danger" href="{{route('duyetfail',['id' => $auction_book->id])}}">
                                     Không đồng ý xét duyệt
                                 </a>
                                 @endif
+                                @if( $auction_book->auction_book_status =='Được xét duyệt')
+
+                                <a  class="btn btn-danger" href="{{route('huyxetduyet',['id' => $auction_book->id])}}">
+                                   Hủy xét duyệt
+                               </a>
+                               @endif
+
                                 @if( $auction_book->auction_book_status !='Được xét duyệt')
                                 {{-- <a   class="" > --}}
                                     {{-- {{route('duyetsuscess',['id'=> $auction_book->id])}} --}}
