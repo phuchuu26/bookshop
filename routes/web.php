@@ -532,3 +532,8 @@ Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('config:cache');
     return 'DONE'; //Return anything
 });
+
+//updateSettings
+// D:\LUAN VAN\bookshop\app\Http\Controllers\vendor\Chatify\MessagesController.php
+Route::post('/setting','vendor.Chatify.MessagesController@updateSettings')->name('avatar.update');
+// Route::get('/chatify','vendor.Chatify.MessagesController@getContacts')->name('user');
