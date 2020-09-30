@@ -33,14 +33,22 @@
         </td>
         {{-- center side --}}
         <td>
+            @if($user->info)
+            {{-- {{dd($user)}} --}}
         <p data-id="{{ $type.'_'.$user->id }}">
-            {{ strlen($user->name) > 12 ? trim(substr($user->name,0,12)).'..' : $user->name }}
+            {{ strlen($user->info->info_name.' '.$user->info->info_lastname	) > 20 ? trim(substr($user->info->info_name.' '.$user->info->info_lastname,0,20)).'..' : $user->info->info_name.' '.$user->info->info_lastname}}
             <span>{{ $lastMessage->created_at->diffForHumans() }}</span></p>
         <span>
+            @else
+            <p data-id="{{ $type.'_'.$user->id }}">
+                {{ strlen($user->username) > 12 ? trim(substr($user->username,0,12)).'..' : $user->username }}
+                <span>{{ $lastMessage->created_at->diffForHumans() }}</span></p>
+            <span>
+                @endif
             {{-- Last Message user indicator --}}
             {!!
                 $lastMessage->from_id == Auth::user()->id
-                ? '<span class="lastMessageIndicator">You :</span>'
+                ? '<span class="lastMessageIndicator">Bạn :</span>'
                 : ''
             !!}
             {{-- Last message body --}}
@@ -64,19 +72,33 @@
 
 {{-- -------------------- Search Item -------------------- --}}
 @if($get == 'search_item')
-<table class="messenger-list-item" data-contact="{{ $user->id }}">
+<table class="messenger-list-item" data-contact="{{ $user->id_account }}">
     <tr data-action="0">
         {{-- Avatar side --}}
         <td>
+            {{-- {{dd($user->infor2)}} --}}
         <div class="avatar av-m"
-        style="background-image: url('{{ asset('public/storage/'.config('chatify.user_avatar.folder').'/'.$user->avatar) }}');">
+        style="background-image: url('{{ asset('public/storage/'.config('chatify.user_avatar.folder').'/'.$user->infor2->avatar) }}');">
         </div>
         </td>
         {{-- center side --}}
         <td>
-        <p data-id="{{ $type.'_'.$user->id }}">
-            {{ strlen($user->name) > 12 ? trim(substr($user->name,0,12)).'..' : $user->name }}
-        </td>
+
+            {{-- {{dd($user)}} --}}
+            {{-- @if($user) --}}
+        <p data-id="{{ $type.'_'.$user->id_account }}">
+            {{ strlen($user->info_name.' '.$user->info_lastname	) > 20 ? trim(substr($user->info_name.' '.$user->info_lastname,0,20)).'..' : $user->info_name.' '.$user->info_lastname}}
+            {{-- <span>{{ $lastMessage->created_at->diffForHumans() }}</span></p> --}}
+        <span>
+            {{-- @else
+            <p data-id="{{ $type.'_'.$user->id_account }}">
+                {{ strlen($user->username) > 12 ? trim(substr($user->username,0,12)).'..' : $user->username }} --}}
+                {{-- <span>{{ $lastMessage->created_at->diffForHumans() }}</span></p> --}}
+            {{-- <span>
+                @endif --}}
+        {{-- <p data-id="{{ $type.'_'.$user->id }}">
+            {{ strlen($user->username) > 12 ? trim(substr($user->username,0,12)).'..' : $user->username }}
+        </td> --}}
 
     </tr>
 </table>

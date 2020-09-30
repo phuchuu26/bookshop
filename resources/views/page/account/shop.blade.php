@@ -96,13 +96,23 @@ input#amount {
                             <p class="moTaShop">
                                 Sau một thời gian hoạt động, website đã có những bước tiến đáng kể cả về chất lượng và hình thức
                             </p>
-                            <button type="button" class="btn btn-primary chat-facebook">
+                            {{-- <button type="button" class="btn btn-primary chat-facebook">
                                 <i class="fa fa-phone-square" aria-hidden="true"></i>
-                                Chat ngay</button>
+                                Chat ngay</button> --}}
+                                <form id="" method="POST" action="{{route('chat_user')}}" >
+                                    @csrf
+
+                                    <input hidden name="id" class="m-send app-scroll" value="{{$user->id}}" >
+                                    <button type="submit" class="btn btn-primary chat-facebook">
+                                        <i class="fa fa-phone-square" aria-hidden="true"></i>
+                                        Chat ngay</button>
+                                        </form>
                             {{-- <button type="button" class="btn btn-outline-primary">Primary</button> --}}
                             <button type="button" class="btn btn-info so-hotline">
                                 <i class="fa fa-comments-o" aria-hidden="true"></i>
                                 Gọi ngay</button>
+
+                            {{-- <a class="btn btn-info so-hotline" href="{{route('chat_user')}}">Chat ngay</a> --}}
 
 
                                         {{-- <a class="btn btn-outline-primary home " href="">
@@ -409,3 +419,13 @@ input#amount {
 </main>
 
 @endsection
+{{-- {{dd($user)}} --}}
+<div class="">
+    <form id="" method="POST" action="{{ route('send.message') }}" enctype="multipart/form-data">
+        @csrf
+        <label><span class="fas fa-paperclip"></span><input type="file" class="upload-attachment" name="file" accept="image/*, .txt, .rar, .zip" /></label>
+        <textarea  name="message" class="m-send app-scroll" placeholder="Type a message.."></textarea>
+    <input hidden name="id" class="m-send app-scroll" value="{{$user->id}}" >
+        <button ><span class="fas fa-paper-plane"></span>gửi</button>
+    </form>
+</div>

@@ -235,7 +235,7 @@ class MessagesController extends Controller
     public function getContacts(Request $request)
     {
         // dd('hihi');
-        die;
+        // die;
         // get all users that received/sent message from/to [Auth user]
         $users = Message::join('account',  function ($join) {
             $join->on('messages.from_id', '=', 'account.id')

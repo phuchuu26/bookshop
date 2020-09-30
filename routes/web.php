@@ -535,5 +535,5 @@ Route::get('/clear-cache', function() {
 
 //updateSettings
 // D:\LUAN VAN\bookshop\app\Http\Controllers\vendor\Chatify\MessagesController.php
-Route::post('/setting','vendor.Chatify.MessagesController@updateSettings')->name('avatar.update');
-// Route::get('/chatify','vendor.Chatify.MessagesController@getContacts')->name('user');
+// Route::post('/setting','vendor.Chatify.MessagesController@updateSettings')->name('avatar.update');
+// Route::get('/chatify','vendor\Chatify\MessagesController@getContacts')->name('user');
