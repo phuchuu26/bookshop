@@ -77,8 +77,11 @@ input#amount {
                 <ul class="breadcrumb">
                     <li><a href="{{route('p.home')}}">Trang chủ</a></li>
                     <li class="current">
+                        @if($user->info)
                         <a>Shop của {{$user->info->info_name}} </a>
-                        {{-- de tui sua dung dung chuot --}}
+                        @else
+                        <a>Shop của {{$user->username}} </a>
+                        @endif
                     </li>
                 </ul>
             </div>
@@ -90,9 +93,16 @@ input#amount {
                         </div>
                         <div class="right">
                             <p class="des">Được bán bởi</p>
+                            {{-- {{dd($user->info)}} --}}
+                            @if($user->info)
                             <h3>
-                                Tiệm sách cũ
+                                {{-- {{$user->info->info_lastname .' '.$user->info->info_name}} --}}
                             </h3>
+                            @else
+                            <h3>
+                                {{$user->username}}
+                            </h3>
+                            @endif
                             <p class="moTaShop">
                                 Sau một thời gian hoạt động, website đã có những bước tiến đáng kể cả về chất lượng và hình thức
                             </p>
@@ -103,16 +113,21 @@ input#amount {
                                     {{-- @csrf --}}
 
                                     {{-- <input hidden name="id" class="m-send app-scroll" value="{{$user->id}}" > --}}
-                                    <button type="submit" class="btn btn-primary chat-facebook">
+                                    <a href="{{route('user',['id' =>$user->id ])}}">
+                                    <button style="padding-bottom: 7px;" type="submit" class="btn btn-primary chat-facebook">
                                         <i class="fa fa-phone-square" aria-hidden="true"></i>
                                     {{-- <a href="http://bookshop.com/chatify/{{$user->id}}">Chat ngay</a> --}}
-                                    <a href="{{route('user',['id' =>$user->id ])}}">Chat ngay</a>
+                                        Chat ngay
                                     </button>
+                                </a>
                                         {{-- </form> --}}
                             {{-- <button type="button" class="btn btn-outline-primary">Primary</button> --}}
-                            <button type="button" class="btn btn-info so-hotline">
+                            <a href="tel:#">
+                            <button type="button" style="padding-bottom: 7px;" class="btn btn-info so-hotline">
                                 <i class="fa fa-comments-o" aria-hidden="true"></i>
-                                Gọi ngay</button>
+                                  Gọi ngay
+                                </button>
+                            </a>
 
                             {{-- <a class="btn btn-info so-hotline" href="http://bookshop.com/chatify/{{$user->id}}">Vô Chat ngay</a> --}}
 

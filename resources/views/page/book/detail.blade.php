@@ -289,13 +289,19 @@
                                             Sau một thời gian hoạt động, website đã có những bước tiến đáng kể cả về chất lượng và hình thức
 
                                         </p>
+                                        <a href="{{route('user',['id' =>$book->id_account ])}}">
                                         <button type="button" class="btn btn-primary chat-facebook">
-                                            <i class="fa fa-phone-square" aria-hidden="true"></i>
-                                            Chat ngay</button>
-                                        {{-- <button type="button" class="btn btn-outline-primary">Primary</button> --}}
-                                        <button type="button" class="btn btn-info so-hotline">
                                             <i class="fa fa-comments-o" aria-hidden="true"></i>
-                                            Gọi ngay</button>
+                                                Chat ngay
+                                            </button>
+                                        </a>
+                                        {{-- <button type="button" class="btn btn-outline-primary">Primary</button> --}}
+                                        <a href="tel:#">
+                                        <button type="button" class="btn btn-info so-hotline">
+                                            <i class="fa fa-phone-square" aria-hidden="true"></i>
+                                                Gọi ngay
+                                            </button>
+                                        </a>
 
 
                                         <a class="btn btn-outline-primary home " href="{{route('shopuser',['id' => $book->id_account ])}}">
