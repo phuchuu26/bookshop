@@ -10,8 +10,8 @@
             </td>
             {{-- center side --}}
             <td>
-                <p data-id="{{ 'user_'.Auth::user()->id }}">Saved Messages <span>You</span></p>
-                <span>Save messages secretly</span>
+                <p data-id="{{ 'user_'.Auth::user()->id }}">Truyền file<span>Bạn</span></p>
+                <span>Lưu tin nhắn bảo mật</span>
             </td>
         </tr>
     </table>
@@ -36,7 +36,7 @@
             @if($user->info)
             {{-- {{dd($user)}} --}}
         <p data-id="{{ $type.'_'.$user->id }}">
-            {{ strlen($user->info->info_name.' '.$user->info->info_lastname	) > 20 ? trim(substr($user->info->info_name.' '.$user->info->info_lastname,0,20)).'..' : $user->info->info_name.' '.$user->info->info_lastname}}
+            {{ strlen($user->info->info_lastname.' '.$user->info->info_name	) > 20 ? trim(substr($user->info->info_lastname.' '.$user->info->info_name,0,20)).'..' :$user->info->info_lastname .' '.$user->info->info_name}}
             <span>{{ $lastMessage->created_at->diffForHumans() }}</span></p>
         <span>
             @else

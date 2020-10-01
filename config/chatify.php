@@ -12,7 +12,8 @@ return [
     |
     */
 
-    'name' => env('CHATIFY_NAME', 'Chatify Messenger'),
+    'name' => env('CHATIFY_NAME', 'Trò chuyện trực tuyến'),
+    'name1' => 'https://twitter.com/scotch_io',
 
     /*
     |--------------------------------------------------------------------------
@@ -79,6 +80,7 @@ return [
         'folder' => 'users-avatar',
         'default' => 'avatar.png',
     ],
+    //  'name1' => 'a',
 
     /*
     |--------------------------------------------------------------------------

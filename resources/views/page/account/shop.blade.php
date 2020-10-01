@@ -99,20 +99,22 @@ input#amount {
                             {{-- <button type="button" class="btn btn-primary chat-facebook">
                                 <i class="fa fa-phone-square" aria-hidden="true"></i>
                                 Chat ngay</button> --}}
-                                <form id="" method="POST" action="{{route('chat_user')}}" >
-                                    @csrf
+                                {{-- <form id="" method="POST" action="{{route('chat_user')}}" > --}}
+                                    {{-- @csrf --}}
 
-                                    <input hidden name="id" class="m-send app-scroll" value="{{$user->id}}" >
+                                    {{-- <input hidden name="id" class="m-send app-scroll" value="{{$user->id}}" > --}}
                                     <button type="submit" class="btn btn-primary chat-facebook">
                                         <i class="fa fa-phone-square" aria-hidden="true"></i>
-                                        Chat ngay</button>
-                                        </form>
+                                    {{-- <a href="http://bookshop.com/chatify/{{$user->id}}">Chat ngay</a> --}}
+                                    <a href="{{route('user',['id' =>$user->id ])}}">Chat ngay</a>
+                                    </button>
+                                        {{-- </form> --}}
                             {{-- <button type="button" class="btn btn-outline-primary">Primary</button> --}}
                             <button type="button" class="btn btn-info so-hotline">
                                 <i class="fa fa-comments-o" aria-hidden="true"></i>
                                 Gọi ngay</button>
 
-                            {{-- <a class="btn btn-info so-hotline" href="{{route('chat_user')}}">Chat ngay</a> --}}
+                            {{-- <a class="btn btn-info so-hotline" href="http://bookshop.com/chatify/{{$user->id}}">Vô Chat ngay</a> --}}
 
 
                                         {{-- <a class="btn btn-outline-primary home " href="">
