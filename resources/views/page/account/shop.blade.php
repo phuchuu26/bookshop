@@ -437,12 +437,4 @@ input#amount {
 
 @endsection
 {{-- {{dd($user)}} --}}
-<div class="">
-    <form id="" method="POST" action="{{ route('send.message') }}" enctype="multipart/form-data">
-        @csrf
-        <label><span class="fas fa-paperclip"></span><input type="file" class="upload-attachment" name="file" accept="image/*, .txt, .rar, .zip" /></label>
-        <textarea  name="message" class="m-send app-scroll" placeholder="Type a message.."></textarea>
-    <input hidden name="id" class="m-send app-scroll" value="{{$user->id}}" >
-        <button ><span class="fas fa-paper-plane"></span>gửi</button>
-    </form>
-</div>
+

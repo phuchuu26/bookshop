@@ -1,4 +1,7 @@
 {{-- -------------------- Saved Messages -------------------- --}}
+@php
+\Carbon\Carbon::setLocale('vi');
+@endphp
 @if($get == 'saved')
     <table class="messenger-list-item m-li-divider @if('user_'.Auth::user()->id == $id && $id != "0") m-list-active @endif">
         <tr data-action="0">
@@ -33,11 +36,14 @@
         </td>
         {{-- center side --}}
         <td>
+            @php
+                \Carbon\Carbon::setLocale('vi');
+            @endphp
             @if($user->info)
             {{-- {{dd($user)}} --}}
         <p data-id="{{ $type.'_'.$user->id }}">
             {{ strlen($user->info->info_lastname.' '.$user->info->info_name	) > 20 ? trim(substr($user->info->info_lastname.' '.$user->info->info_name,0,20)).'..' :$user->info->info_lastname .' '.$user->info->info_name}}
-            <span>{{ $lastMessage->created_at->diffForHumans() }}</span></p>
+            <span>{{  $lastMessage->created_at->diffForHumans() }}</span></p>
         <span>
             @else
             <p data-id="{{ $type.'_'.$user->id }}">

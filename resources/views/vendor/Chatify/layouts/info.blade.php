@@ -1,4 +1,7 @@
 {{-- user info and avatar --}}
+@php
+\Carbon\Carbon::setLocale('vi');
+@endphp
 <div class="avatar av-l"></div>
 {{-- @if() --}}
 {{-- <p class="info-name">{{ config('chatify.name') }}</p> --}}

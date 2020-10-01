@@ -1,4 +1,7 @@
 @include('Chatify::layouts.headLinks')
+@php
+\Carbon\Carbon::setLocale('vi');
+@endphp
 <div class="messenger">
     {{-- ----------------------Users/Groups lists side---------------------- --}}
     <div class="messenger-listView">

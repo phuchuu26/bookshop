@@ -1,4 +1,7 @@
 {{-- -------------------- The default card (white) -------------------- --}}
+@php
+\Carbon\Carbon::setLocale('vi');
+@endphp
 @if($viewType == 'default')
     @if($from_id != $to_id)
     <div class="message-card" data-id="{{ $id }}">

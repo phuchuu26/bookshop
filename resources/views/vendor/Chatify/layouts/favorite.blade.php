@@ -1,3 +1,7 @@
+
+ @php
+ \Carbon\Carbon::setLocale('vi');
+@endphp
 <div class="favorite-list-item">
     {{-- {{dd($user->info->info_lastname)}} --}}
     <div data-id="{{ $user->id }}" data-action="0" class="avatar av-m"
