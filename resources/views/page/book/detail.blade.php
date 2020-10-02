@@ -2,10 +2,18 @@
 @section('title','Chi tiết sản phẩm')
 @section('page_content')
 <head>
+
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{asset('public/page/css/style.css')}}">
 <style>
+
+    .modal-content {
+        font-size: 19px;
+        margin-top: 100px;
+    }
+
     .star-fake {
         /* font-size: 0;
         line-height: 1;
@@ -278,7 +286,7 @@
                                 </div>
                                 <div class="thongTinShop">
                                     <div class="left">
-                                        <img class="logo" width="90px;" src="{{asset('public/page/img/furniture-13-250x278.jpg')}}" alt="">
+                                        <img class="logo" width="90px;" src="{{asset('public\storage\users-avatar\avatar.png')}}" alt="">
                                     </div>
                                     <div class="right">
                                         <p class="des">Được bán bởi</p>
@@ -289,12 +297,16 @@
                                             Sau một thời gian hoạt động, website đã có những bước tiến đáng kể cả về chất lượng và hình thức
 
                                         </p>
-                                        <a href="{{route('user',['id' =>$book->id_account ])}}">
-                                        <button type="button" class="btn btn-primary chat-facebook">
-                                            <i class="fa fa-comments-o" aria-hidden="true"></i>
+                                        {{-- {{route('user',['id' =>$book->id_account ])}} --}}
+                                        {{-- <a href=""> --}}
+                                        <button  data-toggle="modal" data-target="#exampleModal1" type="button" class="btn btn-primary chat-facebook">
+                                           <i class="fa fa-comments-o" aria-hidden="true"></i>
                                                 Chat ngay
                                             </button>
-                                        </a>
+
+                                        {{-- </a> --}}
+                                        {{-- <button type="button" style="background-color:red" class="btn add-to-cart btn-style-2 color-2"
+                                        data-toggle="modal" data-target="#exampleModal" >Chat ngay</button> --}}
                                         {{-- <button type="button" class="btn btn-outline-primary">Primary</button> --}}
                                         <a href="tel:#">
                                         <button type="button" class="btn btn-info so-hotline">
@@ -445,12 +457,12 @@
                                         </div>
                                         @endforeach
 
+                                        {{-- {{dd($evaluate)}} --}}
                                     {{-- ranking --}}
-
                                     <form  class="form form--review" action="{{ route('write_cmt', ['id'=> $book->id]) }}" method="post">
                                         @csrf
                                         <div class="form__group clearfix mb--20">
-                                            @if($evaluate ==0 )
+                                            {{-- @if($evaluate ==0 ) --}}
                                             <label style="font-size: 20px;" class="form__label d-block">Đánh giá sao</label>
                                             <div  class="rating">
                                                 <input type="radio" id="star5" name="rating" value="5"><label class="full" for="star5" title="Awesome - 5 stars"></label>
@@ -467,11 +479,11 @@
                                         </div>
                                         <div class="form__group clearfix mb--20">
                                             <label class="form__label d-block" for="review_name">Tiêu đề đánh giá</label>
-                                            <input id="review_name" name="title" class="form__input form__input--w285">
+                                            <input required id="review_name" name="title" class="form__input form__input--w285">
                                         </div>
                                         <div class="form__group clearfix mb--20">
                                             <label class="form__label d-block" for="review">Nội dung đánh giá</label>
-                                            <textarea id="review" name="content" class="form__input form__input--textarea form__input--2"></textarea>
+                                            <textarea required id="review" name="content" class="form__input form__input--textarea form__input--2"></textarea>
                                         </div>
                                         {{-- <div class="form__group clearfix mb--20">
                                             <label class="form__label d-block" for="review_email">Email *</label>
@@ -491,31 +503,31 @@
 
   <!-- Modal -->
                                                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                    <div class="modal-dialog " style="  font-size:20px;  padding-top: 100px;" role="document">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                        <h5 class="modal-title" style="  font-size:30px; "id="exampleModalLabel">Thông báo</h5>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                            <span aria-hidden="true">&times;</span>
-                                                                        </button>
+                                                                        <div class="modal-dialog " style="  font-size:20px;  padding-top: 100px;" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                            <h5 class="modal-title" style="  font-size:30px; "id="exampleModalLabel">Thông báo</h5>
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                            Bạn cần đăng nhập nếu muốn đánh giá
+                                                                            </div>
+                                                                            <div  class="modal-footer">
+                                                                            <button style="  font-size:12px;" type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                                                            <button style=" color:white; font-size:12px;" type="button" class="btn btn-secondary"> <a style=" color:white;" href="{{route('p.login')}}"> Đăng nhập</a></button>
+                                                                            </div>
                                                                         </div>
-                                                                        <div class="modal-body">
-                                                                        Bạn cần đăng nhập nếu muốn đánh giá
-                                                                        </div>
-                                                                        <div  class="modal-footer">
-                                                                        <button style="  font-size:12px;" type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                                                                        <button style=" color:white; font-size:12px;" type="button" class="btn btn-secondary"> <a style=" color:white;" href="{{route('p.login')}}"> Đăng nhập</a></button>
                                                                         </div>
                                                                     </div>
-                                                                    </div>
-                                                                </div>
                                                                 @endif
 
 
-                                            @else
+                                            {{-- @else --}}
 
 
-                                            @endif
+                                            {{-- @endif --}}
                                         </div>
                                     </form>
                                     </div>
@@ -795,18 +807,65 @@
 
    {!! Toastr::message() !!}
 
-   <div class="">
-       <form id="" method="POST" action="{{ route('send.message') }}" enctype="multipart/form-data">
-        @csrf
-        <textarea  name="message" class="m-send app-scroll" placeholder="Type a message.."></textarea>
-        <input hidden name="id" class="m-send app-scroll" value="{{$book->id_account}}" >
-       <input hidden name="anh" class="m-send app-scroll" value="{{$book->book_image}}" >
-        <input hidden name="sp" class="m-send app-scroll" value="{{$book->book_title}}" >
-        <input hidden name="gia" class="m-send app-scroll" value="{{ number_format($book->book_price,0,',','.') }} đ" >
-        {{-- <input  name="anh" type="file" class="m-send app-scroll" value="{{$book->book_image}}" > --}}
-        <button ><span class="fas fa-paper-plane"></span>gửi</button>
-    </form>
-</div>
 
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe1l" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div style="" class="modal-header">
+          <h5 style="font-size:22px" class="modal-title" id="exampleModalLabel1">Gửi ý kiến phản hồi hoặc đặt câu hỏi</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{-- {{ route('auction.create.submit',$real_estate->real_estate_id) }} --}}
+          <form id="" method="POST" action="{{ route('send.message') }}" enctype="multipart/form-data">
 
+              @csrf
+              <div style="display: -webkit-inline-box;" class="form-group">
+                <label for="recipient-name" class="col-form-label"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Tên người bán:</label>
+                   <input style="text-align-last: center;min-width: 308px;max-width: 308px;font-size: 20px;margin-top: 2px;margin-left: 20px;" type="text" readonly value="{{$book->user->info->info_lastname.' '.$book->user->info->info_name}}" class="form-control" id="recipient-name">
+            </div>
+            <br>
+            <div style="display: -webkit-inline-box;" class="form-group">
+
+                 <label for="message-text" class="col-form-label"><i class="fa fa-book" aria-hidden="true"></i>&nbsp;Tên sách:</label>
+              <input style="text-align-last: center;width: 353px;font-size: 17px;margin-top: 2px;margin-left: 20px;" type="text" readonly value="{{$book->book_title}}" class="form-control" id="recipient-name">
+
+            </div> <br>
+            <div style="display: -webkit-inline-box;" class="form-group">
+
+                <label for="message-text" class="col-form-label">
+                    <i class="fa fa-usd" aria-hidden="true"></i>&nbsp;Có giá:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    @if($book->book_sale)
+                <span class="regular-price">{{number_format($book->book_sale,0,',','.') }} đ</span>
+                @endif
+                &nbsp;&nbsp;&nbsp;
+                <span class="sale-price">{{ number_format($book->book_price,0,',','.') }} đ</span>
+             {{-- <input style="text-align-last: center;width: 353px;font-size: 17px;margin-top: 2px;margin-left: 20px;" type="text" readonly value="{{$book->book_title}}" class="form-control" id="recipient-name"> --}}
+
+           </div>
+           <div style="display: -webkit-inline-box;" class="form-group">
+            <img height="200px" id="imgsp" src="{{asset('public/upload/products/')}}/{{$book->book_image}}" alt="product">
+            <textarea style="      min-height: 186px;  margin-bottom: -88px;width: 256px;" name="message" class="m-send app-scroll" placeholder="Nhập phản hồi hoặc đặt câu hỏi...."></textarea>
+       </div>
+            {{-- <button  class="btn add-to-cart btn-style-1 color-3"  onclick="myFunction()">Tăng thêm 10K</button> --}}
+
+            <input hidden name="id" class="m-send app-scroll" value="{{$book->id_account}}" >
+            <input hidden name="anh" class="m-send app-scroll" value="{{$book->book_image}}" >
+             <input hidden name="sp" class="m-send app-scroll" value="{{$book->book_title}}" >
+             <input hidden name="gia" class="m-send app-scroll" value="{{ number_format($book->book_price,0,',','.') }} đ" >
+             @if($book->book_sale)
+             <input hidden name="giacu" class="m-send app-scroll" value="{{ number_format($book->book_sale,0,',','.') }} đ" >
+             @endif
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn add-to-cart btn-style-2 color-1" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn add-to-cart btn-style-1 color-3">Send message</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
 @endsection
