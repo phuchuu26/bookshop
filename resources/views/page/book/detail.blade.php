@@ -795,14 +795,18 @@
 
    {!! Toastr::message() !!}
 
-@endsection
-<div class="">
-    <form id="" method="POST" action="{{ route('send.message') }}" enctype="multipart/form-data">
+   <div class="">
+       <form id="" method="POST" action="{{ route('send.message') }}" enctype="multipart/form-data">
         @csrf
-        <label><span class="fas fa-paperclip"></span><input type="file" class="upload-attachment" name="file" accept="image/*, .txt, .rar, .zip" /></label>
         <textarea  name="message" class="m-send app-scroll" placeholder="Type a message.."></textarea>
-    <input hidden name="id" class="m-send app-scroll" value="{{$book->id_account}}" >
-    <input hidden name="sp" class="m-send app-scroll" value="{{$book->book_title}}" >
+        <input hidden name="id" class="m-send app-scroll" value="{{$book->id_account}}" >
+       <input hidden name="anh" class="m-send app-scroll" value="{{$book->book_image}}" >
+        <input hidden name="sp" class="m-send app-scroll" value="{{$book->book_title}}" >
+        <input hidden name="gia" class="m-send app-scroll" value="{{ number_format($book->book_price,0,',','.') }} đ" >
+        {{-- <input  name="anh" type="file" class="m-send app-scroll" value="{{$book->book_image}}" > --}}
         <button ><span class="fas fa-paper-plane"></span>gửi</button>
     </form>
 </div>
+
+
+@endsection

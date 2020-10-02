@@ -8,7 +8,7 @@
         {{-- Header and search bar --}}
         <div class="m-header">
             <nav>
-                <a href="#"><i class="fas fa-inbox"></i> <span class="messenger-headTitle">MESSAGES</span> </a>
+                <a href="#"><i class="fas fa-inbox"></i> <span class="messenger-headTitle">TRÒ CHUYỆN</span> </a>
                 {{-- header buttons --}}
                 <nav class="m-header-right">
                     <a href="#"><i class="fas fa-cog settings-btn"></i></a>
@@ -20,9 +20,9 @@
             {{-- Tabs --}}
             <div class="messenger-listView-tabs">
                 <a href="#" @if($route == 'user') class="active-tab" @endif data-view="users">
-                    <span class="far fa-user"></span> People</a>
+                    <span class="far fa-user"></span> Bạn</a>
                 <a href="#" @if($route == 'group') class="active-tab" @endif data-view="groups">
-                    <span class="fas fa-users"></span> Groups</a>
+                    <span class="fas fa-users"></span> Nhóm</a>
             </div>
         </div>
         {{-- tabs and lists --}}
@@ -32,7 +32,7 @@
            <div class="@if($route == 'user') show @endif messenger-tab app-scroll" data-view="users">
 
                {{-- Favorites --}}
-               <p class="messenger-title">Favorites</p>
+               <p class="messenger-title">Bạn thân</p>
                 <div class="messenger-favorites app-scroll-thin"></div>
 
                {{-- Saved Messages --}}
@@ -46,15 +46,15 @@
            {{-- ---------------- [ Group Tab ] ---------------- --}}
            <div class="@if($route == 'group') show @endif messenger-tab app-scroll" data-view="groups">
                 {{-- items --}}
-                <p style="text-align: center;color:grey;">Soon will be available</p>
+                <p style="text-align: center;color:grey;">Chức năng sẽ sớm phát hành</p>
              </div>
 
              {{-- ---------------- [ Search Tab ] ---------------- --}}
            <div class="messenger-tab app-scroll" data-view="search">
                 {{-- items --}}
-                <p class="messenger-title">Search</p>
+                <p class="messenger-title">Tìm kiếm</p>
                 <div class="search-records">
-                    <p class="message-hint"><span>Type to search..</span></p>
+                    <p class="message-hint"><span>Nhập để tìm kiếm..</span></p>
                 </div>
              </div>
         </div>
@@ -91,14 +91,14 @@
         </div>
         {{-- Internet connection --}}
         <div class="internet-connection">
-            <span class="ic-connected">Connected</span>
-            <span class="ic-connecting">Connecting...</span>
-            <span class="ic-noInternet">No internet access</span>
+            <span class="ic-connected">Đã kết nối</span>
+            <span class="ic-connecting">Đang kết nối...</span>
+            <span class="ic-noInternet">Không có kết nối mạng</span>
         </div>
         {{-- Messaging area --}}
         <div class="m-body app-scroll">
             <div class="messages">
-                <p class="message-hint" style="margin-top: calc(30% - 126.2px);"><span>Please select a chat to start messaging</span></p>
+                <p class="message-hint" style="margin-top: calc(30% - 126.2px);"><span>Vui lòng chọn một cuộc trò chuyện để bắt đầu nhắn tin</span></p>
             </div>
             {{-- Typing indicator --}}
             <div class="typing-indicator">

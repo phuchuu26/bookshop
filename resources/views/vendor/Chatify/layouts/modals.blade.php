@@ -56,7 +56,7 @@
                          data-mode="{{ Auth::user()->dark_mode > 0 ? 1 : 0 }}"></span></p>
                       {{-- change messenger color  --}}
                       <p class="divider"></p>
-                      <p class="app-modal-header">Thay đổi {{ config('chatify.name') }} màu sắc</p>
+                      <p class="app-modal-header">Thay đổi chủ đề màu sắc trong {{ config('chatify.name') }}</p>
                       <div class="update-messengerColor">
                             <a href="javascript:void(0)" class="messengerColor-1"></a>
                             <a href="javascript:void(0)" class="messengerColor-2"></a>
@@ -71,9 +71,10 @@
                             <a href="javascript:void(0)" class="messengerColor-10"></a>
                       </div>
                   </div>
+
                   <div class="app-modal-footer">
-                      <a href="javascript:void(0)" class="app-btn cancel">Cancel</a>
-                      <input type="submit" class="app-btn a-btn-success update" value="Update" />
+                      <a href="javascript:void(0)" class="app-btn cancel">Hủy</a>
+                      <input type="submit" class="app-btn a-btn-success update" value="Cập nhật" />
                   </div>
               </form>
           </div>
