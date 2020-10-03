@@ -299,10 +299,17 @@
                                         </p>
                                         {{-- {{route('user',['id' =>$book->id_account ])}} --}}
                                         {{-- <a href=""> --}}
+                                            @if(Auth::check())
                                         <button  data-toggle="modal" data-target="#exampleModal1" type="button" class="btn btn-primary chat-facebook">
                                            <i class="fa fa-comments-o" aria-hidden="true"></i>
                                                 Chat ngay
                                             </button>
+                                            @else
+                                            <button  data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-primary chat-facebook">
+                                                <i class="fa fa-comments-o" aria-hidden="true"></i>
+                                                     Chat ngay
+                                                 </button>
+                                            @endif
 
                                         {{-- </a> --}}
                                         {{-- <button type="button" style="background-color:red" class="btn add-to-cart btn-style-2 color-2"
@@ -502,25 +509,7 @@
                                                         </button>
 
   <!-- Modal -->
-                                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                        <div class="modal-dialog " style="  font-size:20px;  padding-top: 100px;" role="document">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                            <h5 class="modal-title" style="  font-size:30px; "id="exampleModalLabel">Thông báo</h5>
-                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                <span aria-hidden="true">&times;</span>
-                                                                            </button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                            Bạn cần đăng nhập nếu muốn đánh giá
-                                                                            </div>
-                                                                            <div  class="modal-footer">
-                                                                            <button style="  font-size:12px;" type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                                                                            <button style=" color:white; font-size:12px;" type="button" class="btn btn-secondary"> <a style=" color:white;" href="{{route('p.login')}}"> Đăng nhập</a></button>
-                                                                            </div>
-                                                                        </div>
-                                                                        </div>
-                                                                    </div>
+
                                                                 @endif
 
 
@@ -861,11 +850,32 @@
              @endif
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn add-to-cart btn-style-2 color-1" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn add-to-cart btn-style-1 color-3">Send message</button>
+                <button type="button" class="btn add-to-cart btn-style-2 color-1" data-dismiss="modal">Hủy</button>
+                <button type="submit" class="btn add-to-cart btn-style-1 color-3">Gửi lời nhắn</button>
             </div>
         </form>
       </div>
     </div>
   </div>
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog " style="  font-size:20px;  padding-top: 100px;" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" style="  font-size:30px; "id="exampleModalLabel"><i class="fa fa-exclamation-circle" aria-hidden="true"></i>&nbsp&nbspThông báo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+        Bạn cần đăng nhập trước khi thực hiện tác vụ
+        </div>
+        <div  class="modal-footer">
+        <button style="  font-size:12px;" type="button" class="btn btn-secondary btn-style-1 color-3" data-dismiss="modal">Đóng</button>
+        <button style=" color:white; font-size:12px;" type="button" class="btn btn-info btn-style-1 color-3"> <a style=" color:white;" href="{{route('p.login')}}"> Đăng nhập</a></button>
+        </div>
+    </div>
+    </div>
+</div>
 @endsection
