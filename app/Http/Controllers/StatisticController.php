@@ -4,12 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\User;
+use App\Models\Messages;
 use Carbon\Carbon;
 use App\Models\Bill;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 Use Illuminate\Support\Facades\Auth;
+use Response;
 class StatisticController extends Controller
 {
+
+    public function countmess(){
+        $userCollection = User::where('id', Auth::user()->id)->get();
+        // dd($userCollection);
+        // die;
+        // Get user data
+        $count = Messages::where('to_id', Auth::user()->id)->where('seen',0)->count();
+        // dd($count);
+            // $count = 1;
+            // send the response
+            return Response::json([
+                'count' => $count,
+            ], 200);
+    }
 
     public function bill(){
         $chart_options = [

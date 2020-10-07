@@ -25,7 +25,7 @@
             @if(isset($guest_commenting) and $guest_commenting == true)
                 <div class="form-group">
                     <label for="message">Nhập tên của bạn:</label>
-                    <input type="text" class="form-control @if($errors->has('guest_name')) is-invalid @endif" name="guest_name" />
+                    <input required type="text" class="form-control @if($errors->has('guest_name')) is-invalid @endif" name="guest_name" />
                     @error('guest_name')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -34,7 +34,7 @@
                 </div>
                 <div class="form-group">
                     <label for="message">Nhập email của bạn:</label>
-                    <input type="email" class="form-control @if($errors->has('guest_email')) is-invalid @endif" name="guest_email" />
+                    <input required type="email" class="form-control @if($errors->has('guest_email')) is-invalid @endif" name="guest_email" />
                     @error('guest_email')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -45,7 +45,7 @@
 
             <div class="form-group">
                 <label for="message">Nhập bình luận vào đây:</label>
-                <textarea class="form-control @if($errors->has('message')) is-invalid @endif" name="message" rows="3"></textarea>
+                <textarea required class="form-control @if($errors->has('message')) is-invalid @endif" name="message" rows="3"></textarea>
                 <div class="invalid-feedback">
                     Your message is required.
                 </div>

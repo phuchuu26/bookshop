@@ -498,7 +498,7 @@ channel.bind('client-typing', function (data) {
 channel.bind('client-seen', function (data) {
     if (data.from_id == messenger.split('_')[1] && data.to_id == auth_id) {
         if (data.seen == true) {
-            $('.message-time').find('.fa-check').before('<span class="fas fa-check-double seen"></span> ');
+            $('.message-time').find('.fa-check').before('<span class="fas fa-check-double seen"></span>&nbsp;Đã xem');
             $('.message-time').find('.fa-check').remove();
             console.info('[seen] triggered!');
         } else {

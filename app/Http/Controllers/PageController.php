@@ -18,6 +18,7 @@ use App\User;
 class PageController extends Controller
 {
     public function home(){
+
         $books = DB::table('book')
         ->orderBy('id', 'DESC')
         ->get();
@@ -104,12 +105,13 @@ class PageController extends Controller
         ->join('book as b','db.id_book','b.id')
         ->join('sub_category as sc','b.id_subcategory','sc.id')
         ->join('category as c','sc.id_category','c.id')
-        ->select(DB::raw('sum(db.qty) as dem'), 'b.book_title','c.id','b.book_price','b.book_sale','b.book_image')
+        ->select(DB::raw('sum(db.qty) as dem'), 'b.book_title','c.id','b.book_price','b.book_tbc','b.book_sale','b.book_image')
         ->wherenotin('c.id',[49,41,5])
-        ->groupby('b.book_title','c.id','b.book_price','b.book_sale','b.book_image')
+        ->groupby('b.book_title','c.id','b.book_price','b.book_sale','b.book_image','b.book_tbc')
         ->orderby('dem','DESC')
         ->get();
 
+        // dd($loai0s);
         // dd($loai0s);
         // lấy modal:
         // $modal = book::all();

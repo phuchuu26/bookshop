@@ -270,7 +270,7 @@
 
                                 <p class="single-product__short-desc"></p>
                                     <p class="product-availability"><i class="fa fa-check-circle"></i>Còn {{$book->book_amount}} cuốn</p>
-
+                                  @if(Auth::user()->id != $book->id_account)
                                     <div class="product-action-wrapper">
                                         <div class="quantity">
                                             <input type="number" class="quantity-input" name="qty" id="qty1" value="1" min="1">
@@ -279,6 +279,7 @@
                                             Giỏ hàng
                                         </a>
                                     </div>
+                                    @endif
                                     <div class="single-product__btn">
                                         <a href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a>
                                         <a href="compare.html" data-toggle="tooltip" data-placement="top" title="Add to Compare"><i class="fa fa-refresh"></i> Add to Compare</a>
@@ -521,7 +522,7 @@
                                     </form>
                                     </div>
                                 </div>
-                                <div class="tab-pane" role="tabpanel" id="nav-review" aria-labelledby="nav-review-tab">
+                                <div     style="font-size: 17px;" class="tab-pane" role="tabpanel" id="nav-review" aria-labelledby="nav-review-tab">
 
                                     <div class="product-review-wrap">
 

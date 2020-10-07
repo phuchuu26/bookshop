@@ -146,7 +146,7 @@ img.secondary-image{
                                                         <div class="product-box__content">
                                                             <h3 class="product-box__title"><a href="single-product.html">{{$loai->book_title}}</a></h3>
                                                             <div class="ratings">
-                                                                @if($loai->book_tbc)
+                                                                @if($loai->book_tbc != null)
                                                                 @if($loai->book_tbc<1.5)
                                                                 <i class="fa fa-star rated"></i>
                                                                 <i class="fa fa-star"></i>
@@ -215,7 +215,7 @@ img.secondary-image{
                                                         <div class="product-box__content">
                                                             <h3 class="product-box__title"><a href="single-product.html">{{$loai->book_title}}</a></h3>
                                                             <div class="ratings">
-                                                                @if($loai->book_tbc)
+                                                                @if($loai->book_tbc != null)
                                                                 @if($loai->book_tbc<1.5)
                                                                 <i class="fa fa-star rated"></i>
                                                                 <i class="fa fa-star"></i>
@@ -284,7 +284,7 @@ img.secondary-image{
                                                         <div class="product-box__content">
                                                             <h3 class="product-box__title"><a href="single-product.html">{{$loai->book_title}}</a></h3>
                                                             <div class="ratings">
-                                                                @if($loai->book_tbc)
+                                                                @if($loai->book_tbc != null)
                                                                 @if($loai->book_tbc<1.5)
                                                                 <i class="fa fa-star rated"></i>
                                                                 <i class="fa fa-star"></i>
@@ -353,7 +353,7 @@ img.secondary-image{
                                                         <div class="product-box__content">
                                                             <h3 class="product-box__title"><a href="single-product.html">{{$loai->book_title}}</a></h3>
                                                             <div class="ratings">
-                                                                @if($loai->book_tbc)
+                                                                @if($loai->book_tbc != null)
                                                                 @if($loai->book_tbc<1.5)
                                                                 <i class="fa fa-star rated"></i>
                                                                 <i class="fa fa-star"></i>
@@ -454,7 +454,7 @@ img.secondary-image{
                                                                 <div class="product-box__content">
                                                                 <h3 class="product-box__title"><a href="{{route('b.detail',[$odd->id])}}">{{$odd->book_title}}</a></h3>
                                                                     <div class="ratings">
-                                                                        @if($odd->book_tbc)
+                                                                        @if($odd->book_tbc != null)
                                                                         @if($odd->book_tbc<1.5)
                                                                         <i class="fa fa-star rated"></i>
                                                                         <i class="fa fa-star"></i>
@@ -549,7 +549,7 @@ img.secondary-image{
                                                                 <div class="product-box__content">
                                                                 <h3 class="product-box__title"><a href="{{route('b.detail',[$even->id])}}">{{$even->book_title}}</a></h3>
                                                                     <div class="ratings">
-                                                                        @if($even->book_tbc)
+                                                                        @if($even->book_tbc != null)
                                                                         @if($even->book_tbc<1.5)
                                                                         <i class="fa fa-star rated"></i>
                                                                         <i class="fa fa-star"></i>
@@ -664,7 +664,7 @@ img.secondary-image{
                                                         <div class="product-box__content">
                                                         <h3 class="product-box__title"><a href="{{route('b.detail',[$giam->id])}}">{{$giam->book_title}}</a></h3>
                                                         <div class="ratings">
-                                                            @if($giam->book_tbc)
+                                                            @if($giam->book_tbc != null)
                                                                     @if($giam->book_tbc<1.5)
                                                                     <i class="fa fa-star rated"></i>
                                                                     <i class="fa fa-star"></i>
@@ -900,7 +900,7 @@ img.secondary-image{
                                                         <div class="product-box__content">
                                                         <h3 class="product-box__title"><a href="{{route('b.detail',[$g->id])}}">{{$g->book_title}}</a></h3>
                                                             <div class="ratings">
-                                                                @if($g->book_tbc)
+                                                                @if($g->book_tbc != null)
                                                                     @if($g->book_tbc<1.5)
                                                                     <i class="fa fa-star rated"></i>
                                                                     <i class="fa fa-star"></i>

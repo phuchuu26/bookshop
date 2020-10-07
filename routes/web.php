@@ -154,6 +154,7 @@ Route::group(['prefix' => 'statistic','middleware'=>'CheckAdmin'],function(){
 
 
 });
+Route::get('/COUNTMESS','StatisticController@countmess')->name('countmess');
 //phan thong ke thanh vien
 Route::group(['prefix'=>'statistic','middleware'=>'CheckCustomer'],function(){
     //don hang

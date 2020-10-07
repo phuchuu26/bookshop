@@ -39,6 +39,10 @@
                                     <i class="fa fa-list-alt"></i>
                                     Đơn hàng
                                 </a>
+                                <a class="nav-link"  role="tab" href="{{route(config('chatify.path'))}}" aria-selected="true">
+                                    <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                                    Trò chuyện
+                                </a>
 
                                 {{-- <a class="nav-link" data-toggle="pill" role="tab" href="#downloads" aria-controls="downloads" aria-selected="true">Downloads</a> --}}
 

@@ -31,8 +31,9 @@
     <div class="message-card mc-sender" data-id="{{ $id }}">
         <p>{!! ($message == null && $attachment != null && @$attachment[2] != 'file') ? $attachment[1] : nl2br($message) !!}
             <sub title="{{ $fullTime }}" class="message-time">
-                <span class="fas fa-{{ $seen > 0 ? 'check-double' : 'check' }} seen"></span> {{ $time }}</sub>
+                <span class="fas fa-{{ $seen > 0 ? 'check-double' : 'check' }} seen"></span>&nbsp;{{$seen > 0 ? 'Đã xem':'' }} &nbsp; {{ $time }}</sub>
                 {{-- If attachment is a file --}}
+
             @if(@$attachment[2] == 'file')
             <a href="{{ route(config('chatify.attachments.route'),['fileName'=>$attachment[0]]) }}" class="file-download">
                 <span class="fas fa-file"></span> {{$attachment[1]}}</a>

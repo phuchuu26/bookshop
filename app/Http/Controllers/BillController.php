@@ -34,8 +34,10 @@ class BillController extends Controller
         {
             session(['cost_id' => $request->id]);
             session(['url_prev' => url()->previous()]);
-            $vnp_TmnCode = "VVULVOU2"; //Mã website tại VNPAY
-            $vnp_HashSecret = "SBKILOMMRSKUSLHMVFYFATIDBLYKYDAU"; //Chuỗi bí mật
+            // $vnp_TmnCode = "VVULVOU2"; //Mã website tại VNPAY
+            $vnp_TmnCode = "Z8Q4A4YI"; //Mã website tại VNPAY
+            $vnp_HashSecret = "FUREHUTBLZNZUFHKOGNOXWPIVNWNCNCZ"; //Chuỗi bí mật
+            // $vnp_HashSecret = "SBKILOMMRSKUSLHMVFYFATIDBLYKYDAU"; //Chuỗi bí mật
             $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
             $vnp_Returnurl = route('d.bill',['id' => $bill->id]);
             $vnp_TxnRef = date("YmdHis"); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY

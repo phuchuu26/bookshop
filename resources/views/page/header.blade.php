@@ -1,4 +1,6 @@
-
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
 <div class="wrapper bg--zircon-light color-scheme-3">
 <!-- Header Area Start Here -->
     <header class="header header-3">
@@ -84,7 +86,9 @@
 
                         @endif
                             <!-- Header Cart Start -->
-                            <div class="mini-cart mini-cart--3">
+                            <div style="    border-right: 1px solid #e5e5e5;
+                            margin-right: 2rem;
+                            padding-right: 12px;" class="mini-cart mini-cart--3">
                                 <a class="mini-cart__dropdown-toggle" id="cartDropdown">
                                     <i class="fa fa-shopping-bag mini-cart__icon"></i>
                                     <sub class="mini-cart__count">{{Cart::count()}}</sub>
@@ -129,6 +133,17 @@
                                     </div>
                                 @endif
                             </div>
+                            {{-- <div style="border-right: 1px solid #e5e5e5;margin-right: 2rem;
+                            padding-right: 2rem;" class="gach"></div> --}}
+
+                            @if(Auth::check())
+                            <div class="mini-cart mini-cart--3">
+                            <a class="mini-cart__dropdown-toggle" href="{{route(config('chatify.path'))}}" >
+                                    <i style="color: white;font-size: 30px;" class="fa fa-commenting-o" aria-hidden="true"></i>
+                                    <sub id="getcount" class="mini-cart__count"></sub>
+                                </a>
+                            </div>
+                            @endif
                             <!-- Header Cart End -->
                         </div>
                     </div>
@@ -387,3 +402,16 @@
         <!-- Sticky Header End -->
     </header>
     <!-- Header Area End Here -->
+
+        <script>
+            $(document).ready(function(){
+                console.log('hihi');
+  $.ajax({
+    // type: "POST",
+    url: "{{route('countmess')}}",
+     success: function(result){
+         console.log(result);
+    $("#getcount").html(result.count);
+  }});
+});
+        </script>
