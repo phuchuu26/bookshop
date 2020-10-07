@@ -19,6 +19,7 @@
         "laraveldaily/laravel-charts": "^0.1.20",
         "laravelista/comments": "^3.6",
         "munafio/chatify": "^1.0",
+        "pusher/pusher-php-server": "3.4",
         "rackspace/php-opencloud": "dev-master"
     },
     "require-dev": {

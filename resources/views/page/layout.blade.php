@@ -30,7 +30,7 @@
     <!-- modernizr JS
     ============================================ -->
     <script src="{{asset('public/page/js/modernizr-2.8.3.min.js')}}" ></script>
-
+    <script src="https://js.pusher.com/3.1/pusher.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" />
 
 
@@ -85,7 +85,8 @@
     <!-- ************************* JS Files ************************* -->
 
     <!-- jQuery JS -->
-
+      {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
+    <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
     <script src="{{asset('public/page/js/jquery.min.js')}}"></script>
 
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> --}}
@@ -103,7 +104,20 @@
     <script src="{{asset('public/page/js/main.js')}}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" type="text/javascript"></script>
+{{-- <script>
+    Pusher.logToConsole = true;
+  var pusher = new Pusher("5f9437b8677edc9e4714", {
+    encrypted: true,
+    cluster: "ap1",
+    authEndpoint: 'http://bookshop.com/chatify/chat/auth',
+    auth: {
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    }
+  });
 
+</script> --}}
 
 </body>
 

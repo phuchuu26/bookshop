@@ -154,6 +154,13 @@ Route::group(['prefix' => 'statistic','middleware'=>'CheckAdmin'],function(){
 
 
 });
+// Route::get('/pusher', function() {
+    //     event(new App\Events\HelloPusherEvent('Hi there Pusher!'));
+    //     return "da thuc thi nha";
+    // });
+
+    // Route::get('/test','StatisticController@countmess')->name('getcount');
+    Route::get('/test','StatisticController@countmess1')->name('getcount');
 Route::get('/COUNTMESS','StatisticController@countmess')->name('countmess');
 //phan thong ke thanh vien
 Route::group(['prefix'=>'statistic','middleware'=>'CheckCustomer'],function(){

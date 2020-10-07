@@ -11,6 +11,8 @@ use App\Models\Bill;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 Use Illuminate\Support\Facades\Auth;
 use Response;
+use App\Events\HelloPusherEvent;
+// use App\Events\HelloPusherEvent;
 class StatisticController extends Controller
 {
 
@@ -20,12 +22,27 @@ class StatisticController extends Controller
         // die;
         // Get user data
         $count = Messages::where('to_id', Auth::user()->id)->where('seen',0)->count();
+
         // dd($count);
             // $count = 1;
             // send the response
             return Response::json([
                 'count' => $count,
             ], 200);
+    }
+        public function countmess1(Request $request){
+        $userCollection = User::where('id', Auth::user()->id)->get();
+        // dd($userCollection);
+        // die;
+        // Get user data
+        $count = Messages::where('to_id', Auth::user()->id)->where('seen',0)->count();
+        // dd($count);
+            // $count = 1;
+            // send the response
+            // $message = $request->query->get('message', 'Hey guysa!');
+            $message = 1;
+            event(new HelloPusherEvent($message));
+            return "Message \" $message \" has been sent.";
     }
 
     public function bill(){

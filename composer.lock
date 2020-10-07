@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5394c28cdefc568f8e1f5220e7136cd0",
+    "content-hash": "10760f709df3c3620f89235eacaa2194",
     "packages": [
         {
             "name": "brian2694/laravel-toastr",
@@ -2015,22 +2015,22 @@
         },
         {
             "name": "pusher/pusher-php-server",
-            "version": "v3.4.1",
+            "version": "v3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pusher/pusher-http-php.git",
-                "reference": "a5fcdc65efd8d9a8291efbe01d326ec7ef5d5cee"
+                "reference": "9093be6934e2e5129bd66322fc28d8b65794e58c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/a5fcdc65efd8d9a8291efbe01d326ec7ef5d5cee",
-                "reference": "a5fcdc65efd8d9a8291efbe01d326ec7ef5d5cee",
+                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/9093be6934e2e5129bd66322fc28d8b65794e58c",
+                "reference": "9093be6934e2e5129bd66322fc28d8b65794e58c",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
                 "paragonie/sodium_compat": "^1.6",
-                "php": ">=5.4 <7.4",
+                "php": ">=5.4 <7.3",
                 "psr/log": "^1.0"
             },
             "require-dev": {
@@ -2039,7 +2039,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.4-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
@@ -2065,7 +2065,7 @@
                 "rest",
                 "trigger"
             ],
-            "time": "2019-03-19T11:19:11+00:00"
+            "time": "2019-03-13T17:36:04+00:00"
         },
         {
             "name": "rackspace/php-opencloud",

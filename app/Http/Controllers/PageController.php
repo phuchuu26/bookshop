@@ -313,4 +313,7 @@ class PageController extends Controller
         return view('page.book.category',['book' => $book, 'book2' => $book2 , 'theloai' => $theloai]);
       }
 
+    // public function getcount(){
+
+    // }
 }

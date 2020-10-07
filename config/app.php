@@ -161,21 +161,21 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-       
+
 
         /*
          * Package Service Providers...
          */
         CyrildeWit\EloquentViewable\EloquentViewableServiceProvider::class,
         Brian2694\Toastr\ToastrServiceProvider::class,
-        
+
 
         /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
@@ -194,7 +194,7 @@ return [
     */
 
     'aliases' => [
-
+        'Pusher' => Pusher\Pusher::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
@@ -233,7 +233,7 @@ return [
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'Input' => Illuminate\Support\Facades\Input::class,
         'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
-        
+
 
     ],
 

@@ -1,6 +1,4 @@
-<head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    </head>
+
 <div class="wrapper bg--zircon-light color-scheme-3">
 <!-- Header Area Start Here -->
     <header class="header header-3">
@@ -399,19 +397,59 @@
                 </div>
             </div>
         </div>
+        <ul id="messages" class="list-group">phuc</ul>
         <!-- Sticky Header End -->
     </header>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
     <!-- Header Area End Here -->
 
         <script>
             $(document).ready(function(){
-                console.log('hihi');
-  $.ajax({
-    // type: "POST",
-    url: "{{route('countmess')}}",
-     success: function(result){
-         console.log(result);
-    $("#getcount").html(result.count);
-  }});
-});
-        </script>
+                //   $.ajax({
+                    //     // type: "POST",
+                    //     url: "{{route('countmess')}}",
+                    //      success: function(result){
+                        //          console.log(result);
+                        //     $("#getcount").html(result.count);
+                        //   }});
+
+
+                        // var pusher = new Pusher('5f9437b8677edc9e4714', {
+                        //     cluster: 'ap1',
+                        //     encrypted: true
+                        // });
+                        Pusher.logToConsole = true;
+                        var pusher = new Pusher("5f9437b8677edc9e4714", {
+                            // encrypted: true,
+                            cluster: "ap1",
+
+                            // authEndpoint: 'http://bookshop.com/chatify/chat/auth',
+                            // auth: {
+                            //     headers: {
+                            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            //     }
+                            // }
+                        });
+                        //Subscribe to the channel we specified in our Laravel Event
+                        var channel = pusher.subscribe('phuc');
+                        //Bind a function to a Event (the full Laravel class)
+                        // channel.bind('App\\Events\\HelloPusherEvent', addMessage);
+                        // D:\LUAN VAN\bookshop\app\Events\HelloPusherEvent.php
+                        channel.bind('App\\Events\\HelloPusherEvent', addMessageDemo);
+                        console.log('chay  dc ');
+
+                        function addMessageDemo(data) {
+                            console.log(data);
+                            console.log('chay  dc 1');
+                            var liTag = $("<li class='list-group-item'></li>");
+                            console.log(data.message)
+                            liTag.html(data.message);
+                            $('#messages').append(liTag);
+                        }
+
+
+                    });
+                    </script>
+
