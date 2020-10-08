@@ -403,7 +403,7 @@
     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
     <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
     <!-- Header Area End Here -->
-
+@if(Auth::check())
         <script>
             $(document).ready( function(){
                 var number=0;
@@ -458,9 +458,7 @@
                          console.log(number);
                          }, 1000);
 
-
-
-
                     });
                     </script>
 
+@endif

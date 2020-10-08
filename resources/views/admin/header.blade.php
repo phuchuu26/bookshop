@@ -1,5 +1,43 @@
 <!-- Page Loader -->
-	    <div class="page-loader-wrapper">
+<head>
+    <style>
+        ul.nav.navbar-nav {
+    font-size: 25px;
+    margin-top: -6px!important;
+
+}
+i.fa.fa-commenting {
+    position: absolute;
+    /* top: 13px;
+    left: 7px; */
+}
+i.fa.fa-commenting {
+    top: 7px;
+    right: 3px;
+}
+
+.so {
+    padding-left: 7px;
+    width: 20px!important;
+    color: #e74c3c;
+    /* opacity: 0.9; */
+    /* padding-bottom: -13px; */
+    position: absolute;
+    top: 22px;
+    right: -1px;
+
+    background-color: darkturquoise;
+    border-radius: 50px;
+    font-size: 15px;
+    max-height: 20px;
+    max-width: -3px;
+    width: 17px;
+    padding-left: 5px;
+
+}
+    </style>
+</head>
+<div class="page-loader-wrapper">
 	            <div class="loader">
 	                <div class="bar1"></div>
 	                <div class="bar2"></div>
@@ -237,6 +275,18 @@
                             <li><a href="{{route('act.home')}}" class="icon-menu" title="Quay về trang khách hàng"><i class="fa fa-home" aria-hidden="true"></i></a></li>
 	                            <li><a href="javascript:void(0);" class="search_toggle icon-menu" title="Search Result"><i class="icon-magnifier"></i></a></li>
 	                            {{-- <li><a href="javascript:void(0);" class="right_toggle icon-menu" title="Right Menu"><i class="icon-bubbles"></i><span class="notification-dot bg-pink">2</span></a></li> --}}
+                                <li><a style="margin-right:0px;" href="{{route(config('chatify.path'))}}"  class="icon-menu">
+                                    <i class="fa fa-commenting" style="margin-bottom: -19px;" aria-hidden="true">
+                                    </i>
+                                    {{-- fa fa-commenting --}}
+                                        <div class="so">
+
+
+                                        </div>
+
+                            </a>
+
+                            </li>
 	                            <li><a style="margin-right:0px;" href="{{route('p.logout')}}"  class="icon-menu"><i class="icon-power"></i></a></li>
 	                        </ul>
 	                    </div>
@@ -686,3 +736,67 @@
              @include('admin.includes.sidebar')
             </div>
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
+        <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+
+
+        @if(Auth::check())
+        <script>
+            $(document).ready( function(){
+                var number=0;
+                  $.ajax({
+                        // type: "POST",
+                        url: "{{route('countmess')}}",
+                         success: function(result){
+                                 console.log(result.count);
+                                 number = result.count;
+                            // $("#getcount").html(result.count);
+                            console.log(number);
+                          }});
+
+                        // var pusher = new Pusher('5f9437b8677edc9e4714', {
+                        //     cluster: 'ap1',
+                        //     encrypted: true
+                        // });
+                        Pusher.logToConsole = true;
+                        var pusher = new Pusher("5f9437b8677edc9e4714", {
+                            // encrypted: true,
+                            cluster: "ap1",
+
+                            // authEndpoint: 'http://bookshop.com/chatify/chat/auth',
+                            // auth: {
+                            //     headers: {
+                            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            //     }
+                            // }
+                        });
+
+
+                        //Subscribe to the channel we specified in our Laravel Event
+                        var channel = pusher.subscribe('phuc.'+ {{Auth::user()->id}});
+                        console.log(channel);
+                        //Bind a function to a Event (the full Laravel class)
+                        // channel.bind('App\\Events\\HelloPusherEvent', addMessage);
+                        // D:\LUAN VAN\bookshop\app\Events\HelloPusherEvent.php
+                        channel.bind('App\\Events\\HelloPusherEvent', addMessageDemo);
+                        console.log('chay  dc ');
+
+                        function addMessageDemo(data) {
+                            console.log(data);
+                            console.log('chay  dc 1');
+                            // var liTag = $("<li class='list-group-item'></li>");
+                            console.log(data.message)
+                            number = data.message;
+                            // liTag.html(data.message);
+                            $('.so').html(number);
+                        }
+                        setTimeout(function(){
+                             $('.so').html(number);
+                         console.log(number);
+                         }, 300);
+
+                    });
+                    </script>
+
+@endif
