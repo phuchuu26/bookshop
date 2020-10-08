@@ -30,19 +30,20 @@ class StatisticController extends Controller
                 'count' => $count,
             ], 200);
     }
-        public function countmess1(Request $request){
-        $userCollection = User::where('id', Auth::user()->id)->get();
+        public function countmess1($id){
+        $userCollection = User::where('id', $id)->get();
         // dd($userCollection);
         // die;
         // Get user data
-        $count = Messages::where('to_id', Auth::user()->id)->where('seen',0)->count();
+        $count = Messages::where('to_id', $id)->where('seen',0)->count();
+        $count += 1;
         // dd($count);
             // $count = 1;
             // send the response
             // $message = $request->query->get('message', 'Hey guysa!');
-            $message = 1;
-            event(new HelloPusherEvent($message));
-            return "Message \" $message \" has been sent.";
+            // $message = 1;
+            event(new HelloPusherEvent($count,$id));
+            return "Message \" $count \" has been sent.";
     }
 
     public function bill(){

@@ -160,7 +160,7 @@ Route::group(['prefix' => 'statistic','middleware'=>'CheckAdmin'],function(){
     // });
 
     // Route::get('/test','StatisticController@countmess')->name('getcount');
-    Route::get('/test','StatisticController@countmess1')->name('getcount');
+    Route::get('/test/{id}','StatisticController@countmess1')->name('getcount');
 Route::get('/COUNTMESS','StatisticController@countmess')->name('countmess');
 //phan thong ke thanh vien
 Route::group(['prefix'=>'statistic','middleware'=>'CheckCustomer'],function(){

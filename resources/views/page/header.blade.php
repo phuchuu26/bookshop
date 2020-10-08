@@ -397,7 +397,6 @@
                 </div>
             </div>
         </div>
-        <ul id="messages" class="list-group">phuc</ul>
         <!-- Sticky Header End -->
     </header>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -406,15 +405,17 @@
     <!-- Header Area End Here -->
 
         <script>
-            $(document).ready(function(){
-                //   $.ajax({
-                    //     // type: "POST",
-                    //     url: "{{route('countmess')}}",
-                    //      success: function(result){
-                        //          console.log(result);
-                        //     $("#getcount").html(result.count);
-                        //   }});
-
+            $(document).ready( function(){
+                var number=0;
+                  $.ajax({
+                        // type: "POST",
+                        url: "{{route('countmess')}}",
+                         success: function(result){
+                                 console.log(result.count);
+                                 number = result.count;
+                            // $("#getcount").html(result.count);
+                            console.log(number);
+                          }});
 
                         // var pusher = new Pusher('5f9437b8677edc9e4714', {
                         //     cluster: 'ap1',
@@ -432,8 +433,11 @@
                             //     }
                             // }
                         });
+
+
                         //Subscribe to the channel we specified in our Laravel Event
-                        var channel = pusher.subscribe('phuc');
+                        var channel = pusher.subscribe('phuc.'+ {{Auth::user()->id}});
+                        console.log(channel);
                         //Bind a function to a Event (the full Laravel class)
                         // channel.bind('App\\Events\\HelloPusherEvent', addMessage);
                         // D:\LUAN VAN\bookshop\app\Events\HelloPusherEvent.php
@@ -443,11 +447,18 @@
                         function addMessageDemo(data) {
                             console.log(data);
                             console.log('chay  dc 1');
-                            var liTag = $("<li class='list-group-item'></li>");
+                            // var liTag = $("<li class='list-group-item'></li>");
                             console.log(data.message)
-                            liTag.html(data.message);
-                            $('#messages').append(liTag);
+                            number = data.message;
+                            // liTag.html(data.message);
+                            $('#getcount').html(number);
                         }
+                        setTimeout(function(){
+                             $('#getcount').html(number);
+                         console.log(number);
+                         }, 1000);
+
+
 
 
                     });
