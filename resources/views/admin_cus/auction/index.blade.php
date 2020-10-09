@@ -1,7 +1,224 @@
 @extends('admin.layout')
 @section('title','Thêm sách')
 <head>
-    <style>
+
+        <style>
+            label.container1 {
+    margin-bottom: 3px;
+    margin-top: 7px;
+}
+            label.container1 {
+    margin-right: 60px;
+}
+.container1 {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  /* margin-bottom: 12px; */
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container1 input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container1:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container1 input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container1 input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container1 .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+            /* ////////////////// */
+            input#myRange {
+    margin-top: 10px;
+}
+         input#myRange1 {
+    margin-top: 10px;
+}
+            .loaithoigian {
+    margin-top: -5px;
+}
+            .slidecontainer {
+    margin-left: 220px;
+    width: 562px;
+}
+            input#myRange {
+    width: 500px;
+}         input#myRange1 {
+    width: 500px;
+}
+            .sliderange {
+                margin-left: 229px;
+                margin-right: 228px;
+    width: 540px;
+}
+            .loaithoigian {
+    margin-bottom: -18px;
+}
+            .sliderange {
+                margin-top: -40px;
+    /* width: 321px; */
+    float: right;
+}
+.loaithoigian {
+    /* width: 119px; */
+    max-width: 117px;
+    margin-left: 10px;
+}
+.cahai {
+    width: 654px;
+}
+            label.container {
+    padding-left: 39px;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  /* margin-bottom: 12px; */
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+
+/* range */
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  width: 220px;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+
         .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
     min-height: 120px;
 }
@@ -216,7 +433,16 @@ button#anhbia {
                                 {{-- Hàng 3 --}}
                                     {{-- Tác giả --}}
                                 <div class="row">
-                                    <div class="input-group mb-3 col-md-8">
+                                    <div class="input-group mb-3 col-md-6">
+
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Tên sách</label>
+                                        </div>
+                                        <input type="text" name="bookname" value="{{old('bookname')}}" class="form-control" required>
+
+                                        </div>
+                                    <div class="input-group mb-3 col-md-6">
+
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" for="inputGroupSelect01">Tác giả</label>
                                         </div>
@@ -229,8 +455,13 @@ button#anhbia {
 
                                         </select>
                                     </div>
-
-                                    <div class="input-group mb-3 col-md-4">
+                                    <div class="input-group mb-3 col-md-6">
+                                        <a href="#" style="margin-top: 10px;">
+                                            <i class="fa fa-plus"></i>
+                                            Thêm sách
+                                        </a>
+                                    </div>
+                                    <div class="input-group mb-3 col-md-6">
                                         <a href="#" style="margin-top: 10px;">
                                             <i class="fa fa-plus"></i>
                                             Thêm tác giả
@@ -239,34 +470,18 @@ button#anhbia {
 
                                 </div>
 
-
                                 {{-- //////////////////////////////////////////////////////////// --}}
 
                                  <div class="row ">
-                                    <div class="input-group mb-3 col-md-7">
 
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">Tên sách</label>
-                                    </div>
-
-                                <input type="text" name="bookname" value="{{old('bookname')}}" class="form-control" required>
-                                    </div>
-                                    <div class="input-group mb-3 col-md-5">
+                                    <div class="input-group mb-3 col-md-4">
                                         <div class="input-group-prepend">
                                             <label class="input-group-text" for="inputGroupSelect01">Số lượng sách</label>
                                         </div>
 
                                         <input type="number" value="{{old('amount')}}" name="amount" class="form-control" required>
                                     </div>
-                                </div>
 
-                                        {{-- Hàng 4 --}}
-
-
-
-                                        {{-- Hàng 5  --}}
-
-                                <div class="row">
 
                                     <div class="input-group mb-3 col-md-4">
 
@@ -287,6 +502,17 @@ button#anhbia {
                                         <input type="number" value="{{old('numberpage')}}" name="numberpage" class="form-control" required>
 
                                     </div>
+                                </div>
+
+                                        {{-- Hàng 4 --}}
+
+
+
+                                        {{-- Hàng 5  --}}
+
+                                <div class="row">
+
+
                                     <div class="input-group mb-3 col-md-4">
 
                                         <div class="input-group-prepend">
@@ -296,37 +522,97 @@ button#anhbia {
                                         <input id="input" type="text" value="{{old('reserve_price')}}" name="reserve_price" class="form-control" required>
 
                                     </div>
-
-
-                                        {{--  --}}
-                                </div>
-
-                                                    {{--  --}}
-                                <div class="row">
-                                    <div class="input-group mb-3 col-md-8">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="inputGroupSelect01">Thời gian đấu giá mong muốn</label>
-                                            </div>
-                                            <select   name="time" class="custom-select" id="inputGroupSelect03">
-                                                <option   selected>Chọn định dạng thời gian</option>
-                                                <option value="Ngày" {{old('time') == 'Ngày' ? 'selected':''}}>Ngày</option>
-                                              <option value="Giờ" {{old('time') == 'Giờ'? 'selected':''}}>Giờ</option>
-                                              <option value="Phút" {{old('time') =='Phút' ? 'selected':''}}>Phút</option>
-                                            </select>
-                                            <input value="{{old('value_time')}}" style="height:38px;" name="value_time" type="number" name="weight" class="form-control a" required>
-                                          </div>
-                                    </div>
-
                                     <div class="input-group mb-3 col-md-4">
 
                                         <div class="input-group-prepend">
-                                            <label style="height:38px;" class="input-group-text" for="inputGroupSelect01">Khối lượng</label>
+                                            <label  class="input-group-text" for="inputGroupSelect01">Khối lượng</label>
                                         </div>
 
-                                        <input   value="{{old('weight')}}" style="height:38px;" type="text" name="weight" class="form-control" required>
+                                        <input   value="{{old('weight')}}" type="text" name="weight" class="form-control" required>
+
 
                                     </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="input-group mb-3 col-md-2">
+
+                                        <div   class="input-group-prepend">
+                                            <label  class="input-group-text" data-toggle="tooltip" data-placement="top" title="Giành cho thành viên VIP" for="inputGroupSelect01">Khung giờ vàng</label>
+                                        </div>
+
+                                        {{-- <input   value="{{old('weight')}}" type="text" name="weight" class="form-control" required> --}}
+
+
+                                    </div>
+                                    <div class="input-group mb-3 col-md-10">
+                                        <label class="container1">7h - 9h
+                                            <input type="checkbox" checked="checked">
+                                            <span class="checkmark"></span>
+                                          </label>
+                                          <label class="container1">12h - 14h
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                          </label>
+                                          <label class="container1">19h - 22h
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                          </label>
+
+
+                                    </div>
+                                    {{--  --}}
+                                </div>
+
+                                    {{--  --}}
+                                    <div id="time" class="row">
+                                    <div class="input-group mb-3 col-md-12">
+                                        <div class="input-group mb-12">
+                                            <div class="input-group-prepend">
+                                                <label id="a1" class="input-group-text" for="inputGroupSelect01">Thời gian đấu giá mong muốn</label>
+                                            </div>
+                                            {{-- <select   name="time" class="custom-select" id="inputGroupSelect03">
+                                                <option   selected>Chọn định dạng thời gian</option>
+
+                                              <option value="Giờ" {{old('time') == 'Giờ'? 'selected':''}}>Giờ</option>
+                                              <option value="Phút" {{old('time') =='Phút' ? 'selected':''}}>Phút</option>
+                                            </select> --}}
+                                            {{-- <input value="{{old('value_time')}}" style="height:38px;" name="value_time" type="number" name="weight" class="form-control a" required> --}}
+                                            <div style="display:inline-block;" class="cahai">
+
+                                                <div class="loaithoigian">
+
+                                                    <label class="container">Giờ
+                                                        <input type="radio" value="0"  checked="checked" id="a" name="loaithoigian">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <label class="container">Phút
+                                                    <input type="radio" value="1" name="loaithoigian">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            <div class="sliderange">
+
+                                                <div class="slidecontainer">
+
+                                                    <input type="range" min="0.5" step="0.5" max="24" value="1" class="slider" id="myRange">
+                                                    <span id = "demo">  </span>
+                                                </div>
+                                                <div class="slidecontainer">
+
+                                                    <input type="range" min="30" max="60" value="50" class="slider" id="myRange1">
+                                                    <span id = "demo1"> </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+
+
                                 </div>
 
                                 <div class="form-group">
@@ -516,6 +802,8 @@ function formatCurrency(number){
 </script>
 <script type="text/javascript">
     $(document).ready(function(){
+        $("#myRange1").hide();
+    $("#demo1").hide();
         // alert('chạy được');
         //kiểm tra xem coi nó chạy không
         $("#danhmuc").change(function(){
@@ -534,10 +822,54 @@ function formatCurrency(number){
 
             });
         });
+
+        $('input:radio').click(function() {
+    if ($(this).val() === '0') {
+      an1();
+    } else if ($(this).val() === '1') {
+      an0();
+    }
+  });
+
+  function an1(){
+    $("#myRange1").hide();
+    $("#demo1").hide();
+
+    $("#myRange").show();
+    $("#demo").show();
+  }
+  function an0(){
+    $("#myRange").hide();
+    $("#demo").hide();
+
+    $("#myRange1").show();
+    $("#demo1").show();
+  }
     });
+
+
 </script>
 
+<script>
+    var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value; // Display the default slider value
 
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+  output.innerHTML = this.value + ' giờ';
+}
+
+
+var slider1 = document.getElementById("myRange1");
+var output1 = document.getElementById("demo1");
+output1.innerHTML = slider1.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider1.oninput = function() {
+  output1.innerHTML = this.value + ' phút';
+}
+</script>
 
 
 

@@ -456,7 +456,7 @@
                         setTimeout(function(){
                              $('#getcount').html(number);
                          console.log(number);
-                         }, 1000);
+                         }, 300);
 
                     });
                     </script>

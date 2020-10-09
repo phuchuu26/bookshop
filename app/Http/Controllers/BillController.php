@@ -30,7 +30,7 @@ class BillController extends Controller
     {
         $bill = new bill;
         $bill->save();
-        if($request->vnpay)
+        if($request->tt == 2)
         {
             session(['cost_id' => $request->id]);
             session(['url_prev' => url()->previous()]);
@@ -133,7 +133,7 @@ class BillController extends Controller
 
         }
 
-        elseif($request->tienmat)
+        elseif($request->tt == 1)
         {
             $cart = Cart::content();
             $cart2 = Cart::subtotal(0,',','');

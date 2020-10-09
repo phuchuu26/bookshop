@@ -113,14 +113,15 @@
 
                                                     <div class="payment-group">
                                                         <div class="payment-radio">
-                                                            <input type="radio" value="1" name="tienmat" >
+                                                            <input type="radio" value="1" name="tt" >
                                                             <label class="payment-label" for="cheque">Thanh toán khi nhận hàng</label>
                                                         </div>
 
                                                     </div>
+
                                                     <div class="payment-group">
                                                         <div class="payment-radio">
-                                                            <input type="radio" value="2" name="vnpay">
+                                                            <input type="radio" value="2" name="tt">
                                                             <label class="payment-label" for="paypal">
                                                                 VN-PAY
                                                                 <img src="{{asset('public/page/img/AM_mc_vs_ms_ae_UK.png')}}" alt="payment">
