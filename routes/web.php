@@ -79,7 +79,7 @@ Route::get('/dang-xuat','TaikhoanController@logout')->name('p.logout');
 
 Route::group(['prefix'=>'tai-khoan'],function(){
 
-	Route::get('/','TaikhoanController@myacount')->name('act.home');
+	Route::get('/','TaikhoanController@myacount')->middleware('Ad_login')->name('act.home');
 
 
 	//ajax
@@ -215,7 +215,7 @@ Route::get('/san-pham/chi-tiet-san-pham-{id}','PageController@book_detail')->nam
 
                     // quan ly đấu giá khach hang
                     // 'middleware'=>'CheckCustomer'
-                    Route::group(['prefix'=>'auction'],function(){
+                    Route::group(['prefix'=>'auction','middleware'=>'Ad_login'],function(){
                         //hien thi page client
                         Route::get('/index','AuctionController@index')->name('auction_index');
                         // dau gia:

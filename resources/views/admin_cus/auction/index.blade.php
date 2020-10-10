@@ -93,9 +93,11 @@
     width: 562px;
 }
             input#myRange {
-    width: 500px;
+    width: 420px;
+    margin-left: 12px;
 }         input#myRange1 {
-    width: 500px;
+    width: 420px;
+    margin-left: 12px;
 }
             .sliderange {
                 margin-left: 229px;
@@ -248,7 +250,7 @@
     margin-top: -31px;
 }
 .body.hinh {
-    min-height: 698px;
+    min-height: 768px;
 }
 .body.hinh {
     margin-left: -31px;
@@ -456,13 +458,13 @@ button#anhbia {
                                         </select>
                                     </div>
                                     <div class="input-group mb-3 col-md-6">
-                                        <a href="#" style="margin-top: 10px;">
+                                        <a href="#" style="font-size: 13px;">
                                             <i class="fa fa-plus"></i>
                                             Thêm sách
                                         </a>
                                     </div>
                                     <div class="input-group mb-3 col-md-6">
-                                        <a href="#" style="margin-top: 10px;">
+                                        <a href="#" style="font-size: 13px;">
                                             <i class="fa fa-plus"></i>
                                             Thêm tác giả
                                         </a>
@@ -546,16 +548,20 @@ button#anhbia {
 
                                     </div>
                                     <div class="input-group mb-3 col-md-10">
-                                        <label class="container1">7h - 9h
+                                        <label class="container1">
                                             <input type="checkbox" checked="checked">
+                                            <button style="margin-bottom: 3px;    margin-top: -5px;" type="button"  class="btn btn-warning"> 7h - 9h</button>
                                             <span class="checkmark"></span>
                                           </label>
-                                          <label class="container1">12h - 14h
-                                            <input type="checkbox">
+                                          <label class="container1">
+                                              <input type="checkbox">
+                                            <button style="margin-bottom: 3px;    margin-top: -5px;" type="button"  class="btn btn-warning">12h - 14h</button>
                                             <span class="checkmark"></span>
                                           </label>
-                                          <label class="container1">19h - 22h
+                                          <label class="container1">
+
                                             <input type="checkbox">
+                                            <button style="    margin-top: -5px;" type="button"  class="btn btn-warning">    19h - 22h</button>
                                             <span class="checkmark"></span>
                                           </label>
 
@@ -582,12 +588,14 @@ button#anhbia {
 
                                                 <div class="loaithoigian">
 
-                                                    <label class="container">Giờ
+                                                    <label class="container">
                                                         <input type="radio" value="0"  checked="checked" id="a" name="loaithoigian">
+                                                        <button style="padding-right: 17px;" type="button"  class="btn btn-info"> Giờ</button>
                                                     <span class="checkmark"></span>
                                                 </label>
-                                                <label class="container">Phút
+                                                <label class="container">
                                                     <input type="radio" value="1" name="loaithoigian">
+                                                    <button style="" type="button"  class="btn btn-info"> Phút</button>
                                                     <span class="checkmark"></span>
                                                 </label>
                                             </div>
@@ -596,12 +604,13 @@ button#anhbia {
                                                 <div class="slidecontainer">
 
                                                     <input type="range" min="0.5" step="0.5" max="24" value="1" class="slider" id="myRange">
-                                                    <span id = "demo">  </span>
+
+                                                    <button id = "demo" style="" type="button"  class="btn btn-info"> </button>
                                                 </div>
                                                 <div class="slidecontainer">
 
                                                     <input type="range" min="30" max="60" value="50" class="slider" id="myRange1">
-                                                    <span id = "demo1"> </span>
+                                                    <button id = "demo1" style="" type="button"  class="btn btn-info"> </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -676,7 +685,7 @@ button#anhbia {
                             <div class="av">
                                 <div class="col-sm-8  col-md-12 a">
                                     <label for="avatar">
-                                    <img  id="image" alt="Chọn hình đại diện" width="145" height="145" />
+                                    <img src="{{asset('public/admin/img/default-image.jpg')}}" id="image" alt="Chọn hình đại diện" width="145" height="145" />
                                     </label>
                                     <input accept=".png, .jpg, .jpeg" style="display: none;"   type="file" name="book_image" id="avatar" multiple
                                         onchange="document.getElementById('image').src = window.URL.createObjectURL(this.files[0])">
@@ -691,7 +700,7 @@ button#anhbia {
                                 <div class="av1">
                                     <div class="col-sm-8  col-md-12 a">
                                         <label for="avatar1">
-                                        <img  id="image1" alt="Chọn hình đại diện" width="145" height="145" />
+                                        <img  src="{{asset('public/admin/img/default-image.jpg')}}" id="image1" alt="Chọn hình đại diện" width="145" height="145" />
                                         </label>
                                         {{-- accept=".png, .jpg, .jpeg" --}}
                                         <input  style="display: none;"   type="file" name="book_image1" id="avatar1" multiple
@@ -705,7 +714,7 @@ button#anhbia {
                                 <div class="av2">
                                     <div class="col-sm-8  col-md-12 a">
                                         <label for="avatar2">
-                                        <img  id="image2" alt="Chọn hình đại diện" width="145" height="145" />
+                                        <img src="{{asset('public/admin/img/default-image.jpg')}}" id="image2" alt="Chọn hình đại diện" width="145" height="145" />
                                         </label>
                                         <input accept=".png, .jpg, .jpeg" style="display: none;"   type="file" name="book_image2" id="avatar2" multiple
                                             onchange="document.getElementById('image2').src = window.URL.createObjectURL(this.files[0])">
@@ -718,7 +727,7 @@ button#anhbia {
                                 <div class="av3">
                                     <div class="col-sm-8  col-md-12 a">
                                         <label for="avatar3">
-                                        <img  id="image3" alt="Chọn hình đại diện" width="145" height="145" />
+                                        <img src="{{asset('public/admin/img/default-image.jpg')}}" id="image3" alt="Chọn hình đại diện" width="145" height="145" />
                                         </label>
                                         <input accept=".png, .jpg, .jpeg" style="display: none;"   type="file" name="book_image3" id="avatar3" multiple
                                             onchange="document.getElementById('image3').src = window.URL.createObjectURL(this.files[0])">
@@ -778,6 +787,9 @@ button#anhbia {
          if(arr >2){
             $(".av3").show();
             $('#anhbia').hide();
+            $('.body.form').css("min-height" ,"835px");
+
+
         }
         console.log(arr);
 
@@ -851,24 +863,41 @@ function formatCurrency(number){
 </script>
 
 <script>
+    $(document).ready(function(){
     var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
-output.innerHTML = slider.value; // Display the default slider value
+
+output.innerHTML = slider.value + ' giờ'; // Display the default slider value
+
 
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function() {
-  output.innerHTML = this.value + ' giờ';
+    if(this.value % 1 != 0){
+        if(this.value == 0.5){
+
+            output.innerHTML =  ' 30 phút';
+        }else{
+
+            output.innerHTML = (parseInt(this.value)) + ' giờ' + ' 30 phút';
+        }
+
+        // console.log(parseInt(this.value));
+}else{
+    output.innerHTML = this.value + ' giờ';
+
+}
 }
 
 
 var slider1 = document.getElementById("myRange1");
 var output1 = document.getElementById("demo1");
-output1.innerHTML = slider1.value; // Display the default slider value
+output1.innerHTML = slider1.value + ' phút'; // Display the default slider value
 
 // Update the current slider value (each time you drag the slider handle)
 slider1.oninput = function() {
   output1.innerHTML = this.value + ' phút';
 }
+});
 </script>
 
 
