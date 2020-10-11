@@ -898,7 +898,7 @@ function formatCurrency(number){
 
 
 
-    $("#myRange1").hide();
+            $("#myRange1").hide();
             $("#demo1").hide();
             $("#myRange").show();
             $("#demo").show();

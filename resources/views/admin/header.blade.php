@@ -1,6 +1,9 @@
 <!-- Page Loader -->
 <head>
     <style>
+
+
+
         ul.nav.navbar-nav {
     font-size: 25px;
     margin-top: -6px!important;
@@ -17,6 +20,8 @@ i.fa.fa-commenting {
 }
 
 .so {
+    border: 0.5px solid red;
+    /* padding-left: 3px; */
     padding-left: 7px;
     width: 20px!important;
     color: #e74c3c;

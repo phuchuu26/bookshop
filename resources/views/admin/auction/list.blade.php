@@ -3,6 +3,9 @@
 @section('admin_content')
 <head>
     <style>
+        li#soluot {
+    margin-bottom: -54px;
+}
         table.table.table-hover.dataTable.table-custom {
     margin: -16px -15px;
 }
@@ -13,7 +16,7 @@
             <div class="block-header">
                 <div class="row clearfix">
                     <div class="col-md-6 col-sm-12">
-                        <h1>Tác giả</h1>
+                        <h1>Danh sách đăng ký đấu giá sách</h1>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('ad.home')}}">Admin</a></li>
@@ -37,6 +40,10 @@
 
 
 
+                                <li id="soluot"><a href="javascript:void(0);" >
+                                    Số lượt đấu giá đang và chuẩn bị lên sàn:
+                                <button style=""  style="" type="button"  class="btn btn-success">{{$quantity}}</button>
+                                </a></li>
                                 <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
                                 <li class="dropdown">
                                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>

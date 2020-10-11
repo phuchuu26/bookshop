@@ -20,14 +20,28 @@ use Toastr;
 class AuctionController extends Controller
 {
     public function list(){
-        $list = Auction_book
-        ::orderBy('updated_at','desc')
+        $a = Carbon::now();
+        // $a = 2020-09-26 11:12:35.590428 Asia/Ho_Chi_Minh (+07:00)
+       // lấy sản phẩm cuối để get time => set thời gian kết thúc cho sản phẩm tiếp theo không bị trùng với sp cuối.
+       $quantity = DB::table('endtime_auction')
+       ->where('Endtime_auction_date','>',$a)
+       ->count();
+    //    dd($quantity);
+        // $quantity -= 1;
+        $list = Auction_book::orderBy('updated_at','desc')
         ->paginate(10);
         // $a = Endtime_auction::all();
         // dd($a);
-        return view('admin.auction.list',compact('list','a'));
+        return view('admin.auction.list',compact('quantity','list','a'));
     }
     public function change($id){
+        $a = Carbon::now();
+        // $a = 2020-09-26 11:12:35.590428 Asia/Ho_Chi_Minh (+07:00)
+       // lấy sản phẩm cuối để get time => set thời gian kết thúc cho sản phẩm tiếp theo không bị trùng với sp cuối.
+       $quantity = DB::table('endtime_auction')
+       ->where('Endtime_auction_date','>',$a)
+       ->count();
+
         $auction_book = Auction_book::find($id);
         $type_time = $auction_book->auction_book_time_type;
         $time = $auction_book->auction_book_time;
@@ -46,10 +60,7 @@ class AuctionController extends Controller
         // $a1 = strtotime($a);
         $d = strtotime($a);
         // xuử lý loại ngày với số time:
-        if($type_time == 'Ngày'){
-            $a += ($time*24*60*60);
-        }
-        else if($type_time == 'Giờ' ){
+       if($type_time == 'Giờ' ){
             $a +=  ($time * 60 *60);
         }
         else{
@@ -90,7 +101,7 @@ class AuctionController extends Controller
         $category = category::all();
         $subcategory = sub_category::all();
 
-        return view('admin.auction.change',['e' => $e,'b' => $b,'count' =>$count ,'image_sp'=>$image_sp , 'auction_book'=>$auction_book , 'author'=>$author, 'category'=>$category,
+        return view('admin.auction.change',['quantity' => $quantity,'e' => $e,'b' => $b,'count' =>$count ,'image_sp'=>$image_sp , 'auction_book'=>$auction_book , 'author'=>$author, 'category'=>$category,
         'publishinghouse'=>$publishinghouse, 'account'=>$account, 'subcategory'=>$subcategory, 'bookcompany'=>$bookcompany]);
     }
     // public function index(){

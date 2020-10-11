@@ -335,13 +335,16 @@ button#anhbia {
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text" for="inputGroupSelect01">Thời gian đấu giá mong muốn</label>
                                             </div>
-                                            <select disabled  name="time" class="custom-select" id="inputGroupSelect03">
+                                            {{-- {{dd($auction_book->auction_book_time_type)}} --}}
+                                            <input disabled value="{{$auction_book->auction_book_time_type}}" style="height:39px;" name="time" type="text"  class="form-control a" required>
+                                            {{-- <select disabled  name="time" class="custom-select" id="inputGroupSelect03">
                                                 <option    selected>Chọn định dạng thời gian</option>
                                                 <option value="Ngày" {{$auction_book->auction_book_time_type == 'Ngày' ? 'selected':''}}>Ngày</option>
                                               <option value="Giờ"  {{ $auction_book->auction_book_time_type == 'Giờ'  ? 'selected':''}}>Giờ</option>
                                               <option value="Phút"  {{ $auction_book->auction_book_time_type == 'Phút' ? 'selected':''}}>Phút</option>
-                                            </select>
-                                            <input disabled value="{{$auction_book->auction_book_time}}" style="height:38px;" name="value_time" type="number" name="weight" class="form-control a" required>
+                                            </select> --}}
+                                            {{-- <input disabled  style="height:38px;"  type="text" id="value_time" class="form-control a" required> --}}
+                                            <button style="width: 192px;background-color:rgb(223,230,233);color: rgb(119,121,138);" id = "demox" style="" type="button"  class="btn demox"> </button>
                                           </div>
                                     </div>
 
@@ -351,7 +354,7 @@ button#anhbia {
                                             <label style="height:38px;" class="input-group-text" for="inputGroupSelect01">Khối lượng</label>
                                         </div>
 
-                                        <input disabled="disabled"  value="{{$auction_book->auction_book_weight}}" style="height:38px;" type="text" name="weight" class="form-control" required>
+                                        <input disabled="disabled"  value="{{$auction_book->auction_book_weight}} kg" style="height:38px;" type="text" name="weight" class="form-control" required>
 
                                     </div>
                                 </div>
@@ -551,7 +554,14 @@ button#anhbia {
                     {{-- <h3 id="dong"> --}}
 
                         {{-- value="2018-06-13T19:30" --}}
-                    <label >Thời gian khách hàng mong muốn : {{$auction_book->auction_book_time}} {{$auction_book->auction_book_time_type}} </label>
+                        <label >Số lượt đấu giá đang và chuẩn bị lên sàn :
+                            <button style="width: 92px;background-color:rgb(223,230,233);color: rgb(119,121,138);"  style="" type="button"  class="btn ">{{$quantity}} </button>
+
+                        </label>
+                    <label >Thời gian khách hàng mong muốn :
+                        <button style="width: 192px;background-color:rgb(223,230,233);color: rgb(119,121,138);" id = "demox1" style="" type="button"  class="btn "> </button>
+
+                    </label>
 
                     {{-- time bat dau  --}}
                     <div class="form-group">
@@ -693,6 +703,46 @@ function formatCurrency(number){
 </script>
 <script type="text/javascript">
     $(document).ready(function(){
+        console.log("chay dc nha");
+        //
+        output = $('#demox');
+    a = {{$auction_book->auction_book_time}};
+    // console.log(a);
+    if(a % 1 != 0){
+        if(a == 0.5){
+
+            output.html(' 30 phút');
+        }else{
+            console.log("CHAY");
+            output.html((parseInt(a)) + ' giờ' + ' 30 phút');
+            console.log((parseInt(a)) + ' giờ' + ' 30 phút');
+        }
+
+        // console.log(parseInt(this.value));
+}else{
+    output.html(a + ' giờ');
+
+}
+
+////
+output = $('#demox1');
+    a = {{$auction_book->auction_book_time}};
+    // console.log(a);
+    if(a % 1 != 0){
+        if(a == 0.5){
+
+            output.html(' 30 phút');
+        }else{
+            console.log("CHAY");
+            output.html((parseInt(a)) + ' giờ' + ' 30 phút');
+            console.log((parseInt(a)) + ' giờ' + ' 30 phút');
+        }
+
+        // console.log(parseInt(this.value));
+}else{
+    output.html(a + ' giờ');
+
+}
 
 
         // alert('chạy được');
@@ -710,7 +760,6 @@ function formatCurrency(number){
                 $("#theloai").html(data);
                 $('#theloai').selectpicker('refresh');
                 // phải câu lênh selectpicker('refresh') để ko bị lỗi boostrap-selecet
-
             });
         });
     });
