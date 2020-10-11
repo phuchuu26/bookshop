@@ -253,7 +253,7 @@ label.container1 {
     margin-top: -31px;
 }
 .body.hinh {
-    min-height: 698px;
+    min-height: 755px;
 }
 .body.hinh {
     margin-left: -31px;
@@ -569,22 +569,15 @@ button#anhbia {
 
                                     </div>
                                     <div class="input-group mb-3 col-md-10">
+                                        {{-- {{dd($goldtimeframe)}} --}}
+                                        @foreach($goldtimeframe as $key =>$goldtime)
                                         <label class="container1">
-                                            <input type="checkbox" checked="checked">
-                                            <button style="margin-bottom: 3px;    margin-top: -5px;" type="button"  class="btn btn-warning"> 7h - 9h</button>
+                                        <input type="checkbox" {{in_array($goldtime->gold_time_frame_id, $danhsach )  ? 'checked' : ''}} name="goldtimeframe[{{$key}}]" value="gold_time_frame_id">
+                                        <button style="margin-bottom: 3px;    margin-top: -5px;" type="button"  class="btn btn-warning">{{$goldtime->gold_time_frame_name}}</button>
                                             <span class="checkmark"></span>
                                           </label>
-                                          <label class="container1">
-                                              <input type="checkbox">
-                                            <button style="margin-bottom: 3px;    margin-top: -5px;" type="button"  class="btn btn-warning">12h - 14h</button>
-                                            <span class="checkmark"></span>
-                                          </label>
-                                          <label class="container1">
+                                          @endforeach
 
-                                            <input type="checkbox">
-                                            <button style="    margin-top: -5px;" type="button"  class="btn btn-warning">    19h - 22h</button>
-                                            <span class="checkmark"></span>
-                                          </label>
 
 
                                     </div>
@@ -610,12 +603,12 @@ button#anhbia {
                                                 <div class="loaithoigian">
 
                                                     <label class="container">
-                                                        <input type="radio" value="0"  checked="checked" id="a" name="loaithoigian">
+                                                        <input type="radio" value="0"  {{ $auction_book->auction_book_time_type == 'Giờ'?'checked': ''}} id="a" name="loaithoigian">
                                                         <button style="padding-right: 17px;" type="button"  class="btn btn-info"> Giờ</button>
                                                     <span class="checkmark"></span>
                                                 </label>
                                                 <label class="container">
-                                                    <input type="radio" value="1" name="loaithoigian">
+                                                    <input type="radio" value="1" {{ $auction_book->auction_book_time_type == 'Phút'?'checked': ''}} name="loaithoigian">
                                                     <button style="" type="button"  class="btn btn-info"> Phút</button>
                                                     <span class="checkmark"></span>
                                                 </label>
@@ -624,13 +617,13 @@ button#anhbia {
 
                                                 <div class="slidecontainer">
 
-                                                    <input type="range" min="0.5" step="0.5" max="24" value="1" class="slider" id="myRange">
+                                                <input type="range" min="0.5" step="0.5" max="24" value="{{$auction_book->auction_book_time}}" class="slider" id="myRange">
 
                                                     <button id = "demo" style="" type="button"  class="btn btn-info"> </button>
                                                 </div>
                                                 <div class="slidecontainer">
-
-                                                    <input type="range" min="30" max="60" value="50" class="slider" id="myRange1">
+{{-- {{dd($auction_book->auction_book_time)}} --}}
+                                                    <input type="range" min="30" max="60" value="{{$auction_book->auction_book_time}}" class="slider" id="myRange1">
                                                     <button id = "demo1" style="" type="button"  class="btn btn-info"> </button>
                                                 </div>
                                             </div>
@@ -787,7 +780,7 @@ button#anhbia {
         </div>
         </div>
     </div>
-
+{{-- {{dd($auction_book->auction_book_time_type)}} --}}
 
     <script src="{{asset('public/admin/toastr/jquery.min.js')}}"></script>
 
@@ -881,10 +874,35 @@ function formatCurrency(number){
 }
     // }
 </script>
+{{-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> --}}
+{{-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> --}}
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
+{{-- <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script> --}}
+{{-- {{dd($auction_book->auction_book_time_type)}} --}}
 <script type="text/javascript">
     $(document).ready(function(){
-        $("#myRange1").hide();
-    $("#demo1").hide();
+        var p = "Phút";
+        var temp = '{{ $auction_book->auction_book_time_type }}';
+        // console.log('da chay dc nha');
+        // console.log(p);
+        // console.log(temp);
+        if(  temp == p){
+            // console.log('da chay dc nha1');
+            $("#myRange").hide();
+    $("#demo").hide();
+
+    $("#myRange1").show();
+    $("#demo1").show();
+        }else{
+            // console.log('da chay dc nha 2');
+
+
+
+    $("#myRange1").hide();
+            $("#demo1").hide();
+            $("#myRange").show();
+            $("#demo").show();
+        }
 
         // alert('chạy được');
         //kiểm tra xem coi nó chạy không
@@ -933,13 +951,7 @@ function formatCurrency(number){
   }
 
     });
-</script>
 
-
-
-
-<script>
-    $(document).ready(function(){
     var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
 
@@ -973,8 +985,16 @@ output1.innerHTML = slider1.value + ' phút'; // Display the default slider valu
 slider1.oninput = function() {
   output1.innerHTML = this.value + ' phút';
 }
-});
 </script>
+
+
+
+{{--
+<script>
+    $(document).ready(function(){
+
+});
+</script> --}}
 
 
 

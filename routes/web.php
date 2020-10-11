@@ -218,6 +218,7 @@ Route::get('/san-pham/chi-tiet-san-pham-{id}','PageController@book_detail')->nam
                     Route::group(['prefix'=>'auction','middleware'=>'Ad_login'],function(){
                         //hien thi page client
                         Route::get('/index','AuctionController@index')->name('auction_index');
+                        // Route::get('/chatify','MessagesController@index');
                         // dau gia:
                         Route::post('/create/{id}', 'AuctionController@store')
                         ->name('auction.create.submit');

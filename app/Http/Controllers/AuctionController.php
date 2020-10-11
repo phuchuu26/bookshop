@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\CustomValidationRequest;
+use App\Rules\Numeric;
+// use Validator;
 use App\Models\Category;
 use App\Models\Endtime_auction;
 use Illuminate\Http\Request;
@@ -13,6 +16,8 @@ use App\Models\Auction_book;
 use App\Models\author;
 use App\Models\Image_auction;
 use App\Models\book_company;
+use App\Models\Gold_time_frame;
+use App\Models\Detail_gold_time_frame;
 use App\Models\publishing_house;
 use App\User;
 use Toastr;
@@ -82,17 +87,50 @@ class AuctionController extends Controller
         $account = User::all();
         $category = category::all();
         $subcategory = sub_category::all();
-        return view('admin_cus.auction.index',['author'=>$author, 'category'=>$category, 'publishinghouse'=>$publishinghouse, 'account'=>$account, 'subcategory'=>$subcategory, 'bookcompany'=>$bookcompany]);
+        $goldtime = Gold_time_frame::all();
+        // dd($goldtime);
+        return view('admin_cus.auction.index',['goldtime' => $goldtime , 'author'=>$author, 'category'=>$category, 'publishinghouse'=>$publishinghouse, 'account'=>$account, 'subcategory'=>$subcategory, 'bookcompany'=>$bookcompany]);
     }
 
     // store
 
     // |dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000'
     public function store(Request $book2){
+        // CustomValidationRequest $req
+        // $data = Array();
+        // $b =0;
+        // $data = $book2->goldtimeframe;
+        // foreach($data  as $a){
+        //     $b += $a;
+        // };
+        // dd($b);
+        // die;
+        // $req->validate([
+        //     'idbookcompany' => [ new Numeric],
+        // ]);
+            // $this->validate($req,[
+            //     'idbookcompany' => new Uppercase,
+            // ]
+            // [
+            //     'idbookcompany.required' => 'banj chuwa nhap npp',
+            // ]
+        // );
+            // die;
         $this->validate($book2,[
             'bookname' => 'required|min:2',
             // 'book_image' => 'required',
             'book_image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+            'mota' => 'required|min:2',
+            'weight' => 'required',
+            'reserve_price' => 'required',
+            'numberpage' => 'required',
+            'releasedate' => 'required',
+            'amount' => 'required',
+            'idauthor' => 'required|integer',
+            'idpublishinghouse' => 'required|integer',
+            'idsubcategory' => 'required|integer',
+            'idcategory' => 'required|integer',
+            'idbookcompany' => 'required|integer',
          ],[
              'bookname.required' => 'Bạn chưa nhập tên !',
              'bookname.min' => 'Bạn nhập chưa đủ 2 ký tự !',
@@ -101,7 +139,18 @@ class AuctionController extends Controller
              'book_image.max' => 'Dung lượng file phải dưới 2MB !',
              'book_image.mimes' => 'Bạn phải nhập đúng định dạng file JPG, JPEG, PNG !',
 
-
+             'mota.required' => 'Bạn chưa nhập mô tả sách !',
+             'mota.min' => 'Bạn nhập mô tả sách chưa đủ 2 ký tự !',
+             'weight.required' => 'Bạn chưa nhập khối lượng sách !',
+             'reserve_price.required' => 'Bạn chưa nhập giá khởi điểm !',
+             'numberpage.required' => 'Bạn chưa nhập số trang sách !',
+             'releasedate.required' => 'Bạn chưa nhập năm phát hành sách đấu giá !',
+             'amount.required' => 'Bạn chưa số lượng sách đấu giá !',
+             'idauthor.integer' => 'Bạn chưa chọn tác giả sách !',
+             'idpublishinghouse.integer' => 'Bạn chưa chọn nhà xuất bản sách !',
+             'idsubcategory.integer' => 'Bạn chưa chọn thể loại sách !',
+             'idcategory.integer' => 'Bạn chưa chọn danh mục sách !',
+             'idbookcompany.integer' => 'Bạn chưa chọn nhà phân phối sách !',
          ]);
          $book = new auction_book;
 
@@ -145,8 +194,16 @@ class AuctionController extends Controller
         //     $value = $book2->value_time;
         // }
         // $book->auction_book_time = $value;
-        $book ->auction_book_time = $book2->value_time;
-        $book ->auction_book_time_type = $book2->time;
+        // $book ->auction_book_time = $book2->value_time;
+
+        // $book ->auction_book_time_type = $book2->time;
+        if($book2->loaithoigian == 0 ){
+            $book ->auction_book_time_type = 'Giờ';
+            $book ->auction_book_time =  $book2->valuetime0;
+        }else{
+            $book ->auction_book_time_type = 'Phút';
+            $book ->auction_book_time =  $book2->valuetime1;
+        }
 
          if($book2->hasFile('book_image'))
         {
@@ -165,6 +222,20 @@ class AuctionController extends Controller
             $book->auction_book_image = $hinh_anh;
         }
         $book->save();
+
+        // for($i=1; $i<10; $i++){
+            if($book2->goldtimeframe){
+                // dd($book2->goldtimeframe.$i.'---'.$i);
+                foreach( $book2->goldtimeframe as $goldtime){
+
+                    $timetmp = new Detail_gold_time_frame;
+                    $timetmp->id_gold_time_frame = $goldtime;
+                    $timetmp->id_auction_book  = $book->id;
+                    $timetmp->save();
+                }
+            }
+        // }
+
 
         if($book2->hasFile('book_image1'))
         {
@@ -324,8 +395,16 @@ class AuctionController extends Controller
         $account = User::all();
         $category = category::all();
         $subcategory = sub_category::all();
-        // dd($auction_book);
-        return view('admin_cus.auction.edit',['count' =>$count ,'image_sp'=>$image_sp , 'auction_book'=>$auction_book , 'author'=>$author, 'category'=>$category,
+        $goldtimeframe = Gold_time_frame::all();
+        $goldtimeframeChecked = Detail_gold_time_frame::where('id_auction_book',$id)->get()->toArray();
+        // dd($goldtimeframeChecked[0]['id_auction_book']);
+        // dd($goldtimeframeChecked);
+        $danhsach =  Array();
+        foreach($goldtimeframeChecked as $a){
+            array_push($danhsach, $a['id_gold_time_frame']  );
+        }
+        // dd($danhsach);
+        return view('admin_cus.auction.edit',['danhsach' =>$danhsach,'goldtimeframe' => $goldtimeframe ,'count' =>$count ,'image_sp'=>$image_sp , 'auction_book'=>$auction_book , 'author'=>$author, 'category'=>$category,
         'publishinghouse'=>$publishinghouse, 'account'=>$account, 'subcategory'=>$subcategory, 'bookcompany'=>$bookcompany]);
     }
 
@@ -334,9 +413,39 @@ class AuctionController extends Controller
     public function update(Request $book2,$id){
         $this->validate($book2,[
             'bookname' => 'required|min:2',
+            // 'book_image' => 'required',
+            // 'book_image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+            'mota' => 'required|min:2',
+            'weight' => 'required',
+            'reserve_price' => 'required',
+            'numberpage' => 'required',
+            'releasedate' => 'required',
+            'amount' => 'required',
+            'idauthor' => 'required|integer',
+            'idpublishinghouse' => 'required|integer',
+            'idsubcategory' => 'required|integer',
+            'idcategory' => 'required|integer',
+            'idbookcompany' => 'required|integer',
          ],[
              'bookname.required' => 'Bạn chưa nhập tên !',
-             'bookname.min'      => 'Bạn nhập chưa đủ 2 ký tự !',
+             'bookname.min' => 'Bạn nhập chưa đủ 2 ký tự !',
+            //  'book_image.required' => 'Bạn chưa nhập ảnh bìa !',
+            //  'book_image.image' => 'File phải là hình ảnh !',
+            //  'book_image.max' => 'Dung lượng file phải dưới 2MB !',
+            //  'book_image.mimes' => 'Bạn phải nhập đúng định dạng file JPG, JPEG, PNG !',
+
+             'mota.required' => 'Bạn chưa nhập mô tả sách !',
+             'mota.min' => 'Bạn nhập mô tả sách chưa đủ 2 ký tự !',
+             'weight.required' => 'Bạn chưa nhập khối lượng sách !',
+             'reserve_price.required' => 'Bạn chưa nhập giá khởi điểm !',
+             'numberpage.required' => 'Bạn chưa nhập số trang sách !',
+             'releasedate.required' => 'Bạn chưa nhập năm phát hành sách đấu giá !',
+             'amount.required' => 'Bạn chưa số lượng sách đấu giá !',
+             'idauthor.integer' => 'Bạn chưa chọn tác giả sách !',
+             'idpublishinghouse.integer' => 'Bạn chưa chọn nhà xuất bản sách !',
+             'idsubcategory.integer' => 'Bạn chưa chọn thể loại sách !',
+             'idcategory.integer' => 'Bạn chưa chọn danh mục sách !',
+             'idbookcompany.integer' => 'Bạn chưa chọn nhà phân phối sách !',
          ]);
         //  $book = new auction_book;
         $book = Auction_book::find($id);
@@ -438,9 +547,7 @@ class AuctionController extends Controller
         // die;
         if($book2->hasFile('book_image1'))
         {
-
             $file1 = $book2->file('book_image1');
-
             if(isset($file1))
             {
                 // xoa file rac

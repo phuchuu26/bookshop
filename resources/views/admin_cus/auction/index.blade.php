@@ -548,22 +548,24 @@ button#anhbia {
 
                                     </div>
                                     <div class="input-group mb-3 col-md-10">
+                                        @foreach($goldtime as $key => $gtime )
                                         <label class="container1">
-                                            <input type="checkbox" checked="checked">
-                                            <button style="margin-bottom: 3px;    margin-top: -5px;" type="button"  class="btn btn-warning"> 7h - 9h</button>
+                                        <input type="checkbox"  {{ (is_array(old('goldtimeframe')) and in_array($gtime->gold_time_frame_id, old('goldtimeframe'))) ? ' checked' : '' }} name="goldtimeframe[{{$key}}] " value="{{$gtime->gold_time_frame_id}}">
+                                        <button style="margin-bottom: 3px;    margin-top: -5px;" type="button"  class="btn btn-warning">{{$gtime->gold_time_frame_name}}</button>
                                             <span class="checkmark"></span>
                                           </label>
-                                          <label class="container1">
-                                              <input type="checkbox">
+                                          @endforeach
+                                          {{-- <label class="container1">
+                                              <input type="checkbox" name="goldtimeframe1" value="12h - 14h">
                                             <button style="margin-bottom: 3px;    margin-top: -5px;" type="button"  class="btn btn-warning">12h - 14h</button>
                                             <span class="checkmark"></span>
-                                          </label>
-                                          <label class="container1">
+                                          </label> --}}
+                                          {{-- <label class="container1">
 
-                                            <input type="checkbox">
+                                            <input type="checkbox" name="goldtimeframe2" value="19h - 22h" >
                                             <button style="    margin-top: -5px;" type="button"  class="btn btn-warning">    19h - 22h</button>
                                             <span class="checkmark"></span>
-                                          </label>
+                                          </label> --}}
 
 
                                     </div>
@@ -603,13 +605,13 @@ button#anhbia {
 
                                                 <div class="slidecontainer">
 
-                                                    <input type="range" min="0.5" step="0.5" max="24" value="1" class="slider" id="myRange">
+                                                    <input type="range" min="0.5"  name="valuetime0" step="0.5" max="24" value="{{old('valuetime0')}}" class="slider" id="myRange">
 
                                                     <button id = "demo" style="" type="button"  class="btn btn-info"> </button>
                                                 </div>
                                                 <div class="slidecontainer">
 
-                                                    <input type="range" min="30" max="60" value="50" class="slider" id="myRange1">
+                                                    <input type="range" min="30" name="valuetime1" max="60" value="50" class="slider" id="myRange1">
                                                     <button id = "demo1" style="" type="button"  class="btn btn-info"> </button>
                                                 </div>
                                             </div>
@@ -626,7 +628,7 @@ button#anhbia {
 
                                 <div class="form-group">
                                     <label>Mô tả</label>
-                                    <textarea value="" style="min-height: 150px;" name="mota" id="editor">{{old('mota')}}</textarea>
+                                    <textarea required value="" style="min-height: 150px;" name="mota" id="editor">{{old('mota')}}</textarea>
 
                                 </div>
 
