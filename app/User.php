@@ -7,7 +7,6 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravelista\Comments\Commenter;
 
-
 class User extends Authenticatable
 {
     protected $table='Account';

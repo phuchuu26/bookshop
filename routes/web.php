@@ -77,7 +77,7 @@ Route::post('/dang-nhap','TaikhoanController@post_lg')->name('postlogin');
 Route::get('/dang-xuat','TaikhoanController@logout')->name('p.logout');
 
 
-Route::group(['prefix'=>'tai-khoan'],function(){
+Route::group(['prefix'=>'tai-khoan','middleware'=>'Ad_login'],function(){
 
 	Route::get('/','TaikhoanController@myacount')->middleware('Ad_login')->name('act.home');
 
@@ -222,6 +222,8 @@ Route::get('/san-pham/chi-tiet-san-pham-{id}','PageController@book_detail')->nam
                         // dau gia:
                         Route::post('/create/{id}', 'AuctionController@store')
                         ->name('auction.create.submit');
+                        Route::post('/post/auction/{id}', 'AuctionController@post_auction')
+                        ->name('post.auction');
 
 
                         // page admin

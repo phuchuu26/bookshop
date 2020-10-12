@@ -8,6 +8,9 @@
         input.form-control {
     background-color:  #dfe6e9!important;
 }
+input#a {
+    background-color:  #dfe6e9!important;
+}
 select#theloai {
     background-color: #c7d0d5!important;
 }
@@ -577,7 +580,9 @@ button#anhbia {
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Thời gian dự kiến kết thúc:</label>
                         <input type="datetime-local" id="a"
-                        style="background-color: #ffffff!important;"
+                        {{-- disabled --}}
+                        readonly
+                        {{-- style="background-color: #ffffff!important;" --}}
                         name="date"
                         value="{{$b}}"
                         placeholder="DD/MM/YYYY, hh:mm:ss"

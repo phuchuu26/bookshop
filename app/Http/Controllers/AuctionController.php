@@ -37,6 +37,7 @@ class AuctionController extends Controller
         $sp  = DB::table('endtime_auction')
         ->where('Endtime_auction_date','>',$a)
         ->first();
+        // dd($sp);
         // $a =time($a);
         if($sp){
 
@@ -50,6 +51,11 @@ class AuctionController extends Controller
         ->where('Endtime_auction_date','<',$a)
         ->get()
         ->last();
+
+        $sp1  = endtime_auction::where('Endtime_auction_date','>',$a)
+        ->first();
+        $book = $sp1->getauction;
+        // dd($book);
         // $a = strtotime("$a");
         // echo Carbon::now('Asia/Ho_Chi_Minh');
         // dd($timestampAuction);
@@ -74,7 +80,28 @@ class AuctionController extends Controller
         // $date =
         // $category = Category::all();
         // return view('admin.category.list',['category'=>$category]);
-        return view('page.auction.index',compact('date','h','m','s','current_date_time'));
+        // get auction book :
+        // dd($sp1);
+        // die;
+        if($sp1 != null){
+
+            $auctionbook = $sp1->getauction;
+            if($auctionbook->auction_book_time_type == 'Giờ'){
+                $time = $auctionbook->auction_book_time*60 *60 ;
+                $time = intval($time);
+            }else{
+                $time = $auctionbook->auction_book_time*60 ;
+                $time = intval($time);
+            }
+        }else{
+            $auctionbook = null;
+            // $time = null;
+        }
+        // dd($time);
+        // dd($auctionbook->auction_book_time);
+
+        Carbon::setLocale('vi');
+        return view('page.auction.index',compact('book','time','sp1','auctionbook','date','h','m','s','current_date_time'));
         // return view('page.auction.index',['category'=>$category]);
     }
 
@@ -781,4 +808,8 @@ class AuctionController extends Controller
         return redirect(''.route('auction.management').'');
 
     }
+    public function post_auction($id){
+
+    }
+
 }

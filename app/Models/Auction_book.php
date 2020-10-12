@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Models;
-
+use Laravelista\Comments\Commentable;
+// use Laravelista\Comments\Commentable;
 use Illuminate\Database\Eloquent\Model;
 
 class Auction_book extends Model
 {
+    use Commentable;
     //
     protected $table='auction_book';
     // guard giúp cho hệ thống ngăn chặn người dùng có thể sửa dữ liệu ở các trường này
@@ -35,5 +37,27 @@ class Auction_book extends Model
         return $this->hasOne('App\Models\Endtime_auction','id_auction_book','id');
         // từ sản phẩm cha ra con xài hasone
         // (tên đường dẫn, 'khoa ngoại', khóa chính)
+    }
+    public function tacgia() // phải viêt liền ko được cách ra hoặc _
+    {
+        // D:\LUAN VAN\bookshop\app\Models\Endtime_auction.php
+        // return $this->belongsTo('App\Models\Endtime_auction','id','id_auction_book');
+        // return $this->hasOne('App\Models\Endtime_auction', 'id','id_auction_book');
+        // return $this->belongsTo('App\Models\Endtime_auction', 'id_auction_book','id');
+        return $this->belongsTo('App\Models\Author','id_author','id');
+        // từ sản phẩm cha ra con xài hasone
+        // (tên đường dẫn, 'khoa ngoại', khóa chính)
+    }
+     public function nhaphanphoi() // phải viêt liền ko được cách ra hoặc _
+    {
+
+        return $this->belongsTo('App\Models\Book_company','id_bookcompany','id');
+
+    }
+
+    public function nhaxuatban() // phải viêt liền ko được cách ra hoặc _
+    {
+        return $this->belongsTo('App\Models\Publishing_house','id_publishinghouse','id');
+
     }
 }
