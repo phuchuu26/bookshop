@@ -73,13 +73,13 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="message">Cập nhật bình luận:</label>
-                                    <textarea required class="form-control" name="message" rows="3">{{ $comment->comment }}</textarea>
-                                    <small class="form-text text-muted"><a target="_blank" href="https://help.github.com/articles/basic-writing-and-formatting-syntax">Markdown</a> cheatsheet.</small>
+                                    <textarea style="font-size: 16px;" required class="form-control" name="message" rows="3">{{ $comment->comment }}</textarea>
+                                    <small class="form-text text-muted"><a target="_blank" href="{{route('p.home')}}">Sàn đấu giá trực tuyến</a>.</small>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-sm btn-outline-secondary text-uppercase" data-dismiss="modal">Hủy</button>
-                                <button type="submit" class="btn btn-sm btn-outline-success text-uppercase">Cập nhật</button>
+                                <button type="button" class="btn add-to-cart btn-style-2 color-2" data-dismiss="modal">Hủy</button>
+                                <button type="submit" style="background-color: #00aeef;" class="btn add-to-cart btn-style-2 color-2">Cập nhật</button>
                             </div>
                         </form>
                     </div>
@@ -102,13 +102,13 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="message">Nhập bình luận của bạn ở đây:</label>
-                                    <textarea required class="form-control" name="message" rows="3"></textarea>
-                                <small class="form-text text-muted"><a target="_blank" href="{{route('p.home')}}">Sàn bán sách cũ</a></small>
+                                    <textarea style="font-size: 16px;" required class="form-control" name="message" rows="3"></textarea>
+                                <small class="form-text text-muted"><a target="_blank" href="{{route('p.home')}}">Sàn đấu giá trực tuyến</a></small>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-sm btn-outline-secondary text-uppercase" data-dismiss="modal">Hủy</button>
-                                <button type="submit" class="btn btn-sm btn-outline-success text-uppercase">Trả lời</button>
+                                <button type="button" class="btn add-to-cart btn-style-2 color-2" data-dismiss="modal">Hủy</button>
+                                <button type="submit" style="background-color: #00aeef;" class="btn add-to-cart btn-style-2 color-2">Trả lời</button>
                             </div>
                         </form>
                     </div>

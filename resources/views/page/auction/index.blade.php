@@ -3,7 +3,7 @@
 <head>
     <style>
         img.mfp-img {
-    max-height: 776px!important;
+    max-height: 676px!important;
     /* padding-top: 114px; */
 }
         .thumb-menu-item.slick-slide.slick-current.slick-active {
@@ -159,6 +159,7 @@ input#recipient-name {
                             </div> --}}
                             {{-- <span class="shop-toolbar__product-count">Có <span style="color:blue">{{$book2}}</span> sản phẩm</span> --}}
                         </div>
+                        @if($book != null)
                         <section class="single-product bg--white pt--30 pb--80 pt-sm--60 pb-sm--60">
                             <div class="row">
                                 <div class="col-lg-6">
@@ -169,6 +170,7 @@ input#recipient-name {
                                             <div class="single-product__img easyzoom">
                                                 <img id="imgsp" src="{{asset('public/upload/products/')}}/{{$book->auction_book_image}}" alt="product">
                                                 <a id="imgdetail" class="popup-btn" href="{{asset('public/upload/products/')}}/{{$book->auction_book_image}}"><i class="fa fa-search-plus"></i>Large Image</a>
+
                                             </div>
                                         </div>
 
@@ -178,16 +180,24 @@ input#recipient-name {
                                     <!-- Product Thumbnail Carousel Start -->
                                     <div class="product-thumbnail">
                                         <div style="height: auto;" class="thumb-menu product-thumb-menu" id="thumbmenu-horizontal">
-
-                                            <div class="thumb-menu-item">
+                                            @if($book->image_auction)
+                                            @foreach($book->image_auction as $image)
+                                            {{-- {{dd($book->image_auction)}} --}}
+                                            <div style="max-height: 50px;" class="thumb-menu-item">
                                                 <a style="height: auto;" href="#product-large-one" data-toggle="tab" class="nav-link active">
-                                                    <img style="height: auto;" src="{{asset('public/upload/products/')}}/{{$book->auction_book_image}}" alt="product thumb">
+                                                    <img   style="height: auto;" src="{{asset('public/upload/detail/')}}/{{$image->image_auction_name}}" alt="product thumb">
+                                                    <a  class="popup-btn" href="{{asset('public/upload/detail/')}}/{{$image->image_auction_name}}" hidden></a>
+
                                                 </a>
                                             </div>
 
+                                            @endforeach
+                                            @endif
+
+
 
                                         </div>
-                                        <br>
+                                        {{-- <br> --}}
                                         <br>
                                         <br>
                                         <br>
@@ -217,6 +227,7 @@ input#recipient-name {
                                     </div>
                                     <!-- Product Thumbnail Carousel End -->
                                 </div>
+
                                 @php
 // $a = Carbon\Carbon::now();
 // $a = strtotime($a);
@@ -360,18 +371,10 @@ $a =$a1  - $time;
                                             </tbody>
                                           </table>
 
-                                        <p class="single-product__short-desc"></p>
-                                            <p class="product-availability"><i class="fa fa-check-circle"></i>Còn {{$book->book_amount}} cuốn</p>
-                                          @if(Auth::user()->id != $book->id_account)
-                                            <div class="product-action-wrapper">
-                                                <div class="quantity">
-                                                    <input type="number" class="quantity-input" name="qty" id="qty1" value="1" min="1">
-                                                </div>
-                                                <a href="{{Route('addcart',['id' => $book->id])}}" class="btn add-to-cart btn-style-1 color-1">
-                                                    Giỏ hàng
-                                                </a>
-                                            </div>
-                                            @endif
+                                        {{-- <p class="single-product__short-desc"></p> --}}
+                                            <p class="product-availability"><i class="fa fa-handshake-o" aria-hidden="true"></i>Số lượt đấu giá :  </p>
+                                            <p style="margin-top: -15px;" class="product-availability"><i class="fa fa-user-circle" aria-hidden="true"></i>Số người quan tâm : </p>
+
                                             {{-- <div class="single-product__btn">
                                                 <a href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a>
                                                 <a href="compare.html" data-toggle="tooltip" data-placement="top" title="Add to Compare"><i class="fa fa-refresh"></i> Add to Compare</a>
@@ -393,12 +396,12 @@ $a =$a1  - $time;
                                                 {{-- {{route('user',['id' =>$book->id_account ])}} --}}
                                                 {{-- <a href=""> --}}
                                                     @if(Auth::check())
-                                                <button  data-toggle="modal" data-target="#exampleModal1" type="button" class="btn btn-primary chat-facebook">
+                                                <button style="padding-bottom: 5px;" data-toggle="modal" data-target="#exampleModal1" type="button" class="btn btn-primary chat-facebook">
                                                    <i class="fa fa-comments-o" aria-hidden="true"></i>
                                                         Chat ngay
                                                     </button>
                                                     @else
-                                                    <button  data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-primary chat-facebook">
+                                                    <button style="padding-bottom: 5px;" data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-primary chat-facebook">
                                                         <i class="fa fa-comments-o" aria-hidden="true"></i>
                                                              Chat ngay
                                                          </button>
@@ -409,7 +412,7 @@ $a =$a1  - $time;
                                                 data-toggle="modal" data-target="#exampleModal" >Chat ngay</button> --}}
                                                 {{-- <button type="button" class="btn btn-outline-primary">Primary</button> --}}
                                                 <a href="tel:#">
-                                                <button type="button" class="btn btn-info so-hotline">
+                                                <button style="padding-bottom: 5px;" type="button" class="btn btn-info so-hotline">
                                                     <i class="fa fa-phone-square" aria-hidden="true"></i>
                                                         Gọi ngay
                                                     </button>
@@ -577,7 +580,7 @@ $a =$a1  - $time;
                                 </div>
                             </div>
                         </section>
-
+                        @endif
                         <!-- Shop Layout Start -->
 
                         <!-- Shop Layout End -->
@@ -596,7 +599,8 @@ $a =$a1  - $time;
                                         <a >Nguyên Văn A</a>
                                         <span style="float: right;" class="badge badge-dark">240.000đ</span>
                                             <ul class="children">
-                                                5h ngày 24, tháng 8,2020
+                                                <span style="float: right;" class="badge badge-info">5h ngày 24, tháng 8,2020</span>
+
                                                 {{-- @foreach($tl->subcategory as $stl)
                                                 <li class="cat-item">
                                                 <a href="{{route('p.subcategory',['id' => $stl->id ])}}">{{$stl->subcategory_name}}</a>
@@ -819,7 +823,7 @@ document.querySelector("#demo").style.color = "red";
 document.getElementById("demo").innerHTML = "Kết thúc thời gian đấu giá";
 document.getElementById("demo1").innerHTML = "Vui lòng đợi lượt đấu giá sách tiếp theo";
 // location.reload();
-setTimeout(function(){  location.reload(); }, 3000);
+setTimeout(function(){  location.reload(); }, 6000);
 }
 
 }, 1000);

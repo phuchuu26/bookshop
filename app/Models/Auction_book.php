@@ -60,4 +60,9 @@ class Auction_book extends Model
         return $this->belongsTo('App\Models\Publishing_house','id_publishinghouse','id');
 
     }
+    public function image_auction() // phải viêt liền ko được cách ra hoặc _
+    {
+        return $this->hasMany('App\Models\Image_auction','id_auction_book','id');
+
+    }
 }

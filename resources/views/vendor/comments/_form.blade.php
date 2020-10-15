@@ -45,7 +45,7 @@
 
             <div class="form-group">
                 <label for="message">Nhập bình luận vào đây:</label>
-                <textarea required class="form-control @if($errors->has('message')) is-invalid @endif" name="message" rows="3"></textarea>
+                <textarea style="font-size: 16px;" required class="form-control @if($errors->has('message')) is-invalid @endif" name="message" rows="3"></textarea>
                 <div class="invalid-feedback">
                     Your message is required.
                 </div>

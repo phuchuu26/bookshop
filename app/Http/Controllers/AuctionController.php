@@ -54,7 +54,7 @@ class AuctionController extends Controller
 
         $sp1  = endtime_auction::where('Endtime_auction_date','>',$a)
         ->first();
-        $book = $sp1->getauction;
+
         // dd($book);
         // $a = strtotime("$a");
         // echo Carbon::now('Asia/Ho_Chi_Minh');
@@ -84,7 +84,7 @@ class AuctionController extends Controller
         // dd($sp1);
         // die;
         if($sp1 != null){
-
+            $book = $sp1->getauction;
             $auctionbook = $sp1->getauction;
             if($auctionbook->auction_book_time_type == 'Giờ'){
                 $time = $auctionbook->auction_book_time*60 *60 ;
@@ -95,6 +95,7 @@ class AuctionController extends Controller
             }
         }else{
             $auctionbook = null;
+            $book = null;
             // $time = null;
         }
         // dd($time);
