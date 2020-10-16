@@ -2,6 +2,58 @@
 @section('title','Sản phẩm')
 <head>
     <style>
+li.cat-item.cat-parent.selected a{
+    /* font-size: 100px; */
+  color:transparent!important;
+  /* background-color:transparent!important; */
+  -webkit-background-clip: text!important;
+  background-image: linear-gradient(to right ,#fbc531, #f00, #ff0, #0ff, #0f0,#5e5eef,#f1c40f,white,#fc6441,#8c7ae6,#00a8ff)!important;;
+  animation: animate 10s  linear infinite!important;;
+  background-size: 1000%!important;;
+}
+@keyframes animate{
+  0%
+  {
+    background-position:0% 100%;
+  }
+  50%
+  {
+    background-position:100% 0%;
+  }
+  100%
+  {
+    background-position:0% 100%;
+  }
+}
+
+
+        a#new {
+    top: -3p;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    position: absolute;
+    padding-bottom: -15px;
+    padding-top: -25px!important;
+    /* top: -3px; */
+    top: -41px!important;
+    padding: -4px 0;
+    /* top: 15px; */
+    left: -34px;
+    width: 35px;
+    background-color: #fff700;
+    color: #fff;
+    left: -37px;
+    line-height: -1px;
+    align-items: center;
+    font: bold 15px sans-serif;
+    color: #333;
+    text-align: center;
+}
+        li.cat-item {
+    margin-bottom: 14px;
+}
         img.mfp-img {
     max-height: 676px!important;
     /* padding-top: 114px; */
@@ -102,12 +154,12 @@ input#recipient-name {
                     " class="content">
                         </div>
                      @if(Auth::check())
-                          <button type="button" style="background-color:red" class="btn add-to-cart btn-style-2 color-2"
+                          <button type="button" style="background-color:red;    margin-left: 385px;" class="btn add-to-cart btn-style-2 color-2"
                          data-toggle="modal" data-target="#exampleModal" >Đấu giá</button>
                          @else
 
 
-                         <button type="button" style="background-color:red" class="btn add-to-cart btn-style-2 color-2"
+                         <button type="button" style="background-color:red;    margin-left: 385px;" class="btn add-to-cart btn-style-2 color-2"
                          data-toggle="modal" data-target="#exampleModal1" >Đấu giá</button>
 
 <!-- Modal -->
@@ -236,13 +288,15 @@ $a1 = strtotime($sp1->Endtime_auction_date);
 // dd($a);
 // dd($a1);
 $a =$a1  - $time;
+// dd($time);
 @endphp
+
                                 <div class="col-lg-6">
                                     <!-- Single Product Content Start -->
                                     <div class="single-product__content">
                                         <div class="single-product__top">
                                             <h2 style="    line-height: 35px;" class="single-product__name">{{$book->auction_book_title}}</h2>
-                                            <div class="ratings-wrap">
+                                            <div class="ratings-wrap" style=" place-content: center;">
                                                 Thời gian sách bắt đầu lên sàn đấu giá:
                                                 <button type="button" id = "recipient-name" disabled style="background-color:red" class="btn add-to-cart btn-style-2 color-2"
                                                  >{{date('H:i d-m-Y', $a)}}</button>
@@ -292,12 +346,27 @@ $a =$a1  - $time;
 
                                             {{-- @if($book->book_sale == 0) --}}
 
-                                                <div class="single-product__price"> Giá khởi điểm
+                                                <div class="single-product__price"> Giá khởi điểm :
                                                     {{-- <button type="button" id = "recipient-name" disabled style="background-color:red" class="btn add-to-cart btn-style-2 color-2"
                                                     >
                                                     {{ number_format($book->auction_book_reserve_price,0,',','.') }} đ
                                                 </button> --}}
                                                     <span class="sale-price">{{ number_format($book->auction_book_reserve_price,0,',','.') }} đ</span>
+
+
+                                                     {{-- <button type="button" id = "recipient-name" disabled style="background-color:red" class="btn add-to-cart btn-style-2 color-2">
+                                                        {{ number_format($book->auction_book_reserve_price,0,',','.') }} đ
+                                                    </button> --}}
+                                                </div>
+                                                <div class="single-product__price"> Giá hiện tại :
+                                                    {{-- <button type="button" id = "recipient-name" disabled style="background-color:red" class="btn add-to-cart btn-style-2 color-2"
+                                                    >
+                                                    {{ number_format($book->auction_book_reserve_price,0,',','.') }} đ
+                                                </button> --}}
+                                                {{-- <button type="button" id = "recipient-name" disabled style="background-color:red" class="btn add-to-cart btn-style-2 color-2">
+                                                    {{ number_format($book->auction_book_reserve_price,0,',','.') }} đ
+                                                </button> --}}
+                                                        <span class="sale-price"> {{ number_format($curren_money->list_bidder_auction_money,0,',','.') }} đ</span>
 
                                                 </div>
 
@@ -372,9 +441,10 @@ $a =$a1  - $time;
                                           </table>
 
                                         {{-- <p class="single-product__short-desc"></p> --}}
-                                            <p class="product-availability"><i class="fa fa-handshake-o" aria-hidden="true"></i>Số lượt đấu giá :  </p>
+                                        @if($curren_moneys != null)
+                                            <p class="product-availability"><i class="fa fa-handshake-o" aria-hidden="true"></i>Số lượt đấu giá : {{$curren_moneys->count()}} </p>
                                             <p style="margin-top: -15px;" class="product-availability"><i class="fa fa-user-circle" aria-hidden="true"></i>Số người quan tâm : </p>
-
+                                          @endif
                                             {{-- <div class="single-product__btn">
                                                 <a href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a>
                                                 <a href="compare.html" data-toggle="tooltip" data-placement="top" title="Add to Compare"><i class="fa fa-refresh"></i> Add to Compare</a>
@@ -592,28 +662,45 @@ $a =$a1  - $time;
                             <div class="sidebar-widget product-widget product-cat-widget">
                                 <h3 style=" line-height: 28px!important;"class="widget-title">Danh sách những khách hàng đã đấu giá:</h3>
                                 <div class="widget_conent">
-                                    <ul class="product-categories">
+                                    <ul id="list_bidder" class="product-categories">
 
                                         {{-- @foreach($theloai as $tl) --}}
-                                        <li class="cat-item cat-parent">
-                                        <a >Nguyên Văn A</a>
-                                        <span style="float: right;" class="badge badge-dark">240.000đ</span>
-                                            <ul class="children">
-                                                <span style="float: right;" class="badge badge-info">5h ngày 24, tháng 8,2020</span>
-
-                                                {{-- @foreach($tl->subcategory as $stl)
-                                                <li class="cat-item">
-                                                <a href="{{route('p.subcategory',['id' => $stl->id ])}}">{{$stl->subcategory_name}}</a>
-                                                <span style="float: right;" class="badge badge-info">{{$stl->getbook->count()}}</span>
-                                                </li>
-                                                @endforeach --}}
-
-                                            </ul>
-                                        </li>
+                                        {{-- {{dd($curren_moneys)}} --}}
                                         {{-- @endforeach --}}
+                                        @if($curren_moneys != null)
+                                        @foreach($curren_moneys as $cur)
+                                        <li class="cat-item cat-parent">
+                                        <a  href="">{{$cur->info->info->info_lastname}} {{$cur->info->info->info_name}}</a>
+                                            {{-- <span class="count">({{$tl->subcategory->count()}})</span> --}}
+                                        <span id="price_bidder" style="float: right;" class="badge badge-dark">
+                                            {{ number_format($cur->list_bidder_auction_money,0,',','.')}} đ
+                                        </span>
+                                                <ul class="children">
+
+                                                    <li class="cat-item">
+                                                    {{-- <a id="time_bidder" href=""></a> --}}
+                                                    <span style="float: right;" class="badge badge-info">{{ date_format($cur->created_at,"H:i d/m/Y")}}</span>
+                                                    </li>
+
+                                                </ul>
+                                        </li>
+                                        @endforeach
+                                        @endif
+
+
+                                            {{-- <li class="cat-item cat-parent">
+                                                <a >Nguyên Văn A</a>
+                                                <span style="float: right;" class="badge badge-dark">240.000đ</span>
+                                                    <ul class="children">
+                                                        <span style="float: right;" class="badge badge-info">5h ngày 24, tháng 8,2020</span>
+
+
+                                                    </ul>
+                                                </li> --}}
 
 
                                     </ul>
+
                                 </div>
                             </div>
                             <!-- Product Categories Widget End -->
@@ -711,8 +798,7 @@ $a =$a1  - $time;
             </div>
         </div>
     </main>
-    @if($auctionbook!= null)
-
+    @if($book != null)
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -724,41 +810,50 @@ $a =$a1  - $time;
           </div>
           <div class="modal-body">
             {{-- {{ route('auction.create.submit',$real_estate->real_estate_id) }} --}}
-          <form action="{{route('post.auction',['id' => Auth::user()->id])}}" method="post">
+          <form action="{{route('post.auction')}}" method="post">
 
                 @csrf
                 <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Tên khách hàng:</label>
-                <button type="button" disabled style="background-color:red" class="btn add-to-cart btn-style-2 color-2"
-                data-toggle="modal" data-target="#exampleModal" >{{$auctionbook->account->info->info_lastname}} {{$auctionbook->account->info->info_name}}</button>
+                <button type="button" disabled style="background-color:red;float: right;" class="btn add-to-cart btn-style-2 color-2"
+                data-toggle="modal" data-target="#exampleModal" >{{$book->account->info->info_lastname}} {{$book->account->info->info_name}}</button>
               {{-- <input type="text" readonly value="nguyen" class="form-control" id="recipient-name"> --}}
               </div>
 
 
               <div class="form-group">
                 <label style="font-size: 18px;" for="recipient-name" class="col-form-label">Thời gian sách bắt đầu lên sàn đấu giá: </label>
-                <button type="button" id = "recipient-name" disabled style="background-color:red" class="btn add-to-cart btn-style-2 color-2"
+                <button type="button" id = "recipient-name" disabled style="background-color:red;float: right;" class="btn add-to-cart btn-style-2 color-2"
               data-toggle="modal" data-target="#exampleModal" >{{date('H:i d-m-Y', $a)}}</button>
+              {{-- <input type="text" readonly value="nguyen" class="form-control" id="recipient-name"> --}}
+              </div>
+              <div class="form-group">
+                <label style="font-size: 18px;" for="recipient-name" class="col-form-label">Mức giá hiện tại: </label>
+                <button style="text-transform: lowercase;background-color:red;float: right;" type="button"  disabled  class="btn add-to-cart btn-style-2 color-2"
+               >{{ number_format($curren_money->list_bidder_auction_money,0,',','.')}} đ</button>
               {{-- <input type="text" readonly value="nguyen" class="form-control" id="recipient-name"> --}}
               </div>
               <br>
               <div class="form-group">
-
+                @php
+                $current_money = $curren_money->list_bidder_auction_money;
+                @endphp
                 <label for="message-text" class="col-form-label">Số tiền đấu giá:</label>
-                <input id="myNumber" type="number" step="1000"  class="currency" min="1000" max="2500000" value="25000" />
+                <input id="myNumber" type="number" name="money" step="1000"  class="currency" min="{{$current_money}}" max="2500000" value="{{$current_money+10000}}" />
+                <input  type="number" hidden name="id_auction_book"   value="{{$book->id}}" />
                 {{-- <h3 id="dong"> --}}
-                    vnđ
+                    đ
                 {{-- </h3> --}}
               </div>
               {{-- <button  class="btn add-to-cart btn-style-1 color-3"  onclick="myFunction()">Tăng thêm 10K</button> --}}
 
 
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" style="background-color: darkgray;" class="btn btn-4 btn-style-3" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-4 btn-style-2">Đấu giá</button>
-          </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" style="background-color: darkgray;" class="btn btn-4 btn-style-3" data-dismiss="modal">Đóng</button>
+                <button type="submit" class="btn btn-4 btn-style-2">Đấu giá</button>
+            </div>
+        </form>
         </div>
       </div>
     </div>
@@ -842,5 +937,75 @@ setTimeout(function(){  location.reload(); }, 6000);
 
 
    {!! Toastr::message() !!}
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+    <!-- Header Area End Here -->
+        <script>
+            $(document).ready( function(){
+
+                $("li.cat-item.cat-parent:nth-child(1)").addClass("selected")
+                        // var pusher = new Pusher('5f9437b8677edc9e4714', {
+                        //     cluster: 'ap1',
+                        //     encrypted: true
+                        // });
+                        Pusher.logToConsole = true;
+                        var pusher = new Pusher("5f9437b8677edc9e4714", {
+                            // encrypted: true,
+                            cluster: "ap1",
+
+                            // authEndpoint: 'http://bookshop.com/chatify/chat/auth',
+                            // auth: {
+                            //     headers: {
+                            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            //     }
+                            // }
+                        });
+
+
+                        //Subscribe to the channel we specified in our Laravel Event
+                        var channel = pusher.subscribe('auction');
+                        console.log(channel);
+                        channel.bind('App\\Events\\Auction', addMessageDemo);
+                        console.log('chay  dc ');
+
+                        function addMessageDemo(data) {
+                            console.log(data);
+                            console.log('chay  dc 1');
+                            console.log(data.message);
+                            money = data.message.list_bidder_auction_money;
+                            time = data.message.date;
+                            man = data.message.ten;
+                            var link = data.message.link;
+                            // console.log(ten);
+
+                                            var li = $("<li class='cat-item cat-parent'></li>");
+                                            var a = $(`<a href='${link}' ></a>`);
+                                            a.html(man);
+                                            b = $("<span  style='float: right;' class='badge badge-dark'></span>");
+                                            b.html(money);
+                                            c = $("<ul style='display: block;' class='children'></ul>");
+                                            d = $("<li class='cat-item'></li>");
+                                            f = $("<a id='new' >Mới</a>");
+                                            e = $("<span style='float: right;' class='badge badge-info'></span>");
+                                            e.html(time);
+                                            d.append(e);
+                                            d.append(f);
+                                            c.append(d);
+
+                                            li.append(a);
+                                            li.append(b);
+                                            li.append(c);
+
+                                            console.log(li);
+                                        $('#list_bidder').prepend(li);
+                        }
+
+
+                    });
+
+
+                    </script>
+
 @endsection
 

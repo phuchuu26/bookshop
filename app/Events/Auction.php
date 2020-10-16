@@ -9,29 +9,22 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use App\User;
-use Illuminate\Support\Facades\Auth;
-// use App\Events\Event;
 
-
-// use App\Event;
-// extends Event
-class HelloPusherEvent   implements ShouldBroadcast
+class Auction  implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $message;
-    public $id;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($message,$id)
+    public function __construct($message)
     {
         //
-        // $this->message = 1;
+        // dd($message)
         $this->message = $message;
-        $this->id = $id;
+        // dd($message);
     }
 
     /**
@@ -41,12 +34,7 @@ class HelloPusherEvent   implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        // dd($this->message.'cai gi');
-        // console.log()
-        // dd('id nguoi nhan.'.$this->id);
-        // Private
-        return new Channel('phuc.'.$this->id);
-        // return new Channel('phuc.'.$id);
-        // return new Channel('phuc');
+        // return new PrivateChannel('channel-name');
+        return new Channel('auction');
     }
 }

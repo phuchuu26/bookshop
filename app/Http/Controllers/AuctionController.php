@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\CustomValidationRequest;
 use App\Rules\Numeric;
+
 // use Validator;
 use App\Models\Category;
+use App\Models\List_bidder;
 use App\Models\Endtime_auction;
 use Illuminate\Http\Request;
 use DB;
 use Carbon\Carbon;
 use App\Models\sub_category;
+use App\Models\Info;
 Use Illuminate\Support\Facades\Auth;
 use App\Models\book;
 use App\Models\Auction_book;
@@ -23,6 +26,7 @@ use App\User;
 use Toastr;
 use File;
 use Storage;
+use App\Events\Auction;
 class AuctionController extends Controller
 {
 
@@ -85,24 +89,34 @@ class AuctionController extends Controller
         // die;
         if($sp1 != null){
             $book = $sp1->getauction;
-            $auctionbook = $sp1->getauction;
-            if($auctionbook->auction_book_time_type == 'Giờ'){
-                $time = $auctionbook->auction_book_time*60 *60 ;
+            $curren_moneys = List_bidder::where('id_auction_book',$book->id)->orderBy("list_bidder_auction_money", 'desc')->get();
+            $curren_money = $curren_moneys->first();
+            // $auctionbook = $sp1->getauction;
+            if($book->auction_book_time_type == 'Giờ'){
+                $time = $book->auction_book_time*60 *60 ;
                 $time = intval($time);
             }else{
-                $time = $auctionbook->auction_book_time*60 ;
+                $time = $book->auction_book_time*60 ;
                 $time = intval($time);
+
             }
         }else{
-            $auctionbook = null;
+            $curren_money = null;
+            $curren_moneys = null;
+            // $auctionbook = null;
             $book = null;
             // $time = null;
         }
         // dd($time);
+        // dd($cur);
+        // dd($time);
         // dd($auctionbook->auction_book_time);
 
         Carbon::setLocale('vi');
-        return view('page.auction.index',compact('book','time','sp1','auctionbook','date','h','m','s','current_date_time'));
+        // curren_money
+
+        // dd($curren_money);
+        return view('page.auction.index',compact('curren_moneys','curren_money','book','time','sp1','date','h','m','s','current_date_time'));
         // return view('page.auction.index',['category'=>$category]);
     }
 
@@ -809,8 +823,37 @@ class AuctionController extends Controller
         return redirect(''.route('auction.management').'');
 
     }
-    public function post_auction($id){
+    public function post_auction(Request $req){
+        $bidder = new List_bidder;
+        $bidder->list_bidder_auction_money = $req->money;
+        $bidder->id_account = Auth::user()->id;
+        $bidder->id_auction_book = $req->id_auction_book;
+        $bidder->save();
+        $bidder_curren = List_bidder::find($bidder->id);
 
+        $id_account = $bidder->id_account;
+        $ten = Info::where('id_account',$id_account)->first();
+        // dd($ten);
+        $ho = $ten->info_lastname;
+
+        $tenkem = $ten->info_name;
+        $ten1 = $ho . ' ' . $tenkem;
+        $host = $req->getSchemeAndHttpHost();
+        $bidder_curren->setAttribute('ten', $ten1);
+        $bidder_curren->setAttribute('date', date('H:i d-m-Y', strtotime($bidder_curren->created_at)));
+        $bidder_curren->setAttribute('link', $host.'/shopuser-'.$bidder_curren->id_account);
+        $bidder_curren->setAttribute('list_bidder_auction_money',number_format($bidder_curren->list_bidder_auction_money,0,',','.').' đ' );
+
+
+        $a = $bidder_curren->getAttributes();
+        // dd($a);
+        // dd($a);
+        // dd($bidder_curren);
+        event(new Auction($a));
+
+        Toastr::success('Đấu giá thành công', 'Thông báo', ["positionClass" => "toast-top-right"]);
+
+        return redirect()->route('auction_index');
     }
 
 }
