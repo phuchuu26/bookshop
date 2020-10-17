@@ -27,15 +27,28 @@ use Toastr;
 use File;
 use Storage;
 use App\Events\Auction;
+
 class AuctionController extends Controller
 {
 
     public function index(){
+
+        $a = Carbon::now();
+        $quantity = DB::table('endtime_auction')
+        ->where('Endtime_auction_date','>',$a)
+        ->count();
+        if($quantity >1){
+            // luot dau gias sahcs ke tiep
+            $nextBookAuction = Endtime_auction::where('Endtime_auction_date','>',$a)->get();
+            $nextBookAuction = $nextBookAuction[1];
+            // dd($nextBookAuction);
+        }else{
+            $nextBookAuction = null;
+        }
         // cách để gọi method của controller khác
         // app(\App\Http\Controllers\Admin\AuctionController::class)->duyet(31);
 
         // $date1 = Endtime_auction::latest()->first();
-        $a = Carbon::now();
         // $a = 2020-09-26 11:12:35.590428 Asia/Ho_Chi_Minh (+07:00)
         // sản phẩm hiện tại đang được đấu giá
         $sp  = DB::table('endtime_auction')
@@ -51,11 +64,22 @@ class AuctionController extends Controller
             // $current_date_time += 120;
         }
         //sản phẩm vừa đấu giá xong:
-        $sptruoc = DB::table('endtime_auction')
-        ->where('Endtime_auction_date','<',$a)
+        $sptruoc = endtime_auction::
+        where('Endtime_auction_date','<',$a)
+        ->orderBy('Endtime_auction_date','asc')
         ->get()
         ->last();
-
+        if($sptruoc != null){
+            // nguoi gianh chien thang
+            $product_sptruoc = $sptruoc->getauction ;
+            $manWinAuction  = List_bidder::where('id_auction_book',$product_sptruoc->id)->orderBy("list_bidder_auction_money", 'desc')->first();
+            // dd($manWinAuction);
+        }
+        else{
+            $manWinAuction = null;
+            $product_sptruoc = null ;
+        }
+        // dd(  $product_sptruoc);
         $sp1  = endtime_auction::where('Endtime_auction_date','>',$a)
         ->first();
 
@@ -88,9 +112,19 @@ class AuctionController extends Controller
         // dd($sp1);
         // die;
         if($sp1 != null){
+
             $book = $sp1->getauction;
+            // dd($book);
+            views($book)
+            ->cooldown(Carbon::now()->addMinutes(1))
+            ->record();
+            $data = Auction_book::where('id',$book->id)->update(['views'=>views($book)->count()]);
             $curren_moneys = List_bidder::where('id_auction_book',$book->id)->orderBy("list_bidder_auction_money", 'desc')->get();
+            $auctionOfMe = List_bidder::where('id_auction_book',$book->id)->where('id_account',Auth::user()->id)->orderBy("list_bidder_auction_money", 'desc')->first();
+            // dd($auctionOfMe);
             $curren_money = $curren_moneys->first();
+            // $curren_moneys= $curren_moneys->toArray();
+            // dd($curren_moneys);
             // $auctionbook = $sp1->getauction;
             if($book->auction_book_time_type == 'Giờ'){
                 $time = $book->auction_book_time*60 *60 ;
@@ -98,13 +132,14 @@ class AuctionController extends Controller
             }else{
                 $time = $book->auction_book_time*60 ;
                 $time = intval($time);
-
             }
+
         }else{
             $curren_money = null;
             $curren_moneys = null;
             // $auctionbook = null;
             $book = null;
+            $auctionOfMe = null;
             // $time = null;
         }
         // dd($time);
@@ -116,7 +151,7 @@ class AuctionController extends Controller
         // curren_money
 
         // dd($curren_money);
-        return view('page.auction.index',compact('curren_moneys','curren_money','book','time','sp1','date','h','m','s','current_date_time'));
+        return view('page.auction.index',compact('nextBookAuction','manWinAuction','product_sptruoc','quantity','auctionOfMe','curren_moneys','curren_money','book','time','sp1','date','h','m','s','current_date_time'));
         // return view('page.auction.index',['category'=>$category]);
     }
 

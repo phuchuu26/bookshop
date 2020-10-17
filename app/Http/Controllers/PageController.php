@@ -161,8 +161,7 @@ class PageController extends Controller
     public function book_detail($id){
       $book = book::find($id);
 
-      views($book)
-            ->cooldown(Carbon::now()->addMinutes(1))
+      views($book)->cooldown(Carbon::now()->addMinutes(1))
             ->record();
 
       $data = book::where('id',$id)->update(['views'=>views($book)->count()]);

@@ -25,7 +25,10 @@ li.cat-item.cat-parent.selected a{
     background-position:0% 100%;
   }
 }
-
+.modal-content {
+    min-height: 202px;
+    font-size: x-large;
+}
 
         a#new {
     top: -3p;
@@ -119,10 +122,10 @@ input#recipient-name {
     font-size: 27px;
     min-height: 47px;
 }
-.modal-content {
+/* .modal-content {
     min-height: 324px;
     font-size: x-large;
-}
+} */
     </style>
 </head>
 @section('page_content')
@@ -153,9 +156,11 @@ input#recipient-name {
                         display: flex;  justify-content: center;
                     " class="content">
                         </div>
-                     @if(Auth::check())
+                     @if(Auth::check() )
+                        @if(Auth::user()->level != 1)
                           <button type="button" style="background-color:red;    margin-left: 385px;" class="btn add-to-cart btn-style-2 color-2"
                          data-toggle="modal" data-target="#exampleModal" >Đấu giá</button>
+                         @endif
                          @else
 
 
@@ -358,6 +363,7 @@ $a =$a1  - $time;
                                                         {{ number_format($book->auction_book_reserve_price,0,',','.') }} đ
                                                     </button> --}}
                                                 </div>
+                                                @if($curren_money != null)
                                                 <div class="single-product__price"> Giá hiện tại :
                                                     {{-- <button type="button" id = "recipient-name" disabled style="background-color:red" class="btn add-to-cart btn-style-2 color-2"
                                                     >
@@ -369,6 +375,7 @@ $a =$a1  - $time;
                                                         <span class="sale-price"> {{ number_format($curren_money->list_bidder_auction_money,0,',','.') }} đ</span>
 
                                                 </div>
+                                                @endif
 
                                             {{-- @else
 
@@ -441,9 +448,10 @@ $a =$a1  - $time;
                                           </table>
 
                                         {{-- <p class="single-product__short-desc"></p> --}}
-                                        @if($curren_moneys != null)
+                                        {{-- @if($curren_moneys ) --}}
+                                        @if($curren_moneys->count() != 0)
                                             <p class="product-availability"><i class="fa fa-handshake-o" aria-hidden="true"></i>Số lượt đấu giá : {{$curren_moneys->count()}} </p>
-                                            <p style="margin-top: -15px;" class="product-availability"><i class="fa fa-user-circle" aria-hidden="true"></i>Số người quan tâm : </p>
+                                        <p style="margin-top: -15px;" class="product-availability"><i class="fa fa-user-circle" aria-hidden="true"></i>Số người quan tâm : {{$book->views}}</p>
                                           @endif
                                             {{-- <div class="single-product__btn">
                                                 <a href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a>
@@ -565,73 +573,7 @@ $a =$a1  - $time;
                                             {{-- hien thi danh gia all --}}
                                             {{-- @foreach($danhgia as $dg) --}}
                                             <div class="product-review-wrap">
-                                                {{-- <h2 class="mb--20">Có {{$evaluate1}} đánh giá hiện tại</h2> --}}
-                                                {{-- @foreach($danhgia as $dg)
-                                                <div class="review mb--40">
-                                                    <div class="review__single">
-                                                        <div class="review__avatar">
-                                                        <img src="{{asset('public/upload/1.jpg')}}" alt="avatar">
-                                                        </div>
-                                                        <div class="review__content">
-                                                            <p class="review__meta">
-                                                            <span class="review__author">{{$dg->info_name}} {{$dg->info_lastname}}</span>
-                                                                <span class="review__dash">-</span>
 
-                                                            <span class="review__date">{{ \Carbon\Carbon::parse($dg->created_at)->format('H:m d/m/Y')}}</span>
-                                                            </p>
-                                                            <p class="review__text">
-                                                             {{$dg->evaluate_title}}
-                                                            </p>
-                                                            <p class="review__text">
-                                                                {{$dg->evaluate_content}}
-                                                            </p>
-
-                                                            </span>
-                                                            <div class="ratings">
-                                                                @if($dg->evaluate_rank == 5 )
-                                                                    <i class="fa fa-star rated"></i>
-                                                                    <i class="fa fa-star rated"></i>
-                                                                    <i class="fa fa-star rated"></i>
-                                                                    <i class="fa fa-star rated"></i>
-                                                                    <i class="fa fa-star rated"></i>
-                                                                @elseif($dg->evaluate_rank == 4)
-                                                                <i class="fa fa-star rated"></i>
-                                                                <i class="fa fa-star rated"></i>
-                                                                <i class="fa fa-star rated"></i>
-                                                                <i class="fa fa-star rated"></i>
-                                                                 <i class="fa fa-star"></i>
-                                                                @elseif($dg->evaluate_rank == 3 )
-                                                                <i class="fa fa-star rated"></i>
-                                                                <i class="fa fa-star rated"></i>
-                                                                <i class="fa fa-star rated"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-
-                                                                @elseif($dg->evaluate_rank == 2)
-                                                                <i class="fa fa-star rated"></i>
-                                                                <i class="fa fa-star rated"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-
-                                                                @elseif($dg->evaluate_rank == 1)
-                                                                <i class="fa fa-star rated"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-
-                                                                @endif
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                @endforeach --}}
-
-                                                {{-- {{dd($evaluate)}} --}}
-                                            {{-- ranking --}}
 
                                             </div>
                                         </div>
@@ -667,10 +609,13 @@ $a =$a1  - $time;
                                         {{-- @foreach($theloai as $tl) --}}
                                         {{-- {{dd($curren_moneys)}} --}}
                                         {{-- @endforeach --}}
-                                        @if($curren_moneys != null)
+
+                                        @if($curren_moneys  != null)
+                                        @if($curren_moneys->count() != 0)
+
                                         @foreach($curren_moneys as $cur)
                                         <li class="cat-item cat-parent">
-                                        <a  href="">{{$cur->info->info->info_lastname}} {{$cur->info->info->info_name}}</a>
+                                        <a  href="{{route('shopuser',['id' => $cur->id_account])}}">{{$cur->info->info->info_lastname}} {{$cur->info->info->info_name}}</a>
                                             {{-- <span class="count">({{$tl->subcategory->count()}})</span> --}}
                                         <span id="price_bidder" style="float: right;" class="badge badge-dark">
                                             {{ number_format($cur->list_bidder_auction_money,0,',','.')}} đ
@@ -685,6 +630,7 @@ $a =$a1  - $time;
                                                 </ul>
                                         </li>
                                         @endforeach
+                                        @endif
                                         @endif
 
 
@@ -707,90 +653,115 @@ $a =$a1  - $time;
                             <!-- Product color Widget Start -->
                              <div class="sidebar-widget product-widget product-color-widget">
                                 <h3 style=" line-height: 28px!important;" class="widget-title">Khách hàng vừa đấu giá thành công sách trước</h3>
+                                @if($product_sptruoc != null)
                                 <div class="widget_conent">
-                                    <ul class="product-color">
-                                        <li><a href="">Tên Khách hàng</a><span style="float: right;" class="badge badge-dark">Nguyễn Văn A</span></li>
-                                        <li><a href="">Số tiền:</a> <span style="float: right;" class="badge badge-dark">240.000đ</span></li>
-                                        <li><a href="">Thời gian</a><span style="float: right;" class="badge badge-dark">15:45 23/9/2020</span></li>
+                                    <ul class="product-categories">
+                                        <li id="a" class="cat-parent">
+                                            <a  href="">Tên sách:  </a> <br>
+                                                {{-- <span class="count"></span> --}}
+                                                {{-- color: #fff;    background: content-box;
+                                            background-color: #343a40;
+                                            padding: 5px;
+                                            display: inline-block;
+                                            padding: .25em .4em;
+                                            font-size: 75%;
+                                            font-weight: 700;
+                                            text-align: center;
+                                            vertical-align: baseline;
+                                            border-radius: 9px; --}}
+                                            <div class="badge badge-dark" id="name" style="white-space:  initial!important;" >
+                                               {{$product_sptruoc->auction_book_title}}
+                                            </div>
+                                                    <ul class="children">
+
+                                                        <li class="cat-item">
+                                                        <a  href="">Người đăng:</a>
+                                                        <span style="float: right;margin-top: 2px;  " class="badge badge-info">{{$product_sptruoc->account->info->info_lastname}} {{$product_sptruoc->account->info->info_name}}</span>
+                                                        </li>
+
+                                                    </ul>
+                                                    {{-- <ul class="children">
+
+                                                        <li class="cat-item">
+                                                        <a  href="">Thời gian sách lên sàn:</a>
+                                                        <span style="float: right;" class="badge badge-info">{{ date_format($cur->created_at,"H:i d/m/Y")}}</span>
+                                                        </li>
+
+                                                    </ul> --}}
+                                            </li>
+                                            {{-- {{dd($manWinAuction)}} --}}
+                                        <li ><a href="#">Tên Khách hàng: </a><span style="float: right;" class="badge badge-dark">{{$manWinAuction->info->info->info_lastname}} {{$manWinAuction->info->info->info_name}}</span></li>
+                                        <li><a href="#">Giá cao nhất: </a> <span style="float: right;" class="badge badge-dark">{{number_format($manWinAuction->list_bidder_auction_money,0,',','.')}} đ</span></li>
+                                        <li><a href="#">Thời gian: </a><span style="float: right;" class="badge badge-dark">{{date_format($manWinAuction->created_at,"H:i d/m/Y")}}</span></li>
                                     </ul>
                                 </div>
+                                @endif
                             </div>
                             <!-- Product color Widget End -->
                             <!-- Price Filter Widget Start -->
-
                             <div class="sidebar-widget product-widget product-color-widget">
                                 <h3 style=" line-height: 28px!important;" class="widget-title">Lượt đấu giá tiếp theo</h3>
+                                @if($quantity>1)
                                 <div class="widget_conent">
-                                    <ul class="product-color">
-                                        <li><a href="">Tên Khách hàng</a><span style="float: right;" class="badge badge-dark">Nguyễn Văn A</span></li>
-                                        <li><a href="">Số tiền:</a> <span style="float: right;" class="badge badge-dark">240.000đ</span></li>
-                                        <li><a href="">Thời gian</a><span style="float: right;" class="badge badge-dark">15:45 23/9/2020</span></li>
+                                    <ul class="product-categories">
+
+                                        <li class="cat-parent"><a href="">Người đăng: </a><span style="float: right; margin-top: 2px;" class="badge badge-dark">        {{$nextBookAuction->getauction->account->info->info_lastname}} {{$nextBookAuction->getauction->account->info->info_name}}</span></li>
+                                        <li id="a" class="cat-parent">
+                                            <a  href="">Tên sách:  </a> <br>
+                                                {{-- <span class="count"></span> --}}
+                                                {{-- color: #fff;    background: content-box;
+                                            background-color: #343a40;
+                                            padding: 5px;
+                                            display: inline-block;
+                                            padding: .25em .4em;
+                                            font-size: 75%;
+                                            font-weight: 700;
+                                            text-align: center;
+                                            vertical-align: baseline;
+                                            border-radius: 9px; --}}
+                                            <div class="badge badge-dark" id="name" style="white-space:  initial!important;" >
+                                                {{$nextBookAuction->getauction->auction_book_title}}
+                                            </div>
+                                                    {{-- <ul class="children">
+
+                                                        <li class="cat-item">
+                                                        <a  href="">Người đăng:</a>
+                                                        <span style="float: right;margin-top: 2px;  " class="badge badge-info">{{$product_sptruoc->account->info->info_lastname}} {{$product_sptruoc->account->info->info_name}}</span>
+                                                        </li>
+
+                                                    </ul> --}}
+                                                    {{-- <ul class="children">
+
+                                                        <li class="cat-item">
+                                                        <a  href="">Thời gian sách lên sàn:</a>
+                                                        <span style="float: right;" class="badge badge-info">{{ date_format($cur->created_at,"H:i d/m/Y")}}</span>
+                                                        </li>
+
+                                                    </ul> --}}
+                                            </li>
+                                            @php
+                                            $time1 = $nextBookAuction->Endtime_auction_date;
+                                            $typeTime = $nextBookAuction->getauction->auction_book_time_type;
+                                            $time = $nextBookAuction->getauction->auction_book_time;
+
+                                            if($typeTime == 'Giờ'){
+                                                $time = $time * 60 * 60;
+                                            }else{
+                                                $time = $time * 60;
+                                            }
+                                            $time1 = strtotime($time1);
+
+                                            $timestillauction = $time1 - $time;
+                                            $timestillauction1 = date('H:i d/m/Y', $timestillauction);
+                                            // echo $timestillauction1   ;
+                                            // die;
+                                            @endphp
+                                        <li><a href="">Giá khởi điểm: </a> <span style="float: right;    margin-top: 2px;" class="badge badge-dark">{{number_format($nextBookAuction->getauction->auction_book_reserve_price,0,',','.')}} đ</span></li>
+                                        <li><a href="">Thời gian: </a><span style="float: right;    margin-top: 2px;" class="badge badge-dark">{{$timestillauction1}}</span></li>
                                     </ul>
                                 </div>
+                                    @endif
                             </div>
-                            <!-- Price Filter Widget End -->
-
-                            <!-- Price Compare Widget Start -->
-                            {{-- <div class="sidebar-widget product-widget product-compare-widget">
-                                <h3 class="widget-title">Compare</h3>
-                                <div class="widget_conent">
-                                    <ul>
-                                        <li>
-                                            <a href="sinngle-product.html">Condimentum furniture</a>
-                                            <span class="compare-remove"><i class="fa fa-times"></i></span>
-                                        </li>
-                                        <li>
-                                            <a href="sinngle-product.html">Auctor gravida enim</a>
-                                            <span class="compare-remove"><i class="fa fa-times"></i></span>
-                                        </li>
-                                        <li>
-                                            <a href="sinngle-product.html">Condimentum furniture</a>
-                                            <span class="compare-remove"><i class="fa fa-times"></i></span>
-                                        </li>
-                                    </ul>
-                                    <div class="compare-widget-bottom">
-                                        <a href="#">Clear all</a>
-                                        <a href="compare.html" class="sidebar-btn">Compare</a>
-                                    </div>
-                                </div>
-                            </div> --}}
-                            <!-- Price Compare Widget End -->
-
-                            <!-- Product Banner Widget Start -->
-                            {{-- <div class="sidebar-widget banner-widget">
-                                <div class="promo-box full-width bg--white">
-                                    <a href="#">
-                                        <img src="{{asset('public/page/img/home1-product-banner-1.jpg')}}" alt="promo">
-                                    </a>
-                                </div>
-                            </div> --}}
-                            <!-- Product Banner Widget End -->
-
-                            <!-- Product Tags Widget Start -->
-                            {{-- <div class="sidebar-widget product-tags-widget">
-                                <h3 class="widget-title">Product Tags</h3>
-                                <div class="widget_conent">
-                                    <div class="tagcloud">
-                                        <a href="blog.html" rel="1">chilled</a>
-                                        <a href="blog.html" rel="2">dark</a>
-                                        <a href="blog.html" rel="3">euro</a>
-                                        <a href="blog.html" rel="2">fashion</a>
-                                        <a href="blog.html" rel="1">food</a>
-                                        <a href="blog.html" rel="4">hardware</a>
-                                        <a href="blog.html" rel="3">hat</a>
-                                        <a href="blog.html" rel="2">hipster</a>
-                                        <a href="blog.html" rel="1">holidays</a>
-                                        <a href="blog.html" rel="2">light</a>
-                                        <a href="blog.html" rel="1">mac</a>
-                                        <a href="blog.html" rel="3">place</a>
-                                        <a href="blog.html" rel="2">t-shirt</a>
-                                        <a href="blog.html" rel="1">travel</a>
-                                        <a href="blog.html" rel="2">video-2</a>
-                                        <a href="blog.html" rel="2">white</a>
-                                    </div>
-                                </div>
-                            </div> --}}
-                            <!-- Product Tags Widget End -->
 
                         </aside>
                     </div>
@@ -798,16 +769,17 @@ $a =$a1  - $time;
             </div>
         </div>
     </main>
+
     @if($book != null)
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Thủ tục đấu giá</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+              <h5 class="modal-title" id="exampleModalLabel">Thủ tục đấu giá</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
           <div class="modal-body">
             {{-- {{ route('auction.create.submit',$real_estate->real_estate_id) }} --}}
           <form action="{{route('post.auction')}}" method="post">
@@ -826,20 +798,31 @@ $a =$a1  - $time;
                 <button type="button" id = "recipient-name" disabled style="background-color:red;float: right;" class="btn add-to-cart btn-style-2 color-2"
               data-toggle="modal" data-target="#exampleModal" >{{date('H:i d-m-Y', $a)}}</button>
               {{-- <input type="text" readonly value="nguyen" class="form-control" id="recipient-name"> --}}
-              </div>
+            </div>
+              @if($curren_money != null)
               <div class="form-group">
                 <label style="font-size: 18px;" for="recipient-name" class="col-form-label">Mức giá hiện tại: </label>
+
                 <button style="text-transform: lowercase;background-color:red;float: right;" type="button"  disabled  class="btn add-to-cart btn-style-2 color-2"
                >{{ number_format($curren_money->list_bidder_auction_money,0,',','.')}} đ</button>
               {{-- <input type="text" readonly value="nguyen" class="form-control" id="recipient-name"> --}}
               </div>
+              @endif
               <br>
               <div class="form-group">
-                @php
-                $current_money = $curren_money->list_bidder_auction_money;
+                  @php
+// echo('a');
+// die;
+                if($curren_money != null){
+
+                    $current_money = $curren_money->list_bidder_auction_money;
+                }
+                else{
+                    $current_money = $book->auction_book_reserve_price;
+                }
                 @endphp
                 <label for="message-text" class="col-form-label">Số tiền đấu giá:</label>
-                <input id="myNumber" type="number" name="money" step="1000"  class="currency" min="{{$current_money}}" max="2500000" value="{{$current_money+10000}}" />
+                <input id="myNumber" type="number" name="money" step="1000"  class="currency" min="{{$auctionOfMe ? $auctionOfMe->list_bidder_auction_money +1000 : $book->auction_book_reserve_price}}" max="10000000" value="{{$current_money+10000}}" />
                 <input  type="number" hidden name="id_auction_book"   value="{{$book->id}}" />
                 {{-- <h3 id="dong"> --}}
                     đ
@@ -918,7 +901,17 @@ document.querySelector("#demo").style.color = "red";
 document.getElementById("demo").innerHTML = "Kết thúc thời gian đấu giá";
 document.getElementById("demo1").innerHTML = "Vui lòng đợi lượt đấu giá sách tiếp theo";
 // location.reload();
-setTimeout(function(){  location.reload(); }, 6000);
+// setTimeout(function(){  location.reload(); }, 6000);
+                        Pusher.logToConsole = true;
+                        var pusher = new Pusher("5f9437b8677edc9e4714", {
+                            cluster: "ap1",
+                        });
+                        var channel1 = pusher.subscribe('start-auction');
+                        console.log(channel1);
+                        channel1.bind('App\\Events\\StartAuction', addMessageDemo1);
+                        function addMessageDemo1(data) {
+                            location.reload();
+                        }
 }
 
 }, 1000);

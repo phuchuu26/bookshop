@@ -4,12 +4,13 @@ namespace App\Models;
 use Laravelista\Comments\Commentable;
 // use Laravelista\Comments\Commentable;
 use Illuminate\Database\Eloquent\Model;
-
-class Auction_book extends Model
+use CyrildeWit\EloquentViewable\InteractsWithViews;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
+class Auction_book extends Model implements Viewable
 {
-    use Commentable;
-    //
     protected $table='auction_book';
+    use Commentable, InteractsWithViews;
+    //
     // guard giúp cho hệ thống ngăn chặn người dùng có thể sửa dữ liệu ở các trường này
     protected $guarded = ['id'];
 // fillable thì ngược lại

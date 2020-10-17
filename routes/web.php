@@ -215,7 +215,7 @@ Route::get('/san-pham/chi-tiet-san-pham-{id}','PageController@book_detail')->nam
 
                     // quan ly đấu giá khach hang
                     // 'middleware'=>'CheckCustomer'
-                    Route::get('/index','AuctionController@index')->name('auction_index');
+                    Route::get('auction/index','AuctionController@index')->name('auction_index');
                     Route::group(['prefix'=>'auction','middleware'=>'Ad_login'],function(){
                         //hien thi page client
                         // Route::get('/chatify','MessagesController@index');

@@ -16,9 +16,12 @@ use App\Models\Image_auction;
 use App\Models\book_company;
 use App\Models\publishing_house;
 use App\User;
+use App\Events\StartAuction;
 use Toastr;
+
 class AuctionController extends Controller
 {
+    public $count;
     public function list(){
         $a = Carbon::now();
         // $a = 2020-09-26 11:12:35.590428 Asia/Ho_Chi_Minh (+07:00)
@@ -41,6 +44,7 @@ class AuctionController extends Controller
        $quantity = DB::table('endtime_auction')
        ->where('Endtime_auction_date','>',$a)
        ->count();
+       $this->count = $quantity;
 
         $auction_book = Auction_book::find($id);
         $type_time = $auction_book->auction_book_time_type;
@@ -82,7 +86,6 @@ class AuctionController extends Controller
         // dd($spcuoi->Endtime_auction_date);
         // dd(Carbon::createFromTimestamp($d)->toDateTimeString());
         if($spcuoi){
-
             $e =date("Y-m-d\TH:i", strtotime($spcuoi->Endtime_auction_date));
         }
         else{
@@ -144,6 +147,10 @@ class AuctionController extends Controller
         }
 
         public function duyet($id){
+            if($this->count == 0){
+                $a = true;
+                event(new StartAuction($a));
+            }
             $data = Auction_book::findOrFail($id)->update(['auction_book_status'=>'Được xét duyệt']);
             //var_dump($data);die;
             // Session::put('msg','')
