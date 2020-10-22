@@ -617,13 +617,13 @@ button#anhbia {
 
                                                 <div class="slidecontainer">
 
-                                                <input type="range" min="0.5" step="0.5" max="24" value="{{$auction_book->auction_book_time}}" class="slider" id="myRange">
+                                                <input type="range" min="0.5" name="valuetime0" step="0.5" max="24" value="{{$auction_book->auction_book_time}}" class="slider" id="myRange">
 
                                                     <button id = "demo" style="" type="button"  class="btn btn-info"> </button>
                                                 </div>
                                                 <div class="slidecontainer">
 {{-- {{dd($auction_book->auction_book_time)}} --}}
-                                                    <input type="range" min="30" max="60" value="{{$auction_book->auction_book_time}}" class="slider" id="myRange1">
+                                                    <input type="range" min="30" max="60" name="valuetime1" value="{{$auction_book->auction_book_time}}" class="slider" id="myRange1">
                                                     <button id = "demo1" style="" type="button"  class="btn btn-info"> </button>
                                                 </div>
                                             </div>
@@ -772,7 +772,8 @@ button#anhbia {
                 <div class="col-md-12">
                     <div class="card">
                         <div class="body gui">
-                            <button type="submit" style="min-width:130px;" class="btn btn-success">Cập nhật</button>
+                                <button type="submit" style="min-width:130px;" class="btn btn-success">Cập nhật</button>
+
                         </div>
                     </form>
                 </div>

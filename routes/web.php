@@ -230,6 +230,9 @@ Route::get('/san-pham/chi-tiet-san-pham-{id}','PageController@book_detail')->nam
                         // quan ly  dau gia
                         Route::get('/management', 'AuctionController@management')
                         ->name('auction.management');
+                        // xem danh sách những người đã đấu giá cho sản phẩm của mình
+                        Route::get('/seenListBidder/{id}', 'AuctionController@seenListBidder')
+                        ->name('seenListBidder');
                         //xoa
                         Route::get('/detele_auction/{id}','AuctionController@delete')->name('delete_auction');
                         // sua
@@ -245,6 +248,7 @@ Route::get('/san-pham/chi-tiet-san-pham-{id}','PageController@book_detail')->nam
 
 
 //////////////////////////////////////////////////// admin
+Route::get('/endAuction/{id}','Admin\AuctionController@endAuction')->name('endAuction');
 
 Route::group(['prefix'=>'quan-tri','middleware'=>'Ad_login'],function(){         // ,'middleware'=>'Ad_login'
 	Route::get('/','AdminController@home')->name('ad.home');

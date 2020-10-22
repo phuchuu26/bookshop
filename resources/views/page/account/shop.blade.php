@@ -96,9 +96,10 @@ input#amount {
                             {{-- {{dd($user->info)}} --}}
                             @if($user->info)
                             <h3>
-                                {{-- {{$user->info->info_lastname .' '.$user->info->info_name}} --}}
+                                {{$user->info->info_lastname .' '.$user->info->info_name}}
                             </h3>
                             @else
+
                             <h3>
                                 {{$user->username}}
                             </h3>

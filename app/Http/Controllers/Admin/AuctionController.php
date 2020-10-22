@@ -170,6 +170,16 @@ class AuctionController extends Controller
 
             return redirect()->route('auction.admin.list');
         }
+        public function endAuction($id){
+
+            $data = Auction_book::where('id',$id)->update(['auction_book_status'=>'Kết thúc đấu giá']);
+            //var_dump($data);die;
+            // $getstamps = 'a';
+            // Session::put('msg','')
+            Toastr::info('Kết thúc đấu giá sách', 'Thông báo', ["positionClass" => "toast-top-right"]);
+            // return response()->json(array('success' => true, 'getstamps' => $getstamps));
+            return back()->withInput();
+        }
         public function huyxetduyet($id){
             $data = Auction_book::where('id',$id)->update(['auction_book_status'=>'Không được duyệt']);
             $a = Auction_book::findOrFail($id);

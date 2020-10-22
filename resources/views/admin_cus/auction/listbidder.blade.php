@@ -1,18 +1,26 @@
 @extends('admin.layout')
-@section('title','Tác giả')
+@section('title','Danh sách những khách hàng đã đấu giá')
 @section('admin_content')
-
+<head>
+    <style>
+        td {
+    text-align: center;
+}      th {
+    text-align: center;
+}
+    </style>
+</head>
 <div id="main-content">
         <div class="container-fluid">
             <div class="block-header">
                 <div class="row clearfix">
                     <div class="col-md-6 col-sm-12">
-                        <h1>Tác giả</h1>
+                        <h1>Danh sách khách hàng đã đấu giá</h1>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('ad.home')}}">{{Auth::user()->vaitro->role_name}}</a></li>
-                                <li class="breadcrumb-item"><a href="#">Danh sách</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Tác giả</li>
+                                <li class="breadcrumb-item"><a href="#">Đấu giá</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Danh sách khách hàng đã đấu giá</li>
                             </ol>
                         </nav>
                     </div>
@@ -25,7 +33,7 @@
                     <div class="card" >
                         <div class="header" style="padding-bottom: 0px !important">
 
-                            <a  href="{{route('auth.add')}}" class="btn btn-round btn-success">Thêm</a>
+                            {{-- <a  href="{{route('auth.add')}}" class="btn btn-round btn-success">Thêm</a> --}}
 
                             <ul class="header-dropdown dropdown">
 
@@ -43,17 +51,30 @@
                             </ul>
                         </div>
                         <br>
+                        {{-- {{dd($time)}} --}}
+
                         <div class="body">
                             <div class="table-responsive">
+                                {{-- {{dd(strtotime(\Carbon\Carbon::parse($time)))}} --}}
+                                {{-- {{dd($time)}} --}}
+                                @php
+                                $time1 = strtotime($time->Endtime_auction_date);
+                                $startAuction = $time1 - $timeStillAuction;
+                                @endphp
+                                {{-- {{dd($startAuction)}} --}}
+                                <div style="font-weight: bold;float: right;" class="time">Thời gian bắt đầu đấu giá : {{ date('H:i m/d/Y', $startAuction)}} </div>
+                                <br>
+                                <div style="font-weight: bold;float: right;" class="time">Thời gian kết thúc đấu giá : {{ \Carbon\Carbon::parse($time->Endtime_auction_date)->format('H:i d/m/Y')}} </div>
                                 {{-- js-basic-example --}}
                                 <table class="table table-hover dataTable table-custom spacing5">
-                                    <thead>
+                                    <thead style="background-color: #343A40!important;" class="a">
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Tác giả</th>
-                                            <th>Ghi chú</th>
+                                            <th>STT</th>
+                                            <th>Tên khách hàng</th>
+                                            <th>Thời gian đấu giá</th>
+                                            <th>Số tiền đấu giá</th>
 
-                                            <th>Thao tác</th>
+                                            {{-- <th>Thao tác</th> --}}
 
                                         </tr>
                                     </thead>
@@ -69,17 +90,23 @@
                                     </tfoot> --}}
                                     <tbody>
 
-                                        @foreach($author as $au)
-
+    @php
+    $i =1;
+    @endphp
+                                            @foreach($bidders as $bi)
                                         <tr>
-                                            <td>{{$au->id}}</td>
-                                            <td>{{$au->author_name}}</td>
-                                            <td></td>
+                                            <td>{{$i == 1 ? 'Người thắng cuộc' : $i}}</td>
+                                            @php
+    $i ++;
+    @endphp
+                                            <td>{{$bi->info->info->info_lastname .' '.$bi->info->info->info_name}}</td>
+                                            <td>{{  date('H:i d/m/Y', strtotime($bi->created_at)) }}</td>
 
                                             <td colspan="2">
-                                                <a href="{{Route('auth.edit',['id' => $au->id])}}" style="padding-right: 30px;"><i class="fa fa-pencil"></i></a>
+                                                {{ number_format($bi->list_bidder_auction_money,0,',','.') }} đ
+                                                {{-- <a href="{{Route('auth.edit',['id' => $au->id])}}" style="padding-right: 30px;"><i class="fa fa-pencil"></i></a> --}}
 
-                                                <a href="{{Route('auth.delete',['id' => $au->id])}}"><i class="fa fa-trash-o fa-fw"></i></a>
+                                                {{-- <a href="{{Route('auth.delete',['id' => $au->id])}}"><i class="fa fa-trash-o fa-fw"></i></a> --}}
                                             </td>
                                         </tr>
 
@@ -88,7 +115,7 @@
 
                                     </tbody>
                                 </table>
-                                {{ $author->links() }}
+                                {{-- {{ $bidders->links() }} --}}
                             </div>
                         </div>
                     </div>

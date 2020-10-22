@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('title','Tác giả')
+@section('title','Danh sách đấu giá')
 @section('admin_content')
 
 <div id="main-content">
@@ -7,12 +7,12 @@
             <div class="block-header">
                 <div class="row clearfix">
                     <div class="col-md-6 col-sm-12">
-                        <h1>Tác giả</h1>
+                        <h1>Danh sách đấu giá</h1>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{route('ad.home')}}">Admin</a></li>
-                                <li class="breadcrumb-item"><a href="#">Danh sách</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Tác giả</li>
+                            <li class="breadcrumb-item"><a href="{{route('ad.home')}}">{{Auth::user()->vaitro->role_name}}</a></li>
+                                <li class="breadcrumb-item"><a href="#">Đấu giá</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Danh sách đấu giá</li>
                             </ol>
                         </nav>
                     </div>
@@ -101,6 +101,10 @@
                                                 <button type="button" style=" color:white;" class="btn btn-sm btn-success" >
                                                 {{$li->auction_book_status}}
                                                 </button>
+                                                @elseif($li->auction_book_status == 'Kết thúc đấu giá')
+                                                <button type="button" style=" color:white;" class="btn btn-sm btn-info" >
+                                                {{$li->auction_book_status}}
+                                                </button>
                                                 @else
                                                 <button type="button" style=" color:white;" class="btn btn-sm btn-danger" >
                                                     {{$li->auction_book_status}}
@@ -112,9 +116,14 @@
                                             </td>
 
                                             <td colspan="2">
-                                                <a href="{{Route('edit_auction',['id' => $li->id])}}" style="padding-right: 30px;"><i class="fa fa-pencil"></i></a>
-
-                                            <a href="{{route('delete_auction',['id' => $li ->id])}}"><i class="fa fa-trash-o fa-fw"></i></a>
+                                                @if($li->auction_book_status == 'Kết thúc đấu giá')
+                                                     <a href="{{Route('seenListBidder',['id' => $li->id])}}" style=""><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                @elseif($li->auction_book_status == 'Được xét duyệt')
+                                                     <a href="{{Route('auction.admin.change_status',['id' => $li->id])}}" style=""><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                @elseif($li->auction_book_status == 'Chưa duyệt')
+                                                    <a href="{{Route('edit_auction',['id' => $li->id])}}" style="padding-right: 15px;"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                                    <a href="{{route('delete_auction',['id' => $li ->id])}}"><i class="fa fa-trash-o fa-fw"></i></a>
+                                                @endif
                                             </td>
                                         </tr>
 

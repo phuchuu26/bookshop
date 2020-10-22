@@ -1,5 +1,5 @@
 @extends('admin.layout')
-@section('title','Thêm sách')
+@section('title','Xem sách đấu giá')
 <head>
     <style>
        .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
@@ -499,10 +499,11 @@ button#anhbia {
                 <div class="col-md-12">
                     <div class="card">
                         <div class="body gui">
-                        <a  class="btn btn-warning" href="{{route('auction.admin.list')}}">
-                                    Quay lại
+                            @if(Auth::user()->level == 1)
+                            <a  class="btn btn-warning" href="{{route('auction.admin.list')}}">
+                                        Quay lại
 
-                                </a>
+                                    </a>
                                 @if( $auction_book->auction_book_status =='Chưa duyệt')
 
                                  <a  class="btn btn-danger" href="{{route('duyetfail',['id' => $auction_book->id])}}">
@@ -522,6 +523,12 @@ button#anhbia {
                                     <button type="button"  class="btn btn-success"
                                     data-toggle="modal" data-target="#exampleModal" >  Đồng ý xét duyệt</button>
                                 {{-- </a> --}}
+                                @endif
+                                @else
+                                <a  class="btn btn-warning" href="{{route('auction.management')}}">
+                                    Quay lại
+
+                                </a>
                                 @endif
                         </div>
                     </form>

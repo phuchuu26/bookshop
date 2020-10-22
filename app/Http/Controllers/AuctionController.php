@@ -120,7 +120,12 @@ class AuctionController extends Controller
             ->record();
             $data = Auction_book::where('id',$book->id)->update(['views'=>views($book)->count()]);
             $curren_moneys = List_bidder::where('id_auction_book',$book->id)->orderBy("list_bidder_auction_money", 'desc')->get();
-            $auctionOfMe = List_bidder::where('id_auction_book',$book->id)->where('id_account',Auth::user()->id)->orderBy("list_bidder_auction_money", 'desc')->first();
+            if(Auth::check()){
+
+                $auctionOfMe = List_bidder::where('id_auction_book',$book->id)->where('id_account',Auth::user()->id)->orderBy("list_bidder_auction_money", 'desc')->first();
+            }else{
+                $auctionOfMe = null;
+            }
             // dd($auctionOfMe);
             $curren_money = $curren_moneys->first();
             // $curren_moneys= $curren_moneys->toArray();
@@ -487,6 +492,7 @@ class AuctionController extends Controller
 
 
 
+
     public function update(Request $book2,$id){
         $this->validate($book2,[
             'bookname' => 'required|min:2',
@@ -568,8 +574,16 @@ class AuctionController extends Controller
         //     $value = $book2->value_time;
         // }
         // $book->auction_book_time = $value;
-        $book ->auction_book_time = $book2->value_time;
-        $book ->auction_book_time_type = $book2->time;
+        // $book ->auction_book_time = $book2->value_time;
+        // $book ->auction_book_time_type = $book2->time;
+
+        if($book2->loaithoigian == 0 ){
+            $book->auction_book_time_type = 'Giờ';
+            $book->auction_book_time =  $book2->valuetime0;
+        }else{
+            $book ->auction_book_time_type = 'Phút';
+            $book ->auction_book_time =  $book2->valuetime1;
+        }
 
          if($book2->hasFile('book_image'))
         {
@@ -870,11 +884,13 @@ class AuctionController extends Controller
         $ten = Info::where('id_account',$id_account)->first();
         // dd($ten);
         $ho = $ten->info_lastname;
+        $img = $bidder_curren->info->avatar;
 
         $tenkem = $ten->info_name;
         $ten1 = $ho . ' ' . $tenkem;
         $host = $req->getSchemeAndHttpHost();
         $bidder_curren->setAttribute('ten', $ten1);
+        $bidder_curren->setAttribute('img', $img);
         $bidder_curren->setAttribute('date', date('H:i d-m-Y', strtotime($bidder_curren->created_at)));
         $bidder_curren->setAttribute('link', $host.'/shopuser-'.$bidder_curren->id_account);
         $bidder_curren->setAttribute('list_bidder_auction_money',number_format($bidder_curren->list_bidder_auction_money,0,',','.').' đ' );
@@ -889,6 +905,39 @@ class AuctionController extends Controller
         Toastr::success('Đấu giá thành công', 'Thông báo', ["positionClass" => "toast-top-right"]);
 
         return redirect()->route('auction_index');
+    }
+
+
+    public function seenListBidder($id){
+        $time = Endtime_auction::where('id_auction_book',$id)->first();
+        // dd($time);
+        $timeAuction = Auction_book::where('id',$id)->first();
+        $type = $timeAuction->auction_book_time_type;
+        $timeStillAuction = $timeAuction->auction_book_time;
+        if($type == 'Giờ'){
+            $timeStillAuction = 60*60*$timeStillAuction;
+        }else{
+            $timeStillAuction = 60*$timeStillAuction;
+        }
+        // dd($timeAuction);
+        // DB::raw('count(*) as user_count, status')
+        // $bidders =List_bidder::select( DB::raw('SELECT * FROM `list_bidder` WHERE id in (select MAX(id) as id from list_bidder where id_auction_book=50 GROUP BY id_account)'))
+        // ->get();
+        // $bidders =  List_bidder::whereRaw('id = (select max(`id`) from list_bidder)')->get();
+        // $bidders =  List_bidder::where('id_auction_book',$id)->groupBy('id_account')->whereRaw('id = (select max(`id`) from list_bidder)')->get();
+        $bidders =  List_bidder::where('id_auction_book',$id)->orderBy('id','desc')->get()->unique('id_account')->sortByDesc('list_bidder_auction_money');
+        // $bidders =  $bidders->orderBy('list_bidder_auction_money','desc');
+        // $bidders = $bidders->unique('id_account')->paginate(10);
+        // $bidders = $bidders->paginate(10);
+        //  ;
+        // $bidders = DB::table('list_bidder')->where('id_auction_book',$id)->orderBy('id', 'desc')->groupBy('id_account')->get();
+        // $bidders1 = List_bidder::where('id_auction_book',$id)->max('id')->groupy('id_account')->orderBy('id','desc')->get();
+        // $bidders1 = $bidders->distinct('id_account');
+        // dd($bidders);
+        // $users = DB::table('list_bidder')->orderBy('id','asc')->where('id_auction_book',$id)->get();
+        // dd($users);
+        return view('admin_cus.auction.listbidder',compact('time','bidders','timeStillAuction'));
+        // dd($danhsach);
     }
 
 }

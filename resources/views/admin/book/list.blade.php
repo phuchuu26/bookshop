@@ -10,7 +10,7 @@
                         <h1>Sách</h1>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{route('ad.home')}}">Admin</a></li>
+                                <li class="breadcrumb-item"><a href="{{route('ad.home')}}">{{Auth::user()->vaitro->role_name}}</a></li>
                                 <li class="breadcrumb-item"><a href="#">Danh sách</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Sách</li>
                             </ol>

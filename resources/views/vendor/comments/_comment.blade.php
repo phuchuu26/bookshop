@@ -26,17 +26,26 @@
 @endif
 
 
-    @if($comment)
+@if($comment)
+    @if($comment->commenter)
 
         @if($comment->commenter->avatar)
         <img style=" width: 60px; height: 60px;border-radius: 28px;" class="mr-3" src="{{asset('storage/app/public/users-avatar')}}/{{ $comment->commenter->avatar }}" alt="{{ $comment->commenter->name ?? $comment->guest_name }} Avatar">
-        @elseif(!$comment->commenter->info->infor_avatar)
+        @else
         <img style=" width: 60px; height: 60px;border-radius: 28px;" class="mr-3" src="{{asset('storage/app/public/users-avatar')}}/avatar.png" alt="{{ $comment->commenter->name ?? $comment->guest_name }} Avatar">
         @endif
+    @else
+            <img style=" width: 60px; height: 60px;border-radius: 28px;" class="mr-3" src="{{asset('storage/app/public/users-avatar')}}/avatar.png" alt="{{  $comment->guest_name }} Avatar">
 
     @endif
+
+@endif
     <div class="media-body">
+        @if($comment->commenter)
         <h4 class="mt-0 mb-1">{{ $comment->commenter->info->info_lastname .' ' .$comment->commenter->info->info_name?? $comment->guest_name  }} <small class="text-muted">- {{ $comment->created_at->diffForHumans() }}</small></h4>
+        @else
+        <h4 class="mt-0 mb-1">{{ $comment->guest_name  }} <small class="text-muted">- {{ $comment->created_at->diffForHumans() }}</small></h4>
+        @endif
         <div id="a"  style="    margin-bottom: 10px;white-space: pre-wrap; font-size:16px;">{!! $markdown->line($comment->comment) !!}</div>
 
         <div>

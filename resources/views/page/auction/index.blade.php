@@ -2,13 +2,78 @@
 @section('title','Sản phẩm')
 <head>
     <style>
-li.cat-item.cat-parent.selected a{
+
+li.cat-item.cat-parent ul.children.breadcrumb li:not(:last-child):after, .widget-menu li:before, .product-categories .cat-item.cat-parent:after, .accordion__link:after {
+    position: absolute;
+    font-family: fontAwesome;
+    /* line-height: 1; */
+    line-height: 2!important;
+    margin-right: -9px!important;
+    margin-top: 3px!important;
+}
+        /* ::after {
+    margin-top: 11px;
+    margin-right: -12px;
+} */
+        span#price_bidder {
+    margin-top: 15px;
+}
+
+
+
+
+        /* .row.custom-row {
+    margin-left: -62px;
+} */
+        span.ten {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+        ul.breadcrumb {
+            min-width: 1200px;
+            margin-left: -60px;
+}
+.container {
+    margin-left: 190px!important;
+}
+        aside.sidebar {
+            min-width: 330px;
+    margin-left: -60px;
+}
+        span.ten {
+    /* padding-left: 31px; */
+}
+        img.memo {
+    border: 4px solid#343a40;
+    /* border: 2px solid red; */
+    margin-right: -7px;
+}
+        img.memo {
+    width: 50px;
+    border-radius: 55px;
+    height: 50px;
+}
+
+
+li.cat-item.cat-parent.selected span.ten.badge.badge-info{
     /* font-size: 100px; */
-  color:transparent!important;
+  /* color:transparent!important; */
+  /* font-size: 18px; */
   /* background-color:transparent!important; */
-  -webkit-background-clip: text!important;
+  /* -webkit-background-clip: text!important; */
   background-image: linear-gradient(to right ,#fbc531, #f00, #ff0, #0ff, #0f0,#5e5eef,#f1c40f,white,#fc6441,#8c7ae6,#00a8ff)!important;;
   animation: animate 10s  linear infinite!important;;
+  background-size: 1000%!important;
+}
+li.cat-item.cat-parent.selected img.memo  {
+    /* font-size: 100px; */
+    border: 4px solid transparent!important;
+  color:transparent!important;
+  /* font-size: 18px; */
+  /* background-color:transparent!important; */
+  /* -webkit-background-clip: text!important; */
+  background-image: linear-gradient(to left ,#fbc531, #f00, #ff0, #0ff, #0f0,#5e5eef,#f1c40f,white,#fc6441,#8c7ae6,#00a8ff)!important;;
+  animation: animate1 10s  linear infinite!important;;
   background-size: 1000%!important;;
 }
 @keyframes animate{
@@ -25,13 +90,27 @@ li.cat-item.cat-parent.selected a{
     background-position:0% 100%;
   }
 }
+@keyframes animate1{
+  0%
+  {
+    background-position:100% 0%;
+  }
+  50%
+  {
+    background-position:0% 100%;
+  }
+  100%
+  {
+    background-position:100% 0%;
+  }
+}
 .modal-content {
     min-height: 202px;
     font-size: x-large;
 }
 
         a#new {
-    top: -3p;
+    /* top: -3px; */
     -webkit-transform: rotate(-45deg);
     -moz-transform: rotate(-45deg);
     -ms-transform: rotate(-45deg);
@@ -40,12 +119,12 @@ li.cat-item.cat-parent.selected a{
     padding-bottom: -15px;
     padding-top: -25px!important;
     /* top: -3px; */
-    top: -41px!important;
+    top: -66px!important;
     padding: -4px 0;
     /* top: 15px; */
     left: -34px;
     width: 35px;
-    background-color: #fff700;
+    background-color: #ffc107;
     color: #fff;
     left: -37px;
     line-height: -1px;
@@ -157,9 +236,11 @@ input#recipient-name {
                     " class="content">
                         </div>
                      @if(Auth::check() )
-                        @if(Auth::user()->level != 1)
+                     @if($book)
+                        @if(Auth::user()->level != 1 && Auth::user()->id != $book->id_account )
                           <button type="button" style="background-color:red;    margin-left: 385px;" class="btn add-to-cart btn-style-2 color-2"
                          data-toggle="modal" data-target="#exampleModal" >Đấu giá</button>
+                         @endif
                          @endif
                          @else
 
@@ -604,27 +685,33 @@ $a =$a1  - $time;
                             <div class="sidebar-widget product-widget product-cat-widget">
                                 <h3 style=" line-height: 28px!important;"class="widget-title">Danh sách những khách hàng đã đấu giá:</h3>
                                 <div class="widget_conent">
+                                    @if($curren_moneys  != null)
                                     <ul id="list_bidder" class="product-categories">
 
                                         {{-- @foreach($theloai as $tl) --}}
                                         {{-- {{dd($curren_moneys)}} --}}
                                         {{-- @endforeach --}}
 
-                                        @if($curren_moneys  != null)
                                         @if($curren_moneys->count() != 0)
 
                                         @foreach($curren_moneys as $cur)
                                         <li class="cat-item cat-parent">
-                                        <a  href="{{route('shopuser',['id' => $cur->id_account])}}">{{$cur->info->info->info_lastname}} {{$cur->info->info->info_name}}</a>
+                                            <div class="memo1">
+                                                <img class="memo" style="border: 4px solid #17a2b8" src="{{asset('public/storage/users-avatar/')}}/{{$cur->info->avatar}}" alt="product">
+                                                <span style="margin-top: 2px;" class="ten badge badge-info">
+                                                    <a style="color:white ;" href="{{route('shopuser',['id' => $cur->id_account])}}">{{$cur->info->info->info_lastname}} {{$cur->info->info->info_name}}</a>
+                                                </span>
+
+                                                <span id="price_bidder" style="float: right;" class="badge badge-dark">
+                                                    {{ number_format($cur->list_bidder_auction_money,0,',','.')}} đ
+                                                </span>
+                                            </div>
                                             {{-- <span class="count">({{$tl->subcategory->count()}})</span> --}}
-                                        <span id="price_bidder" style="float: right;" class="badge badge-dark">
-                                            {{ number_format($cur->list_bidder_auction_money,0,',','.')}} đ
-                                        </span>
                                                 <ul class="children">
 
                                                     <li class="cat-item">
                                                     {{-- <a id="time_bidder" href=""></a> --}}
-                                                    <span style="float: right;" class="badge badge-info">{{ date_format($cur->created_at,"H:i d/m/Y")}}</span>
+                                                    <span style="float: right;    margin-top: -10px;" class="badge badge-dark">{{ date_format($cur->created_at,"H:i d/m/Y")}}</span>
                                                     </li>
 
                                                 </ul>
@@ -670,13 +757,21 @@ $a =$a1  - $time;
                                             vertical-align: baseline;
                                             border-radius: 9px; --}}
                                             <div class="badge badge-dark" id="name" style="white-space:  initial!important;" >
+                                                {{-- {{dd($product_sptruoc)}} --}}
                                                {{$product_sptruoc->auction_book_title}}
                                             </div>
                                                     <ul class="children">
 
                                                         <li class="cat-item">
                                                         <a  href="">Người đăng:</a>
-                                                        <span style="float: right;margin-top: 2px;  " class="badge badge-info">{{$product_sptruoc->account->info->info_lastname}} {{$product_sptruoc->account->info->info_name}}</span>
+                                                        <div class="memo1">
+                                                            <img class="memo" style="border: 4px solid #17a2b8" src="{{asset('public/storage/users-avatar/')}}/{{$product_sptruoc->account->avatar}}" alt="product">
+                                                            <span style="margin-top: 2px; " class="ten badge badge-info">
+                                                                <a style="color:white ;" href="{{route('shopuser',['id' => $product_sptruoc->account->id ])}}">
+                                                                    {{$product_sptruoc->account->info->info_lastname}} {{$product_sptruoc->account->info->info_name}}
+                                                                </a>
+                                                            </span>
+                                                        </div>
                                                         </li>
 
                                                     </ul>
@@ -689,8 +784,19 @@ $a =$a1  - $time;
 
                                                     </ul> --}}
                                             </li>
-                                            {{-- {{dd($manWinAuction)}} --}}
-                                        <li ><a href="#">Tên Khách hàng: </a><span style="float: right;" class="badge badge-dark">{{$manWinAuction->info->info->info_lastname}} {{$manWinAuction->info->info->info_name}}</span></li>
+                                            {{-- {{dd($manWinAuction->info->avatar)}} --}}
+                                            <li ><a href="#">Tên Khách hàng: </a>
+                                                <div class="memo1">
+
+                                                    <img class="memo" src="{{asset('public/storage/users-avatar/')}}/{{$manWinAuction->info->avatar}}" alt="product">
+                                                    <span  style="" class="ten badge badge-dark">
+                                                        <a style="color:white ;" href="{{route('shopuser',['id' => $manWinAuction->info->id ])}}">
+                                                            {{$manWinAuction->info->info->info_lastname}} {{$manWinAuction->info->info->info_name}}
+                                                        </a>
+                                                        {{-- {{dd($manWinAuction->info->id)}} --}}
+                                                        </span>
+                                                    </div>
+                                                </li>
                                         <li><a href="#">Giá cao nhất: </a> <span style="float: right;" class="badge badge-dark">{{number_format($manWinAuction->list_bidder_auction_money,0,',','.')}} đ</span></li>
                                         <li><a href="#">Thời gian: </a><span style="float: right;" class="badge badge-dark">{{date_format($manWinAuction->created_at,"H:i d/m/Y")}}</span></li>
                                     </ul>
@@ -702,10 +808,21 @@ $a =$a1  - $time;
                             <div class="sidebar-widget product-widget product-color-widget">
                                 <h3 style=" line-height: 28px!important;" class="widget-title">Lượt đấu giá tiếp theo</h3>
                                 @if($quantity>1)
+                                {{-- {{dd($quantity)}} --}}
                                 <div class="widget_conent">
                                     <ul class="product-categories">
 
-                                        <li class="cat-parent"><a href="">Người đăng: </a><span style="float: right; margin-top: 2px;" class="badge badge-dark">        {{$nextBookAuction->getauction->account->info->info_lastname}} {{$nextBookAuction->getauction->account->info->info_name}}</span></li>
+                                        <li class="cat-parent"><a href="">Người đăng: </a>
+
+                                            <div class="memo1">
+                                                {{dd($nextBookAuction->getauction)}}
+                                                <img class="memo" src="{{asset('public/storage/users-avatar/')}}/{{$nextBookAuction->getauction->account->avatar}}" alt="product">
+                                                <span style=" margin-top: 2px;" class="ten badge badge-dark">
+                                                    <a style="color:white ;" href="{{route('shopuser',['id' => $nextBookAuction->getauction->account->id ])}}">{{$nextBookAuction->getauction->account->info->info_lastname}} {{$nextBookAuction->getauction->account->info->info_name}}</a>
+
+                                                </span>
+                                                </div>
+                                                    </li>
                                         <li id="a" class="cat-parent">
                                             <a  href="">Tên sách:  </a> <br>
                                                 {{-- <span class="count"></span> --}}
@@ -822,7 +939,7 @@ $a =$a1  - $time;
                 }
                 @endphp
                 <label for="message-text" class="col-form-label">Số tiền đấu giá:</label>
-                <input id="myNumber" type="number" name="money" step="1000"  class="currency" min="{{$auctionOfMe ? $auctionOfMe->list_bidder_auction_money +1000 : $book->auction_book_reserve_price}}" max="10000000" value="{{$current_money+10000}}" />
+                <input id="myNumber" type="number" name="money" step="1000"  class="currency" min="{{$auctionOfMe != null ? $auctionOfMe->list_bidder_auction_money +1000 : $book->auction_book_reserve_price}}" max="10000000" value="{{$current_money+10000}}" />
                 <input  type="number" hidden name="id_auction_book"   value="{{$book->id}}" />
                 {{-- <h3 id="dong"> --}}
                     đ
@@ -841,12 +958,15 @@ $a =$a1  - $time;
       </div>
     </div>
     @endif
+    {{-- {{dd('a')}} --}}
     {{-- <script>
         function myFunction() {
         //   document.getElementById("myNumber").stepUp(5);
         }
         </script> --}}
     <script>
+        var quantity = {{$quantity}};
+        console.log(quantity);
         var d = new Date();
 var n = d.getTime();
 var now = n;
@@ -896,13 +1016,26 @@ document.getElementById("demo1").innerHTML = " Đấu giá đang diễn ra";
 // If the count down is over, write some text
 if (distance < 0) {
 
-clearInterval(x);
-document.querySelector("#demo").style.color = "red";
-document.getElementById("demo").innerHTML = "Kết thúc thời gian đấu giá";
-document.getElementById("demo1").innerHTML = "Vui lòng đợi lượt đấu giá sách tiếp theo";
+    clearInterval(x);
+    document.querySelector("#demo").style.color = "red";
+    document.getElementById("demo").innerHTML = "Kết thúc thời gian đấu giá";
+    document.getElementById("demo1").innerHTML = "Vui lòng đợi lượt đấu giá sách tiếp theo";
+    if(quantity > 0){
+        $.ajax({
+            type: 'GET', //THIS NEEDS TO BE GET
+            url: '{{route('endAuction',['id'=>$book?$book->id:0])}}',
+            success: function (data) {
+                console.log(data);
+                location.reload();
+            },
+            error: function() {
+                console.log(data);
+            }
+        });
+    }
 // location.reload();
 // setTimeout(function(){  location.reload(); }, 6000);
-                        Pusher.logToConsole = true;
+Pusher.logToConsole = true;
                         var pusher = new Pusher("5f9437b8677edc9e4714", {
                             cluster: "ap1",
                         });
@@ -912,9 +1045,9 @@ document.getElementById("demo1").innerHTML = "Vui lòng đợi lượt đấu gi
                         function addMessageDemo1(data) {
                             location.reload();
                         }
-}
+                    }
 
-}, 1000);
+                }, 1000);
 
 
 
@@ -970,24 +1103,33 @@ document.getElementById("demo1").innerHTML = "Vui lòng đợi lượt đấu gi
                             time = data.message.date;
                             man = data.message.ten;
                             var link = data.message.link;
+                            var img = data.message.img;
                             // console.log(ten);
 
                                             var li = $("<li class='cat-item cat-parent'></li>");
-                                            var a = $(`<a href='${link}' ></a>`);
-                                            a.html(man);
-                                            b = $("<span  style='float: right;' class='badge badge-dark'></span>");
+                                            var memo1 = $("<div class='memo1'></div>");
+                                            var memo = $(`<img class='memo' style='border: 4px solid #17a2b8' src='{{asset('public/storage/users-avatar/')}}/${img}' alt='product'>`)
+                                            var giaSpan = $("<span style='margin-top: 2px;margin-left: 3px;' class='ten badge badge-info'></span>");
+                                            var giaA =$(`<a style='color:white;' href='${link}'></a>`);
+
+                                            giaA.html(man);
+                                            giaSpan.append(giaA);
+                                            b = $("<span  style='float: right;margin-top: 15px;' class='badge badge-dark'></span>");
                                             b.html(money);
                                             c = $("<ul style='display: block;' class='children'></ul>");
                                             d = $("<li class='cat-item'></li>");
                                             f = $("<a id='new' >Mới</a>");
-                                            e = $("<span style='float: right;' class='badge badge-info'></span>");
+                                            e = $("<span style='float: right;margin-top: -10px;' class='badge badge-dark'></span>");
                                             e.html(time);
                                             d.append(e);
                                             d.append(f);
                                             c.append(d);
 
-                                            li.append(a);
-                                            li.append(b);
+                                            memo1.append(memo);
+                                            memo1.append(giaSpan);
+                                            memo1.append(b);
+
+                                            li.append(memo1);
                                             li.append(c);
 
                                             console.log(li);

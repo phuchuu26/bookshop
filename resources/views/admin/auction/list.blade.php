@@ -117,6 +117,10 @@
                                                 <button type="button" style=" color:white;" class="btn btn-sm btn-danger" >
                                                     {{$li->auction_book_status}}
                                                 </button>
+                                                @elseif($li->auction_book_status == 'Kết thúc đấu giá')
+                                                <button type="button" style=" color:white;" class="btn btn-sm btn-info" >
+                                                    {{$li->auction_book_status}}
+                                                </button>
                                                 @else
                                                 <button type="button" style=" color:white;" class="btn btn-sm btn-success" >
                                                     {{$li->auction_book_status}}
