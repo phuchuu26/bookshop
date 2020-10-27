@@ -15,6 +15,7 @@ use App\Models\author;
 use App\Models\Image_auction;
 use App\Models\book_company;
 use App\Models\publishing_house;
+use App\Models\List_bidder;
 use App\User;
 use App\Events\StartAuction;
 use Toastr;
@@ -171,8 +172,10 @@ class AuctionController extends Controller
             return redirect()->route('auction.admin.list');
         }
         public function endAuction($id){
-
-            $data = Auction_book::where('id',$id)->update(['auction_book_status'=>'Kết thúc đấu giá']);
+            $maxPrice = List_bidder::where('id_auction_book',$id)->orderBy('list_bidder_auction_money','desc')->first();
+            $data = Auction_book::where('id',$id)->update(['auction_book_status'=>'Kết thúc đấu giá',
+            'auction_book_final_winner' => $maxPrice->id_account
+            ]);
             //var_dump($data);die;
             // $getstamps = 'a';
             // Session::put('msg','')

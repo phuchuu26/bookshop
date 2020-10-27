@@ -52,8 +52,8 @@
                         </div>
                         <br>
                         {{-- {{dd($time)}} --}}
-
                         <div class="body">
+
                             <div class="table-responsive">
                                 {{-- {{dd(strtotime(\Carbon\Carbon::parse($time)))}} --}}
                                 {{-- {{dd($time)}} --}}
@@ -62,7 +62,7 @@
                                 $startAuction = $time1 - $timeStillAuction;
                                 @endphp
                                 {{-- {{dd($startAuction)}} --}}
-                                <div style="font-weight: bold;float: right;" class="time">Thời gian bắt đầu đấu giá : {{ date('H:i m/d/Y', $startAuction)}} </div>
+                                <div style="font-weight: bold;float: right;" class="time">Thời gian bắt đầu đấu giá : {{ date('H:i d/m/Y', $startAuction)}} </div>
                                 <br>
                                 <div style="font-weight: bold;float: right;" class="time">Thời gian kết thúc đấu giá : {{ \Carbon\Carbon::parse($time->Endtime_auction_date)->format('H:i d/m/Y')}} </div>
                                 {{-- js-basic-example --}}
@@ -72,7 +72,8 @@
                                             <th>STT</th>
                                             <th>Tên khách hàng</th>
                                             <th>Thời gian đấu giá</th>
-                                            <th>Số tiền đấu giá</th>
+                                            <th>Số tiền đấu giá cao nhất</th>
+                                            <th>Số lần đấu giá</th>
 
                                             {{-- <th>Thao tác</th> --}}
 
@@ -102,11 +103,16 @@
                                             <td>{{$bi->info->info->info_lastname .' '.$bi->info->info->info_name}}</td>
                                             <td>{{  date('H:i d/m/Y', strtotime($bi->created_at)) }}</td>
 
-                                            <td colspan="2">
+                                            <td>
                                                 {{ number_format($bi->list_bidder_auction_money,0,',','.') }} đ
                                                 {{-- <a href="{{Route('auth.edit',['id' => $au->id])}}" style="padding-right: 30px;"><i class="fa fa-pencil"></i></a> --}}
 
                                                 {{-- <a href="{{Route('auth.delete',['id' => $au->id])}}"><i class="fa fa-trash-o fa-fw"></i></a> --}}
+                                            </td>
+                                            <td>
+                                                {{-- {{dd($bi)}} --}}
+                                                {{-- {{dd(Auth::user()->id)}} --}}
+                                                {{$bi->countPerUser($bi->id_auction_book,$bi->id_account)}}
                                             </td>
                                         </tr>
 

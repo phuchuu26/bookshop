@@ -815,7 +815,7 @@ $a =$a1  - $time;
                                         <li class="cat-parent"><a href="">Người đăng: </a>
 
                                             <div class="memo1">
-                                                {{dd($nextBookAuction->getauction)}}
+                                                {{-- {{dd($nextBookAuction->getauction)}} --}}
                                                 <img class="memo" src="{{asset('public/storage/users-avatar/')}}/{{$nextBookAuction->getauction->account->avatar}}" alt="product">
                                                 <span style=" margin-top: 2px;" class="ten badge badge-dark">
                                                     <a style="color:white ;" href="{{route('shopuser',['id' => $nextBookAuction->getauction->account->id ])}}">{{$nextBookAuction->getauction->account->info->info_lastname}} {{$nextBookAuction->getauction->account->info->info_name}}</a>
@@ -1006,36 +1006,36 @@ if(days == 0){
         minutes + " Phút " + seconds + " Giây ";
     }
 
-}
-else{
-
-    document.getElementById("demo").innerHTML = days + " Ngày " + hours + " Giờ " +
-    minutes + " Phút " + seconds + " Giây ";
-}
-document.getElementById("demo1").innerHTML = " Đấu giá đang diễn ra";
-// If the count down is over, write some text
-if (distance < 0) {
-
-    clearInterval(x);
-    document.querySelector("#demo").style.color = "red";
-    document.getElementById("demo").innerHTML = "Kết thúc thời gian đấu giá";
-    document.getElementById("demo1").innerHTML = "Vui lòng đợi lượt đấu giá sách tiếp theo";
-    if(quantity > 0){
-        $.ajax({
-            type: 'GET', //THIS NEEDS TO BE GET
-            url: '{{route('endAuction',['id'=>$book?$book->id:0])}}',
-            success: function (data) {
-                console.log(data);
-                location.reload();
-            },
-            error: function() {
-                console.log(data);
-            }
-        });
     }
+    else{
+
+        document.getElementById("demo").innerHTML = days + " Ngày " + hours + " Giờ " +
+        minutes + " Phút " + seconds + " Giây ";
+    }
+    document.getElementById("demo1").innerHTML = " Đấu giá đang diễn ra";
+// If the count down is over, write some text
+    if (distance < 0) {
+
+        clearInterval(x);
+        document.querySelector("#demo").style.color = "red";
+        document.getElementById("demo").innerHTML = "Kết thúc thời gian đấu giá";
+        document.getElementById("demo1").innerHTML = "Vui lòng đợi lượt đấu giá sách tiếp theo";
+            if(quantity > 0){
+                $.ajax({
+                    type: 'GET', //THIS NEEDS TO BE GET
+                    url: '{{route('endAuction',['id'=>$book?$book->id:0])}}',
+                    success: function (data) {
+                        console.log(data);
+                        location.reload();
+                    },
+                    error: function() {
+                        console.log(data);
+                    }
+                });
+            }
 // location.reload();
 // setTimeout(function(){  location.reload(); }, 6000);
-Pusher.logToConsole = true;
+                        Pusher.logToConsole = true;
                         var pusher = new Pusher("5f9437b8677edc9e4714", {
                             cluster: "ap1",
                         });
@@ -1047,7 +1047,7 @@ Pusher.logToConsole = true;
                         }
                     }
 
-                }, 1000);
+}, 1000);
 
 
 

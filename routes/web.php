@@ -233,6 +233,9 @@ Route::get('/san-pham/chi-tiet-san-pham-{id}','PageController@book_detail')->nam
                         // xem danh sách những người đã đấu giá cho sản phẩm của mình
                         Route::get('/seenListBidder/{id}', 'AuctionController@seenListBidder')
                         ->name('seenListBidder');
+                        // danh sách đã thực hiện hành động đấu giá
+                        Route::get('/auctionedListing', 'AuctionController@auctionedListing')
+                        ->name('auctionedListing');
                         //xoa
                         Route::get('/detele_auction/{id}','AuctionController@delete')->name('delete_auction');
                         // sua

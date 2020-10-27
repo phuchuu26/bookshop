@@ -719,24 +719,31 @@ function formatCurrency(number){
         //
         output = $('#demox');
     a = {{$auction_book->auction_book_time}};
+    b = '{{$auction_book->auction_book_time_type}}';
+    console.log(b);
     // console.log(a);
-    if(a % 1 != 0){
-        if(a == 0.5){
+    if(b == 'Giờ'){
 
-            output.html(' 30 phút');
+        if(a % 1 != 0){
+            if(a == 0.5){
+
+                output.html(' 30 phút');
+            }else{
+                console.log("CHAY");
+                output.html((parseInt(a)) + ' giờ' + ' 30 phút');
+                console.log((parseInt(a)) + ' giờ' + ' 30 phút');
+            }
+
+            // console.log(parseInt(this.value));
         }else{
-            console.log("CHAY");
-            output.html((parseInt(a)) + ' giờ' + ' 30 phút');
-            console.log((parseInt(a)) + ' giờ' + ' 30 phút');
+            output.html(a + ' giờ');
+
         }
+    }else{
+        output.html(a + ' phút');
+    }
 
-        // console.log(parseInt(this.value));
-}else{
-    output.html(a + ' giờ');
-
-}
-
-////
+        ////
 output = $('#demox1');
     a = {{$auction_book->auction_book_time}};
     // console.log(a);

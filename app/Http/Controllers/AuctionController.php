@@ -32,7 +32,6 @@ class AuctionController extends Controller
 {
 
     public function index(){
-
         $a = Carbon::now();
         $quantity = DB::table('endtime_auction')
         ->where('Endtime_auction_date','>',$a)
@@ -938,6 +937,15 @@ class AuctionController extends Controller
         // dd($users);
         return view('admin_cus.auction.listbidder',compact('time','bidders','timeStillAuction'));
         // dd($danhsach);
+    }
+    public function auctionedListing(){
+        // $auctionedLists = List_bidder::where('id_account',Auth::user()->id)->where('')
+        $auctionedLists = List_bidder::where('id_account',Auth::user()->id)->get()->unique('id_auction_book')->sortByDesc('created_at');
+        $count =  List_bidder::where('id_account',Auth::user()->id)->count() ;
+        // $count =  List_bidder::where('id_account',Auth::user()->id)->get() ;
+        // dd($auctionedLists[0]);
+        // dd($count);
+        return view('admin_cus.auction.auctionedListing',compact('auctionedLists','count'));
     }
 
 }
