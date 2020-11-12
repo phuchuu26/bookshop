@@ -2,15 +2,21 @@
 @section('title','Xem sách đấu giá')
 <head>
     <style>
+        .error {
+    border: 4px solid red;
+}
+input#ngayHienTai.error{
+    border: 4px solid red;
+}
        .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
     background-color: #dfe6e9;
 }
-        input.form-control {
+        /* input.form-control {
     background-color:  #dfe6e9!important;
-}
-input#a {
+} */
+/* input#a {
     background-color:  #dfe6e9!important;
-}
+} */
 select#theloai {
     background-color: #c7d0d5!important;
 }
@@ -576,19 +582,25 @@ button#anhbia {
                     {{-- time bat dau  --}}
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">Thời gian dự kiến bắt đầu:</label>
-                    <input type="datetime-local" disabled
+                    <input type="datetime-local"
                     {{-- name="date" --}}
                     value="{{$e}}"
                     placeholder="DD/MM/YYYY, hh:mm:ss"
                     required
-                            class="form-control">
+                    min="{{$e}}"
+                    data-default="{{$e}}"
+                    id="ngayHienTai"
+                    onchange="timeStartF()"
+                            class="form-control"
+                            >
+                            <p class="info" style="color: red;float: right;">Vui lòng nhập đúng thời gian</p>
                     </div>
                     {{-- time ket thuc --}}
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Thời gian dự kiến kết thúc:</label>
                         <input type="datetime-local" id="a"
                         {{-- disabled --}}
-                        readonly
+
                         {{-- style="background-color: #ffffff!important;" --}}
                         name="date"
                         value="{{$b}}"
@@ -677,6 +689,32 @@ $('#editor').keypress(function(e) {
     </script>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.8.3.js"></script>
 <script>
+    $('.info').hide();
+    var timeStart = $('#ngayHienTai').val();
+    function timeStartF(){
+                var startTime = new Date(timeStart);
+                var endTime = new Date($('#ngayHienTai').val());
+                var difference = endTime.getTime() - startTime.getTime(); // This will give difference in milliseconds
+                var resultInMinutes = Math.round(difference / 60000);
+
+                if(resultInMinutes<0){
+                    console.log('no');
+                    console.log($("#ngayHienTai").data("default"));
+                    $('#ngayHienTai').addClass('error');
+                    $('.info').show();
+                    // console.log($('#ngayHienTai').defaultValue());
+                    // $('#ngayHienTai').val() =  {{date("Y-m-d\TH:i", strtotime($e))}};
+                    alert('no');
+                    $('#ngayHienTai').focus();
+                    // $('#ngayHienTai').val() = $('#ngayHienTai').data("default");
+                }
+                else{
+                    $('#ngayHienTai').removeClass('error');
+                    $('.info').hide();
+                }
+        console.log($('#ngayHienTai'));
+        // console.log(resultInMinutes);
+    }
     // $(document).ready(function(){
     // var a =    $('#input');
 //     setTimeout(function(){

@@ -198,6 +198,7 @@
                                                 {{-- {{$auctionedList->maxPrice($auctionedList->id_auction_book)}} --}}
                                                 {{ number_format($auctionedList->maxPrice($auctionedList->id_auction_book),0,',','.') }} đ
                                             </td>
+                                            {{-- {{dd($auctionedList->getBook->auction_book_miss_pay)}} --}}
                                             {{-- {{dd($auctionedList->getBook->auction_book_final_winner)}} --}}
                                             @if($auctionedList->getBook->auction_book_final_winner == Auth::user()->id)
                                               <td class="status[{{$auctionedList->getBook->id}}]">
@@ -231,10 +232,10 @@
                                                 // var test1 = $('.test').val();
                                                 // console.log(test1);
 
+                                                    var numberDayStill = {{$auctionedList->getBook->auction_book_miss_pay}} + 1;
 
-
-
-                                                var timeEndPayment = {{strtotime( $auctionedList->getBook->endtime->Endtime_auction_date . " +1 days")}};
+                                                    //   số người bỏ lỡ thanh toán + 1 = ra thời gian kết thúc thanh toán của người thanh toán tiếp theo
+                                                var timeEndPayment = {{strtotime( $auctionedList->getBook->endtime->Endtime_auction_date . " + ".( $auctionedList->getBook->auction_book_miss_pay +1 )." days")}};
                                                 // var a= '{{$auctionedList->getBook->endtime->Endtime_auction_date . " +1 days"}}';
                                                 console.log(timeEndPayment);
                                                 // var timeInMillis = Date.parse();
@@ -247,6 +248,7 @@
 
 
                                                 function progress(timeleft, timetotal, $element) {
+
                                                         var progressBarWidth = timeleft * $element.width() / timetotal;
                                                             var res = '';
                                                         // xet gio phut giay :
@@ -255,7 +257,7 @@
                                                         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                                                         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                                                         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                                                        if(days == 0){
+                                                        // console.log(days);
                                                             if(hours == 0){
                                                                 if(minutes == 0){
                                                                     res = seconds + " Giây ";
@@ -271,14 +273,13 @@
                                                                 res =  hours + " Giờ " +
                                                                 minutes + " Phút " + seconds + " Giây ";
                                                             }
-                                                        }
 
                                                         $element.find('div').animate({ width: progressBarWidth }, 500).html("Còn lại " + res );
                                                         if(timeleft > 0) {
                                                             // console.log(timeleft);
                                                             var a = timeleft / timetotal;
                                                             if(a <= 0.1 ){
-                                                                $("#progressBar").find('div').css("background-color","red");
+                                                                $("#progressBar{{$key}}").find('div').css("background-color","red");
                                                                 //     setTimeout(function() {
                                                                     // progress(timeleft - 1, timetotal, $element);
                                                                     //     }, 1000);
@@ -287,13 +288,13 @@
 
                                                                 if( a <= 0.04){
 
-                                                                    $("#progressBar").find('div').css("max-height","15px");
-                                                                    $("#progressBar").find('div').css("line-height","17px");
+                                                                    $("#progressBar{{$key}}").find('div').css("max-height","15px");
+                                                                    $("#progressBar{{$key}}").find('div').css("line-height","17px");
                                                                 }
                                                                 if(a <= 0.03){
 
-                                                                    $("#progressBar").find('div').css("max-height","12px");
-                                                                    $("#progressBar").find('div').css("line-height","14px");
+                                                                    $("#progressBar{{$key}}").find('div').css("max-height","12px");
+                                                                    $("#progressBar{{$key}}").find('div').css("line-height","14px");
                                                                 }
                                                                 setTimeout(function() {
                                                             progress(timeleft - 1, timetotal, $element);
@@ -301,11 +302,27 @@
 
 
                                                         }else{
-                                                            $("#progressBar").find('div').html("Hết thời gian thanh toán");
-                                                            $("#progressBar").find('div').css("line-height","24px");
+                                                                   $.ajax({
+                                                                        type: 'POST', //THIS NEEDS TO BE GET
+                                                                        url: '{{route('endDurationAuction',['id'=>$auctionedList->getBook->id])}}',
+                                                                        data:{
+                                                                            "_token": "{{ csrf_token() }}",
+                                                                            "numberMiss":{{$auctionedList->getBook->auction_book_miss_pay}},
+                                                                            },
+                                                                        success: function (data) {
+                                                                            console.log(data);
+                                                                            // location.reload();
+                                                                        },
+                                                                        error: function() {
+                                                                            console.log(data);
+                                                                        }
+                                                                    });
+
+                                                            $("#progressBar{{$key}}").find('div').html("Hết thời gian thanh toán");
+                                                            $("#progressBar{{$key}}").find('div').css("line-height","24px");
                                                         }
                                                 };
-
+                                                var big = 86400 *{{$auctionedList->getBook->auction_book_miss_pay + 1}};
                                             progress(timeleft1, 86400, $('#progressBar{{$key}}'));
 
                                             // });

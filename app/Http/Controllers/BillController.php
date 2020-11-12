@@ -25,9 +25,38 @@ use Toastr;
 class BillController extends Controller
 {
 
+    public function buildCheckoutUrl($return_url, $receiver, $transaction_info, $order_code,
+    $amount, $customer_mobile, $websiteid, $secret_key, $vtcpay_url, $param_extend)
+    {
+        // M?ng c�c tham s? chuy?n t?i VTC Pay
 
+        $arr_param = array(
+            'return_url'		=>	strtolower(urlencode($return_url)),
+            'receiver'			=>	strval($receiver),
+            'transaction_info'	=>	strval($transaction_info),
+            'order_code'		=>	strval($order_code),
+            'amount'			=>	strval($amount)
+        );
+        $currency = 2;
+
+        $plaintext = $websiteid  . "-" . $currency  . "-" . $arr_param['order_code'] . "-" . $arr_param['amount']
+        . "-" . $arr_param['receiver'] . "-" .$param_extend. "-" . $secret_key."-".$return_url;
+
+        $sign = strtoupper(hash('sha256', $plaintext));
+
+        $data = "?website_id=" . $websiteid  ."&payment_method=" . $currency . "&order_code=" . $arr_param['order_code']
+        . "&amount=" . $arr_param['amount'] . "&receiver_acc=" .  $arr_param['receiver'];
+
+        $data = $data . "&customer_mobile=" . $customer_mobile . "&order_des=" . $arr_param['transaction_info']
+        ."&sign=" . $sign."&param_extend=" . $param_extend."&urlreturn=".$return_url;
+        $destinationUrl = $vtcpay_url . $data;
+        $destinationUrl = str_replace("%3a",":",$destinationUrl);
+        $destinationUrl = str_replace("%2f","/",$destinationUrl);
+        return $destinationUrl;
+    }
     public function post_bill(Request $request)
     {
+
         $bill = new bill;
         $bill->save();
         if($request->tt == 2)
@@ -90,6 +119,17 @@ class BillController extends Controller
                 $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
             }
 
+            // $return_url         =route('d.bill',['id' => $bill->id]);
+            // $receiver           ="0986699482";
+            // $transaction_info   ="Mua_hang_tai_website";
+            // $order_code         =strtotime("now");
+            // $amount             =1;
+            // $customer_mobile    ="0983666999";
+            // $websiteid          ="637";
+            // $secret_key         ="NguyenThanhTrung68";
+            // $vtcpay_url         ="http://sandbox1.vtcebank.vn/pay.vtc.vn/gate/checkout.html";
+            // $vnp_Url = $this->buildCheckoutUrl($return_url,$receiver,$transaction_info,$order_code,$amount,
+            // $customer_mobile,$websiteid,$secret_key,$vtcpay_url,'PaymentType:Visa;Direct:Master');
             //////////////////////////////////////////////////////////////
             $cart = Cart::content();
             $cart2 = Cart::subtotal(0,',','');
@@ -118,8 +158,6 @@ class BillController extends Controller
                     $detail->qty = $sp->qty;
                     $detail->id_nguoiban = $sp->options->nguoiban;
                     $detail->id_status = $sp->options->trangthai;
-
-
 
                     $detail->save();
                 }

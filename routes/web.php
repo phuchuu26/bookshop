@@ -246,6 +246,11 @@ Route::get('/san-pham/chi-tiet-san-pham-{id}','PageController@book_detail')->nam
                         Route::get('/index_cus','AuctionController@addAuctionBook')->name('add_auctionBook');
                         Route::post('/index_cus/store','AuctionController@store')->name('store_auction_book');
 
+                        // kết thúc thười gian cho phép thanh toán sách đấu giá nhưng khách hàng không chịu thanh toán: chuyển attr ở bảng auction_book
+                        // sang người trả giá cáo thứ hai .(dùng ajax)
+                        Route::post('/endDurationAuction/{id}','AuctionController@endDurationAuction')->name('endDurationAuction');
+
+
                     });
 
 
@@ -295,7 +300,6 @@ Route::group(['prefix'=>'quan-tri','middleware'=>'Ad_login'],function(){        
             Route::get('/huy_xet_duyet/{id}','Admin\AuctionController@huyxetduyet')->name('huyxetduyet');
             // chọn time endtime auction :
             Route::post('/post_endtime/{id}','Admin\AuctionController@endtimepost')->name('endtimepost');
-
 
         });
 

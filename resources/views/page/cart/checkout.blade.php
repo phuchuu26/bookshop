@@ -163,7 +163,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 <link href="https://sandbox.vnpayment.vn/paymentv2/lib/vnpay/vnpay.css" rel="stylesheet"/>
 <script src="https://sandbox.vnpayment.vn/paymentv2/lib/vnpay/vnpay.js"></script>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
 $("#btnPopup").click(function () {
     var postData = $("#create_form").serialize();
     var submitUrl = $("#create_form").attr("action");
@@ -187,7 +187,7 @@ $("#btnPopup").click(function () {
     });
     return false;
 });
-</script>
+</script> --}}
 
 
 @endsection

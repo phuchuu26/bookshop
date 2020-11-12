@@ -908,6 +908,7 @@ class AuctionController extends Controller
 
 
     public function seenListBidder($id){
+
         $time = Endtime_auction::where('id_auction_book',$id)->first();
         // dd($time);
         $timeAuction = Auction_book::where('id',$id)->first();
@@ -939,6 +940,7 @@ class AuctionController extends Controller
         // dd($danhsach);
     }
     public function auctionedListing(){
+
         // $auctionedLists = List_bidder::where('id_account',Auth::user()->id)->where('')
         $auctionedLists = List_bidder::where('id_account',Auth::user()->id)->get()->unique('id_auction_book')->sortByDesc('created_at');
         $count =  List_bidder::where('id_account',Auth::user()->id)->count() ;
@@ -946,6 +948,45 @@ class AuctionController extends Controller
         // dd($auctionedLists[0]);
         // dd($count);
         return view('admin_cus.auction.auctionedListing',compact('auctionedLists','count'));
+    }
+    public function selectRowNext($collection,$num){
+        $secondPrice = $collection->skip($num+1)->first();
+        return $secondPrice;
+    }
+    public function endDurationAuction($id,Request $req){
+
+        $number = $req->numberMiss;
+
+        $maxPrice = List_bidder::where('id_auction_book',$id)->get()->unique('id_account')->sortByDesc('list_bidder_auction_money');
+
+
+        $next = $this->selectRowNext($maxPrice,$number);
+        // dd($next);
+        // die;
+        $a = Auction_book::where('id',$id)->first();
+        $a1 = $a->update(['auction_book_miss_pay' => $a->auction_book_miss_pay + 1]);
+        if($next == null){
+            $data = Auction_book::where('id',$id)->update([
+                'auction_book_final_winner' => null
+                ]);
+                $data1 = $data;
+        }else{
+            $data = Auction_book::where('id',$id)->update([
+                'auction_book_final_winner' => $next->id_account
+                ]);
+                $data1 = Auction_book::where('id',$id);
+        }
+
+
+        // dd($secondPrice);
+
+        // die;
+
+        //var_dump($data);die;
+        // $getstamps = 'a';
+        // Session::put('msg','')
+        // Toastr::info('Kết thúc đấu giá sách', 'Thông báo', ["positionClass" => "toast-top-right"]);
+        return response()->json(array('success' => true, 'data' => $data1));
     }
 
 }

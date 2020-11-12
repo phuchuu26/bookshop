@@ -75,7 +75,7 @@
                                             <th>Số tiền đấu giá cao nhất</th>
                                             <th>Số lần đấu giá</th>
 
-                                            {{-- <th>Thao tác</th> --}}
+                                            <th>Trạng thái</th>
 
                                         </tr>
                                     </thead>
@@ -91,10 +91,11 @@
                                     </tfoot> --}}
                                     <tbody>
 
-    @php
+                                        @php
     $i =1;
     @endphp
                                             @foreach($bidders as $bi)
+
                                         <tr>
                                             <td>{{$i == 1 ? 'Người thắng cuộc' : $i}}</td>
                                             @php
@@ -114,6 +115,14 @@
                                                 {{-- {{dd(Auth::user()->id)}} --}}
                                                 {{$bi->countPerUser($bi->id_auction_book,$bi->id_account)}}
                                             </td>
+                                            {{-- {{dd($bi->getBook->auction_book_final_winner)}} --}}
+                                            @if($bi->getBook->auction_book_final_winner == $bi->id_account)
+
+                                            <td>
+
+                                                Đã thanh toán
+                                            </td>
+                                            @endif
                                         </tr>
 
                                         @endforeach

@@ -120,6 +120,8 @@
                                                 @elseif($li->auction_book_status == 'Kết thúc đấu giá')
                                                 <button type="button" style=" color:white;" class="btn btn-sm btn-info" >
                                                     {{$li->auction_book_status}}
+                                                <br>
+                                                    Đã thanh toán
                                                 </button>
                                                 @else
                                                 <button type="button" style=" color:white;" class="btn btn-sm btn-success" >
