@@ -36,8 +36,8 @@ class AuctionController extends Controller
         $quantity = DB::table('endtime_auction')
         ->where('Endtime_auction_date','>',$a)
         ->count();
+        // xem coi có lượt đấu giá kế tiếp không:
         if($quantity >1){
-            // luot dau gias sahcs ke tiep
             $nextBookAuction = Endtime_auction::where('Endtime_auction_date','>',$a)->get();
             $nextBookAuction = $nextBookAuction[1];
             // dd($nextBookAuction);
@@ -49,6 +49,7 @@ class AuctionController extends Controller
 
         // $date1 = Endtime_auction::latest()->first();
         // $a = 2020-09-26 11:12:35.590428 Asia/Ho_Chi_Minh (+07:00)
+
         // sản phẩm hiện tại đang được đấu giá
         $sp  = DB::table('endtime_auction')
         ->where('Endtime_auction_date','>',$a)
@@ -871,12 +872,17 @@ class AuctionController extends Controller
         return redirect(''.route('auction.management').'');
 
     }
+    // thực hiện action đấu giá của khách hàng
     public function post_auction(Request $req){
+        // dd($req->all());
+        // die;
         $bidder = new List_bidder;
         $bidder->list_bidder_auction_money = $req->money;
         $bidder->id_account = Auth::user()->id;
         $bidder->id_auction_book = $req->id_auction_book;
         $bidder->save();
+
+        // lấy thông tin người mới đấu giá để realtime cho các người xem khác
         $bidder_curren = List_bidder::find($bidder->id);
 
         $id_account = $bidder->id_account;
@@ -906,7 +912,7 @@ class AuctionController extends Controller
         return redirect()->route('auction_index');
     }
 
-
+    // danh sách những người đấu sách của cuốn sách đó
     public function seenListBidder($id){
 
         $time = Endtime_auction::where('id_auction_book',$id)->first();

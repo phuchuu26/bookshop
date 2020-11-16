@@ -8,6 +8,9 @@
 input#ngayHienTai.error{
     border: 4px solid red;
 }
+input#a.error{
+    border: 4px solid red;
+}
        .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline {
     background-color: #dfe6e9;
 }
@@ -583,7 +586,7 @@ button#anhbia {
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">Thời gian dự kiến bắt đầu:</label>
                     <input type="datetime-local"
-                    {{-- name="date" --}}
+                    name="startDate"
                     value="{{$e}}"
                     placeholder="DD/MM/YYYY, hh:mm:ss"
                     required
@@ -600,13 +603,15 @@ button#anhbia {
                             <label for="message-text" class="col-form-label">Thời gian dự kiến kết thúc:</label>
                         <input type="datetime-local" id="a"
                         {{-- disabled --}}
-
+                        onchange="timeEndF()"
+                        min="{{$e}}"
                         {{-- style="background-color: #ffffff!important;" --}}
-                        name="date"
+                        name="endDate"
                         value="{{$b}}"
                         placeholder="DD/MM/YYYY, hh:mm:ss"
                         required
                                 class="form-control">
+                                <p class="info1" style="color: red;float: right;">Vui lòng nhập đúng thời gian</p>
                         </div>
                   {{-- </h3> --}}
 
@@ -617,7 +622,7 @@ button#anhbia {
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-warning" data-dismiss="modal">Đóng</button>
-                <button type="submit" class="btn btn-success">
+                <button id="xetduyet" type="button" class="btn btn-success">
                     {{-- <a href="">Send message</a> --}}
                     Xét duyệt
                 </button>
@@ -632,6 +637,9 @@ button#anhbia {
 
    {!! Toastr::message() !!}
 <script src="{{asset('public/admin/toastr/jquery.min.js')}}" ></script>
+<script>
+
+</script>
 {{-- <script>
     $('#editor').focus(function(e) {
     $(this).blur();
@@ -690,31 +698,111 @@ $('#editor').keypress(function(e) {
 <script type="text/javascript" src="//code.jquery.com/jquery-1.8.3.js"></script>
 <script>
     $('.info').hide();
+    $('.info1').hide();
     var timeStart = $('#ngayHienTai').val();
     function timeStartF(){
+        // time bắt đầu đấu giá :
                 var startTime = new Date(timeStart);
                 var endTime = new Date($('#ngayHienTai').val());
+                // bắt sự kiện thời gian bắt đầu đấu giá lớn hơn thời gia kết thúc đấu giá:
+                var endAuction = new Date($('#a').val());
+                 var difference1 = endTime.getTime() - endAuction.getTime() ; // This will give difference in milliseconds
+                var resultInMinutes1 = Math.round(difference1 / 60000);
+            // bắt sự kiện thời gian bắt đầu đấu giá nhỏ hơn thời gian hiện tại:
                 var difference = endTime.getTime() - startTime.getTime(); // This will give difference in milliseconds
                 var resultInMinutes = Math.round(difference / 60000);
 
                 if(resultInMinutes<0){
-                    console.log('no');
-                    console.log($("#ngayHienTai").data("default"));
+                    // console.log('no');
+                    // console.log($("#ngayHienTai").data("default"));
                     $('#ngayHienTai').addClass('error');
                     $('.info').show();
                     // console.log($('#ngayHienTai').defaultValue());
                     // $('#ngayHienTai').val() =  {{date("Y-m-d\TH:i", strtotime($e))}};
-                    alert('no');
+                    // alert('no');
                     $('#ngayHienTai').focus();
+                    $( "#xetduyet" ).prop( "disabled", true );
+                    swal("Lỗi thời gian sớm hơn quy định!", "Thời gian bắt đầu đấu giá trễ hơn thời gian hiện tại hoặc thời gian của những buổi đấu giá khác !", "error");
+                    // toastr.error('', '!')
                     // $('#ngayHienTai').val() = $('#ngayHienTai').data("default");
+                }
+
+
+
+                else if(resultInMinutes1 > 0){
+                    $( "#xetduyet" ).prop( "disabled", true );
+                    $('#ngayHienTai').focus();
+                    // console.log('xya ra');
+                    $('.info').show();
+                    $('#ngayHienTai').addClass('error');
+                    swal("Lỗi thời gian trễ hơn quy định!", "Thời gian bắt đầu đấu giá trễ hơn thời gian kết thúc buổi đấu giá !", "error");
                 }
                 else{
                     $('#ngayHienTai').removeClass('error');
                     $('.info').hide();
+                    $("#xetduyet").prop('disabled', false);
                 }
-        console.log($('#ngayHienTai'));
+
+        // console.log($('#ngayHienTai'));
         // console.log(resultInMinutes);
     }
+    function timeEndF(){
+        var ngayHienTai = new Date($('#ngayHienTai').val());
+        var endAuction = new Date($('#a').val());
+
+
+        var difference1 = ngayHienTai.getTime() - endAuction.getTime() ; // This will give difference in milliseconds
+                var resultInMinutes1 = Math.round(difference1 / 60000);
+                if(resultInMinutes1 > 0){
+                    $('.info1').show();
+                    $('#a').focus();
+                    $('#a').addClass('error');
+                    swal("Lỗi thời gian sớm hơn quy định!", "Thời gian kết thúc đấu giá sớm hơn thời gian bắt đầu buổi đấu giá !", "error");
+                    $( "#xetduyet" ).prop( "disabled", true );
+                }
+                else{
+                    console.log('e');
+                    $("#xetduyet").prop('disabled', false);
+                    $('#a').removeClass('error');
+                    $('.info1').hide();
+                }
+                // timeStartF();
+    }
+
+    $( "#xetduyet" ).click(function() {
+                swal({
+                    title: "Bạn chắc chứ?",
+                    text: "Đồng ý phê duyệt sách lên sàn đấu giá!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonClass: "btn-success",
+                    confirmButtonText: "Bạn đã chắc chắn chứ!",
+                    cancelButtonText: "Hủy bỏ!",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                    },
+                    function(isConfirm) {
+                    if (isConfirm) {
+                        swal("Phê duyệt thành công!", "Đã đồng ý phê duyệt sách.", "success");
+                        gui();
+                    } else {
+                        swal("Hủy bỏ", "Bạn đã hủy phê duyệt.", "error");
+                    }
+                });
+    });
+    function gui(){
+        $.ajax({
+           type: "POST",
+           url: '{{route('endtimepost',['id' => $auction_book->id])}}',
+           data: {endDate:$( "input[name = 'endDate']" ).val(), startDate:$( "input[name = 'startDate']" ).val(),
+           _token: "{{ csrf_token() }}",
+            },
+           success: function( msg ) {
+            location.replace("{{route('auction.admin.list')}}")
+           }
+       });
+    }
+
     // $(document).ready(function(){
     // var a =    $('#input');
 //     setTimeout(function(){
@@ -753,6 +841,7 @@ function formatCurrency(number){
 </script>
 <script type="text/javascript">
     $(document).ready(function(){
+
         console.log("chay dc nha");
         //
         output = $('#demox');

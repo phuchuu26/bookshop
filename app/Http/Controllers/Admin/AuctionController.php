@@ -23,6 +23,8 @@ use Toastr;
 class AuctionController extends Controller
 {
     public $count;
+
+    // danh sách các cuốn sách đang và đợi phê duyệt
     public function list(){
         $a = Carbon::now();
         // $a = 2020-09-26 11:12:35.590428 Asia/Ho_Chi_Minh (+07:00)
@@ -127,7 +129,11 @@ class AuctionController extends Controller
     //     return view('page.auction.index',compact('date','h','m','s','current_date_time'));
     //     // return view('page.auction.index',['category'=>$category]);
     // }
+
+    // đồng ý duyệt sách
         public function endtimepost(Request $req, $id){
+            // dd($req->all());
+            // die;
             // findorFail giúp web quăng lỗi 404| not found nếu không tìm được id có chỉ số giống như url
             // $auction = Auction_book::findOrFail($id);
             // $auction->auction_book_status = 'Được xét duyệt';
@@ -137,7 +143,8 @@ class AuctionController extends Controller
 
             // $book->auction_book_title = $req->Endtime_auction_date;
 
-            $book->endtime_auction_date = $req->date;
+            $book->endtime_auction_date = $req->endDate;
+            $book->starttime_auction_date = $req->startDate;
             $book->id_auction_book  = $id;
             $book->save();
             // Toastr::success('Xét duyệt sách thành công', 'Thông báo', ["positionClass" => "toast-top-right"]);
@@ -148,6 +155,7 @@ class AuctionController extends Controller
         }
 
         public function duyet($id){
+            // xem nếu hiện tại hàng đợi đấu giá trống thì bắt sự kiện trên trang client reload lại trang
             if($this->count == 0){
                 $a = true;
                 event(new StartAuction($a));
@@ -171,6 +179,7 @@ class AuctionController extends Controller
 
             return redirect()->route('auction.admin.list');
         }
+        // chốt sổ kết thúc đấu giá sách
         public function endAuction($id){
             $maxPrice = List_bidder::where('id_auction_book',$id)->orderBy('list_bidder_auction_money','desc')->first();
             $data = Auction_book::where('id',$id)->update(['auction_book_status'=>'Kết thúc đấu giá',

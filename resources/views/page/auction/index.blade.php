@@ -366,16 +366,6 @@ input#recipient-name {
                                     <!-- Product Thumbnail Carousel End -->
                                 </div>
 
-                                @php
-// $a = Carbon\Carbon::now();
-// $a = strtotime($a);
-$a1 = $sp1->Endtime_auction_date;
-$a1 = strtotime($sp1->Endtime_auction_date);
-// dd($a);
-// dd($a1);
-$a =$a1  - $time;
-// dd($time);
-@endphp
 
                                 <div class="col-lg-6">
                                     <!-- Single Product Content Start -->
@@ -385,7 +375,7 @@ $a =$a1  - $time;
                                             <div class="ratings-wrap" style=" place-content: center;">
                                                 Thời gian sách bắt đầu lên sàn đấu giá:
                                                 <button type="button" id = "recipient-name" disabled style="background-color:red" class="btn add-to-cart btn-style-2 color-2"
-                                                 >{{date('H:i d-m-Y', $a)}}</button>
+                                                 >{{date('H:i d-m-Y', strtotime($book->endtime->starttime_auction_date))}}</button>
                                                 {{-- <div class="ratings">
                                                     @if($tbc<1.5)
                                                     <i class="fa fa-star rated"></i>
@@ -457,6 +447,23 @@ $a =$a1  - $time;
 
                                                 </div>
                                                 @endif
+                                                <div class="single-product__price"> Thời gian đấu giá :
+                                                    {{-- <button type="button" id = "recipient-name" disabled style="background-color:red" class="btn add-to-cart btn-style-2 color-2"
+                                                    >
+                                                    {{ number_format($book->auction_book_reserve_price,0,',','.') }} đ
+                                                </button> --}}
+                                                {{-- <button type="button" id = "recipient-name" disabled style="background-color:red" class="btn add-to-cart btn-style-2 color-2">
+                                                    {{ number_format($book->auction_book_reserve_price,0,',','.') }} đ
+                                                </button> --}}
+                                                <?php
+
+                                                    $dteStart = new DateTime($book->endtime->starttime_auction_date);
+                                                    $dteEnd   = new DateTime($book->endtime->Endtime_auction_date);
+                                                    $interval = date_diff($dteStart,$dteEnd)
+                                                    ?>
+                                            <span class="sale-price">{{ $interval->format('%h giờ  %i phút') }}</span>
+
+                                                </div>
 
                                             {{-- @else
 
@@ -913,7 +920,7 @@ $a =$a1  - $time;
               <div class="form-group">
                 <label style="font-size: 18px;" for="recipient-name" class="col-form-label">Thời gian sách bắt đầu lên sàn đấu giá: </label>
                 <button type="button" id = "recipient-name" disabled style="background-color:red;float: right;" class="btn add-to-cart btn-style-2 color-2"
-              data-toggle="modal" data-target="#exampleModal" >{{date('H:i d-m-Y', $a)}}</button>
+              data-toggle="modal" data-target="#exampleModal" >{{date('H:i d-m-Y',  strtotime($book->endtime->starttime_auction_date))}}</button>
               {{-- <input type="text" readonly value="nguyen" class="form-control" id="recipient-name"> --}}
             </div>
               @if($curren_money != null)
@@ -951,9 +958,24 @@ $a =$a1  - $time;
             </div>
             <div class="modal-footer">
                 <button type="button" style="background-color: darkgray;" class="btn btn-4 btn-style-3" data-dismiss="modal">Đóng</button>
-                <button type="submit" class="btn btn-4 btn-style-2">Đấu giá</button>
+                <button id="action_auction" data-dismiss="modal" type="button" class="btn btn-4 btn-style-2">Đấu giá</button>
             </div>
         </form>
+        <script>
+            $( "#action_auction" ).click(function() {
+                $.ajax({
+                    type: "POST",
+                    url: '{{route('post.auction')}}',
+                    data: {money:$( "#myNumber" ).val(), id_auction_book:$( "input[name = 'id_auction_book']" ).val(),
+                    _token: "{{ csrf_token() }}",
+                        },
+                    success: function( msg ) {
+                        console.log(msg);
+                        swal("Đấu giá thành công!", "", "success");
+                    }
+                });
+            });
+        </script>
         </div>
       </div>
     </div>

@@ -27,6 +27,9 @@
     <!-- style css -->
     <link rel="stylesheet" href="{{asset('public/page/css/main.css')}}" >
     <link rel="stylesheet" href="{{asset('public/page/css/style.css')}}" >
+    {{-- <link rel="stylesheet" href="{{asset('public/css/sweetalert.css')}}" > --}}
+<link rel="stylesheet" href="{{asset('public/admin/css/sweetalert.css')}}" >
+
     <!-- modernizr JS
     ============================================ -->
     <script src="{{asset('public/page/js/modernizr-2.8.3.min.js')}}" ></script>
@@ -102,7 +105,9 @@
 
     <!-- Main JS -->
     <script src="{{asset('public/page/js/main.js')}}"></script>
-
+    {{-- sweetalert --}}
+{{-- <script src="{{asset('public/js/sweetalert.min.js')}}"></script> --}}
+<script src="{{asset('public/admin/js/sweetalert.min.js')}}" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" type="text/javascript"></script>
 {{-- <script>
     Pusher.logToConsole = true;
