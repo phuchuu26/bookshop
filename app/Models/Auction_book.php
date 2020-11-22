@@ -66,4 +66,14 @@ class Auction_book extends Model implements Viewable
         return $this->hasMany('App\Models\Image_auction','id_auction_book','id');
 
     }
+    // check xem nguoi chien thang dau co thanh toan chua/
+    public function checkPayment()
+    {
+        // dd($this);
+        // return $this->hasMany('App\Models\Image_auction','id_auction_book','id');
+        // xem record do co ton tai khong
+        $a = bill_auction::where('id_auction_book',$this->id)->where('id_account',$this->auction_book_final_winner)->exists();
+        // dd($a);
+        return $a;
+    }
 }

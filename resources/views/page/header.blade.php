@@ -14,7 +14,7 @@
                         <!-- Logo End -->
                     </div>
                     {{-- {{dd($categories)}} --}}
-                    <div class="col-lg-6">
+                    <div class="col-lg-5">
                         <!-- Search Form Start -->
                     <form action="{{route('timkiem')}}" method="POST" class="search-form search-form--2">
                         {{ csrf_field() }}
@@ -40,7 +40,7 @@
                         </form>
                         <!-- Search Form End -->
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <div class="header-middle-nav">
 
                         @if(!Auth::check())
@@ -135,13 +135,24 @@
                             padding-right: 2rem;" class="gach"></div> --}}
 
                             @if(Auth::check())
-                            <div class="mini-cart mini-cart--3">
+                            <div  style="    border-right: 1px solid #e5e5e5;
+                            margin-right: 2rem;
+                            padding-right: 25px;" class="mini-cart mini-cart--3">
                             <a class="mini-cart__dropdown-toggle" href="{{route(config('chatify.path'))}}" >
                                     <i style="color: white;font-size: 30px;" class="fa fa-commenting-o" aria-hidden="true"></i>
                                     <sub id="getcount" class="mini-cart__count"></sub>
                                 </a>
                             </div>
                             @endif
+                            <div class="mini-cart mini-cart--3">
+                                <a class="mini-cart__dropdown-toggle" id="cartDropdown">
+                                    <i class="fa fa-shopping-bag mini-cart__icon"></i>
+                                    <sub class="mini-cart__count">{{Cart::count()}}</sub>
+                                </a>
+                            </div>
+
+
+
                             <!-- Header Cart End -->
                         </div>
                     </div>

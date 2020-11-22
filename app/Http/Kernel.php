@@ -64,6 +64,7 @@ class Kernel extends HttpKernel
         'Ad_login' => \App\Http\Middleware\AdLogin::class,
         'CheckCustomer' => \App\Http\Middleware\CheckCustomer::class,
         'CheckAdmin' => \App\Http\Middleware\CheckAdmin::class,
+        'GetWinner' => \App\Http\Middleware\GetWinner::class,
 
 
     ];

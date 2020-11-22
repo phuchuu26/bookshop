@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\CustomValidationRequest;
 use App\Rules\Numeric;
-
+use DateTime;
 // use Validator;
 use App\Models\Category;
 use App\Models\List_bidder;
@@ -22,6 +22,7 @@ use App\Models\book_company;
 use App\Models\Gold_time_frame;
 use App\Models\Detail_gold_time_frame;
 use App\Models\publishing_house;
+use App\Models\bill_auction;
 use App\User;
 use Toastr;
 use File;
@@ -159,6 +160,7 @@ class AuctionController extends Controller
         return view('page.auction.index',compact('nextBookAuction','manWinAuction','product_sptruoc','quantity','auctionOfMe','curren_moneys','curren_money','book','time','sp1','date','h','m','s','current_date_time'));
         // return view('page.auction.index',['category'=>$category]);
     }
+
 
     public function addAuctionBook(){
         $category = category::all();
@@ -446,6 +448,21 @@ class AuctionController extends Controller
     }
     public function management(){
         $list = Auction_book::where('id_account','=',Auth::user()->id)->orderBy('updated_at','desc')->paginate(10);
+        $date = new DateTime();
+        $date = $date->format('Y-m-d H:i:sP');
+        $date = strtotime($date);
+
+        // dd($list);
+        foreach($list as $book){
+            if($book->endtime != null ){
+                $end = $book->endtime->Endtime_auction_date;
+                $end = strtotime($end);
+                $interval = $end - $date;
+                if($interval < 0 ){
+                    app(\App\Http\Controllers\Admin\AuctionController::class)->endAuction($book->id);
+                }
+            }
+        }
 
         return view('admin_cus.auction.management',compact('list'));
     }
@@ -909,6 +926,8 @@ class AuctionController extends Controller
 
         Toastr::success('Đấu giá thành công', 'Thông báo', ["positionClass" => "toast-top-right"]);
 
+        // trả về kiểu ajax:
+        // return response()->json(['users' => $users], 200)
         return redirect()->route('auction_index');
     }
 
@@ -959,6 +978,8 @@ class AuctionController extends Controller
         $secondPrice = $collection->skip($num+1)->first();
         return $secondPrice;
     }
+
+    // thực thi hàm khi kết thúc thời gian 1day thanh  sách đã đấu giá thành công
     public function endDurationAuction($id,Request $req){
 
         $number = $req->numberMiss;
@@ -995,4 +1016,19 @@ class AuctionController extends Controller
         return response()->json(array('success' => true, 'data' => $data1));
     }
 
+    public function checkout($id){
+        $book = Auction_book::find($id);
+        $price = List_bidder::where('id_account',Auth::user()->id)->where('id_auction_book',$id)->max('list_bidder_auction_money');
+
+        // dd($book);
+        return view('page.cart.checkout_auction',compact('book','price'));
+    }
+    public function detail_auction_bill($id)
+	{
+        $bill = bill_auction::where('id_auction_book',$id)->first();
+        // dd($bill);
+        // die;
+
+		return view('page.account.detail_auction_book',['bill'=>$bill]);
+	}
 }

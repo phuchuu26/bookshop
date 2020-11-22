@@ -151,6 +151,7 @@
                                                 else{
                                                     $baygio +=  ($timemongmuon * 60);
                                                 }
+                                                $start = $li->endtime->starttime_auction_date;
                                                 // dd($baygio-$abc);
                                                 // die;
 
@@ -168,16 +169,25 @@
                                             {{-- {{dd(strtotime($li->endtime->Endtime_auction_date))}} --}}
                                             <td colspan="2">
                                                 {{-- @if($li->auction_book_status != 'Được xét duyệt') --}}
+                                                {{-- {{dd($abc)}} --}}
+                                                {{-- nếu sách được duyệt để đấu giá --}}
                                                 @if(($li->endtime))
-                                                @if($abc>$baygio)
+                                                {{-- nếu ngày bắt đầu của sản phẩm đấu giá lớn thời gian hiện tại --}}
+                                                {{-- nghĩa là chưa đến thời gian bắt đầu đấu giá của sách --}}
+                                                @if($start>$baygio)
 
 
                                                 <a href="{{Route('auction.admin.change_status',['id' => $li->id])}}" style="padding-right: 10px;"><i class="fa fa-pencil"></i></a>
+                                                 {{-- những cuốn đã được phê duyệt và đã kết thúc thơi gian đấu --}}
+                                                 {{-- /giá thì cho con mắt để xem những người nào đã đấu giá và có thanh toán chưa --}}
+                                                @else
+                                                <a href="{{Route('seenListBidder',['id' => $li->id])}}" style=""><i class="fa fa-eye" aria-hidden="true"></i></a>
                                                 @endif
+
                                                 @else
                                                 <a href="{{Route('auction.admin.change_status',['id' => $li->id])}}" style="padding-right: 10px;"><i class="fa fa-pencil"></i></a>
-                                                @endif
                                                 <a href="{{route('delete_auction',['id' => $li ->id])}}"><i class="fa fa-trash-o fa-fw"></i></a>
+                                                @endif
                                             </td>
                                         </tr>
 

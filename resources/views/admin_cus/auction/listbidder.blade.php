@@ -3,6 +3,51 @@
 @section('admin_content')
 <head>
     <style>
+div#progressBar {
+    width: 203.75px;
+}
+/* progressBar countdown  */
+div.progress-bar {
+    text-align: center!important;
+    border-radius: 9px;
+/* padding-left: 6px; */
+}
+.progress-bar {
+    /* border-radius: 37px; */
+width: 90%;
+margin: 5px auto;
+/* text-align: center!important; */
+height: 22px;
+background-color:#c2c2c2;
+
+}
+/* #progressBar div {
+box-sizing: border-box;
+} */
+.progress-bar div {
+/* border-radius: 37px; */
+height: 100%;
+/* text-align: center!important; */
+padding: 0 0px;
+line-height: 22px; /* same as #progressBar height if we want text middle aligned */
+width: 0;
+background-color: #1cbbc3;
+box-sizing: border-box;
+}
+/* end progressBar countdown  */
+
+.spinner-grow.text-warning {
+float: left;
+margin-right: 12px;
+}
+
+
+td {
+text-align: center;
+}      th {
+text-align: center;
+}
+
         td {
     text-align: center;
 }      th {
@@ -90,14 +135,14 @@
                                         </tr>
                                     </tfoot> --}}
                                     <tbody>
-
+                                        {{-- {{dd($bidders)}} --}}
                                         @php
     $i =1;
     @endphp
                                             @foreach($bidders as $bi)
 
                                         <tr>
-                                            <td>{{$i == 1 ? 'Người thắng cuộc' : $i}}</td>
+                                            <td>{{$i}}</td>
                                             @php
     $i ++;
     @endphp
@@ -115,12 +160,141 @@
                                                 {{-- {{dd(Auth::user()->id)}} --}}
                                                 {{$bi->countPerUser($bi->id_auction_book,$bi->id_account)}}
                                             </td>
-                                            {{-- {{dd($bi->getBook->auction_book_final_winner)}} --}}
+                                            {{-- {{dd($bi)}} --}}
                                             @if($bi->getBook->auction_book_final_winner == $bi->id_account)
 
                                             <td>
+                                                {{-- da thanh toan roi --}}
+                                                @if($bi->getBook->checkPayment())
 
-                                                Đã thanh toán
+                                                    <button class="btn btn-success" type="button" >
+                                                        Đã thanh toán
+                                                      </button>
+                                                    @else
+
+                                                          <button class="btn btn-warning" type="button" >
+                                                              Chưa thanh toán
+                                                            </button>
+                                                            <div class="progress-bar"  id="progressBar">
+                                                                <div class="div" style="border-radius: 9px;text-align-last: center;"></div>
+                                                            </div>
+                                                            <script>
+                                                        // $(document).ready(function(){
+                                                            // for
+                                                            // var number
+                                                            if($('#progressBar').val() != undefined){
+                                                                console.log('YES');
+
+                                                            }else{
+                                                                console.log('NO');
+
+                                                            }
+
+
+
+
+                                                        var numberDayStill = {{$bi->getBook->auction_book_miss_pay}} + 1;
+
+                                                        //   số người bỏ lỡ thanh toán + 1 = ra thời gian kết thúc thanh toán của người thanh toán tiếp theo
+                                                    var timeEndPayment = {{strtotime( $bi->getBook->endtime->Endtime_auction_date . " + ".( $bi->getBook->auction_book_miss_pay +1 )." days")}};
+                                                    console.log(timeEndPayment);
+                                                    // var timeInMillis = Date.parse();
+
+                                                    var now = new Date();
+                                                    var duration = Date.parse(now)/1000;
+                                                    var timeleft1 = timeEndPayment - duration;
+                                                    console.log(duration);
+                                                    console.log(timeleft1);
+
+
+                                                    function progress(timeleft, timetotal, $element) {
+
+                                                            var progressBarWidth = timeleft * $element.width() / timetotal;
+                                                                var res = '';
+                                                            // xet gio phut giay :
+                                                            var distance = timeleft*1000;
+                                                            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                                            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                                            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                                            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                                                            // console.log(days);
+                                                                if(hours == 0){
+                                                                    if(minutes == 0){
+                                                                        res = seconds + " Giây ";
+                                                                        // document.querySelector("#demo").style.color = "red";
+                                                                    }
+                                                                    else{
+                                                                        res =
+                                                                    minutes + " Phút " + seconds + " Giây ";
+                                                                    // document.querySelector("#demo").style.color = "red";
+                                                                    }
+                                                                }
+                                                                else{
+                                                                    res =  hours + " Giờ " +
+                                                                    minutes + " Phút " + seconds + " Giây ";
+                                                                }
+
+                                                            $element.find('div').animate({ width: progressBarWidth }, 500).html("Còn lại " + res );
+                                                            if(timeleft > 0) {
+                                                                // console.log(timeleft);
+                                                                var a = timeleft / timetotal;
+                                                                if(a <= 0.1 ){
+                                                                    $("#progressBar").find('div').css("background-color","red");
+                                                                    //     setTimeout(function() {
+                                                                        // progress(timeleft - 1, timetotal, $element);
+                                                                        //     }, 1000);
+                                                                    }
+                                                                    // console.log(a);
+
+                                                                    if( a <= 0.04){
+
+                                                                        $("#progressBar").find('div').css("max-height","15px");
+                                                                        $("#progressBar").find('div').css("line-height","17px");
+                                                                    }
+                                                                    if(a <= 0.03){
+
+                                                                        $("#progressBar").find('div').css("max-height","12px");
+                                                                        $("#progressBar").find('div').css("line-height","14px");
+                                                                    }
+                                                                    setTimeout(function() {
+                                                                progress(timeleft - 1, timetotal, $element);
+                                                                    }, 1000);
+
+
+                                                            }else{
+                                                                    $.ajax({
+                                                                            type: 'POST', //THIS NEEDS TO BE GET
+                                                                            url: '{{route('endDurationAuction',['id'=>$bi->getBook->id])}}',
+                                                                            data:{
+                                                                                "_token": "{{ csrf_token() }}",
+                                                                                "numberMiss":{{$bi->getBook->auction_book_miss_pay}},
+                                                                                },
+                                                                            success: function (data) {
+                                                                                console.log(data);
+                                                                                setTimeout(function(){
+                                                                                    location.reload();
+                                                                                }, 3000);
+                                                                            },
+                                                                            error: function() {
+                                                                                console.log(data);
+                                                                            }
+                                                                        });
+
+                                                                $("#progressBar").find('div').html("Hết thời gian thanh toán");
+                                                                $("#progressBar").find('div').css("line-height","24px");
+                                                            }
+                                                    };
+                                                    var big = 86400 *{{$bi->getBook->auction_book_miss_pay + 1}};
+                                                progress(timeleft1, 86400, $('#progressBar'));
+
+                                                // });
+                                                </script>
+                                                @endif
+                                            </td>
+                                            @else
+                                            <td>
+
+                                                <button class="btn btn-danger">Không thanh toán</button>
                                             </td>
                                             @endif
                                         </tr>

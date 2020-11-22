@@ -969,8 +969,10 @@ input#recipient-name {
                     data: {money:$( "#myNumber" ).val(), id_auction_book:$( "input[name = 'id_auction_book']" ).val(),
                     _token: "{{ csrf_token() }}",
                         },
-                    success: function( msg ) {
-                        console.log(msg);
+                    success: function( result ) {
+                        console.log(result);
+                        // {{$current_money }} = result.money;
+                        location.replace("{{route('auction_index')}}")
                         swal("Đấu giá thành công!", "", "success");
                     }
                 });

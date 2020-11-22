@@ -93,6 +93,8 @@
                                                 {{number_format($li->auction_book_reserve_price, 0, '', ',')}} đ
                                             </td>
                                             <td>
+                                                {{-- trạng thái  --}}
+
                                                 @if($li->auction_book_status == 'Chưa duyệt')
                                                 <button type="button" style=" color:white;" class="btn btn-sm btn-warning" >
                                                     {{$li->auction_book_status}}

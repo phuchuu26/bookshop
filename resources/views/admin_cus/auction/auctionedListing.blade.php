@@ -16,7 +16,7 @@
   margin: 5px auto;
   /* text-align: center!important; */
   height: 22px;
-  background-color:#343a40;
+  background-color:#c2c2c2;
 
 }
 /* #progressBar div {
@@ -44,7 +44,7 @@
     margin-left: 14px!important;
 }
         td.title {
-    max-width: 170px;
+    max-width: 150px;
     white-space: nowrap;
     /* min-width: 21px; */
     /* border: 1px solid #000000; */
@@ -157,6 +157,7 @@
                                         </tr>
                                     </tfoot> --}}
                                     <tbody>
+                                        {{-- {{dd($auctionedLists)}} --}}
 
     @php
     $i =1;
@@ -186,7 +187,7 @@
                                                 $startAuction = $time2 - $time1;
                                                 @endphp
                                                     {{-- {{$auctionedList->getBook->endtime->Endtime_auction_date}} --}}
-                                                    {{ date('H:i d/m/Y', $startAuction) }} ---
+                                                    {{ date('H:i d/m/Y', $startAuction) }} <br> --- <br>
                                                     {{ \Carbon\Carbon::parse($auctionedList->getBook->endtime->Endtime_auction_date)->format('H:i d/m/Y')}}
                                             </td>
                                             <td>
@@ -194,36 +195,43 @@
                                                 {{$auctionedList->count($auctionedList->id_auction_book)}}
                                             </td>
                                             <td>
-                                                {{-- {{dd($auctionedList->id_auction_book)}} --}}
+                                                {{-- {{dd($auctionedList)}} --}}
                                                 {{-- {{$auctionedList->maxPrice($auctionedList->id_auction_book)}} --}}
                                                 {{ number_format($auctionedList->maxPrice($auctionedList->id_auction_book),0,',','.') }} đ
                                             </td>
                                             {{-- {{dd($auctionedList->getBook->auction_book_miss_pay)}} --}}
                                             {{-- {{dd($auctionedList->getBook->auction_book_final_winner)}} --}}
+
                                             @if($auctionedList->getBook->auction_book_final_winner == Auth::user()->id)
-                                              <td class="status[{{$auctionedList->getBook->id}}]">
-                                              {{-- <input class="test" value="{{$auctionedList->getBook->auction_book_title}}" > --}}
 
-                                                  <button  data-toggle="tooltip" data-placement="top" title="Thanh toán ngay..." class="btn btn-warning" type="button" >
-                                                    Thành công
-                                                    <span  class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                                                    Chưa thanh toán
-                                                  </button>
-                                                <div class="progress-bar"  id="progressBar{{$key}}">
-                                                    <div class="div" style="border-radius: 9px;text-align-last: center;"></div>
-                                                </div>
-                                            </td>
-                                            <script>
-                                                // $(document).ready(function(){
-                                                    // for
-                                                    // var number
-                                                    if($('#progressBar').val() != undefined){
-                                                        console.log('YES');
+                                                {{-- xét xem đã thanh toán chưa --}}
+                                                @if($auctionedList->getBook->checkPayment() == false)
 
-                                                    }else{
-                                                        console.log('NO');
+                                                        <td class="status[{{$auctionedList->getBook->id}}]">
+                                                        {{-- <input class="test" value="{{$auctionedList->getBook->auction_book_title}}" > --}}
+                                                        <a href="{{route('checkout_acution',['id' => $auctionedList->getBook->id])}}">
 
-                                                    }
+                                                                <button  data-toggle="tooltip" data-placement="top" title="Thanh toán ngay..." class="btn btn-warning" type="button" >
+                                                                    Thành công
+                                                                    <span  class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                                                                    Chưa thanh toán
+                                                                </button>
+                                                            </a>
+                                                            <div class="progress-bar"  id="progressBar{{$key}}">
+                                                                <div class="div" style="border-radius: 9px;text-align-last: center;"></div>
+                                                            </div>
+                                                        </td>
+                                                        <script>
+                                                            // $(document).ready(function(){
+                                                                // for
+                                                                // var number
+                                                                if($('#progressBar').val() != undefined){
+                                                                    console.log('YES');
+
+                                                                }else{
+                                                                    console.log('NO');
+
+                                                                }
 
 
                                                 // var test = $('.status[{{$auctionedList->getBook->id}}]');
@@ -327,6 +335,17 @@
 
                                             // });
                                             </script>
+                                            @else
+                                            {{-- đã thanh toán đấu giá --}}
+                                            <td>
+                                                <button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Xem trạng thái đơn hàng..."  type="button" >
+                                                <a style="color: white" href="{{route('detail_bill_auction',['id'=> $auctionedList->getBook->id])}}">
+                                                      Thanh toán thành công
+
+                                                  </a>
+                                                </button>
+                                              </td>
+                                            @endif
                                                   @else
                                                   <td>
                                                   <button class="btn btn-danger" type="button" >

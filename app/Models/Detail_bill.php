@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Detail_bill extends Model
 {
     protected $table='detail_bill';
-    public $timestamps = false;
+    // public $timestamps = false;
 
     public function detailbill2() // phải viêt liền ko được cách ra hoặc _
     {

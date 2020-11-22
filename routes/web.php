@@ -87,9 +87,11 @@ Route::group(['prefix'=>'tai-khoan','middleware'=>'Ad_login'],function(){
  	Route::get('/phuong-xa/{id_ward}','TaikhoanController@ajax_ward')-> name('test1') ;
 
 
-	Route::post('/don-hang','BillController@post_bill')->name('p.bill');
+    Route::post('/don-hang','BillController@post_bill')->name('p.bill');
+    // chi tiết đơn hàng mua bán sách
 	Route::get('/chi-tiet-don-hang-{id}','BillController@detail_bill')->name('d.bill');
-
+    // chi tiết đơn hàng đấu giá sách
+    Route::get('/detail/bill/auction/{id}','AuctionController@detail_auction_bill')->name('detail_bill_auction');
 
 
 	Route::get('/chinh-sua-thong-tin-{id}','TaikhoanController@edit')->name('edit1');
@@ -249,6 +251,9 @@ Route::get('/san-pham/chi-tiet-san-pham-{id}','PageController@book_detail')->nam
                         // kết thúc thười gian cho phép thanh toán sách đấu giá nhưng khách hàng không chịu thanh toán: chuyển attr ở bảng auction_book
                         // sang người trả giá cáo thứ hai .(dùng ajax)
                         Route::post('/endDurationAuction/{id}','AuctionController@endDurationAuction')->name('endDurationAuction');
+
+                        // phuowng thức thanh toán đấu giá sách cho khách hàng
+                        Route::get('/checkout_auction/{id}','AuctionController@checkout')->name('checkout_acution');
 
 
                     });

@@ -138,7 +138,6 @@ class AuctionController extends Controller
             // $auction = Auction_book::findOrFail($id);
             // $auction->auction_book_status = 'Được xét duyệt';
             // $auction->save();
-
             $book = new Endtime_auction;
 
             // $book->auction_book_title = $req->Endtime_auction_date;
@@ -181,14 +180,21 @@ class AuctionController extends Controller
         }
         // chốt sổ kết thúc đấu giá sách
         public function endAuction($id){
+            // dd($id);
             $maxPrice = List_bidder::where('id_auction_book',$id)->orderBy('list_bidder_auction_money','desc')->first();
-            $data = Auction_book::where('id',$id)->update(['auction_book_status'=>'Kết thúc đấu giá',
-            'auction_book_final_winner' => $maxPrice->id_account
-            ]);
+            $sach = Auction_book::where('id',$id)->first();
+            // dd($maxPrice);
+            // dd($sach);
+            if($sach->auction_book_status !='Kết thúc đấu giá'){
+
+                $data = Auction_book::where('id',$id)->update(['auction_book_status'=>'Kết thúc đấu giá',
+                'auction_book_final_winner' => $maxPrice->id_account
+                ]);
+                Toastr::info('Kết thúc đấu giá sách', 'Thông báo', ["positionClass" => "toast-top-right"]);
+            }
             //var_dump($data);die;
             // $getstamps = 'a';
             // Session::put('msg','')
-            Toastr::info('Kết thúc đấu giá sách', 'Thông báo', ["positionClass" => "toast-top-right"]);
             // return response()->json(array('success' => true, 'getstamps' => $getstamps));
             return back()->withInput();
         }

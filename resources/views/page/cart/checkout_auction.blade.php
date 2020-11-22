@@ -8,8 +8,8 @@
                 <div class="col-12">
                     <ul class="breadcrumb">
                         <li><a href="{{Route('p.home')}}">Trang chủ</a></li>
-                        <li><a href="{{Route('cart')}}">Giỏ hàng</a></li>
-                        <li class="current"><a>Thanh toán</a></li>
+                        {{-- <li><a href="{{Route('cart')}}">Giỏ hàng</a></li> --}}
+                        <li class="current"><a>Thanh toán đấu giá</a></li>
                     </ul>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                     <div class="col-12">
                         <!-- Checkout Area Start -->
                          <form action="{{Route('p.bill')}}"  id="create_form" method="POST" class="form">{{csrf_field()}}
-
+                            <input type="number" value="{{$book->id}}" name="id_book_auction" hidden>
                             <div class="checkout-wrapper bg--white">
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -81,30 +81,43 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Sản phẩm</th>
-                                                            <th>Tổng</th>
+                                                            <th>Thông tin</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                            			@foreach($cart as $book)
+                                            			{{-- @foreach($cart as $book) --}}
     	                                                    <tr>
-    	                                                        <td>{{$book->name}} <strong>x{{$book->qty}}</strong></td>
-    	                                                        <td>{{ number_format($book->price*$book->qty,0,',','.') }} đ</td>
+    	                                                        <td>
+                                                                   <br> <br> {{$book->auction_book_title}} <strong>x{{$book->auction_book_quantity}}</strong></td>
+                                                            <td> <img height="100px" src="{{asset('public/upload/products/')}}/{{$book->auction_book_image}}" alt=""> </td>
+                                                            </tr>
+                                                            <tr>
+    	                                                        <td>
+                                                                 Người bán:</td>
+                                                                 <td id="ngay" style="">{{$book->account->info->info_lastname}} {{$book->account->info->info_name}}</td>
     	                                                    </tr>
-                                                        @endforeach
+                                                             <tr>
+    	                                                        <td>
+                                                                    <br>
+                                                                    Thời gian phiên đấu giá:</td>
+    	                                                        <td id="ngay" style="">{{date('H:i d-m-Y', strtotime($book->endtime->starttime_auction_date))}} <br> - <br> {{date('H:i d-m-Y', strtotime($book->endtime->Endtime_auction_date))}}</td>
+    	                                                    </tr>
+                                                        {{-- @endforeach --}}
 
                                                     </tbody>
                                                     <tfoot>
                                                         <tr class="cart-subtotal">
-                                                            <th>Tổng giỏ hàng</th>
-                                                            <td>{{$total}} đ</td>
+                                                            <th>Số tiền đấu giá</th>
+                                                            <td>{{ number_format($price,0,',','.') }} đ</td>
                                                         </tr>
                                                         <tr class="shipping">
                                                             <th>Shipping</th>
                                                             <td>Free ship</td>
                                                         </tr>
+                                                        {{-- {{dd($book)}} --}}
                                                         <tr class="order-total">
                                                             <th>Tổng đơn hàng</th>
-                                                            <td><span class="order-total-ammount">{{$total}} đ</span></td>
+                                                            <td><span class="order-total-ammount">{{ number_format($price,0,',','.') }} đ</span></td>
                                                         </tr>
                                                     </tfoot>
                                                 </table>
@@ -134,12 +147,12 @@
 
                                                    <input  id="order_id" name="order_id" type="hidden" value="<?php echo date("YmdHis") ?>"/>
 
-                                                   @foreach($cart as $book)
-                                                        <input  name="nguoiban" type="hidden" value="{{  $book->options->nguoiban }}"/>
+                                                   {{-- @foreach($cart as $book) --}}
+                                                        <input  name="nguoiban" type="hidden" value="{{  $book->account->info->info_lastname}} {{$book->account->info->info_name}}"/>
 
-                                                   @endforeach
+                                                   {{-- @endforeach --}}
 
-                                                    <input  name="amount" type="hidden" value="{{  $total2 }}"/>
+                                                    <input  name="amount" type="hidden" value="{{  $price }}"/>
 
                                                     <button type="submit" class="btn btn-6 btn-style-3" > Thanh toán </button>
 
