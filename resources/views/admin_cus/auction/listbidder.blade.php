@@ -4,7 +4,13 @@
 <head>
     <style>
 div#progressBar {
-    width: 203.75px;
+    /* width: 203.75px; */
+    /* width: 110px; */
+    width: 238px;
+}
+.div {
+    /* align-self: center; */
+    /* width: 110px; */
 }
 /* progressBar countdown  */
 div.progress-bar {
@@ -14,7 +20,8 @@ div.progress-bar {
 }
 .progress-bar {
     /* border-radius: 37px; */
-width: 90%;
+/* width: 90%; */
+width: 110.75px;
 margin: 5px auto;
 /* text-align: center!important; */
 height: 22px;
@@ -166,12 +173,16 @@ text-align: center;
                                             <td>
                                                 {{-- da thanh toan roi --}}
                                                 @if($bi->getBook->checkPayment())
-
+                                                @php
+                                                $check = true;
+                                                @endphp
                                                     <button class="btn btn-success" type="button" >
                                                         Đã thanh toán
                                                       </button>
                                                     @else
-
+                                                      @php
+                                                      $check = true;
+                                                      @endphp
                                                           <button class="btn btn-warning" type="button" >
                                                               Chưa thanh toán
                                                             </button>
@@ -293,8 +304,12 @@ text-align: center;
                                             </td>
                                             @else
                                             <td>
+                                                @if(isset($check))
+                                                <button class="btn btn-danger">Đấu giá thất bại</button>
+                                             @else
+                                                <button class="btn btn-danger">Thời gian thanh toán quá hạn</button>
 
-                                                <button class="btn btn-danger">Không thanh toán</button>
+                                                @endif
                                             </td>
                                             @endif
                                         </tr>

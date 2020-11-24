@@ -12,7 +12,7 @@
 }
         .progress-bar {
             /* border-radius: 37px; */
-  width: 90%;
+  width: 238px;
   margin: 5px auto;
   /* text-align: center!important; */
   height: 22px;
@@ -316,9 +316,13 @@
                                                                         data:{
                                                                             "_token": "{{ csrf_token() }}",
                                                                             "numberMiss":{{$auctionedList->getBook->auction_book_miss_pay}},
+                                                                            "endTime":{{strtotime($auctionedList->getBook->endtime->Endtime_auction_date)}},
                                                                             },
                                                                         success: function (data) {
                                                                             console.log(data);
+                                                                            setTimeout(function(){
+                                                                                    location.reload();
+                                                                                }, 3000);
                                                                             // location.reload();
                                                                         },
                                                                         error: function() {

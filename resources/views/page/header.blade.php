@@ -135,22 +135,24 @@
                             padding-right: 2rem;" class="gach"></div> --}}
 
                             @if(Auth::check())
-                            <div  style="    border-right: 1px solid #e5e5e5;
+                            <div  style="border-right: 1px solid #e5e5e5;
                             margin-right: 2rem;
                             padding-right: 25px;" class="mini-cart mini-cart--3">
                             <a class="mini-cart__dropdown-toggle" href="{{route(config('chatify.path'))}}" >
-                                    <i style="color: white;font-size: 30px;" class="fa fa-commenting-o" aria-hidden="true"></i>
+                                    <i style="color: white;font-size: 30px;" class="fa fa-commenting-o mini-cart__icon" aria-hidden="true"></i>
                                     <sub id="getcount" class="mini-cart__count"></sub>
                                 </a>
                             </div>
                             @endif
+                            @if(Auth::check())
                             <div class="mini-cart mini-cart--3">
-                                <a class="mini-cart__dropdown-toggle" id="cartDropdown">
-                                    <i class="fa fa-shopping-bag mini-cart__icon"></i>
-                                    <sub class="mini-cart__count">{{Cart::count()}}</sub>
+                                <a class="mini-cart__dropdown-toggle"  href="{{route('auctionedListing')}}"  id="cartDropdown" >
+                                    {{-- <i class="fa fa-shopping-bag mini-cart__icon"></i> --}}
+                                    <i style="color: white;" class="fa fa-gavel mini-cart__icon" aria-hidden="true"></i>
+                                    <sub id="getcountAuction" class="mini-cart__count"></sub>
                                 </a>
                             </div>
-
+                            @endif
 
 
                             <!-- Header Cart End -->
@@ -415,9 +417,12 @@
     <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
     <!-- Header Area End Here -->
 @if(Auth::check())
+
         <script>
             $(document).ready( function(){
+
                 var number=0;
+
                   $.ajax({
                         // type: "POST",
                         url: "{{route('countmess')}}",
@@ -425,7 +430,8 @@
                                  console.log(result.count);
                                  number = result.count;
                             // $("#getcount").html(result.count);
-                            console.log(number);
+                            // console.log(number);
+
                           }});
 
                         // var pusher = new Pusher('5f9437b8677edc9e4714', {
@@ -469,6 +475,84 @@
                          console.log(number);
                          }, 300);
 
+
+                         // lấy số sách đấu giá thành công mà chưa thanh toán hoặc chưa xem
+                         var numberAuction=0;
+                                $.ajax({
+                                    // type: "POST",
+                                    url: "{{route('getAuctionNumber')}}",
+                                    success: function(result){
+                                            console.log(result.count);
+                                            numberAuction = result.count;
+                                        $('#getcountAuction').html(numberAuction);
+                                        console.log(numberAuction);
+                                        if(numberAuction > 0 ){
+                                        setTimeout(function(){
+                                                swal({
+                                                    title: "Bạn có đơn hàng đấu giá sách chưa thanh toán?",
+                                                    text: "Thời gian thanh toán trong vòng 24h kể từ ngày kết thúc phiên đấu giá",
+                                                    imageUrl: "https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/auction_hammer.png",
+                                                    // type: "warning",
+                                                    showCancelButton: true,
+                                                    confirmButtonClass: "btn-danger",
+                                                    confirmButtonText: "Xem đơn hàng ngay!",
+                                                    cancelButtonText: "Để sau!",
+                                                    closeOnConfirm: false,
+                                                    closeOnCancel: false
+                                                    },
+                                                        function(isConfirm) {
+                                                        if (isConfirm) {
+                                                        swal("OK!", "Hệ thống tiến hành điều hướng.", "success");
+                                                        // window.location.href = "{{route('auctionedListing')}}";
+                                                        setTimeout(function(){
+                                                            $.ajax({
+                                                                type: 'POST', //THIS NEEDS TO BE GET
+                                                                url: '{{route('seenAuction')}}',
+                                                                data:{
+                                                                    "_token": "{{ csrf_token() }}",
+                                                                    },
+                                                                success: function (data) {
+                                                                    console.log(data);
+                                                                    // location.reload();
+                                                                    window.location.replace("{{route('auctionedListing')}}");
+                                                                },
+                                                                error: function() {
+                                                                    console.log(data);
+                                                                }
+                                                            });
+                                                        }, 1000);
+
+                                                } else {
+                                                    swal("Để sau", "Đơn hàng vẫn chưa được thanh toán :)", "warning");
+                                                }
+                                                });
+                                            }, 3000);
+                                        }
+                                    }
+                                });
+
+
+
+                        // Subscribe to the channel we specified in our Laravel Event
+                        // var channel1 = pusher.subscribe('phuc.'+ {{Auth::user()->id}});
+                        // //Bind a function to a Event (the full Laravel class)
+                        // // channel.bind('App\\Events\\HelloPusherEvent', addMessage);
+                        // // D:\LUAN VAN\bookshop\app\Events\HelloPusherEvent.php
+                        // channel.bind('App\\Events\\GetNumberAuction', addMessageDemo1);
+
+                        // function addMessageDemo1(data) {
+                        //     console.log(data);
+                        //     console.log('chay  dc 1');
+                        //     // var liTag = $("<li class='list-group-item'></li>");
+                        //     console.log(data.message)
+                        //     numberAuction = data.message;
+                        //     // liTag.html(data.message);
+                        //     $('#getcountAuction').html(numberAuction);
+                        // }
+                        // setTimeout(function(){
+                        //      $('#getcountAuction').html(numberAuction);
+                        //  console.log(numberAuction);
+                        //  }, 300);
                     });
                     </script>
 

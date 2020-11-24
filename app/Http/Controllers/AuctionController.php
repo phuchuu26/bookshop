@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CustomValidationRequest;
 use App\Rules\Numeric;
 use DateTime;
+use Response;
 // use Validator;
 use App\Models\Category;
 use App\Models\List_bidder;
@@ -980,40 +981,49 @@ class AuctionController extends Controller
     }
 
     // thực thi hàm khi kết thúc thời gian 1day thanh  sách đã đấu giá thành công
-    public function endDurationAuction($id,Request $req){
+    public function endDurationAuction($id, Request $req){
 
         $number = $req->numberMiss;
+        $endTime = $req->endTime;
+        $sach = Auction_book::where('id', $id)->first();
+        if( $endTime == strtotime($sach->endtime->Endtime_auction_date)){
+            // if($endTime )
+            $count = Auction_book::where('id', $id)->update(['auction_book_seen' => 0]);;
 
-        $maxPrice = List_bidder::where('id_auction_book',$id)->get()->unique('id_account')->sortByDesc('list_bidder_auction_money');
+            $maxPrice = List_bidder::where('id_auction_book',$id)->get()->unique('id_account')->sortByDesc('list_bidder_auction_money');
 
 
-        $next = $this->selectRowNext($maxPrice,$number);
-        // dd($next);
-        // die;
-        $a = Auction_book::where('id',$id)->first();
-        $a1 = $a->update(['auction_book_miss_pay' => $a->auction_book_miss_pay + 1]);
-        if($next == null){
-            $data = Auction_book::where('id',$id)->update([
-                'auction_book_final_winner' => null
-                ]);
-                $data1 = $data;
+            $next = $this->selectRowNext($maxPrice,$number);
+            // dd($next);
+            // die;
+            $a = Auction_book::where('id',$id)->first();
+            $a1 = $a->update(['auction_book_miss_pay' => $a->auction_book_miss_pay + 1]);
+            if($next == null){
+                $data = Auction_book::where('id',$id)->update([
+                    'auction_book_final_winner' => null
+                    ]);
+                    $data1 = $data;
+            }else{
+                $data = Auction_book::where('id',$id)->update([
+                    'auction_book_final_winner' => $next->id_account
+                    ]);
+                    $data1 = Auction_book::where('id',$id);
+            }
+
+
+            // dd($secondPrice);
+
+            // die;
+
+            //var_dump($data);die;
+            // $getstamps = 'a';
+            // Session::put('msg','')
+            // Toastr::info('Kết thúc đấu giá sách', 'Thông báo', ["positionClass" => "toast-top-right"]);
+            return response()->json(array('success' => true, 'data' => $data1));
         }else{
-            $data = Auction_book::where('id',$id)->update([
-                'auction_book_final_winner' => $next->id_account
-                ]);
-                $data1 = Auction_book::where('id',$id);
+            return response()->json(array('success' => false, 'data' => 'lỗi rồi'));
         }
 
-
-        // dd($secondPrice);
-
-        // die;
-
-        //var_dump($data);die;
-        // $getstamps = 'a';
-        // Session::put('msg','')
-        // Toastr::info('Kết thúc đấu giá sách', 'Thông báo', ["positionClass" => "toast-top-right"]);
-        return response()->json(array('success' => true, 'data' => $data1));
     }
 
     public function checkout($id){
@@ -1030,5 +1040,21 @@ class AuctionController extends Controller
         // die;
 
 		return view('page.account.detail_auction_book',['bill'=>$bill]);
-	}
+    }
+    // lấy số đon hàng người dùng chưa xem bằng ajax
+     public function getAuctionNumber()
+	{
+        $count = Auction_book::where('auction_book_final_winner', Auth::user()->id)->where('auction_book_seen',0)->count();
+
+        return Response::json([
+            'count' => $count,
+        ], 200);
+    }
+    public function seenAuction(){
+        $count = Auction_book::where('auction_book_final_winner', Auth::user()->id)->where('auction_book_seen',0)->update(['auction_book_seen' => 1]);;
+
+        return Response::json([
+            'daSeen' => $count,
+        ], 200);
+    }
 }

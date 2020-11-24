@@ -156,13 +156,16 @@ Route::group(['prefix' => 'statistic','middleware'=>'CheckAdmin'],function(){
 
 
 });
-// Route::get('/pusher', function() {
-    //     event(new App\Events\HelloPusherEvent('Hi there Pusher!'));
-    //     return "da thuc thi nha";
-    // });
+    // lấy số lượng sách đấu giá chưa được xem kiểu ajax
+    // Route::get('/getAuctionNumber/{id}','AuctionController@getAuctionNumber')->name('getAuctionNumber');
+    // lấy số lượng sách đấu giá chưa được xem kiểu realtime
+Route::get('/getAuctionNumber','AuctionController@getAuctionNumber')->name('getAuctionNumber');
 
-    // Route::get('/test','StatisticController@countmess')->name('getcount');
+
+
+    // lấy số tin nhắn chờ chưa được xem kiểu ajax
     Route::get('/test/{id}','StatisticController@countmess1')->name('getcount');
+    // lấy số tin nhắn chờ chưa được xem kiểu realtime
 Route::get('/COUNTMESS','StatisticController@countmess')->name('countmess');
 //phan thong ke thanh vien
 Route::group(['prefix'=>'statistic','middleware'=>'CheckCustomer'],function(){
@@ -238,6 +241,9 @@ Route::get('/san-pham/chi-tiet-san-pham-{id}','PageController@book_detail')->nam
                         // danh sách đã thực hiện hành động đấu giá
                         Route::get('/auctionedListing', 'AuctionController@auctionedListing')
                         ->name('auctionedListing');
+                        // xem auction chưa thanh toán => chuyển 0 thành 1
+                        Route::post('/auctionedSeen', 'AuctionController@seenAuction')
+                        ->name('seenAuction');
                         //xoa
                         Route::get('/detele_auction/{id}','AuctionController@delete')->name('delete_auction');
                         // sua
