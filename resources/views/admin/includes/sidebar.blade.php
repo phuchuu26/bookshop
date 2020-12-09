@@ -69,6 +69,7 @@
             <li><a href="{{route('statistic_sale')}}" >Thống kê doanh thu</a></li>
             <li><a href="{{route('quantity_product')}}" >Thống kê sản phẩm bán chạy</a></li>
             <li><a href="{{route('quantity')}}" >Thống kê số lượng sách</a></li>
+
             @endif
             @if(Auth::user()->level==2)
             <li><a href="{{route('statistic_bill_cus')}}" >Thống kê đơn hàng</a></li>
@@ -89,6 +90,34 @@
             <li><a href="{{route('add_auctionBook')}}" >Yêu cầu đấu giá</a></li>
             <li><a href="{{route('auction.management')}}" >Quản lý đấu giá</a></li>
             <li><a href="{{route('auctionedListing')}}" >Danh sách đã thực hiện đấu giá</a></li>
+            @endif
+            </ul>
+        </li>
+        @if(Auth::user()->level==1)
+        <li>
+        <a href="{{route('member_vip')}}" class="has-arrow"><i class="icon-pie-chart"></i><span>Tài khoản VIP</span></a>
+
+        </li>
+        @endif
+            @if(Auth::user()->level==2)
+                    <li>
+                    {{-- <a href="{{route('member_vip/user')}}" class="has-arrow"><i class="icon-pie-chart"></i><span>Quản lý tài khoản</span></a> --}}
+
+                    </li>
+        @endif
+
+        <li>
+            <a href="#user" class="has-arrow"><i class="icon-pie-chart"></i><span>Quản lý tài khoản</span></a>
+            <ul>
+            @if(Auth::user()->level ==1)
+                <li><a href="{{route('user_list')}}" >Danh sách tài khoản</a></li>
+                <li><a href="{{route('member_vip')}}" >Thiết lập loại tài khoản</a></li>
+                <li><a href="{{route('editProfile')}}" >Chỉnh sửa thông tin tài khoản</a></li>
+
+                @endif
+                @if(Auth::user()->level==2)
+                <li><a href="{{route('editProfile')}}" >Chỉnh sửa thông tin tài khoản</a></li>
+                {{-- //code --}}
             @endif
             </ul>
         </li>

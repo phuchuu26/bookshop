@@ -9,6 +9,41 @@
 <link rel="stylesheet" href="{{asset('public/page/css/style.css')}}">
 <style>
 
+
+
+
+a#new {
+    border-radius: 4px;
+    /* top: -3px; */
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    position: absolute;
+    padding-bottom: -15px;
+    padding-top: -25px!important;
+    /* top: -3px; */
+    top: 27px;
+    padding: -4px 0;
+    /* top: 15px; */
+    left: -34px;
+    width: 71px;
+    background-color: #146c78;
+    left: 17px;
+    line-height: -1px;
+    align-items: center;
+    font: bold 15px sans-serif;
+    color: white;
+    text-align: center;
+    opacity: 0.9;
+}
+a#new:hover{
+    background-color: #ffe11b;
+    color: black;
+}
+img.logo {
+    object-fit: cover;
+}
     .ratings {
             margin-left: 60px;
         }
@@ -88,8 +123,10 @@ input#amount {
             <div class="col-12">
                 <ul class="breadcrumb" style="">
                     <div  class="thongTinShop">
+                        <a id='new' >VIP</a>
                         <div class="left">
-                            <img class="logo" width="90px;" src="{{asset('public/page/img/furniture-13-250x278.jpg')}}" alt="">
+                            {{-- <img class="logo" width="90px;" src="{{asset('public/page/img/furniture-13-250x278.jpg')}}" alt=""> --}}
+                            <img class="logo" width="90px;" height="120px;" src="{{asset('public/storage/users-avatar').'/'.$user->avatar}}" alt="">
                         </div>
                         <div class="right">
                             <p class="des">Được bán bởi</p>

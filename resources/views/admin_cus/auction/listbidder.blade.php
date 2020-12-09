@@ -279,13 +279,18 @@ text-align: center;
                                                                             data:{
                                                                                 "_token": "{{ csrf_token() }}",
                                                                                 "numberMiss":{{$bi->getBook->auction_book_miss_pay}},
+                                                                                "endTime":{{strtotime($bi->getBook->endtime->Endtime_auction_date)}},
                                                                                 },
                                                                             success: function (data) {
                                                                                 console.log(data);
-                                                                                setTimeout(function(){
-                                                                                    location.reload();
-                                                                                }, 3000);
-                                                                            },
+                                                                                if(data.success){
+
+
+                                                                                    setTimeout(function(){
+                                                                                        location.reload();
+                                                                                    }, 3000);
+                                                                                }
+                                                                                },
                                                                             error: function() {
                                                                                 console.log(data);
                                                                             }

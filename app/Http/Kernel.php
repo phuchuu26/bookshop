@@ -66,7 +66,6 @@ class Kernel extends HttpKernel
         'CheckAdmin' => \App\Http\Middleware\CheckAdmin::class,
         'GetWinner' => \App\Http\Middleware\GetWinner::class,
 
-
     ];
 
     /**

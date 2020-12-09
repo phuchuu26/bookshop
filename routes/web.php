@@ -138,6 +138,9 @@ Route::group(['prefix' => 'gio-hang'],function(){
 // phan admin
 Route::group(['prefix' => 'statistic','middleware'=>'CheckAdmin'],function(){
 
+
+
+
     Route::get('/bill','StatisticController@bill')->name('statistic_bill');
     Route::get('/bill/data','StatisticController@billdata')->name('statistic_bill_data');
     Route::get('/sale','StatisticController@sale')->name('statistic_sale');
@@ -261,6 +264,9 @@ Route::get('/san-pham/chi-tiet-san-pham-{id}','PageController@book_detail')->nam
                         // phuowng thức thanh toán đấu giá sách cho khách hàng
                         Route::get('/checkout_auction/{id}','AuctionController@checkout')->name('checkout_acution');
 
+                        // trang quan ly loai tai khoan(vip - thuong) || quan ly tai khoan
+
+                        Route::get('/account_management','Admin\Member_vipController@account_management')->name('account_management');
 
                     });
 
@@ -270,12 +276,13 @@ Route::get('/san-pham/chi-tiet-san-pham-{id}','PageController@book_detail')->nam
 Route::get('/endAuction/{id}','Admin\AuctionController@endAuction')->name('endAuction');
 
 Route::group(['prefix'=>'quan-tri','middleware'=>'Ad_login'],function(){         // ,'middleware'=>'Ad_login'
-	Route::get('/','AdminController@home')->name('ad.home');
 
-		Route::group(['prefix'=>'tac-gia'],function(){
+    Route::get('/','AdminController@home')->name('ad.home');
 
-			Route::get('/','AuthController@author')->name('auth.list');
-			Route::get('/them-tac-gia','AuthController@add')->name('auth.add');
+    Route::group(['prefix'=>'tac-gia'],function(){
+
+             Route::get('/','AuthController@author')->name('auth.list');
+            Route::get('/them-tac-gia','AuthController@add')->name('auth.add');
 			Route::post('/them-tac-gia','AuthController@post_add')->name('auth.post.add');
 
 			Route::get('/sua-tac-gia-{id}','AuthController@edit')->name('auth.edit');
@@ -286,8 +293,30 @@ Route::group(['prefix'=>'quan-tri','middleware'=>'Ad_login'],function(){        
 			Route::get('/xoa-tac-gia-{id}','AuthController@delete')->name('auth.delete');
 
 
+        });
+        Route::group(['prefix'=>'user'],function(){
 
-		});
+                Route::group(['prefix'=>'admin','middleware'=>'CheckAdmin'],function(){
+                    // quan ly casc tai khoan , quyen admin
+                    Route::get('/list','Admin\Member_vipController@listUser')->name('user_list');
+                    // xoa tai khoan quyen admin :
+                    Route::get('/delete','Admin\Member_vipController@delete')->name('delete_user');
+
+
+                    // đăng ký thành viên vip
+                    // show view
+                    Route::get('/','Admin\Member_vipController@index')->name('member_vip');
+                    Route::post('/getData','Admin\Member_vipController@getData')->name('getData_member_vip');
+                    Route::post('/edit','Admin\Member_vipController@edit')->name('member_vip_edit');
+                });
+                Route::group(['prefix'=>'guest'],function(){
+
+                          // sua thong tin tai khoan profile "
+                          Route::get('/editProfile','UserController@editProfile')->name('editProfile');
+                          Route::post('/updateAvatar/{id}','UserController@updateAvatar')->name('updateAvatar');
+                });
+        });
+
         // dau gia
         Route::group(['prefix'=>'admin/auction'],function(){
             // // dau gia:

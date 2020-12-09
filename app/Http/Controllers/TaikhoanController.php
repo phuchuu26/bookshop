@@ -46,7 +46,7 @@ class TaikhoanController extends Controller
         $this->validate($reg,[
             'phone' =>'required|max:12',
             'name' =>'required|min:2|max:15',
-            'lastname' =>'required|min:2|max:8',
+            'lastname' =>'required|min:2|max:10',
             'username' =>'required|min:3|max:15|unique:account,username',
             'email' => 'required|email|max:32|unique:info,info_email',
             'password' => 'required|min:3|max:50',

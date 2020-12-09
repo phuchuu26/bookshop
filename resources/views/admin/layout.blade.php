@@ -37,6 +37,7 @@
 
 
 	<style>
+
 	    td.details-control {
 	    background: url('{{asset('public/admin/img/details_open.png')}}')/*tpa=http://puffintheme.com/demo/oculux/assets/images/details_open.png*/ no-repeat center center;
 	    cursor: pointer;

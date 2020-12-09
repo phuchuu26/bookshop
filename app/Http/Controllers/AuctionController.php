@@ -982,7 +982,7 @@ class AuctionController extends Controller
 
     // thực thi hàm khi kết thúc thời gian 1day thanh  sách đã đấu giá thành công
     public function endDurationAuction($id, Request $req){
-
+        // dd($req->all());
         $number = $req->numberMiss;
         $endTime = $req->endTime;
         $sach = Auction_book::where('id', $id)->first();
