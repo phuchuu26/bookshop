@@ -84,7 +84,10 @@ Route::group(['prefix'=>'tai-khoan','middleware'=>'Ad_login'],function(){
 
 	//ajax
  	Route::get('/quan-huyen/{id_province}','TaikhoanController@ajax_district')-> name('test');
+     Route::get('/quan-huyenAjax','TaikhoanController@ajax_district1')-> name('getAjaxHuyen');
+
  	Route::get('/phuong-xa/{id_ward}','TaikhoanController@ajax_ward')-> name('test1') ;
+ 	Route::get('/phuong-xaAjax','TaikhoanController@ajax_ward1')-> name('getAjaxXa') ;
 
 
     Route::post('/don-hang','BillController@post_bill')->name('p.bill');
@@ -313,7 +316,12 @@ Route::group(['prefix'=>'quan-tri','middleware'=>'Ad_login'],function(){        
 
                           // sua thong tin tai khoan profile "
                           Route::get('/editProfile','UserController@editProfile')->name('editProfile');
+                        //   sửa avatar
                           Route::post('/updateAvatar/{id}','UserController@updateAvatar')->name('updateAvatar');
+
+                          //   sửa thong tin
+                          Route::post('/updateProfile/{id}','UserController@updateProfile')->name('updateProfile');
+
                 });
         });
 

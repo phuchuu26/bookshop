@@ -5,11 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 Use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Models\Province;
+use App\Models\District;
+use App\Models\Ward;
+use App\Models\Info;
+use App\Models\Delivery;
 class UserController extends Controller
 {
     // xem giao dien sua thong tin khach hang
     public function editProfile(){
-        return view('admin.user-profile.profile_user');
+        $tinhs = Province::orderBy('province_name','ASC')->get();
+        $huyens = District::all();
+        $xas = Ward::all();
+        return view('admin.user-profile.profile_user',compact('tinhs','huyens','xas'));
     }
 
     public function updateAvatar(Request $request,$id){
@@ -65,6 +73,53 @@ class UserController extends Controller
                 }
 
         }
+        return back()->withInput();
+    }
+
+    public function updateProfile(Request $request,$id){
+        $user = User::findorFail($id);
+        $info_user = Info::where('id_account',$id)->first();
+        $delivery_user = Delivery::where('id_account',$id)->first();
+
+        if($request->lastname){
+            $info_user->info_lastname = $request->lastname;
+        }
+        if($request->name){
+            $info_user->info_name = $request->name;
+        }
+        if($request->gender){
+            $info_user->info_gender = $request->gender;
+        }
+        if($request->birth){
+            $info_user->info_birth = $request->birth;
+        }
+
+        // bang delivery :
+        // echo 'do';
+        if(!$delivery_user){
+            echo 'do';
+            $delivery_user = new Delivery;
+            $delivery_user->delivery_name = $info_user->info_lastname. ' '.$info_user->info_name;
+            $delivery_user->id_account = $id;
+        }
+        if($request->telephone){
+            $delivery_user->delivery_telephone = $request->telephone;
+        }
+        if($request->address){
+            $delivery_user->delivery_address = $request->address;
+        }
+        if($request->province){
+            $delivery_user->delivery_provice = $request->province;
+        }
+        if($request->ward){
+            $delivery_user->delivery_ward = $request->ward;
+        }
+        if($request->district){
+            $delivery_user->delivery_district = $request->district;
+        }
+
+        $info_user->save();
+        $delivery_user->save();
         return back()->withInput();
     }
 }

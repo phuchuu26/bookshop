@@ -207,10 +207,32 @@ class TaikhoanController extends Controller
             // kiểm tra xem nó showw ra đúng không Ntkd@@/ajax/loainho/id(vd: 1 2 3 4)
         }
     }
+     public function ajax_district1(Request $request)
+    {
+        $id_province =$request->id;
+        // $this->url->to('/');
+        // dd($this);
+        $quanhuyen = District::where('province_id',$id_province)->get();
+        foreach($quanhuyen as $dt)
+        {
+             echo "<option value='".$dt->id."'>".$dt->district_name."</option>";
+            // kiểm tra xem nó showw ra đúng không Ntkd@@/ajax/loainho/id(vd: 1 2 3 4)
+        }
+    }
 
     public function ajax_ward($id_ward)
     {
         $phuongxa = Ward::where('district_id',$id_ward)->get();
+        foreach($phuongxa as $wd)
+        {
+             echo "<option value='".$wd->id."'>".$wd->ward_name."</option>";
+            // kiểm tra xem nó showw ra đúng không Ntkd@@/ajax/loainho/id(vd: 1 2 3 4)
+        }
+    }
+    public function ajax_ward1(Request $request)
+    {
+        $id = $request->id;
+        $phuongxa = Ward::where('district_id',$id)->get();
         foreach($phuongxa as $wd)
         {
              echo "<option value='".$wd->id."'>".$wd->ward_name."</option>";
