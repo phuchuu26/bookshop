@@ -105,7 +105,11 @@
                                         <td>
 
 
-                                            <button  class="btn btn-sm btn-default view" ><i class="fa fa-eye"></i></button>
+                                        <a href="{{route('view_user_profile',['id'=>$data->id])}}">
+                                            <button   class="btn btn-sm btn-default view" >
+
+                                                    <i class="fa fa-eye"></i></button>
+                                                </a>
 
                                             {{-- {{($data->id)}} --}}
                                             {{-- <button onclick="hello()" class="btn btn-sm btn-default delete"><i  class="fa fa-trash-o text-danger"></i></button> --}}

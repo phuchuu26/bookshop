@@ -31,6 +31,9 @@
                 </div>
             </div>
         </div>
+        {{-- @foreach ($errors->all() as $error)
+                            <p class="text-danger">{{ $error }}</p>
+         @endforeach --}}
         @if(count($errors) > 0)
         <div class="alert alert-danger">
             @foreach($errors->all() as $err)
@@ -48,14 +51,14 @@
                         <h2>Ảnh đại diện</h2>
                         <ul class="header-dropdown dropdown">
                             <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                            <li class="dropdown">
+                            {{-- <li class="dropdown">
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="javascript:void(0);">Action</a></li>
                                     <li><a href="javascript:void(0);">Another Action</a></li>
                                     <li><a href="javascript:void(0);">Something else</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                     <div class="body">
@@ -98,19 +101,77 @@
 
                     </div>
                 </div>
+                {{-- cập nhật thẻ vip --}}
                 <div class="card">
+                    <div class="header">
+                        <h2>Loại tài khoản</h2>
+                        <ul class="header-dropdown dropdown">
+                            <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
+
+                                    {{-- <li><a href="javascript:void(0);">Another Action</a></li> --}}
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <i class="fa fa-credit-card" aria-hidden="true"></i>
+                        <small class="text-muted">Cấp độ tài khoản hiện tại: <strong>{{Auth::User()->member ? Auth::User()->member->member_vip_name : null}}
+                            @if(Auth::User()->level == 1)
+                                Quản trị viên
+                            @endif
+                        </strong> </small>
+                        <hr>
+
+                        @if(Auth::User()->member)
+                         {{-- 1 = VIP --}}
+                            @if(Auth::User()->member->member_vip_id == 1)
+                             <img   style="    width: 250px;
+                             margin-left: 47px;margin-bottom: 12px;" src="{{asset('public/storage/users-avatar/vip.png')}}"  class="rounded" alt="">
+                             <br>
+
+                             <span>Chính sách và quyền lợi của tài khoản VIP :
+                                <br>
+                                <br>
+                                <strong>{{Auth::User()->member->member_vip_note}}</strong>
+                            </span>
+                                <hr>
+                                <span>Giá đăng ký tài khoản VIP hiện tại :
+
+                                <strong>{{number_format($members[0]->member_vip_price,0,',','.')}} đ</strong></span>
+                            @elseif(Auth::User()->member->member_vip_id == 2)
+                                <a href="{{route('regVip')}}">
+                                <button style="    margin-top: -41px;
+                                margin-left: 106px;" type="button" class="btn btn-primary">
+                                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                                    Đăng ký ngay
+                                </button>
+
+                            </a>
+                            <br>
+                            <img   style="    width: 250px;
+                            margin-left: 47px;margin-bottom: 5px;" src="{{asset('public/storage/users-avatar/basic.png')}}"  class="rounded" alt="">
+                            <br>
+                            <span>Chính sách và quyền lợi của tài khoản Thường :
+                               <br>
+                               <br>
+                               <strong>{{Auth::User()->member->member_vip_note}}</strong>
+                               <hr>
+                               <span>Giá đăng ký tài khoản VIP hiện tại :
+
+                                <strong>{{number_format($members[0]->member_vip_price,0,',','.')}} đ</strong></span>
+                            @endif
+                        @endif
+
+
+                        <hr>
+
+                    </div>
+                </div>
+
+                {{-- <div class="card">
                     <div class="header">
                         <h2>Thông tin</h2>
                         <ul class="header-dropdown dropdown">
                             <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                            <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="javascript:void(0);">Action</a></li>
-                                    <li><a href="javascript:void(0);">Another Action</a></li>
-                                    <li><a href="javascript:void(0);">Something else</a></li>
-                                </ul>
-                            </li>
+
                         </ul>
                     </div>
                     <div class="body">
@@ -124,23 +185,15 @@
                          </p>
                          @endif
 
-                        {{-- <hr> --}}
                         <small class="text-muted">Địa chỉ email: </small>
                     <p>{{Auth::User()->info->info_email ? Auth::User()->info->info_email : 'Chưa nhập địa chỉ email'}}</p>
-                        {{-- <hr> --}}
                         <small class="text-muted">Số điện thoại: </small>
                         <p>{{Auth::User()->info->info_phone ? Auth::User()->info->info_phone : 'Chưa nhập số điện thoại'}}</p>
-                        {{-- <hr> --}}
                         <small class="text-muted">Ngày sinh: </small>
-                        <p class="m-b-0">{{Auth::User()->info->info_birth ? Auth::User()->info->info_birth : 'Chưa nhập ngày sinh'}}</p>
-                        {{-- <hr> --}}
-                        {{-- <small class="text-muted">Mạng xã hội: </small>
-                        <p><i class="fa fa-twitter m-r-5"></i> twitter.com/example</p>
-                        <p><i class="fa fa-facebook  m-r-5"></i> facebook.com/example</p>
-                        <p><i class="fa fa-github m-r-5"></i> github.com/example</p>
-                        <p><i class="fa fa-instagram m-r-5"></i> instagram.com/example</p> --}}
+                        <p class="m-b-0">{{Auth::User()->info->info_birth ?   date("d-m-Y", strtotime(Auth::User()->info->info_birth)) : 'Chưa nhập ngày sinh'}}</p>
+
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <div class="col-xl-8 col-lg-8 col-md-7">
@@ -149,14 +202,14 @@
                         <h2>Cập nhật tài khoản</h2>
                         <ul class="header-dropdown dropdown">
                             <li><a href="javascript:void(0);" class="full-screen"><i class="icon-frame"></i></a></li>
-                            <li class="dropdown">
+                            {{-- <li class="dropdown">
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="javascript:void(0);">Action</a></li>
                                     <li><a href="javascript:void(0);">Another Action</a></li>
                                     <li><a href="javascript:void(0);">Something else</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                     <div class="body">
@@ -195,7 +248,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="icon-calendar"></i></span>
                                         </div>
-                                        <input name="birth" value="{{Auth::User()->info->info_birth}}" data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="Ngày sinh">
+                                        <input name="birth" value="{{Auth::User()->info->info_birth != null ? date("d-m-Y", strtotime(Auth::User()->info->info_birth)) : null}}  " data-provide="datepicker" data-date-autoclose="true" class="form-control" placeholder="Ngày sinh">
                                     </div>
                                 </div>
                             </div>
@@ -290,39 +343,30 @@
                     </div>
                     <div class="body">
                         <div class="row clearfix">
-                            {{-- <div class="col-lg-4 col-md-12">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" value="louispierce" disabled placeholder="Username">
+
+                        <form method="post" action="{{route('updatePassword')}}">
+                            @csrf
+                                <div class="col-lg-12 col-md-12">
+                                    {{-- <h6>Change Password</h6>
+                                        <hr> --}}
+                                        <small class="text-muted">Mật khẩu hiện tại: </small>
+                                    <div class="form-group">
+                                                  <input id="old_password" name="old_password" type="password" value="{{ old('old_password') }}" class="form-control" placeholder="Mật khẩu hiện tại">
+                                    </div>
+                                    <small class="text-muted">Mật khẩu mới: </small>
+                                    <div class="form-group">
+                                                <input id="current_password" name="current_password" value="{{ old('current_password') }}"  type="password" class="form-control" placeholder="Mật khẩu mới">
+                                    </div>
+                                    <small class="text-muted">Nhập lại mật khẩu mới: </small>
+                                    <div class="form-group">
+                                                 <input id="confirm_password" name="confirm_password" value="{{ old('confirm_password') }}"  type="password" class="form-control" placeholder="Nhập lại mật khẩu mới">
+                                    </div>
                                 </div>
+
                             </div>
-                            <div class="col-lg-4 col-md-12">
-                                <div class="form-group">
-                                    <input type="email" class="form-control" value="louis.info@yourdomain.com" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-12">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Phone Number">
-                                </div>
-                            </div> --}}
-                            <div class="col-lg-12 col-md-12">
-                                {{-- <h6>Change Password</h6>
-                                <hr> --}}
-                                <small class="text-muted">Mật khẩu hiện tại: </small>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Mật khẩu hiện tại">
-                                </div>
-                                <small class="text-muted">Mật khẩu mới: </small>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Mật khẩu mới">
-                                </div>
-                                <small class="text-muted">Nhập lại mật khẩu mới: </small>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Nhập lại mật khẩu mới">
-                                </div>
-                            </div>
-                        </div>
-                        <button style="margin-left: 340px;" type="button" class="btn btn-round btn-primary">Cập nhật</button> &nbsp;&nbsp;
+                            <button id="buttonUpdatePassword"  style="margin-left: 340px;" type="button" class="btn btn-round btn-primary">Cập nhật</button> &nbsp;&nbsp;
+                            <button id="submitPassword" hidden style="margin-left: 340px;" type="submit" class="btn btn-round btn-primary">Cập nhật</button> &nbsp;&nbsp;
+                        </form>
                         {{-- <button type="button" class="btn btn-round btn-default">Cancel</button> --}}
                     </div>
                 </div>
@@ -340,12 +384,11 @@
 
     <script src="{{asset('public/admin/toastr/toastr.min.js')}}" ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-   {!! Toastr::message() !!}
 
    {{-- <script type="text/javascript" src="//code.jquery.com/jquery-1.8.3.js"></script> --}}
    <script src="{{asset('public/admin/toastr/jquery.min.js')}}" ></script>
    <script src="{{asset('public/js/bootstrap-datepicker.min.js')}}" tppabs="http://puffintheme.com/demo/oculux/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCL436G6FzMqnMpWjJjV60pTWBHqDa-QgI&libraries=places&language=en"></script>
+   {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCL436G6FzMqnMpWjJjV60pTWBHqDa-QgI&libraries=places&language=en"></script> --}}
 
 <script>
     $(document).ready(function () {
@@ -480,6 +523,76 @@
             });
         };
 
+        //submit update password
+        $('#buttonUpdatePassword').on('click', function(){
+            confirmUpdate();
+        });
+        function confirmUpdate(){
+
+                swal({
+                    title: "Xác nhận?",
+                    text: "Bạn có chắc muốn cập nhật Mật khẩu không?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonClass: "btn-danger",
+                    confirmButtonText: "Vâng, chắc chắn!",
+                    cancelButtonText: "Hủy!",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                },
+
+                function(isConfirm) {
+                    if (isConfirm) {
+                        if($('#confirm_password').val() == '' || $('#current_password').val() == '' || $('#old_password').val() == ''  ){
+
+                            swal("Thao tác cập nhật mật khẩu đã hủy", " Do nhập thiếu các trường dữ liệu :)", "error");
+                            if($('#confirm_password').val() == ''){
+                                $( "#confirm_password" ).addClass( "error" );
+                            }else{
+                                $( "#confirm_password" ).removeClass( "error" );
+                            }
+                            if($('#current_password').val() == ''){
+                                $( "#current_password" ).addClass( "error" );
+                            }else{
+                                $( "#current_password" ).removeClass( "error" );
+                            }
+
+                            if($('#old_password').val() == ''){
+                                $( "#old_password" ).addClass( "error" );
+                            }else{
+                                $( "#old_password" ).removeClass( "error" );
+                            }
+
+                        }
+                        else if($('#confirm_password').val().length < 4 || $('#current_password').val().length < 4 || $('#old_password').val().length < 4 ){
+                            // console.log($('#confirm_password').val().length)
+                            if($('#confirm_password').val().length< 4){
+                                $( "#confirm_password" ).addClass( "error" );
+                            }else{
+                                $( "#confirm_password" ).removeClass( "error" );
+                            }
+                            if($('#current_password').val().length < 4){
+                                $( "#current_password" ).addClass( "error" );
+                            }else{
+                                $( "#current_password" ).removeClass( "error" );
+                            }
+
+                            if($('#old_password').val().length< 4 ){
+                                $( "#old_password" ).addClass( "error" );
+                            }else{
+                                $( "#old_password" ).removeClass( "error" );
+                            }
+                            swal("Thao tác cập nhật mật khẩu đã hủy . Do nhập thiếu độ dài của các trường dữ liệu ", " Độ dài quy định của các trường dữ liệu là 4 ký tự ", "error");
+                        }
+                        else{
+                            $('#submitPassword').click();
+                        }
+
+                    } else {
+                        swal("Hủy", "Thao tác cập nhật đã hủy :)", "error");
+                    }
+                });
+            };
 
     });
     </script>

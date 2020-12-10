@@ -253,7 +253,7 @@
 
                                                         <div class="form__group col-md-4 mb-sm--30">
                                                             <label  class="form__label">Số điện thoại</label>
-                                                            <input type="text" value="0{{Auth::user()->delivery->delivery_telephone}}" name="phone"  class="form__input form__input--3">
+                                                            <input type="text" value="{{Auth::user()->delivery->delivery_telephone}}" name="phone"  class="form__input form__input--3">
                                                         </div>
 
                                                     </div>

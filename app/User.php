@@ -86,6 +86,10 @@ class User extends Authenticatable
         // dd($a);
     }
 
+    // public function getMember(){
+    //     return $this->hasOne('App\Models\Member_vip','id_member_vip','member_vip_id');
+    // }
+
     // protected $primaryKey = 'id_user';
     // để sử dụng bảng tbl_user của minh tạo ra, mặc định users của laravel nên phải đổi nó lại.
     use Notifiable;

@@ -311,16 +311,27 @@ Route::group(['prefix'=>'quan-tri','middleware'=>'Ad_login'],function(){        
                     Route::get('/','Admin\Member_vipController@index')->name('member_vip');
                     Route::post('/getData','Admin\Member_vipController@getData')->name('getData_member_vip');
                     Route::post('/edit','Admin\Member_vipController@edit')->name('member_vip_edit');
+
+
+                    // xem chi tiết thong tin của user:
+                    Route::get('/view_user/{id}','Admin\Member_vipController@view_user_profile')->name('view_user_profile');
+
                 });
                 Route::group(['prefix'=>'guest'],function(){
 
                           // sua thong tin tai khoan profile "
                           Route::get('/editProfile','UserController@editProfile')->name('editProfile');
-                        //   sửa avatar
+                          //   sửa avatar
                           Route::post('/updateAvatar/{id}','UserController@updateAvatar')->name('updateAvatar');
 
                           //   sửa thong tin
                           Route::post('/updateProfile/{id}','UserController@updateProfile')->name('updateProfile');
+                          //   cập nhật password
+                          Route::post('/updatePassword','UserController@updatePassword')->name('updatePassword');
+
+                          // đăng ký tài khoản VIP
+                          Route::get('/regVip','UserController@regVip')->name('regVip');
+
 
                 });
         });

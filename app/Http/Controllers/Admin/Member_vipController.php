@@ -90,7 +90,10 @@ class Member_vipController extends Controller
             'delete' => true,
         ], 200);
     }
-
+    public function view_user_profile($id){
+        $user = User::findorFail($id);
+        return view('admin.user-profile.view_user_profile',compact('user'));
+    }
 
 
 }

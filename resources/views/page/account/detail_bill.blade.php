@@ -11,7 +11,7 @@
     </style>
 </head>
 @section('page_content')
-
+{{-- {{dd($bill)}} --}}
     <!-- Breadcumb area Start -->
     <div class="breadcrumb-area">
         <div class="container">
@@ -70,7 +70,7 @@
                                 </div>
                                 <br>
                                 <p>Người nhận hàng : {{$bill->bill_name}}</p>
-                                <p>Số điện thoại : 0{{$bill->bill_phone}}</p>
+                                <p>Số điện thoại : {{$bill->bill_phone}}</p>
                                 <p>Đia chỉ giao hàng : {{$bill->bill_address}}</p>
 
                                 <br>

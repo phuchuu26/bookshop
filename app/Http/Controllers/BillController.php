@@ -401,7 +401,6 @@ class BillController extends Controller
 
 		$bill = bill::find($id);
 
-
 		return view('page.account.detail_bill',['bill'=>$bill]);
 	}
 

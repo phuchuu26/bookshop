@@ -17,8 +17,8 @@ class deliveryController extends Controller
 {
     public function delivery(Request $delivery2,$id)
     {
-        
-    		$delivery = Delivery::find(Auth::user()->id);
+
+    		$delivery = Delivery::where('id_account',Auth::user()->id)->first();
 	        $delivery->delivery_name = $delivery2->name;
 	        $delivery->delivery_telephone = $delivery2->phone;
 	        $delivery->delivery_provice = $delivery2->province;
@@ -26,8 +26,6 @@ class deliveryController extends Controller
 	        $delivery->delivery_ward = $delivery2->ward;
 	        $delivery->delivery_address = $delivery2->address;
 	        $delivery->id_account = Auth::user()->id;
-
-
 
         	$delivery->save();
 
@@ -38,7 +36,7 @@ class deliveryController extends Controller
 
     public function delivery2(Request $delivery2)
     {
-        
+
     		$delivery = new Delivery;
 
         	// echo $delivery;die;
