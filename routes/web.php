@@ -331,6 +331,7 @@ Route::group(['prefix'=>'quan-tri','middleware'=>'Ad_login'],function(){        
 
                           // đăng ký tài khoản VIP
                           Route::get('/regVip','UserController@regVip')->name('regVip');
+                          Route::get('/checkPayment','UserController@return')->name('checkPayment');
 
 
                 });

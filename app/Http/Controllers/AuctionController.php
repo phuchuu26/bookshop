@@ -181,6 +181,8 @@ class AuctionController extends Controller
 
     // |dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000'
     public function store(Request $book2){
+        // dd($book2->all());
+        // die;
         // CustomValidationRequest $req
         // $data = Array();
         // $b =0;
@@ -437,10 +439,10 @@ class AuctionController extends Controller
                     $image_sp->image_auction_name  = $hinh_anh;
                     $image_sp->save();
 
-
                 }
 
         }
+        // if($book2->)
 
         Toastr::success('Thêm sách đấu giá thành công', 'Thông báo', ["positionClass" => "toast-top-right"]);
 

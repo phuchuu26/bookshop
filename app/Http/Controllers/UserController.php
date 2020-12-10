@@ -170,14 +170,17 @@ class UserController extends Controller
 // Tên chủ thẻ:NGUYEN VAN A
 // Ngày phát hành:07/15
 // Mật khẩu OTP:123456
-        session(['cost_id' => $request->id]);
+                session(['cost_id' => $request->id]);
                 session(['url_prev' => url()->previous()]);
                 // $vnp_TmnCode = "VVULVOU2"; //Mã website tại VNPAY
                 $vnp_TmnCode = "Z8Q4A4YI"; //Mã website tại VNPAY
                 $vnp_HashSecret = "FUREHUTBLZNZUFHKOGNOXWPIVNWNCNCZ"; //Chuỗi bí mật
                 // $vnp_HashSecret = "SBKILOMMRSKUSLHMVFYFATIDBLYKYDAU"; //Chuỗi bí mật
+
                 $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-                $vnp_Returnurl = route('editProfile');
+
+                $vnp_Returnurl = route('checkPayment');
+                // $vnp_Returnurl = route('editProfile');
                 $vnp_TxnRef = date("YmdHis"); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
                 $vnp_OrderInfo = "Thanh toán hóa đơn đăng ký khách hàng VIP";
                 $vnp_OrderType = 'billpayment';
@@ -228,12 +231,28 @@ class UserController extends Controller
                     $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
                 }
 
-                $user->id_member_vip = 1;
-                $user->save();
 
-                Toastr::success('Thanh toán sách đấu giá thành công', 'Thông báo', ["positionClass" => "toast-top-right"]);
+
+                // Toastr::success('Thanh toán sách đấu giá thành công', 'Thông báo', ["positionClass" => "toast-top-right"]);
+                // $this->return();
                 return redirect($vnp_Url);
     }
 
+    public function return(Request $request)
+    {
+        // dd($request->all());
+        $url = session('url_prev','/');
+        if($request->vnp_ResponseCode == "00") {
+            // $this->apSer->thanhtoanonline(session('cost_id'));
+            $user = User::findorFail(Auth::User()->id);
+            $user->id_member_vip = 1;
+            $user->save();
+            Toastr::success('Thanh toán sách đấu giá thành công', 'Thông báo', ["positionClass" => "toast-top-right"]);
+            return redirect()->route('editProfile');
+        }
+        session()->forget('url_prev');
+        Toastr::error('Thanh toán sách đấu giá không thành công do lỗi trong quá trình thanh toán phí dịch vụ', 'Thông báo', ["positionClass" => "toast-top-right"]);
+        return redirect()->route('editProfile');
+    }
 
 }

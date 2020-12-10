@@ -3,6 +3,10 @@
 <head>
 
         <style>
+            .vohieuhoa{
+                opacity: 0.4;
+                /* opacity: 0.4; */
+            }
             label.container1 {
     margin-bottom: 3px;
     margin-top: 7px;
@@ -535,7 +539,7 @@ button#anhbia {
 
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div  class="row">
 
                                     <div class="input-group mb-3 col-md-2">
 
@@ -547,10 +551,10 @@ button#anhbia {
 
 
                                     </div>
-                                    <div class="input-group mb-3 col-md-10">
+                                    <div  id="giovang" class="input-group mb-3 col-md-10">
                                         @foreach($goldtime as $key => $gtime )
                                         <label class="container1">
-                                        <input type="checkbox"  {{ (is_array(old('goldtimeframe')) and in_array($gtime->gold_time_frame_id, old('goldtimeframe'))) ? ' checked' : '' }} name="goldtimeframe[{{$key}}] " value="{{$gtime->gold_time_frame_id}}">
+                                        <input class="checkboxGio"  type="checkbox"  {{ (is_array(old('goldtimeframe')) and in_array($gtime->gold_time_frame_id, old('goldtimeframe'))) ? ' checked' : '' }} name="goldtimeframe[{{$key}}] " value="{{$gtime->gold_time_frame_id}}">
                                         <button style="margin-bottom: 3px;    margin-top: -5px;" type="button"  class="btn btn-warning">{{$gtime->gold_time_frame_name}}</button>
                                             <span class="checkmark"></span>
                                           </label>
@@ -604,9 +608,11 @@ button#anhbia {
                                             <div class="sliderange">
 
                                                 <div class="slidecontainer">
-
+                                                    @if(Auth::User()->id_member_vip == 1)
                                                     <input type="range" min="0.5"  name="valuetime0" step="0.5" max="24" value="{{old('valuetime0')}}" class="slider" id="myRange">
-
+                                                    @else
+                                                    <input type="range" min="0.5"  name="valuetime0" step="0.5" max="2" value="{{old('valuetime0')}}" class="slider" id="myRange">
+                                                    @endif
                                                     <button id = "demo" style="" type="button"  class="btn btn-info"> </button>
                                                 </div>
                                                 <div class="slidecontainer">
@@ -866,6 +872,14 @@ function formatCurrency(number){
 
 <script>
     $(document).ready(function(){
+        var member_id = {{Auth::User()->id_member_vip}};
+        // console.log('hihi'+member_id);
+        if(member_id != 1){
+            $( ".checkboxGio" ).prop( "disabled", true );
+            $( "#giovang" ).addClass('vohieuhoa')
+        }
+
+
     var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
 
