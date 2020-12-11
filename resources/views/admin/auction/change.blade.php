@@ -371,6 +371,30 @@ button#anhbia {
                                     </div>
                                 </div>
 
+                                {{-- thoi gian dau gia mong muon --}}
+                                @if($khunggiovangs )
+                                <div class="row">
+                                    <div class="input-group mb-3 col-md-12">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect01">Khung giờ vàng mong muốn</label>
+                                            </div>
+
+                                            @foreach($khunggiovangs as $key  )
+                                            <label class="container1">
+                                            {{-- <input class="checkboxGio"  type="checkbox"  value="{{$gtime->gold_time_frame_id}}"> --}}
+                                            <button style="margin-bottom: 3px; margin-left: 40px;
+                                            margin-top: 13px!important;   margin-top: -5px;" type="button"  class="btn btn-warning">{{$key->getFrameGold->gold_time_frame_name}}</button>
+                                                <span class="checkmark"></span>
+                                              </label>
+                                              @endforeach
+
+                                          </div>
+                                    </div>
+
+                                </div>
+                                @endif
+
                                 <div class="form-group">
                                     <div class="input-group-prepend">
                                         <label style="height:38px;" class="input-group-text" for="inputGroupSelect01">Khối lượng</label>

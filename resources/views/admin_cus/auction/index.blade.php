@@ -541,7 +541,7 @@ button#anhbia {
                                 </div>
                                 <div  class="row">
 
-                                    <div class="input-group mb-3 col-md-2">
+                                    <div  class="input-group mb-3 col-md-2">
 
                                         <div   class="input-group-prepend">
                                             <label  class="input-group-text" data-toggle="tooltip" data-placement="top" title="Giành cho thành viên VIP" for="inputGroupSelect01">Khung giờ vàng</label>
@@ -551,9 +551,9 @@ button#anhbia {
 
 
                                     </div>
-                                    <div  id="giovang" class="input-group mb-3 col-md-10">
+                                    <div   id="giovang" class="input-group mb-3 col-md-10">
                                         @foreach($goldtime as $key => $gtime )
-                                        <label class="container1">
+                                        <label data-toggle="tooltip" data-placement="top" title="Giành cho thành viên VIP"  class="container1">
                                         <input class="checkboxGio"  type="checkbox"  {{ (is_array(old('goldtimeframe')) and in_array($gtime->gold_time_frame_id, old('goldtimeframe'))) ? ' checked' : '' }} name="goldtimeframe[{{$key}}] " value="{{$gtime->gold_time_frame_id}}">
                                         <button style="margin-bottom: 3px;    margin-top: -5px;" type="button"  class="btn btn-warning">{{$gtime->gold_time_frame_name}}</button>
                                             <span class="checkmark"></span>
@@ -579,7 +579,7 @@ button#anhbia {
                                     {{--  --}}
                                     <div id="time" class="row">
                                     <div class="input-group mb-3 col-md-12">
-                                        <div class="input-group mb-12">
+                                        <div  class="input-group mb-12">
                                             <div class="input-group-prepend">
                                                 <label id="a1" class="input-group-text" for="inputGroupSelect01">Thời gian đấu giá mong muốn</label>
                                             </div>
@@ -663,7 +663,7 @@ button#anhbia {
                 </div>
                 <div class="col-md-3">
                     <div class="card">
-                        <div class="header">
+                        <div  class="header">
                             <h2>Thêm ảnh bìa sách</h2>
                         </div>
 
@@ -764,7 +764,11 @@ button#anhbia {
                 <div class="col-md-12">
                     <div class="card">
                         <div class="body gui">
-                            <button type="submit" class="btn btn-success">Thêm</button>
+                            @if($not_allow == false)
+                                <button  type="submit" class="btn btn-success">Thêm sách đấu giá</button>
+                            @else
+                                <button id="not_allow" type="button" class="btn btn-warning">Số lần đăng sách vượt quá giới hạn trong một ngày</button>
+                            @endif
                         </div>
                     </form>
                 </div>
@@ -914,6 +918,11 @@ slider1.oninput = function() {
   output1.innerHTML = this.value + ' phút';
 }
 });
+
+
+$('#not_allow').on('click', function(){
+    swal("Thao tác không thành công!", "Số lần đăng vượt quá giới hạn cho phép trong một ngày!", "error")
+})
 </script>
 
 

@@ -16,6 +16,7 @@ use App\Models\Image_auction;
 use App\Models\book_company;
 use App\Models\publishing_house;
 use App\Models\List_bidder;
+use App\Models\Detail_gold_time_frame;
 use App\User;
 use App\Events\StartAuction;
 use Toastr;
@@ -41,6 +42,11 @@ class AuctionController extends Controller
         return view('admin.auction.list',compact('quantity','list','a'));
     }
     public function change($id){
+
+        $khunggiovangs = Detail_gold_time_frame::where('id_auction_book',$id)->get();
+        // dd($khunggiovang );
+        // die;
+
         $a = Carbon::now();
         // $a = 2020-09-26 11:12:35.590428 Asia/Ho_Chi_Minh (+07:00)
        // lấy sản phẩm cuối để get time => set thời gian kết thúc cho sản phẩm tiếp theo không bị trùng với sp cuối.
@@ -107,7 +113,7 @@ class AuctionController extends Controller
         $category = category::all();
         $subcategory = sub_category::all();
 
-        return view('admin.auction.change',['quantity' => $quantity,'e' => $e,'b' => $b,'count' =>$count ,'image_sp'=>$image_sp , 'auction_book'=>$auction_book , 'author'=>$author, 'category'=>$category,
+        return view('admin.auction.change',['khunggiovangs'=> $khunggiovangs,'quantity' => $quantity,'e' => $e,'b' => $b,'count' =>$count ,'image_sp'=>$image_sp , 'auction_book'=>$auction_book , 'author'=>$author, 'category'=>$category,
         'publishinghouse'=>$publishinghouse, 'account'=>$account, 'subcategory'=>$subcategory, 'bookcompany'=>$bookcompany]);
     }
     // public function index(){

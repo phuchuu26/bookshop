@@ -164,6 +164,36 @@ class AuctionController extends Controller
 
 
     public function addAuctionBook(){
+
+        $now = date('Y-m-d');
+        $user = User::findorFail(Auth::User()->id);
+        $auction_users = $user->auction_book;
+        // dd($auction_users);
+        $count =0 ;
+        foreach($auction_users as $auction){
+            if(substr($auction->created_at, 0,10) ==  $now){
+                $count++;
+            }
+        }
+
+
+        $user = User::findorFail(Auth::User()->id);
+        if($user->member){
+            $post_day_user = $user->member->member_type_number_posts_per_day;
+        }else{
+            $post_day_user = 0;
+        }
+
+        if(Auth::User()->level == 2){
+            if($count == $post_day_user || $count > $post_day_user ){
+                $not_allow = true;
+            }else{
+                $not_allow = false;
+            }
+        }
+        // dd($not_allow);
+        // die;
+
         $category = category::all();
 
     	$author = author::all();
@@ -174,7 +204,7 @@ class AuctionController extends Controller
         $subcategory = sub_category::all();
         $goldtime = Gold_time_frame::all();
         // dd($goldtime);
-        return view('admin_cus.auction.index',['goldtime' => $goldtime , 'author'=>$author, 'category'=>$category, 'publishinghouse'=>$publishinghouse, 'account'=>$account, 'subcategory'=>$subcategory, 'bookcompany'=>$bookcompany]);
+        return view('admin_cus.auction.index',['not_allow'=>$not_allow ,'post_day_user'=>$post_day_user,'goldtime' => $goldtime , 'author'=>$author, 'category'=>$category, 'publishinghouse'=>$publishinghouse, 'account'=>$account, 'subcategory'=>$subcategory, 'bookcompany'=>$bookcompany]);
     }
 
     // store
@@ -1059,4 +1089,7 @@ class AuctionController extends Controller
             'daSeen' => $count,
         ], 200);
     }
+
+
+
 }
