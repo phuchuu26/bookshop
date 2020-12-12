@@ -76,4 +76,10 @@ class Auction_book extends Model implements Viewable
         // dd($a);
         return $a;
     }
+// tu auction lay ra nhung sach da duoc da gia
+    public function getBook_buy() // phải viêt liền ko được cách ra hoặc _
+    {
+        return $this->hasOne('App\Models\Bill_auction','id_auction_book','id');
+
+    }
 }

@@ -287,12 +287,13 @@
                                 </div>
                                 <div class="thongTinShop">
                                     <div class="left">
-                                        <img class="logo" width="90px;" src="{{asset('public\storage\users-avatar\avatar.png')}}" alt="">
+                                        <img class="logo" width="90px;" src="{{asset('public/storage/users-avatar').'/'.$book->user->avatar }}" alt="">
                                     </div>
                                     <div class="right">
                                         <p class="des">Được bán bởi</p>
                                         <h3>
-                                            Tiệm sách cũ
+                                          {{$book->user->info->info_lastname}}
+                                          {{$book->user->info->info_name}}
                                         </h3>
                                         <p class="moTaShop">
                                             Sau một thời gian hoạt động, website đã có những bước tiến đáng kể cả về chất lượng và hình thức

@@ -20,6 +20,7 @@
                     <ul class="breadcrumb">
                         <li><a href="{{Route('p.home')}}">Trang chủ</a></li>
                         <li><a href="{{Route('act.home')}}">Tài khoản</a></li>
+                        <li><a href="{{Route('act.home')}}">Đơn hàng đấu giá</a></li>
                         <li class="current"><a>Chi tiết đơn hàng đấu giá {{$bill->bill_auction_code}}</a></li>
                     </ul>
                 </div>
@@ -49,7 +50,7 @@
                                             có
                                             <span style="color : #ffc107; ">
                                                 {{$bill->getAuctionBook->auction_book_quantity}}
-                                            </span> sản phẩm
+                                            </span> cuốn
                                         </p>
 
 
@@ -70,7 +71,7 @@
                                 </div>
                                 <br>
                                 <p>Người nhận hàng : {{$bill->bill_auction_name}}</p>
-                                <p>Số điện thoại : 0{{$bill->bill_auction_phone}}</p>
+                                <p>Số điện thoại : {{$bill->bill_auction_phone}}</p>
                                 <p>Đia chỉ giao hàng : {{$bill->bill_auction_address}}</p>
 
                                 <br>

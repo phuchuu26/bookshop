@@ -93,7 +93,7 @@
             @endif
             </ul>
         </li>
-        @if(Auth::user()->level==1)
+        {{-- @if(Auth::user()->level==1)
         <li>
         <a href="{{route('member_vip')}}" class="has-arrow"><i class="icon-pie-chart"></i><span>Tài khoản VIP</span></a>
 
@@ -101,10 +101,9 @@
         @endif
             @if(Auth::user()->level==2)
                     <li>
-                    {{-- <a href="{{route('member_vip/user')}}" class="has-arrow"><i class="icon-pie-chart"></i><span>Quản lý tài khoản</span></a> --}}
 
                     </li>
-        @endif
+        @endif --}}
 
         <li>
             <a href="#user" class="has-arrow"><i class="icon-pie-chart"></i><span>Quản lý tài khoản</span></a>
@@ -119,6 +118,23 @@
                 <li><a href="{{route('editProfile')}}" >Chỉnh sửa thông tin tài khoản</a></li>
                 {{-- //code --}}
             @endif
+            </ul>
+        </li>
+          <li>
+            <a href="#user" class="has-arrow"><i class="icon-pie-chart"></i><span>Quản lý đơn hàng</span></a>
+            <ul>
+            @if(Auth::user()->level ==1)
+                <li><a href="{{route('get_bill_auction_admin')}}" >Xem tất cả các đơn hàng đấu giá</a></li>
+                <li><a href="{{route('get_bill_admin')}}" >Xem tất cả các đơn hàng mua sách</a></li>
+
+
+                @endif
+                @if(Auth::user()->level==2)
+
+                <li><a href="{{route('get_bill_auction')}}" >Xem tất cả các đơn hàng đấu giá</a></li>
+                <li><a href="{{route('get_bill')}}" >Xem tất cả các đơn hàng mua sách</a></li>
+
+                @endif
             </ul>
         </li>
 

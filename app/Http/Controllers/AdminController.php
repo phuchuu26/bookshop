@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Models\book;
 use App\Models\bill;
+use App\Models\Auction_book;
 use App\Models\detail_bill;
 
 
@@ -138,6 +139,50 @@ class AdminController extends Controller
         'donhang' => $donhang
         ]);
     }
+    public function get_bill(){
 
+        $bills = detail_bill::where('id_nguoiban','=',Auth::user()->id)->orderBy('created_at','DESC')->get();
+        return view('admin.detail_bill.bill',compact('bills'));
+
+    }
+    public function get_bill_auction(){
+
+        $bills = Auction_book::where('id_account',Auth::user()->id)->get();
+        $tests = array();
+        foreach( $bills as $key => $b){
+            if(!$b->getBook_buy){
+
+                unset($bills[$key]);
+            }else{
+                array_push($tests, $b->getBook_buy);
+            }
+        };
+
+
+        return view('admin.detail_bill.bill_auction',compact('tests'));
+    }
+    public function get_bill_admin(){
+
+        $bills = detail_bill::orderBy('updated_at','DESC')->get();
+        return view('admin.detail_bill.admin.bill',compact('bills'));
+
+    }
+
+    public function get_bill_auction_admin(){
+
+        $bills = Auction_book::orderBy('updated_at','DESC')->get();
+        $tests = array();
+        foreach( $bills as $key => $b){
+            if(!$b->getBook_buy){
+
+                unset($bills[$key]);
+            }else{
+                array_push($tests, $b->getBook_buy);
+            }
+        };
+
+
+        return view('admin.detail_bill.admin.bill_auction',compact('tests'));
+    }
 
 }

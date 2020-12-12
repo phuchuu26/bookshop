@@ -50,7 +50,7 @@
                                                 <div class="form-row">
                                                     <div class="form__group col-12">
                                                         <label for="billing_lname" class="form__label">Số điện thoại <span>*</span></label>
-                                                        <input type="text" name="phone"  value="0{{Auth::user()->delivery->delivery_telephone}}" class="form__input" readonly="">
+                                                        <input type="text" name="phone"  value="{{Auth::user()->delivery->delivery_telephone}}" class="form__input" readonly="">
                                                     </div>
                                                 </div>
                                                 <br>

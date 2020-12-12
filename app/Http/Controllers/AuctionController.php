@@ -1069,6 +1069,7 @@ class AuctionController extends Controller
 	{
         $bill = bill_auction::where('id_auction_book',$id)->first();
         // dd($bill);
+        // dd($bill);
         // die;
 
 		return view('page.account.detail_auction_book',['bill'=>$bill]);

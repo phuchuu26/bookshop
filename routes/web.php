@@ -82,6 +82,7 @@ Route::group(['prefix'=>'tai-khoan','middleware'=>'Ad_login'],function(){
 	Route::get('/','TaikhoanController@myacount')->middleware('Ad_login')->name('act.home');
 
 
+
 	//ajax
  	Route::get('/quan-huyen/{id_province}','TaikhoanController@ajax_district')-> name('test');
      Route::get('/quan-huyenAjax','TaikhoanController@ajax_district1')-> name('getAjaxHuyen');
@@ -134,6 +135,22 @@ Route::group(['prefix' => 'gio-hang'],function(){
 	Route::get('/xoa-san-pham-{id}','CartController@delCart')->name('delcart');
 
 	Route::get('/checkout','CartController@checkout')->name('checkout');
+
+
+});
+
+Route::group(['prefix' => 'user/bill','middleware'=>'Ad_login'],function(){
+
+	Route::get('/','AdminController@get_bill')->name('get_bill');
+	Route::get('/auction','AdminController@get_bill_auction')->name('get_bill_auction');
+
+
+
+});Route::group(['prefix' => 'admin/bill','middleware'=>'CheckAdmin'],function(){
+
+	Route::get('/','AdminController@get_bill_admin')->name('get_bill_admin');
+	Route::get('/auction','AdminController@get_bill_auction_admin')->name('get_bill_auction_admin');
+
 
 
 });

@@ -132,6 +132,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                {{-- {{dd($bill2)}} --}}
                                                 @foreach($bill2 as $b2)
                                                 <tr align="center">
                                                     <td>{{$b2->bill_code}}</td>

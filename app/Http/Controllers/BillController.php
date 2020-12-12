@@ -6,9 +6,8 @@ use Illuminate\Http\Request;
 Use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Cart;
-
-    use App\Models\bill;
-    use App\Models\detail_bill;
+use App\Models\bill;
+use App\Models\detail_bill;
 
 use App\Models\payment;
 use App\Models\bill_auction;
