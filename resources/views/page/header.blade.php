@@ -224,99 +224,13 @@
                                 <li class="mainmenu__item">
                                 <a href="{{route('auction_index')}}" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/blog.html" class="mainmenu__link">Đấu giá</a>
                                 </li>
-                                <li class="mainmenu__item">
+                                {{-- <li class="mainmenu__item">
                                     <a href="blog.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/blog.html" class="mainmenu__link">Bài viết</a>
-                                </li>
-                                <li class="mainmenu__item ">
+                                </li> --}}
+                                {{-- <li class="mainmenu__item ">
                                     <a href="#" class="mainmenu__link">Phản hồi</a>
-                                    {{-- <ul class="megamenu three-column">
-                                        <li>
-                                            <a href="#">Pages</a>
-                                            <ul>
-                                                <li>
-                                                    <a href="about-us.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/about-us.html">About Us</a>
-                                                </li>
-                                                <li>
-                                                    <a href="about-us-2.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/about-us-2.html">About Us 2</a>
-                                                </li>
-                                                <li>
-                                                    <a href="contact.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/contact.html">Contact</a>
-                                                </li>
-                                                <li>
-                                                    <a href="contact-2.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/contact-2.html">Contact 2</a>
-                                                </li>
-                                                <li>
-                                                    <a href="services.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/services.html">Services</a>
-                                                </li>
-                                                <li>
-                                                    <a href="services-2.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/services-2.html">Services 2</a>
-                                                </li>
-                                                <li>
-                                                    <a href="faq.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/faq.html">Faq</a>
-                                                </li>
-                                                <li>
-                                                    <a href="404.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/404.html">404</a>
-                                                </li>
-                                                <li>
-                                                    <a href="login-register.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/login-register.html">Login & Registration</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#">Blog</a>
-                                            <ul>
-                                                <li>
-                                                    <a href="blog.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/blog.html">Blog Left Sidebar</a>
-                                                </li>
-                                                <li>
-                                                    <a href="blog-right-sidebar.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/blog-right-sidebar.html">Blog Right Sidebar</a>
-                                                </li>
-                                                <li>
-                                                    <a href="blog-3-column.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/blog-3-column.html">Blog 3 Column</a>
-                                                </li>
-                                                <li>
-                                                    <a href="blog-4-column.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/blog-4-column.html">Blog 4 Column</a>
-                                                </li>
-                                                <li>
-                                                    <a href="single-blog-image.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/single-blog-image.html">Image Format</a>
-                                                </li>
-                                                <li>
-                                                    <a href="single-blog-gallery.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/single-blog-gallery.html">Gallery Format</a>
-                                                </li>
-                                                <li>
-                                                    <a href="single-blog-audio.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/single-blog-audio.html">Audio Format</a>
-                                                </li>
-                                                <li>
-                                                    <a href="single-blog-video.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/single-blog-video.html">Video Format</a>
-                                                </li>
-                                                <li>
-                                                    <a href="single-blog-right-sidebar.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/single-blog-right-sidebar.html">Right Sidebar</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#">Shop</a>
-                                            <ul>
-                                                <li>
-                                                    <a href="cart.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/cart.html">Cart</a>
-                                                </li>
-                                                <li>
-                                                    <a href="checkout.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/checkout.html">Checkout</a>
-                                                </li>
-                                                <li>
-                                                    <a href="wishlist.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/wishlist.html">Wishlist</a>
-                                                </li>
-                                                <li>
-                                                    <a href="compare.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/compare.html">Compare</a>
-                                                </li>
-                                                <li>
-                                                    <a href="my-account.html" tppabs="https://demo.hasthemes.com/lazio-preview/lazio/my-account.html">My Account</a>
-                                                </li>
-                                            </ul>
-                                        </li>
 
-                                    </ul> --}}
-                                </li>
+                                </li> --}}
                             </ul>
                             <!-- Mainmenu End -->
                         </nav>

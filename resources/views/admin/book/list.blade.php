@@ -56,6 +56,7 @@
                                             <th>Danh mục</th>
                                             <th>Thể loại</th> --}}
                                             <th>Người đăng</th>
+                                            <th>Ngày đăng</th>
                                             <th>Thao tác</th>
 
                                         </tr>
@@ -82,10 +83,11 @@
                                             <td>{{$sach->id}}</td>
                                             <td>{{$sach->book_title}}</td>
                                             <td>{{$sach->tacgia->author_name}}</td>
-                                            <td>{{$sach->user->info->info_name}}</td>
+                                            <td>{{$sach->user->info->info_lastname}} {{$sach->user->info->info_name}}</td>
+                                            <td>{{date('d-m-Y',strtotime($sach->created_at))}}</td>
 
                                             <td colspan="2">
-                                                <a href="{{Route('b.edit',['id' => $sach->id])}}" style="padding-right: 30px;"><i class="fa fa-pencil"></i></a>
+                                                {{-- <a href="{{Route('b.edit',['id' => $sach->id])}}" style="padding-right: 30px;"><i class="fa fa-pencil"></i></a> --}}
 
                                                 <a href="{{Route('b.delete',['id' => $sach->id])}}"><i class="fa fa-trash-o fa-fw"></i></a>
                                             </td>

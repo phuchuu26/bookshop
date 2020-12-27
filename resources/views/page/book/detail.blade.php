@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{asset('public/page/css/style.css')}}">
 <style>
+    img.logo {
+    min-height: 110px;
+}
 
     .modal-content {
         font-size: 19px;
@@ -98,7 +101,7 @@
 
                             <!-- Product Thumbnail Carousel Start -->
                             <div class="product-thumbnail">
-                                <div class="thumb-menu product-thumb-menu" id="thumbmenu-horizontal">
+                                {{-- <div class="thumb-menu product-thumb-menu" id="thumbmenu-horizontal">
 
                                     <div class="thumb-menu-item">
                                         <a href="#product-large-one" data-toggle="tab" class="nav-link active">
@@ -107,7 +110,7 @@
                                     </div>
 
 
-                                </div>
+                                </div> --}}
                                 <br>
                                 <br>
                                 <br>
@@ -270,20 +273,22 @@
 
                                 <p class="single-product__short-desc"></p>
                                     <p class="product-availability"><i class="fa fa-check-circle"></i>Còn {{$book->book_amount}} cuốn</p>
-                                  @if(Auth::user()->id != $book->id_account)
-                                    <div class="product-action-wrapper">
-                                        <div class="quantity">
-                                            <input type="number" class="quantity-input" name="qty" id="qty1" value="1" min="1">
+                                    @if(Auth::check())
+                                         @if(Auth::user()->id != $book->id_account)
+                                        <div class="product-action-wrapper">
+                                            <div class="quantity">
+                                                <input type="number" class="quantity-input" name="qty" id="qty1" value="1" min="1">
+                                            </div>
+                                            <a href="{{Route('addcart',['id' => $book->id])}}" class="btn add-to-cart btn-style-1 color-1">
+                                                Giỏ hàng
+                                            </a>
                                         </div>
-                                        <a href="{{Route('addcart',['id' => $book->id])}}" class="btn add-to-cart btn-style-1 color-1">
-                                            Giỏ hàng
-                                        </a>
-                                    </div>
+                                        @endif
                                     @endif
-                                    <div class="single-product__btn">
+                                    {{-- <div class="single-product__btn">
                                         <a href="wishlist.html" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a>
                                         <a href="compare.html" data-toggle="tooltip" data-placement="top" title="Add to Compare"><i class="fa fa-refresh"></i> Add to Compare</a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="thongTinShop">
                                     <div class="left">
@@ -376,7 +381,7 @@
                                 <div class="tab-pane fade show active" id="nav-desc" role="tabpanel" aria-labelledby="nav-desc-tab">
                                     {{-- <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla. Donec a neque libero.</p> --}}
                                     <p class="product-description">
-                                        {{$book->book_description}}
+                                        {!! $book->book_description !!}
                                     </p>
                                 </div>
                                 <div class="tab-pane" role="tabpanel" id="nav-details" aria-labelledby="nav-details-tab">

@@ -20,7 +20,16 @@ class TimkiemController extends Controller
         // return view('page.book.list',['book3' => $book3, 'book2' => $book2 , 'theloai' => $theloai]);
         $tukhoa = $rq->tukhoa;
 
-        $book = book::where('book_title','like',"%$tukhoa%")->get();
+        $book = book::where('book_title','like',"%$tukhoa%")
+        ->orWhere('book_description','like',"%$tukhoa%")
+        ->orWhere('book_amount','like',"%$tukhoa%")
+        ->orWhere('book_sale','like',"%$tukhoa%")
+        ->orWhere('book_numberpage','like',"%$tukhoa%")
+        ->orWhere('book_weight','like',"%$tukhoa%")
+        ->orWhere('book_releasedate','like',"%$tukhoa%")
+        ->orWhere('views','like',"%$tukhoa%")
+        ->orWhere('book_price','like',"%$tukhoa%")
+        ->get();
         // $sanpham2 = book::where('book_title','like',"%$tukhoa%")->count();
 
         // $collection = collect([$sanpham2]);

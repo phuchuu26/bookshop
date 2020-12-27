@@ -82,4 +82,6 @@ class Auction_book extends Model implements Viewable
         return $this->hasOne('App\Models\Bill_auction','id_auction_book','id');
 
     }
+
+
 }

@@ -51,7 +51,7 @@
                 </div>
 
             </div>
-            <button type="submit" style="background-color:#00aeef" class="btn btn-4 btn-style-2">Gửi bình luận</button>
+            <button type="submit" style="background-color:#71d8ff;" class="btn btn-4 btn-style-2">Gửi bình luận</button>
             {{-- <button type="submit" style="background-color:#00aeef" class="btn btn-success text-uppercase">Gửi</button> --}}
         </form>
     </div>

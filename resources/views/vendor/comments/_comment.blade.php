@@ -50,13 +50,13 @@
 
         <div>
             @can('reply-to-comment', $comment)
-                <button style="     padding: 8px;   background-color: #00aeef;" data-toggle="modal" data-target="#reply-modal-{{ $comment->getKey() }}" class="btn add-to-cart btn-style-2 color-2">Đáp lại</button>
+                <button style="     padding: 8px;   background-color: #71d8ff;" data-toggle="modal" data-target="#reply-modal-{{ $comment->getKey() }}" class="btn add-to-cart btn-style-2 color-2">Đáp lại</button>
             @endcan
             @can('edit-comment', $comment)
-                <button style="padding: 5px;" data-toggle="modal" data-target="#comment-modal-{{ $comment->getKey() }}" class="btn btn-4 btn-style-2">Chỉnh sửa</button>
+                <button style="padding: 5px;background-color:#ffeaa7;"  data-toggle="modal" data-target="#comment-modal-{{ $comment->getKey() }}" class="btn add-to-cart btn-style-2 color-2">Chỉnh sửa</button>
             @endcan
             @can('delete-comment', $comment)
-                <a style="padding: 5px;background-color: red;" href="{{ route('comments.destroy', $comment->getKey()) }}" onclick="event.preventDefault();document.getElementById('comment-delete-form-{{ $comment->getKey() }}').submit();" class="btn btn-4 btn-style-2">
+                <a style="padding: 5px;background-color: #fe4a5b;" href="{{ route('comments.destroy', $comment->getKey()) }}" onclick="event.preventDefault();document.getElementById('comment-delete-form-{{ $comment->getKey() }}').submit();" class="btn add-to-cart btn-style-2 color-2">
                     Xóa bình luận</a>
 
                 <form id="comment-delete-form-{{ $comment->getKey() }}" action="{{ route('comments.destroy', $comment->getKey()) }}" method="POST" style="display: none;">
@@ -117,7 +117,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn add-to-cart btn-style-2 color-2" data-dismiss="modal">Hủy</button>
-                                <button type="submit" style="background-color: #00aeef;" class="btn add-to-cart btn-style-2 color-2">Trả lời</button>
+                                <button type="submit" style="background-color: #71d8ff;" class="btn add-to-cart btn-style-2 color-2">Trả lời</button>
                             </div>
                         </form>
                     </div>

@@ -123,7 +123,9 @@ input#amount {
             <div class="col-12">
                 <ul class="breadcrumb" style="">
                     <div  class="thongTinShop">
+                        @if($user->id_member_vip == 1)
                         <a id='new' >VIP</a>
+                        @endif
                         <div class="left">
                             {{-- <img class="logo" width="90px;" src="{{asset('public/page/img/furniture-13-250x278.jpg')}}" alt=""> --}}
                             <img class="logo" width="90px;" height="120px;" src="{{asset('public/storage/users-avatar').'/'.$user->avatar}}" alt="">
@@ -178,22 +180,23 @@ input#amount {
                     </div>
                     <div class="chitiet">
                         <div class="rowa">
-                            <h4 id="li" class="ab" ><i id="icona" class="fa fa-book" aria-hidden="true"></i>Đang theo dõi: 6</h4>
-                            <h4 id="li"><i id="icona" class="fa fa-book" aria-hidden="true"></i>Tỉ lệ shop hủy đơn: 6</h4>
+                            {{-- <h4 id="li" class="ab" ><i id="icona" class="fa fa-book" aria-hidden="true"></i>Đang theo dõi: 6</h4> --}}
+                            {{-- <h4 id="li"><i id="icona" class="fa fa-book" aria-hidden="true"></i>Tỉ lệ shop hủy đơn: 6</h4> --}}
 
                         </div>
 
 
                         <div class="rowa">
-                            <h4 id="li"><i id="icona" class="fa fa-book" aria-hidden="true"></i>Người theo dõi: 6</h4>
-                            <h4 id="li"><i id="icona" class="fa fa-book" aria-hidden="true"></i>Sản phẩm : 6</h4>
+                            {{-- <h4 id="li"><i id="icona" class="fa fa-book" aria-hidden="true"></i>Người theo dõi: 6</h4> --}}
+                            <h4 id="li"><i id="icona" class="fa fa-book" aria-hidden="true"></i>  &ensp; Sản phẩm : {{$user->book->count()}}</h4>
                         </div>
                         <div class="rowa">
-                            <h4 id="li"><i id="icona" class="fa fa-book" aria-hidden="true"></i>Ngày tham gia: 6</h4>
-                            <h4 id="li"><i id="icona" class="fa fa-book" aria-hidden="true"></i>Tỉ lệ phản hồi chat: 6</h4>
+                            <h4 id="li"><i class="fa fa-calendar" aria-hidden="true"></i>  &ensp; Ngày tham gia: {{date("d-m-Y  ",strtotime($user->created_at))}}</h4>
+                            {{-- <h4 id="li"><i id="icona" class="fa fa-book" aria-hidden="true"></i>Tỉ lệ phản hồi chat: 6</h4> --}}
                         </div>
                         <div class="rowa">
-                            <h4 id="li"><i id="icona" class="fa fa-book" aria-hidden="true"></i>Đánh Giá: 6</h4>
+                            <h4 id="li">
+                                <i class="fa fa-comments" aria-hidden="true"></i>  &ensp; Đánh Giá:  {{$tongsodanhgia}}</h4>
 
                         </div>
 

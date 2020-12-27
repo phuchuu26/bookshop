@@ -448,6 +448,7 @@ Route::group(['prefix'=>'quan-tri','middleware'=>'Ad_login'],function(){        
 		Route::group(['prefix'=>'sach'],function(){
 
 			Route::get('/','BookController@book')->name('b.list');
+			Route::get('/admin','BookController@admin_book')->middleware('CheckAdmin')->name('admin_book');
 			Route::get('/them-sach','BookController@add')->name('b.add');
 			Route::post('/them-sach','BookController@post_add')->name('b.post.add');
 

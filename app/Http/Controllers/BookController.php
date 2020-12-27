@@ -25,9 +25,17 @@ class BookController extends Controller
     {
         $book = book::where('id_account','=',Auth::user()->id)->get();
         $author = author::all();
-        $account = User::all();
+        // $account = User::all();
 
-        return view('admin.book.list',['book'=>$book, 'author'=>$author,'account'=>$account]);
+        return view('admin.book.list_user',['book'=>$book, 'author'=>$author]);
+    }
+
+    public function admin_book()
+    {
+        $book = book::all();
+
+
+        return view('admin.book.list',compact('book'));
     }
 
     public function add()

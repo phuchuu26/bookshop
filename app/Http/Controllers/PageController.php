@@ -246,7 +246,18 @@ class PageController extends Controller
         $book = book::where('id_account','=',$id)->where('id_status','=','1')->paginate(6);
         $book2 = book::where('id_account','=',$id)->count();
 
-        return view('page.account.shop',compact('book','book2','user','theloai'));
+        $user1 = $user->book;
+        $tongsodanhgia =0;
+        foreach($user1 as $u){
+            if($u->evaluate){
+                $a = $u->evaluate->count();
+                $tongsodanhgia = $tongsodanhgia + $a;
+            }
+
+        }
+        // dd($tongsodanhgia );
+
+        return view('page.account.shop',compact('book','book2','user','theloai','tongsodanhgia'));
       }
 
       public function write_cmt(Request $request,$id){

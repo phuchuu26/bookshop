@@ -29,26 +29,27 @@
 
         <li class="header">Bản điều khiển</li>
         @if(Auth::user()->level == 1)
-            <li>
+            {{-- <li>
                 <a href="#uiIcons" class="has-arrow"><i class="icon-speedometer"></i><span>Giao diện</span></a>
                 <ul>
                     <li><a href="#"> Ảnh bìa</a></li>
                 </ul>
-            </li>
+            </li> --}}
 
-            <li>
+            {{-- <li>
                 <a href="#uiIcons" class="has-arrow"><i class="icon-user"></i><span>Thành viên</span></a>
                 <ul>
                     <li><a href="#"> Quyền</a></li>
                     <li><a href="#">Danh sách thành viên</a></li>
                 </ul>
-            </li>
+            </li> --}}
         @endif
 
         <li>
             <a href="#Tables" class="has-arrow"><i class="icon-layers"></i><span>Danh sách</span></a>
             <ul>
                 @if(Auth::user()->level == 1)
+                <li><a href="{{Route('admin_book')}}" >Sách</a></li>
                     <li><a href="{{Route('ctg.list')}}" >Danh mục</a></li>
                 @endif
 
@@ -56,7 +57,9 @@
                 <li><a href="{{Route('auth.list')}}" >Tác giả</a></li>
                 <li><a href="{{Route('pbh.list')}}" >Nhà xuất bản</a></li>
                 <li><a href="{{Route('cby.list')}}" >Nhà phân phối</a></li>
-                <li><a href="{{Route('b.list')}}" >Sách</a></li>
+                @if(Auth::user()->level == 2)
+                    <li><a href="{{Route('b.list')}}" >Sách</a></li>
+                @endif
 
 
             </ul>

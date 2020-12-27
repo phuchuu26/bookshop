@@ -56,4 +56,10 @@ class Book extends Model implements Viewable
         // từ sản phẩm cha ra con xài hasone
         // (tên đường dẫn, 'khoa ngoại', khóa chính)
     }
+    public function evaluate() // phải viêt liền ko được cách ra hoặc _
+    {
+        return $this->hasMany('App\Models\Evaluate','id_book','id');
+        // từ sản phẩm cha ra con xài hasone
+        // (tên đường dẫn, 'khoa ngoại', khóa chính)
+    }
 }
