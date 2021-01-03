@@ -162,9 +162,12 @@
     @php
     $i =1;
     @endphp
+                        {{-- {{dd(config('config.test'))}} --}}
                                             @foreach($auctionedLists as $key => $auctionedList)
                                         <tr>
-                                        <td>{{$i}} {{$auctionedList->getBook->id}} {{$key}}</td>
+                                        <td>
+                                            {{-- {{$auctionedList->getBook->id}} {{$key}} --}}
+                                            {{$i}}</td>
                                             @php
     $i ++;
     @endphp

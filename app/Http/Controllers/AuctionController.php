@@ -966,6 +966,8 @@ class AuctionController extends Controller
 
     // danh sách những người đấu sách của cuốn sách đó
     public function seenListBidder($id){
+        $time_current =  Carbon::now();
+        $time_current =  strtotime($time_current);
 
         $time = Endtime_auction::where('id_auction_book',$id)->first();
         // dd($time);
@@ -994,7 +996,7 @@ class AuctionController extends Controller
         // dd($bidders);
         // $users = DB::table('list_bidder')->orderBy('id','asc')->where('id_auction_book',$id)->get();
         // dd($users);
-        return view('admin_cus.auction.listbidder',compact('time','bidders','timeStillAuction'));
+        return view('admin_cus.auction.listbidder',compact('time','bidders','timeStillAuction','time_current'));
         // dd($danhsach);
     }
     public function auctionedListing(){

@@ -142,17 +142,24 @@ text-align: center;
                                         </tr>
                                     </tfoot> --}}
                                     <tbody>
-                                        {{-- {{dd($bidders)}} --}}
                                         @php
-    $i =1;
-    @endphp
+                                             $i =1;
+                                        @endphp
                                             @foreach($bidders as $bi)
 
                                         <tr>
                                             <td>{{$i}}</td>
                                             @php
-    $i ++;
-    @endphp
+                                                $time_start = $bi->getBook->endtime->starttime_auction_date;
+                                                $time_end = $bi->getBook->endtime->Endtime_auction_date;
+                                                // dd(strtotime($time_end));
+                                            if($time_current < strtotime($time_end) && $time_current > strtotime($time_start))
+                                            {
+                                                $still_auction = true;
+                                            }
+
+                                               $i ++;
+                                            @endphp
                                             <td>{{$bi->info->info->info_lastname .' '.$bi->info->info->info_name}}</td>
                                             <td>{{  date('H:i d/m/Y', strtotime($bi->created_at)) }}</td>
 
@@ -309,11 +316,17 @@ text-align: center;
                                             </td>
                                             @else
                                             <td>
+
                                                 @if(isset($check))
                                                 <button class="btn btn-danger">Đấu giá thất bại</button>
                                              @else
-                                                <button class="btn btn-danger">Thời gian thanh toán quá hạn</button>
+                                                        @if(isset($still_auction))
 
+                                                            <button class="btn btn-warning">Đang diễn ra</button>
+                                                        @else
+                                                            <button class="btn btn-danger">Thời gian thanh toán quá hạn</button>
+
+                                                        @endif
                                                 @endif
                                             </td>
                                             @endif

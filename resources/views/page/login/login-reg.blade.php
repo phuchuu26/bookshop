@@ -7,7 +7,7 @@
 	        <div class="login-register-area">
 	            <div class="container">
 
-	            	
+
 
 
 	                <div class="row">
@@ -72,21 +72,21 @@
 	                        <div class="login-reg-box bg--white">
 	                            <form action="{{route('p.reg')}}"  method="POST" enctype="multipart/form-data">
                                 {{csrf_field() }}
-									
+
 									<div class="row">
 
 										<div class="form__group mb--20 col-md-6">
 		                                    <label class="form__label" for="register_email">
 		                                        Tên <span>*</span>
 		                                    </label>
-		                                    <input type="text" name="name"  class="form__input">
+		                                    <input type="text"  value="{{old('name')}}" name="name"  class="form__input">
 		                                </div>
 
 		                                <div class="form__group mb--20 col-md-6">
 		                                    <label class="form__label" for="register_email">
 		                                        Họ <span>*</span>
 		                                    </label>
-		                                    <input type="text" name="lastname"  class="form__input">
+		                                    <input type="text" value="{{old('lastname')}}" name="lastname"  class="form__input">
 		                                </div>
 
 
@@ -99,7 +99,7 @@
 	                                    <label class="form__label" for="register_email">
 	                                        Username <span>*</span>
 	                                    </label>
-	                                    <input type="text" name="username"  class="form__input">
+	                                    <input type="text" value="{{old('username')}}" name="username"  class="form__input">
 	                                </div>
 
 
@@ -110,7 +110,7 @@
 	                                    <label class="form__label" for="register_email">
 	                                        Email address <span>*</span>
 	                                    </label>
-	                                    <input type="text" name="email"  class="form__input">
+	                                    <input type="text" value="{{old('email')}}" name="email"  class="form__input">
 	                                </div>
 
 	                                {{-- phone --}}
@@ -119,7 +119,7 @@
 	                                    <label class="form__label" for="register_email">
 	                                        Phone <span>*</span>
 	                                    </label>
-	                                    <input type="text" name="phone" class="form__input">
+	                                    <input type="text"  value="{{old('phone')}}" name="phone" class="form__input">
 	                                </div>
 
 
@@ -129,7 +129,7 @@
 	                                    <label class="form__label" for="register_password">
 	                                        Password <span>*</span>
 	                                    </label>
-	                                    <input type="password" name="password" id="register_password" class="form__input">
+	                                    <input type="password" value="{{old('password')}}" name="password" id="register_password" class="form__input">
 	                                </div>
 
 	                                {{-- Confirm Password --}}
@@ -138,7 +138,7 @@
 	                                    <label class="form__label" for="register_password">
 	                                        Confirm Password <span>*</span>
 	                                    </label>
-	                                    <input type="password" name="confirmpassword" class="form__input">
+	                                    <input type="password" value="{{old('confirmpassword')}}" name="confirmpassword" class="form__input">
 	                                </div>
 
 
