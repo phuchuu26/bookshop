@@ -182,6 +182,7 @@ small.text-muted {
                                             <td>
 
                                                 <a href="#" >
+
                                                     {{$dsbill->getNguoiThanhToan->info->info_lastname}}
                                                     {{$dsbill->getNguoiThanhToan->info->info_name}}
                                                 </a>
@@ -193,8 +194,15 @@ small.text-muted {
 
 
 
-                                            <td>{{$dsbill->created_at}}</td>
-                                            <td>{{$dsbill->updated_at}}</td>
+                                            <td>
+                                                {{-- {{$dsbill->created_at}} --}}
+                                                {{date('H:i d-m-Y', strtotime($dsbill->created_at))}}
+                                            </td>
+                                            <td>
+
+                                                {{date('H:i d-m-Y', strtotime($dsbill->updated_at))}}
+                                                {{-- {{$dsbill->updated_at}} --}}
+                                            </td>
 
                                         </tr>
 

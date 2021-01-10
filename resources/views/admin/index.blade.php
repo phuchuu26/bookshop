@@ -316,7 +316,7 @@ small.text-muted {
                     </div>
                 </div>
 
-                <div class="row clearfix">
+                {{-- <div class="row clearfix">
                     <div class="col-lg-12 col-md-12">
                         <div class="card">
                             <div class="header">
@@ -422,7 +422,7 @@ small.text-muted {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
         </div>
@@ -640,7 +640,7 @@ small.text-muted {
 
                 </div>
 
-                <div class="row clearfix">
+   {{-- <div class="row clearfix">
                     <div class="col-lg-12 col-md-12">
                         <div class="card">
                             <div class="header">
@@ -706,7 +706,7 @@ small.text-muted {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
         </div>

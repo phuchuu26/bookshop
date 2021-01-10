@@ -472,9 +472,16 @@ small.text-muted {
                                     <tbody>
                                         @foreach($bills as $dsbill)
 
+                                        {{-- {{dd($dsbill)}} --}}
                                         <tr>
                                             <td>{{$dsbill->bills->bill_code}}</td>
-                                            <td>{{ number_format($dsbill->bills->bill_total,0,',','.') }} đ</td>
+                                            @php
+                                             $price = $dsbill->detailbill2->book_price ;
+                                             $qty = $dsbill->qty;
+                                             $gia = $price * $qty ;
+                                            @endphp
+                                            <td>{{ number_format($gia,0,',','.') }} đ</td>
+                                            {{-- <td>{{ number_format($dsbill->bills->bill_total,0,',','.') }} đ</td> --}}
 
                                             <td>
 
@@ -542,14 +549,22 @@ small.text-muted {
 
 
 
-                                            <td>{{$dsbill->bills->created_at}}</td>
-                                            <td>{{$dsbill->bills->updated_at}}</td>
+                                            <td>
+                                                {{-- {{$dsbill->bills->created_at}} --}}
+                                                {{date('H:i d-m-Y', strtotime($dsbill->bills->created_at))}}
+                                            </td>
+
+                                            <td>
+                                                {{date('H:i d-m-Y', strtotime($dsbill->updated_at))}}
+                                                {{-- {{$dsbill->bills->updated_at}} --}}
+                                            </td>
 
                                         </tr>
 
                                         @endforeach
                                     </tbody>
                                 </table>
+                                {!! $bills->links() !!}
                             </div>
                         </div>
                     </div>

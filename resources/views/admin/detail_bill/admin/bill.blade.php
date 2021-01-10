@@ -187,15 +187,22 @@ small.text-muted {
 
 
 
-
-                                            <td>{{$dsbill->bills->created_at}}</td>
-                                            <td>{{$dsbill->bills->updated_at}}</td>
+                                            <td>
+                                                {{date('H:i d-m-Y', strtotime($dsbill->bills->created_at))}}
+                                                {{-- {{$dsbill->bills->created_at}} --}}
+                                            </td>
+                                            <td>
+                                                {{-- {{$dsbill->bills->updated_at}} --}}
+                                                {{date('H:i d-m-Y', strtotime($dsbill->updated_at))}}
+                                                {{-- {{ \Carbon\Carbon::parse($dsbill->updated_at)->format('H:m d/m/Y')}} --}}
+                                            </td>
 
                                         </tr>
 
                                         @endforeach
                                     </tbody>
                                 </table>
+                                {!! $bills->links() !!}
                             </div>
                         </div>
                     </div>

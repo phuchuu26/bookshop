@@ -10,7 +10,7 @@ use App\Models\bill;
 use App\Models\detail_bill;
 
 use App\Models\payment;
-use App\Models\bill_auction;
+use App\Models\Bill_auction;
 
 
 use Toastr;
@@ -56,6 +56,7 @@ class BillController extends Controller
     // }
     public function post_bill(Request $request)
     {
+
         $route = \Request::route();
         $url = url()->previous();
 
@@ -64,8 +65,7 @@ class BillController extends Controller
         $pos = strpos( $url, 'checkout_auction');
         // thanh toán đấu giá
         if ($pos !== false) {
-
-            $bill = new bill_auction;
+            $bill = new Bill_auction;
             $bill->save();
 
 
@@ -171,7 +171,7 @@ class BillController extends Controller
                 $bill->id_payment 	 = 2;
                 $bill->id_status  	 = 3;
                 $bill->id_account  	 = Auth::user()->id;
-                $bill->id_auction_book  	 = $request->id_book_auction;
+                $bill->id_auction_book = $request->id_book_auction;
 
                 $bill->save();
                 Toastr::success('Thanh toán sách đấu giá thành công', 'Thông báo', ["positionClass" => "toast-top-right"]);
@@ -208,6 +208,7 @@ class BillController extends Controller
             }
 
         } else {
+
             // Không tìm thấy
 
 

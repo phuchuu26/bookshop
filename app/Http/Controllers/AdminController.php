@@ -141,7 +141,10 @@ class AdminController extends Controller
     }
     public function get_bill(){
 
-        $bills = detail_bill::where('id_nguoiban','=',Auth::user()->id)->orderBy('created_at','DESC')->get();
+        $bills = detail_bill::where('id_nguoiban','=',Auth::user()->id)
+        ->orderBy('created_at','DESC')
+        ->paginate(10);
+        // dd( $bills);
         return view('admin.detail_bill.bill',compact('bills'));
 
     }
@@ -162,8 +165,7 @@ class AdminController extends Controller
         return view('admin.detail_bill.bill_auction',compact('tests'));
     }
     public function get_bill_admin(){
-
-        $bills = detail_bill::orderBy('updated_at','DESC')->get();
+        $bills = detail_bill::orderBy('updated_at','DESC')->paginate(10);
         return view('admin.detail_bill.admin.bill',compact('bills'));
 
     }
@@ -172,6 +174,7 @@ class AdminController extends Controller
 
         $bills = Auction_book::orderBy('updated_at','DESC')->get();
         $tests = array();
+        // $object = new \stdClass;
         foreach( $bills as $key => $b){
             if(!$b->getBook_buy){
 
@@ -180,7 +183,8 @@ class AdminController extends Controller
                 array_push($tests, $b->getBook_buy);
             }
         };
-
+        // dd($object);
+// dd($tests);
 
         return view('admin.detail_bill.admin.bill_auction',compact('tests'));
     }

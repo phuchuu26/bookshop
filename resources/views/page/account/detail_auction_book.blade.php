@@ -174,10 +174,10 @@
                                             </tbody>
                                         </table>
                                         <br>
-
+                                        {{-- {{dd('test')}} --}}
                                         @if($bill->id_status == 3)
                                             <button class="btn btn-4 btn-style-3" style="font-size: 15px; margin-left: 82%; background-color: #E15858">
-                                            <a href="{{route('status8',['id' => $bill->id])}}" style="color: #fff">Hủy đơn hàng</a>
+                                            <a href="{{route('status_auction_8',['id' => $bill->id])}}" style="color: #fff">Hủy đơn hàng</a>
 
                                         </button>
                                         @elseif($bill->id_status == 8)

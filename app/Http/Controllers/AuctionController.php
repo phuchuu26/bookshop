@@ -1061,11 +1061,20 @@ class AuctionController extends Controller
     }
 
     public function checkout($id){
-        $book = Auction_book::find($id);
-        $price = List_bidder::where('id_account',Auth::user()->id)->where('id_auction_book',$id)->max('list_bidder_auction_money');
+        if(Auth::user()->delivery)
+        {
+            $book = Auction_book::find($id);
+            $price = List_bidder::where('id_account',Auth::user()->id)->where('id_auction_book',$id)->max('list_bidder_auction_money');
 
-        // dd($book);
-        return view('page.cart.checkout_auction',compact('book','price'));
+            // dd($book);
+            return view('page.cart.checkout_auction',compact('book','price'));
+        }
+        else
+        {
+            Toastr::error('Bạn chưa cập nhật đia chỉ nhận hàng', 'Thông báo', ["positionClass" => "toast-top-right"]);
+            return redirect(''.Route('act.home').'');
+        }
+
     }
     public function detail_auction_bill($id)
 	{
@@ -1091,6 +1100,58 @@ class AuctionController extends Controller
         return Response::json([
             'daSeen' => $count,
         ], 200);
+    }
+
+
+    public function status_auction_5($id)
+    {
+       // tac_gia::where('id',$id)->update(['phe_duyet'=>1]);
+       //  return redirect('/Ntkd@@/danh-sach-tac-gia');
+       $data = bill_auction::where('id',$id)->update(['id_status'=>4]);
+        //var_dump($data);die;
+        // Session::put('msg','')
+        Toastr::info('Xác nhận đấu giá đơn hàng', 'Thông báo', ["positionClass" => "toast-top-right"]);
+
+        return redirect()->back();
+
+    }
+
+    public function status_auction_6($id)
+    {
+       // tac_gia::where('id',$id)->update(['phe_duyet'=>1]);
+       //  return redirect('/Ntkd@@/danh-sach-tac-gia');
+        $data = bill_auction::where('id',$id)->update(['id_status'=>5]);
+        //var_dump($data);die;
+        // Session::put('msg','')
+        Toastr::info('Đơn hàng đấu giá đang vận chuyển', 'Thông báo', ["positionClass" => "toast-top-right"]);
+
+        return redirect()->back();
+
+    }
+
+    public function status_auction_7($id)
+    {
+       // tac_gia::where('id',$id)->update(['phe_duyet'=>1]);
+       //  return redirect('/Ntkd@@/danh-sach-tac-gia');
+        $data = bill_auction::where('id',$id)->update(['id_status'=>7]);
+        //var_dump($data);die;
+        // Session::put('msg','')
+        Toastr::info('Giao hàng đấu giá thành công', 'Thông báo', ["positionClass" => "toast-top-right"]);
+
+        return redirect()->back();
+
+    }
+
+    public function status_auction_8($id)
+    {
+       // tac_gia::where('id',$id)->update(['phe_duyet'=>1]);
+       //  return redirect('/Ntkd@@/danh-sach-tac-gia');
+        $data = bill_auction::where('id',$id)->update(['id_status'=>8]);
+        //var_dump($data);die;
+        // Session::put('msg','')
+        Toastr::error('Đơn hàng đấu giá đã hủy', 'Thông báo', ["positionClass" => "toast-top-right"]);
+
+        return redirect()->back();
     }
 
 

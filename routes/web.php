@@ -118,6 +118,13 @@ Route::get('/giao-hang-{id}','BillController@status6')->name('status5');
 Route::get('/thanh-cong-{id}','BillController@status7')->name('status7');
 Route::get('/huy-don-{id}','BillController@status8')->name('status8');
 
+// xử lý trang thái đơn hàng đấu giá sách
+Route::group(['prefix' => 'payment-auction'],function(){
+    Route::get('/xac-nhan-{id}','AuctionController@status_auction_5')->name('status_auction_5');
+    Route::get('/giao-hang-{id}','AuctionController@status_auction_6')->name('status_auction_6');
+    Route::get('/thanh-cong-{id}','AuctionController@status_auction_7')->name('status_auction_7');
+    Route::get('/huy-don-{id}','AuctionController@status_auction_8')->name('status_auction_8');
+});
 // page
 
 

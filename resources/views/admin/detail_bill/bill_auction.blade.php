@@ -89,7 +89,6 @@ small.text-muted {
     }
     </style>
             {{-- ///////////////////////////////// Admin ////////////////////////////// --}}
-
     @if(Auth::user()->level == 1)
 
         <div id="main-content">
@@ -307,19 +306,19 @@ small.text-muted {
                                                     @endif
 
                                                     <div class="dropdown-content">
-
                                                         @if($dsbill->id_status == 3)
+
                                                         @if($dsbill->id_payment == 1)
-                                                            <a href="{{route('status8',['id' => $dsbill->id])}}">Huy don hàng</a>
+                                                            <a href="{{route('status_auction_8',['id' => $dsbill->id])}}">Huy don hàng</a>
                                                             @endif
-                                                            <a href="{{route('status4',['id' => $dsbill->id])}}">Xác nhận đơn hàng</a>
+                                                            <a href="{{route('status_auction_5',['id' => $dsbill->id])}}">Xác nhận đơn hàng</a>
 
                                                             @endif
                                                                 @if($dsbill->id_status == 4)
-                                                                <a style="" href="{{route('status5',['id' => $dsbill->id])}}">Đang vận chuyển</a>
+                                                                <a style="" href="{{route('status_auction_6',['id' => $dsbill->id])}}">Đang vận chuyển</a>
                                                                 @endif
                                                                     @if($dsbill->id_status == 5)
-                                                                    <a  href="{{route('status7',['id' => $dsbill->id])}}">Giao hàng thanh cong</a>
+                                                                    <a  href="{{route('status_auction_7',['id' => $dsbill->id])}}">Giao hàng thanh cong</a>
                                                                     @endif
                                                     </div>
                                                   </div>
@@ -340,8 +339,15 @@ small.text-muted {
 
 
 
-                                            <td>{{$dsbill->created_at}}</td>
-                                            <td>{{$dsbill->updated_at}}</td>
+                                            <td>
+                                                {{date('H:i d-m-Y', strtotime($dsbill->created_at))}}
+                                                {{-- {{$dsbill->created_at}} --}}
+                                            </td>
+
+                                            <td>
+                                                {{date('H:i d-m-Y', strtotime($dsbill->updated_at))}}
+                                                {{-- {{$dsbill->updated_at}} --}}
+                                            </td>
 
                                         </tr>
 
