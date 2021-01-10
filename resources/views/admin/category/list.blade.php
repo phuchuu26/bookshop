@@ -48,7 +48,7 @@
                                 <table class="table table-hover dataTable table-custom spacing5">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>STT</th>
                                             <th>Danh mục</th>
                                             <th>Thao tác</th>
 
@@ -56,11 +56,13 @@
                                     </thead>
 
                                     <tbody>
-
+                                        @php
+                                        $stt =0;
+                                        @endphp
                                         @foreach($category as $ctg)
 
                                         <tr>
-                                            <td>{{$ctg->id}}</td>
+                                            <td>{{++$stt}}</td>
                                             <td>{{$ctg->category_name}}</td>
                                             <td colspan="2">
                                                 <a href="{{Route('ctg.edit',['id' => $ctg->id])}}" style="padding-right: 30px;"><i class="fa fa-pencil"></i></a>

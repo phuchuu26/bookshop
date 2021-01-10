@@ -48,24 +48,28 @@
                                 <table class="table table-hover dataTable table-custom spacing5">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>STT</th>
                                             <th>Nhà phân phối</th>
+                                            @if(\Auth::user()->level == 1)
                                             <th>Thao tác</th>
-
+                                            @endif
                                         </tr>
                                     </thead>
 
                                     <tbody>
-
+                                        @php
+                                            $stt =0;
+                                        @endphp
                                         @foreach($bookcompany as $cby)
 
                                         <tr>
-                                            <td>{{$cby->id}}</td>
+                                            <td>{{++$stt}}</td>
                                             <td>{{$cby->bookcompany_name}}</td>
                                             <td colspan="2">
-                                                <a href="{{Route('cby.edit',['id' => $cby->id])}}" style="padding-right: 30px;"><i class="fa fa-pencil"></i></a>
-
-                                                <a href="{{Route('cby.delete',['id' => $cby->id])}}"><i class="fa fa-trash-o fa-fw"></i></a>
+                                                @if(\Auth::user()->level == 1)
+                                                    <a href="{{Route('cby.edit',['id' => $cby->id])}}" style="padding-right: 30px;"><i class="fa fa-pencil"></i></a>
+                                                    <a href="{{Route('cby.delete',['id' => $cby->id])}}"><i class="fa fa-trash-o fa-fw"></i></a>
+                                                @endif
                                             </td>
                                         </tr>
 
@@ -75,6 +79,7 @@
 
                                     </tbody>
                                 </table>
+                                {{$bookcompany->links()}}
                             </div>
                         </div>
                     </div>

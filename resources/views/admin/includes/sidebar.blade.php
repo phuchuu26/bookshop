@@ -51,9 +51,9 @@
                 @if(Auth::user()->level == 1)
                 <li><a href="{{Route('admin_book')}}" >Sách</a></li>
                     <li><a href="{{Route('ctg.list')}}" >Danh mục</a></li>
+                    <li><a href="{{Route('s.ctg.list')}}" >Thể loại</a></li>
                 @endif
 
-                <li><a href="{{Route('s.ctg.list')}}" >Thể loại</a></li>
                 <li><a href="{{Route('auth.list')}}" >Tác giả</a></li>
                 <li><a href="{{Route('pbh.list')}}" >Nhà xuất bản</a></li>
                 <li><a href="{{Route('cby.list')}}" >Nhà phân phối</a></li>

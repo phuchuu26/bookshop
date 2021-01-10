@@ -48,24 +48,28 @@
                                 <table class="table table-hover dataTable table-custom spacing5">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>STT</th>
                                             <th>Nhà xuất bản</th>
-                                            <th>Thao tác</th>
-
+                                            @if(\Auth::user()->level == 1)
+                                                <th>Thao tác</th>
+                                            @endif
                                         </tr>
                                     </thead>
 
                                     <tbody>
-
+                                        @php
+                                            $stt = 0;
+                                        @endphp
                                         @foreach($publishinghouse as $pbh)
 
                                         <tr>
-                                            <td>{{$pbh->id}}</td>
+                                            <td>{{++$stt}}</td>
                                             <td>{{$pbh->publishinghouse_name}}</td>
                                             <td colspan="2">
-                                                <a href="{{Route('pbh.edit',['id' => $pbh->id])}}" style="padding-right: 30px;"><i class="fa fa-pencil"></i></a>
-
-                                                <a href="{{Route('pbh.delete',['id' => $pbh->id])}}"><i class="fa fa-trash-o fa-fw"></i></a>
+                                                @if(\Auth::user()->level == 1)
+                                                    <a href="{{Route('pbh.edit',['id' => $pbh->id])}}" style="padding-right: 30px;"><i class="fa fa-pencil"></i></a>
+                                                    <a href="{{Route('pbh.delete',['id' => $pbh->id])}}"><i class="fa fa-trash-o fa-fw"></i></a>
+                                                @endif
                                             </td>
                                         </tr>
 
@@ -75,6 +79,7 @@
 
                                     </tbody>
                                 </table>
+                                {{$publishinghouse->links()}}
                             </div>
                         </div>
                     </div>

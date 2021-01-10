@@ -99,6 +99,8 @@
 
                                     </tbody>
                                 </table>
+
+                                {{$book->links()}}
                             </div>
                         </div>
                     </div>

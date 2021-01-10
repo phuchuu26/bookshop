@@ -157,20 +157,20 @@
                                         </tr>
                                     </tfoot> --}}
                                     <tbody>
-                                        {{-- {{dd($auctionedLists)}} --}}
 
-    @php
-    $i =1;
-    @endphp
+                                                @php
+                                                $i =1;
+                                                @endphp
                         {{-- {{dd(config('config.test'))}} --}}
+                        {{-- {{dd($auctionedLists)}} --}}
                                             @foreach($auctionedLists as $key => $auctionedList)
                                         <tr>
                                         <td>
                                             {{-- {{$auctionedList->getBook->id}} {{$key}} --}}
                                             {{$i}}</td>
                                             @php
-    $i ++;
-    @endphp
+                                                $i ++;
+                                                @endphp
                                             <td class="title" style="">
                                                 {{$auctionedList->getBook->auction_book_title}}
                                             </td>
@@ -178,19 +178,11 @@
                                                 {{$auctionedList->getBook->account->info->info_lastname .' '.$auctionedList->getBook->account->info->info_name}}
                                             </td>
                                             <td>
-                                                @php
-                                                $type = $auctionedList->getBook->auction_book_time_type;
-                                                if($type == 'Giờ'){
-                                                    $time1 = $auctionedList->getBook->auction_book_time * 60*60;
-                                                }else{
-                                                    $time1 = $auctionedList->getBook->auction_book_time * 60;
-                                                }
-                                                // $timetmp = strtotime($time1);
-                                                $time2 = strtotime($auctionedList->getBook->endtime->Endtime_auction_date);
-                                                $startAuction = $time2 - $time1;
-                                                @endphp
+
                                                     {{-- {{$auctionedList->getBook->endtime->Endtime_auction_date}} --}}
-                                                    {{ date('H:i d/m/Y', $startAuction) }} <br> --- <br>
+                                                    {{-- {{ date('H:i d/m/Y', $startAuction) }}  --}}
+                                                    {{ \Carbon\Carbon::parse($auctionedList->getBook->endtime->starttime_auction_date)->format('H:i d/m/Y')}}
+                                                    <br> --- <br>
                                                     {{ \Carbon\Carbon::parse($auctionedList->getBook->endtime->Endtime_auction_date)->format('H:i d/m/Y')}}
                                             </td>
                                             <td>

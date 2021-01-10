@@ -165,6 +165,7 @@ class AdminController extends Controller
         return view('admin.detail_bill.bill_auction',compact('tests'));
     }
     public function get_bill_admin(){
+        // dd('test');
         $bills = detail_bill::orderBy('updated_at','DESC')->paginate(10);
         return view('admin.detail_bill.admin.bill',compact('bills'));
 

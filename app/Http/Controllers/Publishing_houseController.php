@@ -11,7 +11,7 @@ class Publishing_houseController extends Controller
 {
     public function publishinghouse()
     {
-        $publishinghouse = Publishing_house::all();
+        $publishinghouse = Publishing_house::paginate(10);
         return view('admin.publishing_house.list',['publishinghouse'=>$publishinghouse]);
     }
 
@@ -28,13 +28,13 @@ class Publishing_houseController extends Controller
             'name.required' => 'Bạn chưa nhập tên !',
             'name.unique' => 'Tên đã tồn tại !',
         ]);
-        
+
         $publishinghouse = new Publishing_house;
         $publishinghouse->publishinghouse_name= $publishinghouse2->name;
 
-       
+
         $publishinghouse->save();
-        
+
         Toastr::success('Thêm nhà xuất bản thành công', 'Thông báo', ["positionClass" => "toast-top-right"]);
 
         return redirect(''.route('pbh.list').'');

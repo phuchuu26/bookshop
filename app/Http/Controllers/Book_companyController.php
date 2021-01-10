@@ -11,7 +11,7 @@ class Book_companyController extends Controller
 {
     public function bookcompany()
     {
-        $bookcompany = Book_company::all();
+        $bookcompany = Book_company::paginate(10);
         return view('admin.Book_company.list',['bookcompany'=>$bookcompany]);
     }
 

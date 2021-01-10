@@ -60,20 +60,7 @@
 
                                         </tr>
                                     </thead>
-                                    {{-- <tfoot>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Sách</th>
-                                            <th>Tác giả</th>
-                                            <th>Nhà sản xuất</th>
-                                            <th>Nhà phân phối</th>
-                                            <th>Danh mục</th>
-                                            <th>Thể loại</th>
-                                            <th>Người đăng</th>
-                                            <th>Thao tác</th>
 
-                                        </tr>
-                                    </tfoot> --}}
                                     <tbody>
 
                                         @foreach($book as $sach)
@@ -97,6 +84,7 @@
 
                                     </tbody>
                                 </table>
+                                {{$book->links()}}
                             </div>
                         </div>
                     </div>

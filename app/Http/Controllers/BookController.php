@@ -23,7 +23,7 @@ class BookController extends Controller
 
      public function book()
     {
-        $book = book::where('id_account','=',Auth::user()->id)->get();
+        $book = book::where('id_account','=',Auth::user()->id)->paginate(10);
         $author = author::all();
         // $account = User::all();
 
@@ -32,7 +32,7 @@ class BookController extends Controller
 
     public function admin_book()
     {
-        $book = book::all();
+        $book = book::orderBy('created_at', 'DESC')->paginate(10);
 
 
         return view('admin.book.list',compact('book'));
@@ -42,9 +42,10 @@ class BookController extends Controller
     {
     	$category = category::all();
 
-    	$author = author::all();
-        $bookcompany = book_company::all();
-        $publishinghouse = publishing_house::all();
+    	$author = author::orderBy('author_name', 'ASC')->get();
+        $bookcompany = book_company::orderBy('bookcompany_name', 'ASC')->get();
+        // dd($bookcompany);
+        $publishinghouse = publishing_house::orderBy('publishinghouse_name', 'ASC')->get();
         $account = User::all();
         $category = category::all();
         $subcategory = sub_category::all();

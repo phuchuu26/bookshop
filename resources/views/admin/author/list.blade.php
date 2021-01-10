@@ -49,12 +49,12 @@
                                 <table class="table table-hover dataTable table-custom spacing5">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>STT</th>
                                             <th>Tác giả</th>
                                             <th>Ghi chú</th>
-
+                                            @if(\Auth::user()->level == 1)
                                             <th>Thao tác</th>
-
+                                            @endif
                                         </tr>
                                     </thead>
                                     {{-- <tfoot>
@@ -68,18 +68,21 @@
                                         </tr>
                                     </tfoot> --}}
                                     <tbody>
-
+                                        @php
+                                        $stt = 0;
+                                        @endphp
                                         @foreach($author as $au)
 
                                         <tr>
-                                            <td>{{$au->id}}</td>
+                                            <td>{{++$stt}}</td>
                                             <td>{{$au->author_name}}</td>
-                                            <td></td>
+                                            <td>{!!$au->author_info !!}</td>
 
                                             <td colspan="2">
-                                                <a href="{{Route('auth.edit',['id' => $au->id])}}" style="padding-right: 30px;"><i class="fa fa-pencil"></i></a>
-
-                                                <a href="{{Route('auth.delete',['id' => $au->id])}}"><i class="fa fa-trash-o fa-fw"></i></a>
+                                                @if(\Auth::user()->level == 1)
+                                                    <a href="{{Route('auth.edit',['id' => $au->id])}}" style="padding-right: 30px;"><i class="fa fa-pencil"></i></a>
+                                                    <a href="{{Route('auth.delete',['id' => $au->id])}}"><i class="fa fa-trash-o fa-fw"></i></a>
+                                                @endif
                                             </td>
                                         </tr>
 
